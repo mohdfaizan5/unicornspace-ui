@@ -1,32 +1,26 @@
 {
   "name": "unicorn-space-ui",
-  "version": "0.0.1",
-  "description": "A UI library focused on crux of UI, that is backgrounds, buttons, cool designs and much much more...",
-  "main": "./src/index.ts",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "repository": "github.com/mohdfaizan5",
-  "homepage": {
-    "url": "mohdfaizan.me"
-  },
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "tsup"
-  },
-  "keywords": [
-    "UI library",
-    "TypeScript",
-    "React Design components",
-    "Next.js React.js components"
-  ],
-  "author": "mohdfaizan5",
-  "license": "MIT",
-  "devDependencies": {
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
-    "create-react-library": "^1.0.0"
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.4"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4"
   }
 }
