@@ -12,10 +12,12 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import Navbar from "@/components/Navbar";
+import SearchEventListener from "@/components/client/SearchEventListener";
 
 const page = () => {
   return (
     <div className="min-h-screen">
+      
       <Navbar/>
       <main className="flex min-h-screen flex-row-reverse justify-center items-center">
         <section className=" flex flex-col gap-3">

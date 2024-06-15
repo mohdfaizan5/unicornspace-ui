@@ -8,24 +8,29 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import { Button } from "./ui/button";
+import SearchEventListener from "./client/SearchEventListener";
 
 const Navbar = () => {
   return (
-    <div>
-      <div></div>
-      <nav>
+    <header className="flex items-center justify-between mx-auto py-10 w-[90vw]">
+      <div>UnicornSpaceUI</div>
+      <nav className="">
         <Menubar className="w-32">
           <MenubarMenu>
-            <MenubarTrigger>File </MenubarTrigger>
+            <MenubarTrigger>Components </MenubarTrigger>
             <MenubarContent>
               <MenubarItem>
-                New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                HeroSections <MenubarShortcut>⌘T</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>New Window</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Share</MenubarItem>
+              <MenubarItem>Forms</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Print</MenubarItem>
+              <MenubarItem>Testimonials</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem>Pricing</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem>Footers</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
@@ -45,7 +50,11 @@ const Navbar = () => {
           </MenubarMenu>
         </Menubar>
       </nav>
-    </div>
+      <div>
+        <SearchEventListener />
+        <Button>Login</Button>
+      </div>
+    </header>
   );
 };
 
