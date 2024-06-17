@@ -13,6 +13,9 @@ import {
 import { Progress } from "@/components/ui/progress";
 import Navbar from "@/components/Navbar";
 import SearchEventListener from "@/components/client/SearchEventListener";
+import Features from "@/components/Features";
+import Faq from "@/components/Faq";
+import Footer from "@/components/Footer";
 
 const page = () => {
   return (
@@ -130,6 +133,9 @@ const page = () => {
           </Card>
         </section>
       </section>
+      <Features/>
+      {/* <Faq/> */}
+      {/* <Footer/> */}
     </div>
   );
 };
