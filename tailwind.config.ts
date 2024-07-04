@@ -18,9 +18,6 @@ const config = {
       },
     },
     extend: {
-      fontFamily: {
-        popins: "var(--popins)"
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

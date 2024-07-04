@@ -8,23 +8,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "./ui/button";
+
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
   return (
-    <header className="py-7 flex justify-between px-16 items-center ">
+    <header className="py-7 flex justify-between px-16 items-center  z-10">
       <div>
-        <h3 className="text-4xl flex items-center">
+        <h3 className="text-3xl font-semibold flex items-center">
           <Image
-            src={"/logo-base-256x256.png"}
-            height={60}
-            width={60}
+            src={"/logos/logo-black-256x256.png"}
+            height={50}
+            width={50}
             alt="abs img"
             className="hidden md:block"
           />{" "}
-          IndieToolkit
+          UnicornSpace
         </h3>
       </div>
       <nav className="text-white/70 text-sm sm:flex gap-2 hidden">

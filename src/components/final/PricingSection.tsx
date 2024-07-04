@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
 const PricingSection = () => {
   return (
-    <section className="flex flex-col items-center overflow-y-hidden w-full">
+    <section className="flex flex-col items-center overflow-y-hidden w-screen">
       <h1 className="text-6xl font-bold">Pricing</h1>
       <p className="text-md mt-3 opacity-70 font-light ">
         $100 off for the first 3710 customers (7 left)
@@ -100,9 +100,9 @@ const CustomList = ({
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M1 5.917 5.724 10.5 15 1.5"
           />
         </svg>
@@ -124,13 +124,13 @@ const CustomList = ({
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           stroke="currentColor"
           className="size-5"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M6 18 18 6M6 6l12 12"
           />
         </svg>

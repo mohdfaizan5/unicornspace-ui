@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
@@ -16,15 +17,22 @@ import SearchEventListener from "@/components/client/SearchEventListener";
 import Features from "@/components/Features";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
+import { hexToHSL } from "@/lib/utils";
 
 const page = () => {
   return (
     <div className="min-h-screen">
-      
-      <Navbar/>
       <main className="flex min-h-screen flex-row-reverse justify-center items-center">
         <section className=" flex flex-col gap-3">
-          <input type="color" />
+          <div className="size-20 bg-primary"></div>
+          <input
+            type="color"
+            onChange={(e) => {
+              console.log(e.target.value);
+              var r = document.querySelector(":root");
+              r?.style?.setProperty("--primary", hexToHSL(e.target.value));
+            }}
+          />
           <div>
             <Label htmlFor="saturation">
               Saturation
@@ -133,7 +141,7 @@ const page = () => {
           </Card>
         </section>
       </section>
-      <Features/>
+      <Features />
       {/* <Faq/> */}
       {/* <Footer/> */}
     </div>

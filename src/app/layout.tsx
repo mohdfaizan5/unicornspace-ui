@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/Navbar";
 
 const inter = Poppins({
   weight: ["400", "200"],
@@ -21,9 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} `}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
+      <body className={`${inter.className} bg-background`}>
+        <ThemeProvider attribute="class" defaultTheme={"dark"}>
+          <div className="relative flex min-h-screen flex-col  bg-background">
+            <Navbar />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
