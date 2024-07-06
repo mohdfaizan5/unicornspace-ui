@@ -27,10 +27,17 @@ const page = () => {
           <div className="size-20 bg-primary"></div>
           <input
             type="color"
-            onChange={(e) => {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               console.log(e.target.value);
-              var r = document.querySelector(":root");
-              r?.style?.setProperty("--primary", hexToHSL(e.target.value));
+              const root = document.querySelector(
+                ":root"
+              ) as HTMLElement | null;
+              if (root !== null) {
+                // console.log(typeof root);
+                // console.log(root.style);
+                const hslValue = hexToHSL(e.target.value);
+                root.style.setProperty("--primary", hslValue);
+              }
             }}
           />
           <div>

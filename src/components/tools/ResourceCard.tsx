@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import Image from "next/image";
 type ResourceCardType = {
   title: string;
   description: string;
@@ -27,7 +28,7 @@ function ResourceCard({
     <>
       <Card className="w-96 h-72 md:mt-[50px] md:shadow-md rounded-none">
         <CardHeader className="p-0">
-          <img className="" src={image} />
+          <Image height={500} width={500} alt="" src={image} />
         </CardHeader>
 
         <CardContent className="flex flex-col gap-1 items-start">

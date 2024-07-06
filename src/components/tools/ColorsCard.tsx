@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -15,10 +15,12 @@ function ColorsCard(props: ColorsCardType) {
     <Card className="w-96 h-72 md:mt-[50px] md:shadow-md rounded-none">
       <CardHeader className="p-0 flex">
         <div className="flex">
-          {colors.map((color) => {
+          {colors.map((color, i) => {
             const finalColor = `bg-[${color}]`.toLowerCase();
             console.log(finalColor);
-            return <div className={`w-1/4 h-20 ${finalColor} border`}></div>;
+            return (
+              <div key={i} className={`w-1/4 h-20 ${finalColor} border`}></div>
+            );
           })}
         </div>
       </CardHeader>
