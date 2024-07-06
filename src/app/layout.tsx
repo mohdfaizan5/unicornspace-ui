@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
+import { Poppins, Passion_One } from "next/font/google";
+import "@/styles/globals.css";
+import "@/styles/general.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 
@@ -8,6 +9,11 @@ const inter = Poppins({
   weight: ["400", "200"],
   subsets: ["latin"],
   variable: "--popins",
+});
+const passion = Passion_One({
+  weight: ["400", "700", "900"],
+  subsets: ["latin-ext"],
+  variable: "--passion",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-background`}>
-        <ThemeProvider attribute="class" defaultTheme={"dark"}>
+        <ThemeProvider attribute="class" defaultTheme={"light"}>
           <div className="relative flex min-h-screen flex-col  bg-background">
             <Navbar />
             {children}

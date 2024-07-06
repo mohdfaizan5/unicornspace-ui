@@ -1,0 +1,16 @@
+[
+  {
+    "title": "string",
+    "description": "string",
+    "ref": "https://conversion.framer.media/",
+    "image": "string",
+    "colors": ["#0A0A0A", "#EE4434", "#0000ee", "#999999"]
+  },
+  {
+    "title": "string",
+    "description": "string",
+    "ref": "https://conversion.framer.media/",
+    "image": "string",
+    "colors": ["#E5BE9E", "#EE4434", "#0000ee", "#999999"]
+  }
+]

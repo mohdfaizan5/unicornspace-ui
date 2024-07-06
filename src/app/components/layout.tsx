@@ -8,7 +8,7 @@ const sideNav = [
   { title: "Hero Section", path: "/components/hero-sections" },
   { title: "Pricing Section", path: "/components/pricing" },
   { title: "FAQ section", path: "/components/faq" },
-  { title: "Features section", path: "/components/button" },
+  { title: "Features section", path: "/components/features" },
   { title: "Testimonials", path: "/components/testimonials" },
   { title: "Forms", path: "/components/forms" },
   { title: "Footer", path: "/components/footer" },

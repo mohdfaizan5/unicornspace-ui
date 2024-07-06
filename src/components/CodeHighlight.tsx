@@ -1,35 +1,28 @@
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import rehypePrettyCode from "rehype-pretty-code";
-import { transformerCopyButton } from "@rehype-pretty/transformers";
-
-export async function CodeHighlight({ code }: { code: string }) {
-  const highlightedCode = await highlightCode(code);
+"use client";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Button } from "./ui/button";
+const CodeHighlight = ({ code }: { code: string }) => {
   return (
-    <section
-      dangerouslySetInnerHTML={{
-        __html: highlightedCode,
-      }}
-    />
+    <div className="relative  rounded-sm">
+      <Button
+        className="absolute top-0 right-0 z-10"
+        variant={"outline"}
+        onClick={() => {
+          navigator.clipboard.writeText(code);
+        }}
+      >
+        Copy
+      </Button>
+      <SyntaxHighlighter
+        customStyle={{ borderRadius: "16px" }}
+        language="javascript"
+        style={vs2015}
+      >
+        {code}
+      </SyntaxHighlighter>
+    </div>
   );
-}
+};
 
-async function highlightCode(code: string) {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypePrettyCode, {
-      transformers: [
-        transformerCopyButton({
-          visibility: "always",
-          feedbackDuration: 3_000,
-        }),
-      ],
-    })
-    .use(rehypeStringify)
-    .process(code);
-
-  return String(file);
-}
+export default CodeHighlight;

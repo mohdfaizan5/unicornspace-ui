@@ -1,3 +1,13 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@babel/eslint-parser",
+  "plugins": ["react", "example-plugin"], // Add plugins for specific file types
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    // ... other rules, remove extensions
+    "plugin:example-plugin/some-rule": "error", // Example rule from a plugin
+  }
 }

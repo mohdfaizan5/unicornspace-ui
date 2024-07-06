@@ -12,6 +12,8 @@ import { Button } from "./ui/button";
 import SearchEventListener from "./client/SearchEventListener";
 import Image from "next/image";
 import Link from "next/link";
+import { FaCaretDown, FaGithub } from "react-icons/fa";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   return (
@@ -23,13 +25,19 @@ const Navbar = () => {
             width={30}
             height={30}
             alt="logo"
-          />{" "}
+          />
           UnicornSpaceUI
         </Link>
-        <nav className="">
-          <Menubar className="border-none">
+        <nav className="hidden md:flex text-xs items-center gap-2">
+          <Menubar className="border-none ">
             <MenubarMenu>
-              <MenubarTrigger className="text-xs">Components </MenubarTrigger>
+              <Link className="hover:underline" href={""}>
+                {/* <Button variant={"link"}>Components</Button> */}
+                Components
+              </Link>
+              <MenubarTrigger className="p-0">
+                <FaCaretDown />
+              </MenubarTrigger>
               <MenubarContent>
                 <MenubarItem>
                   HeroSections <MenubarShortcut>⌘T</MenubarShortcut>
@@ -45,7 +53,12 @@ const Navbar = () => {
               </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
-              <MenubarTrigger className="text-xs">Tools</MenubarTrigger>
+              <Link className="hover:underline" href={""}>
+                Tools
+              </Link>
+              <MenubarTrigger className="p-1">
+                <FaCaretDown />
+              </MenubarTrigger>
               <MenubarContent>
                 <MenubarItem>
                   Components <MenubarShortcut>⌘T</MenubarShortcut>
@@ -60,10 +73,23 @@ const Navbar = () => {
               </MenubarContent>
             </MenubarMenu>
           </Menubar>
+          <Link className="hover:underline" href={""}>
+            Guides
+          </Link>
         </nav>
         <div className="flex items-center gap-2">
-          <SearchEventListener />
-          <Button>Login</Button>
+          {/* <SearchEventListener /> */}
+          <Link href={""}>
+            <Button
+              variant={"secondary"}
+              size={"sm"}
+              className="text-xs flex items-center gap-1"
+            >
+              Star
+              <FaGithub />
+            </Button>
+          </Link>
+          <ModeToggle />
         </div>
       </div>
     </header>
