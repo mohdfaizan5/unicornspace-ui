@@ -1,8 +1,7 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import HeroSection from "@/components/final/HeroSection";
 import CodeHighlight from "@/components/CodeHighlight";
-import Features from "@/components/final/Features2";
+import Features from "@/components/final/Features/Features1";
 
 const HeroSectionCode = `import React from "react";
 import { Card } from "@/components/ui/card";
@@ -67,19 +66,16 @@ const Features = () => {
 };
 
 export default Features;
-`
+`;
 const page = () => {
   return (
-    <div className="">
+    <div className="p-2">
       <Tabs defaultValue="preview" className="p-0  m-0">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
-        <TabsContent
-          className="scale-75 border border-black md:-ml-40 md:-mt-10 "
-          value="preview"
-        >
+        <TabsContent className="scale-75 border p-2" value="preview">
           <Features />
         </TabsContent>
         <TabsContent value="code" className="w-96 md:w-[800px] rounded-sm">

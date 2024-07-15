@@ -1,16 +1,16 @@
 import React from "react";
 import { ArrowRight, Check, Star, LucideProps } from "lucide-react";
+import Image from "next/image";
 
 const HeroSection2 = () => {
   return (
-    <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
-      <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
-        <div className="absolute w-28 left-0 -top-20 hidden lg:block">
-          {/* i forgot this div right here in the video, it's purely visual gradient and looks nice */}
+    <div className="px-6 lg:px-0 lg:pt-4 flex justify-center items-center">
+      <section className="relative md:w-[60vw] text-center lg:text-left flex flex-col items-center lg:items-start">
+        {/* <div className="absolute w-28 left-0 -top-20 hidden lg:block">
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t via-slate-50/50 from-slate-50 h-28" />
           <img src="/snake-1.png" className="w-full" alt="asdfjasd" />
-        </div>
-        <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
+        </div> */}
+        <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-5xl lg:text-7xl">
           Your Image on a{" "}
           <span className="bg-green-600 px-2 text-white">Custom</span> Phone
           Case
@@ -41,29 +41,39 @@ const HeroSection2 = () => {
 
         <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
           <div className="flex -space-x-4">
-            <img
+            <Image
+              width={40}
+              height={40}
               className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-              src="/users/user-1.png"
+              src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/f9f1e5c2-d849-410d-9b6e-459e8e264ccf._CR0,0,500,500_SX48_.jpg"
               alt="user image"
             />
-            <img
+            <Image
+              width={40}
+              height={40}
               className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-              src="/users/user-2.png"
+              src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/b4da3e31-4b07-4f7d-8535-e7324cee1f3e._CR0,0,424,424_SX48_.jpg"
               alt="user image"
             />
-            <img
+            <Image
+              width={40}
+              height={40}
               className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-              src="/users/user-3.png"
+              src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"
               alt="user image"
             />
-            <img
+            <Image
+              width={40}
+              height={40}
               className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-              src="/users/user-4.jpg"
+              src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/2208f3a2-eb43-4625-b28b-94d917a2fadc._CR0,0,375,375_UX460_.jpg"
               alt="user image"
             />
-            <img
+            <Image
+              width={40}
+              height={40}
               className="inline-block object-cover h-10 w-10 rounded-full ring-2 ring-slate-100"
-              src="/users/user-5.jpg"
+              src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"
               alt="user image"
             />
           </div>
@@ -82,7 +92,15 @@ const HeroSection2 = () => {
             </p>
           </div>
         </div>
-      </div>
+      </section>
+      <section>
+        <Image
+          src={"/phone-template-dark-edges.png"}
+          alt=""
+          width={200}
+          height={200}
+        />
+      </section>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Check, Star, LucideProps } from "lucide-react";
+import Image from "next/image";
 export const Icons = {
   underline: (props: LucideProps) => (
     <svg {...props} viewBox="0 0 687 155">
@@ -33,7 +34,7 @@ const Testimonials2 = () => {
             </span>{" "}
             say
           </h2>
-          <img src="/snake-2.png" className="w-24 order-0 lg:order-2" />
+          {/* <img src="/snake-2.png" className="w-24 order-0 lg:order-2" /> */}
         </div>
 
         <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
@@ -47,19 +48,21 @@ const Testimonials2 = () => {
             </div>
             <div className="text-lg leading-8">
               <p>
-                "The case feels durable and I even got a compliment on the
+                &ldquo;The case feels durable and I even got a compliment on the
                 design. Had the case for two and a half months now and{" "}
                 <span className="p-0.5 bg-slate-800 text-white">
                   the image is super clear
                 </span>
                 , on the case I had before, the image started fading into
-                yellow-ish color after a couple weeks. Love it."
+                yellow-ish color after a couple weeks. Love it.&ldquo;
               </p>
             </div>
             <div className="flex gap-4 mt-2">
-              <img
+              <Image
+                width={50}
+                height={50}
                 className="rounded-full h-12 w-12 object-cover"
-                src="/users/user-1.png"
+                src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/2208f3a2-eb43-4625-b28b-94d917a2fadc._CR0,0,375,375_UX460_.jpg"
                 alt="user"
               />
               <div className="flex flex-col">
@@ -83,20 +86,22 @@ const Testimonials2 = () => {
             </div>
             <div className="text-lg leading-8">
               <p>
-                "I usually keep my phone together with my keys in my pocket and
+                I usually keep my phone together with my keys in my pocket and
                 that led to some pretty heavy scratchmarks on all of my last
                 phone cases. This one, besides a barely noticeable scratch on
                 the corner,{" "}
                 <span className="p-0.5 bg-slate-800 text-white">
                   looks brand new after about half a year
                 </span>
-                . I dig it."
+                . I dig it.&ldquo;
               </p>
             </div>
             <div className="flex gap-4 mt-2">
-              <img
+              <Image
+                width={50}
+                height={50}
                 className="rounded-full h-12 w-12 object-cover"
-                src="/users/user-4.jpg"
+                src="https://images-eu.ssl-images-amazon.com/images/S/amazon-avatars-global/f9f1e5c2-d849-410d-9b6e-459e8e264ccf._CR0,0,500,500_SX48_.jpg"
                 alt="user"
               />
               <div className="flex flex-col">

@@ -1,9 +1,11 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import HeroSection from "@/components/final/HeroSection";
+import HeroSection from "@/components/final/HeroSections/HeroSection";
+import HeroSection2 from "@/components/final/HeroSections/HeroSection2";
 import CodeHighlight from "@/components/CodeHighlight";
+import Navbar from "@/components/Navbar";
 
-const HeroSectionCode = `import React from "react";
+const HeroSectionCode1 = `import React from "react";
 import Link from "next/link";
 import Navbar from "@/components/final/Navbar";
 import { Button } from "@/components/ui/button";
@@ -44,22 +46,41 @@ export default HeroSection;
 
 const page = () => {
   return (
-    <div className="">
-      <Tabs defaultValue="preview" className="p-0  m-0">
+    <div className="w-full overflow-x-hidden ">
+      <Tabs defaultValue="preview" className="">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
-        <TabsContent
-          className="scale-75 border border-black md:-ml-40 md:-mt-10 "
-          value="preview"
-        >
-          <HeroSection />
+        <TabsContent className="m-0 flex-start" value="preview">
+          <div className=" border border-black  scale-75 mr-28">
+            <HeroSection />
+          </div>
         </TabsContent>
         <TabsContent value="code" className="w-96 md:w-[800px] rounded-sm">
-          <CodeHighlight code={HeroSectionCode} />
+          <CodeHighlight code={HeroSectionCode1} />
         </TabsContent>
       </Tabs>
+
+      {/* Hero 2 */}
+      <h2>Hero Section 2</h2>
+      <p className="leadtext">Inspired from JoshTriedCoding </p>
+      <Tabs defaultValue="preview" className="">
+        <TabsList>
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
+        </TabsList>
+        <TabsContent className="m-0 flex-start" value="preview">
+          <div className=" border   scale-75 p-10 mr-28">
+            {/* <Navbar/> */}
+            <HeroSection2 />
+          </div>
+        </TabsContent>
+        <TabsContent value="code" className="w-96 md:w-[800px] rounded-sm">
+          <CodeHighlight code={HeroSectionCode1} />
+        </TabsContent>
+      </Tabs>
+      
     </div>
   );
 };

@@ -20,7 +20,7 @@ const HeroSection = () => {
           Nextjs and Web Development. Focus on getting things done, not
           re-inventing again and again.
         </p>
-        <Link href={"/get-started"}>
+        <Link href={"/components"}>
           <Button
             className="w-[350px] font-semibold h-[50px] mt-10 text-lg"
             variant={"default"}

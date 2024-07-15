@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Navbar from "@/components/final/Navbar";
+import Navbar from "@/components/final/Navbar1";
 import { Button } from "@/components/ui/button";
-import { Badge } from "../ui/badge";
+import { Badge } from "../../ui/badge";
 
 const HeroSection = () => {
   return (

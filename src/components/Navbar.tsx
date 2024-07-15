@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaCaretDown, FaGithub } from "react-icons/fa";
 import { ModeToggle } from "./ModeToggle";
+import { siteConfig } from "@/config/site";
 
 const Navbar = () => {
   return (
@@ -79,7 +80,7 @@ const Navbar = () => {
         </nav>
         <div className="flex items-center gap-2">
           {/* <SearchEventListener /> */}
-          <Link href={""}>
+          <Link href={siteConfig.links.github} target="_blank">
             <Button
               variant={"secondary"}
               size={"sm"}

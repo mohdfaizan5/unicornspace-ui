@@ -1,6 +1,13 @@
 import React from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CodeHighlight from "@/components/CodeHighlight";
+import Testimonials from "@/components/final/testimonials/Testimonials1";
+import Testimonials2 from "@/components/final/testimonials/Testimonials2";
+
+const testimonialsCode = `import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const testimonialsData = [
   {
@@ -81,3 +88,37 @@ const Testimonial = ({ data }: any) => {
 };
 
 export default Testimonials;
+`;
+
+const page = () => {
+  return (
+    <div className="p-2">
+      <Tabs defaultValue="preview" className="p-0  m-0">
+        <TabsList>
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
+        </TabsList>
+        <TabsContent className="scale-75 border p-2 md:w-[1000px]" value="preview">
+          <Testimonials />
+        </TabsContent>
+        <TabsContent value="code" className="w-96 md:w-[800px] rounded-sm">
+          <CodeHighlight code={testimonialsCode} />
+        </TabsContent>
+      </Tabs>
+      <Tabs defaultValue="preview" className="p-0  m-0">
+        <TabsList>
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
+        </TabsList>
+        <TabsContent className="scale-75 border p-2 md:w-[1000px]" value="preview">
+          <Testimonials2 />
+        </TabsContent>
+        <TabsContent value="code" className="w-96 md:w-[800px] rounded-sm">
+          <CodeHighlight code={testimonialsCode} />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+};
+
+export default page;
