@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HeroSection from "@/components/final/HeroSection";
 import CodeHighlight from "@/components/CodeHighlight";
-import Features from "@/components/final/Features";
+import Features from "@/components/final/Features2";
 import Faq from "@/components/final/Faq";
 
 const HeroSectionCode = `import React from "react";

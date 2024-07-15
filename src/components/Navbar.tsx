@@ -31,7 +31,7 @@ const Navbar = () => {
         <nav className="hidden md:flex text-xs items-center gap-2">
           <Menubar className="border-none ">
             <MenubarMenu>
-              <Link className="hover:underline" href={""}>
+              <Link className="hover:underline" href={"/components"}>
                 {/* <Button variant={"link"}>Components</Button> */}
                 Components
               </Link>
@@ -53,7 +53,7 @@ const Navbar = () => {
               </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
-              <Link className="hover:underline" href={""}>
+              <Link className="hover:underline" href={"/tools"}>
                 Tools
               </Link>
               <MenubarTrigger className="p-1">
@@ -73,7 +73,7 @@ const Navbar = () => {
               </MenubarContent>
             </MenubarMenu>
           </Menubar>
-          <Link className="hover:underline" href={""}>
+          <Link className="hover:underline" href={"/guides"}>
             Guides
           </Link>
         </nav>
