@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex items-start overflow-x-hidden ">
+    <div className="flex items-start">
       <aside className=" -ml-2 hidden h-[calc(100vh-3.5rem)] md:block w-64">
         <ScrollArea className="h-full py-6 px-5 pr-6 lg:py-8">
           {guidesSidebarData.map((item, i) => (

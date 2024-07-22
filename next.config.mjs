@@ -4,10 +4,13 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import rehypeMermaid from "rehype-mermaid";
+import { withContentlayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  reactStrictMode: true,
+  swcMinify: true,
 };
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
@@ -48,4 +51,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default withContentlayer(nextConfig);
