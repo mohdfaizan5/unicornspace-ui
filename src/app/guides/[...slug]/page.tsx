@@ -29,7 +29,7 @@ async function getGuideFromParams({ params }: GuidePageProps) {
   // console.log("slug", allGuides[0].slug);
   // console.log("slugAsParams", allGuides[0].slugAsParams);
 
-  // const slug = params.slug?.join("/") || "";
+  
   let slug = params.slug;
 
   // converting it into a way to use it further
