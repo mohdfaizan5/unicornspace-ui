@@ -14,7 +14,7 @@ const withMDX = createMDX({
   options: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
-      rehypeMermaid,
+      // rehypeMermaid,
       rehypeSlug,
       [
         rehypePrettyCode,
