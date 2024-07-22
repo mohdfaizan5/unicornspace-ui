@@ -26,18 +26,20 @@ type GuidePageProps = {
 
 async function getGuideFromParams({ params }: GuidePageProps) {
   console.log("✅⚡from getGuideFromParams");
-  console.log("slug", allGuides[0].slug);
-  console.log("slugAsParams", allGuides[0].slugAsParams);
+  // console.log("slug", allGuides[0].slug);
+  // console.log("slugAsParams", allGuides[0].slugAsParams);
 
   // const slug = params.slug?.join("/") || "";
   let slug = params.slug;
-  // slug = `/${slug.toString()}`;
-  console.log("slug-->", slug, "/" + slug.toString().split(",").join("/"));
+
+  // converting it into a way to use it further
+  slug = `/guides/${slug.toString().split(",").join("/")}`;
 
   // const guide = allGuides.find((guide) => guide.slug === slug);
-  const guide = allGuides.find(
-    (guide) => guide.slug === "/" + slug.toString().split(",").join("/")
-  );
+  const guide = allGuides.find((guide) => {
+    console.log("-", guide.slug);
+    return guide.slug === slug;
+  });
 
   // console.log(guide);
   if (!guide) {

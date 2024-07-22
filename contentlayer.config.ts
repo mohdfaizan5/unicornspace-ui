@@ -4,9 +4,29 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 
+export const Component = defineDocumentType(() => ({
+  name: "Component",
+  filePathPattern: `components/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "boolean", required: false },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+  },
+}));
+
 export const Guide = defineDocumentType(() => ({
   name: "Guide",
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `guides/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -25,8 +45,8 @@ export const Guide = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-  contentDirPath: "content/guides",
-  documentTypes: [Guide],
+  contentDirPath: "content/",
+  documentTypes: [Guide, Component],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
