@@ -28,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-background`}>
+      <body
+        className={`${inter.className} bg-background`}
+        suppressHydrationWarning={true}
+      >
         <ThemeProvider attribute="class" defaultTheme={"light"}>
           <div className="relative flex min-h-screen flex-col  bg-background">
             <Navbar />

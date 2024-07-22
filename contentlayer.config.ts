@@ -13,9 +13,13 @@ export const Guide = defineDocumentType(() => ({
     description: { type: "boolean", required: false },
   },
   computedFields: {
-    url: {
+    slug: {
       type: "string",
-      resolve: (guide) => `/guides/${guide._raw.flattenedPath}`,
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
     },
   },
 }));

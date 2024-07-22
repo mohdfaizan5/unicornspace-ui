@@ -6,7 +6,7 @@ function PostCard(guide: Guide) {
     <div className="mb-8 max-w-5xl">
       <h2 className="mb-1 text-xl">
         <Link
-          href={guide.url}
+          href={guide.slug}
           className="text-blue-700 hover:text-blue-900 dark:text-blue-400"
         >
           {guide.title}
