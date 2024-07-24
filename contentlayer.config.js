@@ -10,7 +10,7 @@ export const Component = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    description: { type: "boolean", required: false },
+    description: { type: "string", required: false },
   },
   computedFields: {
     slug: {

@@ -60,7 +60,6 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   }
   console.log("guides url", guide?.slug);
 
-  if (!guide) throw new Error(`Post not found for slug: ${params.slug}`);
 
   return (
     <article className="mx-auto max-w-xl py-8">
