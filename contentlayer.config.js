@@ -3,6 +3,8 @@ import remarkGfm from "remark-gfm";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 export const Component = defineDocumentType(() => ({
   name: "Component",
@@ -48,7 +50,7 @@ export default makeSource({
   contentDirPath: "content/",
   documentTypes: [Guide, Component],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkFrontmatter],
     rehypePlugins: [
       // rehypeMermaid,
       rehypeSlug,

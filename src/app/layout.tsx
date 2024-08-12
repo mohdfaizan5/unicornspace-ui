@@ -33,7 +33,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <ThemeProvider attribute="class" defaultTheme={"light"}>
-          <div className="relative flex min-h-screen flex-col  bg-background">
+          <div className="relative flex min-h-screen flex-col antialiased bg-background">
             <Navbar />
             {children}
           </div>

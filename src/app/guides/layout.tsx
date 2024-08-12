@@ -8,8 +8,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex items-start">
-      <aside className=" -ml-2 hidden h-[calc(100vh-3.5rem)] md:block w-64">
+    <div className="flex items-start lg:gap-11">
+      <aside className="ml-2 hidden h-[calc(100vh-3.5rem)] md:block w-96">
         <ScrollArea className="h-full py-6 px-5 pr-6 lg:py-8">
           {guidesSidebarData.map((item, i) => (
             <div className="flex flex-col" key={i}>
@@ -20,7 +20,7 @@ export default function RootLayout({
                 <Link
                   key={i}
                   href={item.href}
-                  className="rounded-md text-[13px] border border-transparent px-2 pl-3 py-1 hover:underline font-light text-muted-foreground"
+                  className="rounded-md text-[13px] border border-transparent px-2 pl-3 py-1 hover:underline  text-muted-foreground"
                 >
                   {item.title}
                 </Link>
@@ -29,7 +29,7 @@ export default function RootLayout({
           ))}
         </ScrollArea>
       </aside>
-      {children}
+      <div className="py-8">{children}</div>
     </div>
   );
 }

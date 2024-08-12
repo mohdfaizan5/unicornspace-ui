@@ -20,10 +20,7 @@ export default function Home() {
   const guides = allGuides;
 
   return (
-    <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">
-        Testing content layer with mdx
-      </h1>
+    <div className="max-w-xl py-8">
       {guides.map((guide, idx) => (
         <PostCard key={idx} {...guide} />
       ))}

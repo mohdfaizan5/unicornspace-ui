@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         passion: "var(--passion)",
+        poppins: "var(--poppins)",
       },
       colors: {
         border: "hsl(var(--border))",
