@@ -63,9 +63,9 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <article className="md:w-4xl py-8">
-      <div className="mb-8 text-center">
+      {/* <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold">{guide.title}</h1>
-      </div>
+      </div> */}
       <Mdx code={guide.body.code} />
     </article>
   );

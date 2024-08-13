@@ -29,7 +29,7 @@ export default function RootLayout({
           ))}
         </ScrollArea>
       </aside>
-      <div className="py-8">{children}</div>
+      <div className="py-8 max-w-3xl">{children}</div>
     </div>
   );
 }

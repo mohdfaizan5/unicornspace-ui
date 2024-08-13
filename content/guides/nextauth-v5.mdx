@@ -1,0 +1,448 @@
+---
+isPublished: false
+title: Next auth v5 (aka authjs)
+description: Learn about font types, font formats, and
+tags: nextjs14,authjs v5,next-auth,Authentication
+---
+
+# Next auth v5 (aka authjs)
+
+Authentication is a crucial part of any web application. It is the process of verifying the identity of a user. In this guide, we will learn how to implement authentication in a Next.js application using NextAuth.js v5.
+
+## What is NextAuth.js?
+
+NextAuth.js is a complete open-source authentication solution for Next.js applications. It is easy to use and supports various authentication providers like Google, Facebook, GitHub, etc. It also supports email/password authentication.
+
+## Installation
+
+> Use next-auth official documentation for the latest version of next-auth and installing. [Authjs](https://authjs.dev/)
+
+```bash
+npm install next-auth@beta
+```
+
+### How to check where the user is authenticated or not in Server Compoent?
+
+```tsx
+const user = await auth();
+if (!user) redirect("/login");
+```
+> If user is authenticated it will return or it will return `null`.
+
+## Final code for Credentails provider
+
+```tsx
+// ./auth.js
+import NextAuth, { AuthError, CredentialsSignin } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { signInFormSchema } from "@/types/forms";
+import { prisma } from "./lib/prisma";
+import { z } from "zod";
+import { getUserDetails } from "./actions/auth.action";
+
+class CustomAuthError extends CredentialsSignin {
+  code = "Something went wrong while authenticating";
+  // write a constructor to accept the error message
+  constructor(message?: string) {
+    super(message);
+    if (message) {
+      this.code = message;
+    }
+  }
+}
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [
+    CredentialsProvider({
+      credentials: { email: { type: "email" }, password: { type: "password" } },
+      authorize: async (credentials) => {
+        console.log("credentials", credentials);
+
+        // const validationResult = signInFormSchema.safeParse(credentials); // validate the credentials (TODO)
+        const dbUser = await prisma.user.findUnique({
+          where: {
+            email: `${credentials.email}`,
+          },
+        });
+        console.log("user", dbUser);
+
+        if (!dbUser) {
+          throw new CustomAuthError("No such email found");
+        }
+
+        if (dbUser.password !== credentials.password) {
+          throw new CustomAuthError("Password is incorrect");
+        }
+
+        const user = {
+          id: dbUser.id,
+          email: dbUser.email,
+        };
+        return user;
+      },
+    }),
+  ],
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    // used when session in server is created
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.id = token.sub as string;
+      }
+      return token;
+    },
+    // used when client useSession is called
+    session: async ({ session, token, user }) => {
+      if (session?.user) {
+        session.user.id = token.id as string;
+      }
+      // console.log("🛠🛠🛠session callback sesssion", session);
+      // console.log("🛠🛠🛠session callback token ", token);
+      return session;
+    },
+  },
+  pages: {
+    signIn: "/login",
+  },
+});
+```
+
+```tsx
+// ./middleware
+import { auth } from "@/auth";
+import { NextResponse } from "next/server";
+
+const publicRoutes = ["/", "/login", "/signup"]; // Add your public routes here
+
+export default auth((req) => {
+  // console.log(req);
+  // console.log(req.auth);
+  // const path = req.nextUrl.pathname;
+  // if (publicRoutes.includes(path)) NextResponse.next();
+  // console.log("✅✅", req.nextUrl.pathname.startsWith("/courses"));
+  // if (req.nextUrl.pathname.startsWith("/courses")) {
+  //   return NextResponse.redirect(new URL("/login", req.url));
+  // }
+  if (!req.auth) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+});
+
+export const config = {
+  matcher: ["/profile/:path*", "/courses/:path*"],
+};
+```
+
+```tsx
+// ./app/api/auth/[...nextauth]/route.ts
+import { handlers } from "@/auth"; // Referring to the auth.ts we just created
+export const { GET, POST } = handlers;
+```
+
+```tsx
+// signInForm.tsx
+"use client";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { signInFormSchema } from "@/types/forms";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { signIn } from "@/auth";
+import { signInAction } from "@/actions/auth.action";
+
+const SignInForm = () => {
+  const form = useForm<z.infer<typeof signInFormSchema>>({
+    resolver: zodResolver(signInFormSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const router = useRouter();
+  const onSubmit = async (values: z.infer<typeof signInFormSchema>) => {
+    console.log(values);
+    try {
+      const result = await signInAction(values);
+      if (result.success) {
+        toast.success("Login Success");
+        router.push("/courses");
+      } else {
+        console.log("Login Failed", result.error);
+        toast.error(`Login Failed: ${result.error}`);
+      }
+    } catch (error) {
+      console.log(error);
+      console.log("Login Failed");
+    }
+  };
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col items-center justify-center gap-2"
+      >
+        <FormField
+          name="email"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="name@example.com" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="password"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" placeholder="******" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button className="w-full">Login</Button>
+        <Link className="underline text-primary text-sm" href={"/signup"}>
+          Don&apos;t have an account?
+        </Link>
+      </form>
+    </Form>
+  );
+};
+
+export default SignInForm;
+```
+
+```tsx
+// signupForm.tsx
+"use client";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { signUpFormSchema } from "@/types/forms";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { signUpAction } from "@/actions/auth.action";
+
+const SignUpForm = () => {
+  const form = useForm<z.infer<typeof signUpFormSchema>>({
+    resolver: zodResolver(signUpFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+  const router = useRouter();
+
+  const onSubmit = async (values: z.infer<typeof signUpFormSchema>) => {
+    console.log(values);
+    const res = await signUpAction(values);
+    if (res.success) {
+      toast.success(res.data);
+      router.push("/login");
+    } else {
+      toast.error(res.error);
+    }
+  };
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col items-center justify-center"
+      >
+        <FormField
+          name="name"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder="name" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="email"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="name@example.com" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="password"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="confirmPassword"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Confirm Password</FormLabel>
+              <FormControl>
+                <Input type="password" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button>Register</Button>
+        <Link className="text-sm mt-5 text-blue-600" href="/login">
+          Already have an account?
+        </Link>
+      </form>
+    </Form>
+  );
+};
+
+export default SignUpForm;
+```
+
+```tsx
+// auth.action.ts
+"use server";
+
+import { signIn, signOut } from "@/auth";
+import { prisma } from "@/lib/prisma";
+import { signInFormSchema, signUpFormSchema } from "@/types/forms";
+import { z } from "zod";
+
+const signUpAction = async (data: z.infer<typeof signUpFormSchema>) => {
+  console.table(data);
+
+  try {
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        email: data.email,
+      },
+    });
+
+    if (existingUser) {
+      return {
+        success: false,
+        error: "User already exists",
+      };
+    }
+    console.log("creating user", data.email);
+    const newUser = await prisma.user.create({
+      data: {
+        email: data.email,
+        password: data.password,
+        name: data.name,
+      },
+    });
+
+    if (newUser) {
+      return {
+        success: true,
+        data: "User created successfully",
+      };
+    }
+    return {
+      success: false,
+      error: "User creation failed",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: `Something went wrong ${error}`,
+    };
+  }
+};
+
+const signInAction = async (data: z.infer<typeof signInFormSchema>) => {
+  try {
+    const req = await signIn("credentials", { ...data, redirect: false });
+    console.log(" from action", req);
+    return {
+      success: true,
+      data: req,
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      error: `${error.cause.err.code}`,
+    };
+  }
+};
+
+const signOutAction = async () => {
+  console.log("signing out");
+  await signOut();
+};
+
+const getUserDetails = async (email: string) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+  });
+
+  return user;
+};
+
+export { signInAction, signOutAction, signUpAction, getUserDetails };
+```

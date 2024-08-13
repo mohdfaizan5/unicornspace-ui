@@ -5,6 +5,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import rehypeMdxCodeProps from "rehype-mdx-code-props";
 
 export const Component = defineDocumentType(() => ({
   name: "Component",
@@ -32,7 +33,9 @@ export const Guide = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    description: { type: "boolean", required: false },
+    description: { type: "string", required: true },
+    isPublished: { type: "boolean", required: true },
+    tags: { type: "string", required: false },
   },
   computedFields: {
     slug: {
@@ -50,16 +53,17 @@ export default makeSource({
   contentDirPath: "content/",
   documentTypes: [Guide, Component],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkFrontmatter],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
+      rehypeMdxCodeProps,
       // rehypeMermaid,
       rehypeSlug,
       [
         rehypePrettyCode,
         {
           // theme: "aurora-x",
-          // theme: "github-dark-default",
-          theme: "vitesse-black",
+          theme: "github-dark-default",
+          // theme: "vitesse-black",
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted

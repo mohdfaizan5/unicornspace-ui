@@ -45,9 +45,12 @@ const tools = [
 const page = () => {
   return (
     <div>
-      <h1 className="text-4xl font-bold font-passion text-center mb-8">
+      <h1 className="text-4xl font-bold font-passion ">
         All Components
       </h1>
+      <p className="max-w-2xl text-lg  text-muted-foreground mb-8">
+        Beautifully designed. Copy and paste into your apps. Open Source.
+      </p>
       <section className="flex gap-3 flex-wrap">
         {allComponents.map((tool, i) => (
           <Link key={i}

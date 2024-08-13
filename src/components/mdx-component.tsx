@@ -1,5 +1,5 @@
 // @ts-nocheck
-"use client"
+"use client";
 
 import * as React from "react";
 import Image from "next/image";
@@ -134,15 +134,42 @@ const components = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }: componentsProps) => (
-    <pre
-      className={cn(
-        "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
-        className
-      )}
-      {...props}
-    />
-  ),
+  /*
+  pre: (props) => {
+    if (props.file) {
+      return (
+        <div>
+          <span className="bg-red-300">{props.file}</span>
+          <pre
+            className={cn(
+              "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
+              props.className
+            )}
+            {...props}
+          />
+        </div>
+      );
+    }
+    return (
+      <pre copy filename="awesome.js" onOpen={props.openDemo} {...props}>
+        <code className="language-js">
+          {"console.log('Everything is awesome!');\n"}
+        </code>
+      </pre>
+    );
+  },
+  */
+  pre: ({ className, ...props }: componentsProps) => {
+    return (
+      <pre
+        className={cn(
+          "mb-4 pl-3 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
+          className
+        )}
+        {...props}
+      />
+    );
+  },
   code: ({ className, ...props }: componentsProps) => (
     <code
       className={cn(
