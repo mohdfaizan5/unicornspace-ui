@@ -53,7 +53,7 @@ export default makeSource({
   contentDirPath: "content/",
   documentTypes: [Guide, Component],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkFrontmatter],
     rehypePlugins: [
       rehypeMdxCodeProps,
       // rehypeMermaid,

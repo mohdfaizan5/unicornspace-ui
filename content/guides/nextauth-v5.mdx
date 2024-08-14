@@ -2,7 +2,7 @@
 isPublished: false
 title: Next auth v5 (aka authjs)
 description: Learn about font types, font formats, and
-tags: nextjs14,authjs v5,next-auth,Authentication
+# tags: nextjs14,authjs v5,next-auth,Authentication
 ---
 
 # Next auth v5 (aka authjs)
@@ -15,7 +15,7 @@ NextAuth.js is a complete open-source authentication solution for Next.js applic
 
 ## Installation
 
-> Use next-auth official documentation for the latest version of next-auth and installing. [Authjs](https://authjs.dev/)
+{/* > Use next-auth official documentation for the latest version of next-auth and installing. [Authjs](https://authjs.dev/) */}
 
 ```bash
 npm install next-auth@beta
@@ -27,7 +27,7 @@ npm install next-auth@beta
 const user = await auth();
 if (!user) redirect("/login");
 ```
-> If user is authenticated it will return or it will return `null`.
+{/* > If user is authenticated it will return or it will return `null`. */} //TODO: this also is not working check it out
 
 ## Final code for Credentails provider
 
