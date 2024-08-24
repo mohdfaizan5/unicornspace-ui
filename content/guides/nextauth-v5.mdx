@@ -27,15 +27,56 @@ npm install next-auth@beta
 const user = await auth();
 if (!user) redirect("/login");
 ```
-{/* > If user is authenticated it will return or it will return `null`. */} //TODO: this also is not working check it out
+{/* > If user is authenticated it will return or it will return `null`. */} 
+//TODO: this also is not working check it out
+
+## Pre-requisites 
+Install 
+
+```bash
+npm install react-hook-form
+npm install zod
+npm install prisma
+npm i sonner
+```
+Install ShadCN components for Login
+
+```bash
+npm dlx shadcn-ui@latest add form
+npm dlx shadcn-ui@latest add input
+```
+
+## Types 
+
+```tsx
+// types/index.ts
+import { z } from "zod";
+
+export const signUpFormSchema = z
+  .object({
+    name: z.string().min(3),
+    email: z.string().email(),
+    password: z.string().min(6),
+    confirmPassword: z.string().min(6),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+export const signInFormSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});
+```
 
 ## Final code for Credentails provider
 
 ```tsx
-// ./auth.js
+// ./auth.ts
 import NextAuth, { AuthError, CredentialsSignin } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { signInFormSchema } from "@/types/forms";
+import { signInFormSchema } from "../../../types";
 import { prisma } from "./lib/prisma";
 import { z } from "zod";
 import { getUserDetails } from "./actions/auth.action";
@@ -130,7 +171,7 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/profile/:path*", "/courses/:path*"],
+  matcher: ["/dashboard/:path*", "/admin/:path*"],
 };
 ```
 
@@ -158,7 +199,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { signInFormSchema } from "@/types/forms";
+import { signInFormSchema } from "../../../types";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/auth";
@@ -256,7 +297,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { signUpFormSchema } from "@/types/forms";
+// import { signUpFormSchema } from "@/types/forms";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -367,7 +408,8 @@ export default SignUpForm;
 
 import { signIn, signOut } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { signInFormSchema, signUpFormSchema } from "@/types/forms";
+// import { signInFormSchema, signUpFormSchema } from "@/types/forms";
+import { signInFormSchema } from "../../../types";
 import { z } from "zod";
 
 const signUpAction = async (data: z.infer<typeof signUpFormSchema>) => {
