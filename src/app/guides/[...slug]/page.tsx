@@ -29,7 +29,6 @@ async function getGuideFromParams({ params }: GuidePageProps) {
   // console.log("slug", allGuides[0].slug);
   // console.log("slugAsParams", allGuides[0].slugAsParams);
 
-  
   let slug = params.slug;
 
   // converting it into a way to use it further
@@ -60,14 +59,13 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   }
   console.log("guides url", guide?.slug);
 
-
   return (
-    <article className="md:w-4xl py-8">
+    <main className="w-screen px-5 overflow-x-hidden md:max-w-3xl py-8">
       {/* <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold">{guide.title}</h1>
       </div> */}
       <Mdx code={guide.body.code} />
-    </article>
+    </main>
   );
 };
 

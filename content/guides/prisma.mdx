@@ -1,0 +1,214 @@
+---
+isPublished: true
+title: Prisma ORM nextjs 14
+description: Learn All you need to know about prisma
+tags: nextjs14, authjs v5, next-auth, Authentication
+---
+
+# Prisma ORM
+
+Prisma is an open-source ORM for Node.js and TypeScript. It is used as an alternative to writing plain SQL, or using another database access tool such as SQL query builders
+
+## Installation
+
+```bash
+npm install prisma --save-dev
+
+{/* Optional */}
+npm install typescript ts-node @types/node --save-dev
+```
+
+1. Initailize prisma with sqlite
+
+```bash
+npx prisma init --datasource-provider sqlite
+```
+
+- Now a prisma folder would be created and you'll have _schema.prisma_ file in it.
+
+2. Model your data in the Prisma schema
+
+```js
+// prisma/schema.prisma
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  password String
+  name  String?
+}
+```
+
+Models in the Prisma schema have two main purposes:
+
+- Represent the tables in the underlying database
+- Serve as foundation for the generated Prisma Client API
+
+3. Run a migration to create your database tables with Prisma Migrate
+
+```bash
+npx prisma migrate dev --name init
+```
+
+- This command created a new migration, applied it to the database, and updated the Prisma Client API.
+
+🎉 Congratulations, you now have your database and tables ready.
+
+4. Create a **@/lib/db.ts** file and create a global Client
+
+```ts
+import { PrismaClient } from "@prisma/client";
+
+const prismaClientSingleton = () => {
+  return new PrismaClient();
+};
+
+declare const globalThis: {
+  prismaGlobal: ReturnType<typeof prismaClientSingleton>;
+} & typeof global;
+
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
+
+export default prisma;
+
+if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
+```
+
+> Problem:
+> Many users see a warning about too many Prisma Client instances running in Next.js development. This is due to hot reloading creating new instances with each run.
+
+> Solution:
+> Create a single Prisma Client instance globally and reuse it to avoid unnecessary connections.
+
+---
+
+# Basic CRUD operations queries:
+
+## Create
+
+1.  Create a single record
+
+```ts
+await prisma.user.create({
+  data: {
+    email: "faizan@unicornspace.tech",
+    password: "hashedP$#$word",
+  },
+});
+```
+
+2.  Create a many records
+
+```ts
+await prisma.user.createMany({
+  data: [
+    {
+      email: "faizan@unicornspace.tech",
+      password: "hashedP$#$word",
+    },
+    {
+      email: "unicornspace@gmail.com",
+      password: "hashedP$#$word",
+    },
+  ],
+});
+```
+
+## Read
+
+1. Find all users
+
+```ts
+const users = await prisma.user.findMany();
+```
+
+2. Find a specific user
+
+```ts
+const users = await prisma.user.findUnique({
+  where: {
+    email: "faizan@unicornspace.tech",
+  },
+});
+```
+
+3. Find users, sort them
+
+```ts
+const sortedUsers = await prisma.user.findMany({
+  orderBy: {
+    name: `asc`, // 'desc'
+  },
+});
+```
+
+## Filters
+
+```ts
+// * FILTERS
+// * not
+const notFilter = await prisma.user.findMany({
+  where: {
+    name: { not: "Pam" },
+  },
+});
+
+// * in, notIn
+const inFilter = await prisma.user.findMany({
+  where: {
+    name: { in: ["Pam", "Dwight"] },
+  },
+});
+
+// * lt, lte, gt, gte
+const ltFilter = await prisma.user.findMany({
+  where: {
+    age: { lt: 30 },
+  },
+});
+
+// * contains, startsWith, endsWith
+const containsFilter = await prisma.user.findMany({
+  where: {
+    name: { contains: "a" },
+  },
+});
+
+// * AND, OR, NOT
+const andFilter = await prisma.user.findMany({
+  where: {
+    AND: [{ name: "Pam" }, { age: { lt: 30 } }],
+  },
+});
+
+// ARRAY FILTERING
+// * some, none, every
+// ! hypothetical example
+// const someFilter = await prisma.user.findMany({
+//   where: {
+//     posts: {
+//       some: {
+//         title: 'Hello World',
+//       },
+//     },
+//   },
+// })
+```
+
+## Enum
+
+```prisma
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id String @id @default(uuid())
+  role Role @default(USER)
+}
+```
+
+- Enums are useful for determining the role of a user, or the status of a post (draft, published, etc...)
+
+> Note: Enums are not supported by Sqlite

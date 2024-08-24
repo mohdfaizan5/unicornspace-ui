@@ -12,10 +12,14 @@ function PostCard(guide: Guide) {
       </Link>
       <p className="text-muted-foreground">{guide.description}</p>
       {guide.tags && (
-        <div className="py-2">
+        <div className="py-2 flex gap-1 flex-wrap">
           {guide.tags.split(",").map((tag, idx) => (
-            <Badge variant="secondary" key={idx}>
-              #{tag}
+            <Badge
+              className="font-normal text-xs"
+              variant="secondary"
+              key={idx}
+            >
+              #{tag.trim()}
             </Badge>
           ))}
         </div>
@@ -29,9 +33,10 @@ export default function Home() {
 
   return (
     <div className="max-w-xl py-8">
-      {guides.map((guide, idx) => (
-        <PostCard key={idx} {...guide} />
-      ))}
+      <h1>Guides</h1>
+      {guides.map((guide, idx) => {
+        if (guide.isPublished) return <PostCard key={idx} {...guide} />;
+      })}
     </div>
   );
 }

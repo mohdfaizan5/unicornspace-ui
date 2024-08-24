@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import "@/styles/general.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
+import BasicFooter from "@/components/final/basic-footer";
 
 const inter = Poppins({
   weight: ["400", "200"],
@@ -38,6 +39,7 @@ export default function RootLayout({
             {children}
           </div>
         </ThemeProvider>
+        <BasicFooter />
       </body>
     </html>
   );

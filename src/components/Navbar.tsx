@@ -24,20 +24,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import Logo from "./logo";
 
 const Navbar = () => {
   return (
     <header className="sticky right-0  top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6">
       <div className="flex h-14 max-w-screen-2xl items-center justify-between ">
-        <Link href={"/"} className="flex items-center font-bold">
-          <Image
-            src={"/logos/logo-black-256x256.png"}
-            width={30}
-            height={30}
-            alt="logo"
-          />
-          UnicornSpaceUI
-        </Link>
+        <Logo />
         <nav className="hidden md:flex text-[13px] items-center gap-6">
           <Menubar className="border-none flex items-center gap-6">
             <MenubarMenu>
@@ -90,7 +83,6 @@ const Navbar = () => {
             Guides
           </Link>
         </nav>
-
         <div className="flex items-center gap-2">
           {/* <SearchEventListener /> */}
           <Link href={siteConfig.links.github} target="_blank">
@@ -103,7 +95,9 @@ const Navbar = () => {
               <FaGithub />
             </Button>
           </Link>
-          <ModeToggle />
+          <div className="hidden md:block">
+            <ModeToggle />
+          </div>
           <MobileNavbar />
         </div>
       </div>
@@ -116,7 +110,7 @@ const MobileNavbar = () => {
     <div className="md:hidden">
       <Sheet>
         <SheetTrigger>
-          <HamburgerMenuIcon />
+          <HamburgerMenuIcon fontSize={28} />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
