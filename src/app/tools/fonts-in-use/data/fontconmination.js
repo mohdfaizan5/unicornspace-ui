@@ -137,7 +137,7 @@ export const fontsCombinations = [
       weight: 700,
       font: playfair_Display
     },
-    example_website: "https://cdn.logojoy.com/wp-content/uploads/2018/07/18153037/vintage-1024x596.png",
+    example_website: "https://cdn.logojoy.com/wp-content/uploads/2018/07/18153031/handwritten-1024x596.png",
   },
   {
     font1: {
