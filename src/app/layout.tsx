@@ -44,3 +44,7 @@ export default function RootLayout({
     </html>
   );
 }
+function localFont(arg0: { src: { path: string; weight: string; }[]; variable: string; }) {
+  throw new Error("Function not implemented.");
+}
+
