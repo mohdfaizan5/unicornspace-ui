@@ -13,10 +13,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Button } from "@/components/ui/button";
 
 export default function Page() {
   const [intensity, setIntensity] = useState<number>(10);
   const [transparency, setTransparency] = useState<number>(20);
+  const [checked, setChecked] = useState(false);
 
   // Handle the blur intensity based on the slider value
   const handleIntensityChange = (value: number) => {
@@ -31,6 +33,18 @@ export default function Page() {
     if (change) {
       change.style.background = `rgba( 255, 255, 255, ${value} )`;
     }
+  };
+
+  const handleCheck = (value: boolean) => {
+    const change = document.getElementById("glass");
+    if (change) {
+      change.style.border = value ? "1px solid white" : "none";
+    }
+  };
+
+  const onCheckedChange = (value: boolean) => {
+    setChecked(value);
+    handleCheck(value);
   };
 
   return (
@@ -59,17 +73,17 @@ export default function Page() {
             className="bg-blend-color-burn relative translate-y-20 translate-x-2"
           />
         </div>
-        <div className="glassmorphism flex items-center justify-center text-5xl -rotate-12 w-20 bg-red-200 h-20 rounded-[100%] border-x-red-50 border-2 translate-y-24">
+        <div className="glassmorphism flex items-center justify-center text-5xl -rotate-12 w-20  h-20 rounded-[100%] border-x-red-50 border-2 translate-y-24">
           🦄
         </div>
         <div className="glassmorphism -rotate-12 w-32 h-32 rounded-3xl border-x-red-50 border-2 translate-x-52" />
         <div
           id="glass"
-          className="glassmorphism -rotate-12 w-[500px] bg-red-200 h-72 rounded-3xl border-x-red-50 border-2"
+          className="glassmorphism -rotate-12 w-[500px]  h-72 rounded-3xl border-x-red-50 border-2"
         />
       </div>
-      <div className="flex justify-center p-10">
-        <Card className="bg-red-200 w-[470px]">
+      <div className="flex justify-center ">
+        <Card className="bg-green-300 w-[470px]">
           <CardHeader>
             <CardTitle className="text-5xl">Setting</CardTitle>
             <CardDescription>
@@ -105,16 +119,24 @@ export default function Page() {
             />
             <div className="flex justify-center items-center gap-3">
               <Checkbox id="terms" className="h-10 w-10" />
-              <label htmlFor="terms" className="font-semibold text-xl">
+              <label htmlFor="terms" className="font-semibold ">
                 Color
               </label>
-              <Checkbox id="outline" className="h-10 w-10" />
-              <label htmlFor="outline" className="font-semibold text-xl">
+              <Checkbox
+                id="outline"
+                className="h-10 w-10"
+                checked={checked}
+                onCheckedChange={onCheckedChange}
+              />
+              <label htmlFor="outline" className="font-semibold ">
                 Show Outline
               </label>
             </div>
-            <div>
-              <CardTitle>CSS</CardTitle>
+            <Card>
+              <CardHeader>
+                <CardTitle>CSS </CardTitle>
+                <Button>Copy</Button>
+              </CardHeader>
               <CardContent>
                 <SyntaxHighlighter
                   language="css"
@@ -137,7 +159,7 @@ border-radius: 10px;
                   `}
                 </SyntaxHighlighter>
               </CardContent>
-            </div>
+            </Card>
           </CardContent>
         </Card>
       </div>
