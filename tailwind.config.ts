@@ -21,6 +21,7 @@ const config = {
       fontFamily: {
         passion: "var(--passion)",
         poppins: "var(--poppins)",
+        
       },
       colors: {
         border: "hsl(var(--border))",
