@@ -65,9 +65,9 @@ const page = () => {
                 <p className="opacity-90 text-sm">{tool.description}</p>
 
                 <div className="space-x-3 py-2">
-                  <Button size={"sm"}>
+                  <Link href={tool.url} ><Button  size={"sm"}>
                     Browser Tool <ArrowRight size={16} />
-                  </Button>
+                  </Button></Link>
                   <Button size={"sm"} variant={"secondary"}>
                     Documentation
                   </Button>
