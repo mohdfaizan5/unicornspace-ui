@@ -22,6 +22,13 @@ Once it's done, you can also view all your uploads in the uploadthing dashboard.
 Copy API keys from uploadthing > dashboard and paste into **.env** file.
 
 ## Creating your first file route
+The following is a very minimalistic example, with a single FileRoute "imageUploader". It has:
+- Permitted types ["image", "video", etc]
+- Max file size
+- (Optional) `middleware` to authenticate and tag requests
+- `onUploadComplete` callback for when uploads are completed
+To get full insight into what you can do with the FileRoutes. Refer this [docs](https://docs.uploadthing.com/api-reference/server#file-routes)
+
 > File path - app/api/uploadthing/core.ts
 
 ```ts
@@ -81,23 +88,23 @@ export const { GET, POST } = createRouteHandler({
 
 ## Add Styles
 
-Add the below snippet in your **tailwind.config.ts** file (or) Wrap your Tailwind config with the withUt helper.
+Add the below snippet in your **tailwind.config.ts** file (or) Wrap your Tailwind config with the `withUt` helper.
+Learn more about Tailwind helper & configuration in [theming docs](https://docs.uploadthing.com/theming#with-tailwindcss)
 
 ```ts
 import { withUt } from "uploadthing/tw";
 
 export default withUt({
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{ts,tsx,mdx}",
+    // Your existing Tailwind config
+  content: ["./src/**/*.{ts,tsx,mdx}"],
   ],
 });
 
 ```
 
 ## Create The UploadThing Components (Recommended)
+You can import the components individually from `@uploadthing/react` instead.
 
 > File path - src/utils/uploadthing.ts
 
@@ -115,7 +122,7 @@ export const UploadDropzone = generateUploadDropzone<OurFileRouter>();
 ```
 ## Mount A Button And Upload!
 Create a component seperately as this needs to be a client component and will contain the code to upload images. 
-You can also customize the **UploadButton** to **UploadDropzone** to get a dropzone area instead of a button...
+You can also customize the `UploadButton` to `UploadDropzone` to get a dropzone area instead of a button...
 
 ```tsx
 "use client";
@@ -140,6 +147,6 @@ export default function Home() {
 }
 ```
 
-Was this helpful?
-### Checkout our other guides. Keep learning, keep growing :)
+### 🎉 You're Done!
+#### Checkout our other [guides](https://unicornspace-ui.vercel.app/guides) . Keep learning, keep growing :)
 
