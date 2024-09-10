@@ -41,12 +41,18 @@ const tools = [
     isPublished: true,
     beta: true,
   },
+  {
+    name: "Glass Morphism",
+    description: "To have a glass view",
+    url: "/tools/glass-morphism",
+    isPublished: true,
+    beta: true,
+  },
 ];
 
 const page = () => {
   return (
     <div className="">
-
       <h1 className="text-4xl font-bold font-passion ">All tools</h1>
       <p className="max-w-2xl text-lg text-muted-foreground mb-8">
         Beautifully designed. Copy and paste into your apps. Open Source.
@@ -65,9 +71,9 @@ const page = () => {
                 <p className="opacity-90 text-sm">{tool.description}</p>
 
                 <div className="space-x-3 py-2">
-                  <Button size={"sm"}>
+                  <Link href={tool.url} ><Button  size={"sm"}>
                     Browser Tool <ArrowRight size={16} />
-                  </Button>
+                  </Button></Link>
                   <Button size={"sm"} variant={"secondary"}>
                     Documentation
                   </Button>
