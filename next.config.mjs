@@ -11,6 +11,17 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.awwwards.com',
+        port: '',
+        
+      },
+    ],
+  },
+
 };
 // const withMDX = createMDX({
 //   // Add markdown plugins here, as desired
@@ -52,3 +63,6 @@ const nextConfig = {
 // });
 
 export default withContentlayer(nextConfig);
+
+
+// encrypted-tbn0.gstatic.com
