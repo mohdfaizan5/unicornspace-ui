@@ -41,10 +41,10 @@ const Testimonials = () => {
   return (
     <section className=" px-10">
       <h3 className="text-brand-text2 font-semibold text-3xl text-center mb-8">
-        See what our customers{" "}
-        <span className="text-brand-primary ">say! </span>
+        See what people are{" "}
+        <span className="text-brand-primary font-black ">saying! </span>
       </h3>
-      <div className="flex md:flex-row flex-col mx-auto">
+      <div className="flex md:flex-row flex-col mx-auto w-full">
         <Card className="bg-brand-bg/30 p-6 max-w-96 col-start-2 col-end-6 ">
           <div className="flex items-center pb-2 gap-2">
             <Avatar>

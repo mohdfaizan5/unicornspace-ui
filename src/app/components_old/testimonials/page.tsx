@@ -1,8 +1,8 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeHighlight from "@/components/CodeHighlight";
-import Testimonials from "@/components/final/testimonials/Testimonials1";
-import Testimonials2 from "@/components/final/testimonials/Testimonials2";
+import Testimonials from "@/registry/components/testimonials/Testimonials1";
+import Testimonials2 from "@/registry/components/testimonials/Testimonials2";
 
 const testimonialsCode = `import React from "react";
 import { Card, CardContent } from "@/components/ui/card";

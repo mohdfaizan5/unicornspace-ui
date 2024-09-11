@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import LoginForm1 from "@/components/final/forms/LoginForm1";
+import LoginForm1 from "@/registry/components/forms/LoginForm1";
 import CodeHighlight from "@/components/CodeHighlight";
 
 const LoginSectionCode = `import { Button } from "@/components/ui/button";

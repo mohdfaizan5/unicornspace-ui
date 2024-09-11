@@ -9,8 +9,6 @@ import {
 const Faq = () => {
   return (
     <section className="bg-background min-h-screen py-10 px-5 flex flex-col items-center">
-      {/* <h2>Develop projects without the manual management</h2>
-      <h3>hioajsdf</h3> */}
         <h1>FAQs</h1>
       <div className=" py-10 pb-20 sm:w-[500px] text-xl">
         <Accordion type="single" collapsible>
