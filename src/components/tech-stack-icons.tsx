@@ -13,7 +13,7 @@ const TechStackIcons = () => {
       <TooltipProvider>
 
 
-        <div className="flex-row gap-4 mx-auto flex w-full items-center justify-between">
+        <div className="flex-row gap-6 mx-auto flex w-full items-center justify-center">
           <Tooltip>
             <TooltipTrigger >
               <Icons.React />

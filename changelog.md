@@ -49,6 +49,8 @@ V1:
 
 # V3
 
+
+
 ## Posts
 
 SAAS - how-to-build-a-saas-in-9-hrs
@@ -56,6 +58,8 @@ how-to-manage-team-mates-in-a-project
 
 ## Guides
 - SEO in nextjs
+
+OG img
 
 * Work on SEO
 
