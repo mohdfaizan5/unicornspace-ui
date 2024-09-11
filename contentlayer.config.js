@@ -14,6 +14,7 @@ export const Component = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: false },
+    author: { type: "string", required: false },
   },
   computedFields: {
     slug: {
@@ -33,9 +34,10 @@ export const Guide = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    description: { type: "string", required: true },
+    description: { type: "string", required: false },
     isPublished: { type: "boolean", required: true },
     tags: { type: "string", required: false },
+    author: { type: "string", required: false },
   },
   computedFields: {
     slug: {
@@ -77,6 +79,22 @@ export default makeSource({
           onVisitHighlightedWord(node) {
             node.properties.className = ["word--highlighted"];
           },
+          onVisitHighlightedChars(node) {
+            node.properties.className = ["word--highlighted"];
+          },
+          // Add support for file names in code blocks
+          transformers: [
+            {
+              name: "add-file-names",
+              code(code) {
+                if (!code.meta) return;
+                const [, filename] = code.meta.match(/file="(.+?)"/) || [];
+                if (!filename) return;
+                code.attributes ??= {};
+                code.attributes["data-filename"] = filename;
+              },
+            },
+          ],
         },
       ],
       [

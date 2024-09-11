@@ -2,20 +2,54 @@
 
 
 
+
+
+V1:
+
+
 ## Tools
-1. Readme Generator
-2. Shadcn Theme generator
-3. Glass Morphism generator (Akshy)
+
+1. Glass Morphism generator (Akshy)
+2. Readme Generator(Akshy)
+3. Shadcn Theme generator
 4. Fonts in Use (Liktha)
-5. Color palettes
-6. Great website inspirations 
-7. HEX to RGB to RGBA to HLS
-8. Beautiful SVG Shapes -> softr.io/tools/svg-shape-generator
-9. screenshot-beautifier.vercel.app/
-10. bg.ibelick.com/
-11. magicpattern.design/tools/gradient-generator
-12. Beautiful SVG Waves -> softr.io/tools/svg-wave-generator
-13. Resources
+5. Color palettes (Liktha)
+6. HEX to RGB to RGBA to HLS (Tahir)
+7. magicpattern.design/tools/gradient-generator(Likitha)
+
+## Components
+
+1. Tailwind templates
+   1. a
+   2. b
+   3. c
+2. Ecommerce application
+3. Zulkifl Product
+
+
+## Guides
+1. NextAuth (Faizan)
+2. Razorpay (Faizan)
+3. Framer motion basics (Akshy)
+4. Prisma Basics (Tahir make existing better)
+5. Upload Thing (Tahir)
+6. Zustand (Likitha)
+
+
+- [ ] Change the project architechure
+- [ ] Commit it and let others pull it and make changes from there
+- [ ] <ComponentPreview/>   
+
+
+V2
+1. Great website inspirations 
+2. Beautiful SVG Shapes -> softr.io/tools/svg-shape-generator
+3. screenshot-beautifier.vercel.app/
+4.  bg.ibelick.com/
+5.  Beautiful SVG Waves -> softr.io/tools/svg-wave-generator
+6.  Resources
+
+
 
 <!-- - Team progress tracker (Tahir) -->
 
