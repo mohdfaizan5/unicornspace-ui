@@ -1,5 +1,5 @@
 import React from "react";
-import { fontsCombinations } from "src/app/tools/fonts-in-use/data/fontconmination";
+import { fontsCombinations } from "./data/fontconmination";
 import Link from "next/link";
 
 

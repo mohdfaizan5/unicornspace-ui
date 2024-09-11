@@ -1,14 +1,17 @@
 "use client"
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import clsx from 'clsx'
+import { NavigationProps } from '@/config/navbar';
 
-export function Navigation({ navigation, className }) {
+export function Navigation({ navigation, className }: { navigation: NavigationProps[]; className?: string }) {
   let router = useRouter()
+  const path = usePathname()
+  console.log(path)
 
   return (
-    <nav className={clsx('text-base lg:text-sm py-5', className)}>
-      <ul role="list" className="space-y-9">
+    <nav className={clsx('text-base lg:text-sm w-full py-5', className)}>
+      <ul role="list" className="space-y-9 w-full">
         {navigation.map((section) => (
           <li key={section.title}>
             <h2 className="font-display font-medium text-slate-900 dark:text-white">
@@ -24,8 +27,8 @@ export function Navigation({ navigation, className }) {
                     href={link.href}
                     className={clsx(
                       'block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full',
-                      link.href === router.pathname
-                        ? 'font-semibold text-sky-500 before:bg-sky-500'
+                      link.href === path
+                        ? 'font-semibold text-slate-900 before:bg-sky-900'
                         : 'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300'
                     )}
                   >

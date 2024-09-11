@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 
 function PostCard(guide: Guide) {
   return (
-    <div className="mb-8 max-w-5xl bg-muted-foreground/0 px-4 py-5 rounded-sm">
+    <div className="mb-8 max-w-5xl bg-muted-foreground/0  py-5 rounded-sm">
       <Link href={guide.slug} className="group flex gap-2 items-center">
         <h2 className="mb-1  text-xl font-semibold">{guide.title}</h2>
         <ArrowRight size={16} className="group-hover:ml-2 transition" />

@@ -45,7 +45,7 @@ const tools = [
 const page = () => {
   return (
     <div>
-      <h1 className="text-4xl font-bold font-passion ">
+      <h1 className="text-4xl font-bold font-passion">
         All Components
       </h1>
       <p className="max-w-2xl text-lg  text-muted-foreground mb-8">
