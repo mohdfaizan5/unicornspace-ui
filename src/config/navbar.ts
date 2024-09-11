@@ -14,7 +14,7 @@ export const navigation: NavigationProps[] = [
   {
     title: "Components",
     links: [
-      { title: "Hero section", href: "/components/hero/hero" },
+      { title: "Hero section", href: "/components/hero" },
       {
         title: "Header",
         href: "/components/header/header",
@@ -24,7 +24,7 @@ export const navigation: NavigationProps[] = [
         title: "Pricing",
         href: "/docs/introduction-to-string-theory",
       },
-      { title: "Image Slider", href: "/docs/the-butterfly-effect" },
+      { title: "Testimonials", href: "/components/testimonials" },
     ],
   },
   {
