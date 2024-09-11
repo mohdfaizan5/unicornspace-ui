@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeHighlight from "@/components/CodeHighlight";
-import Features from "@/components/final/Features/Features1";
+import Features from "@/registry/components/Features/Features1";
 
 const HeroSectionCode = `import React from "react";
 import { Card } from "@/components/ui/card";

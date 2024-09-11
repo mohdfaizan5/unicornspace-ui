@@ -2,24 +2,31 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import Image from "next/image";
+import Link from "next/link";
 type ColorsCardType = {
   title?: string;
   description?: string;
-  image?: string;
+  image: string;
   colors: string[];
+  href:string
 };
 
 function ColorsCard(props: ColorsCardType) {
+  const handleClick =()=>{
+    navigator.clipboard.writeText(`${colors.map((color)=>color)}`)
+  }
   const { title, description, colors } = props;
   return (
-    <Card className="w-96 h-72 md:mt-[50px] md:shadow-md rounded-none">
+    <Card className="w-80 h-[400px] md:mt-[50px] md:shadow-md rounded-none ">
+      <Link href={props.href}><Image  className="mb-2" src={props.image} alt="Website" height={400} width={400} ></Image></Link>
       <CardHeader className="p-0 flex">
         <div className="flex">
           {colors.map((color, i) => {
-            const finalColor = `bg-[${color}]`.toLowerCase();
-            console.log(finalColor);
+            // const finalColor = `bg-[${color}]`.toLowerCase();
+            // console.log(finalColor);
             return (
-              <div key={i} className={`w-1/4 h-20 ${finalColor} border`}></div>
+              <div style={{backgroundColor:`${color}`}} key={i} className={`w-1/4 h-20 border`}></div>
             );
           })}
         </div>
@@ -30,10 +37,14 @@ function ColorsCard(props: ColorsCardType) {
           {title}
         </h2>
         <p>{description}</p>
-        <div className="w-full flex items-center justify-between">
-          <Button className="w-full" variant={"default"}>
+        <div className="w-full flex flex-col gap-3 items-center justify-between">
+          <Button onClick={handleClick} className="w-full" variant={"default"}>
             Copy
           </Button>
+          
+        </div>
+        <div>
+          
         </div>
       </CardContent>
     </Card>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import HeroSection from "@/components/final/HeroSections/HeroSection";
-import HeroSection2 from "@/components/final/HeroSections/HeroSection2";
+import HeroSection from "@/registry/components/HeroSections/HeroSection";
+import HeroSection2 from "@/registry/components/HeroSections/HeroSection2";
 import CodeHighlight from "@/components/CodeHighlight";
 import Navbar from "@/components/Navbar";
 

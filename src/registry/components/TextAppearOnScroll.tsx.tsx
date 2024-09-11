@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 
-function AnimatedText({ text }: any) {
+function AnimatedText({ text='Unicorn Space' }: { text: string }) {
   const container = useRef(null);
 
   const { scrollYProgress } = useScroll({

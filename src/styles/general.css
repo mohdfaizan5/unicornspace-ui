@@ -17,3 +17,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+
+pre[data-filename]::before {
+  content: attr(data-filename);
+  display: block;
+  background-color: #2d2d2d;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  color: #d4d4d4;
+  font-family: monospace;
+}
