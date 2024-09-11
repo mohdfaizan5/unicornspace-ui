@@ -25,6 +25,8 @@ import {
 } from "@/components/ui/sheet";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Logo from "./logo";
+import { Navigation } from "./navigation";
+import { navigation } from "@/config/navbar";
 
 const Navbar = () => {
   return (
@@ -108,16 +110,17 @@ const Navbar = () => {
 const MobileNavbar = () => {
   return (
     <div className="md:hidden">
-      <Sheet>
+      <Sheet >
         <SheetTrigger>
           <HamburgerMenuIcon fontSize={28} />
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="overflow-auto" side={"left"}>
           <SheetHeader>
-            <SheetTitle>UnicornSpaceUi</SheetTitle>
+            <Logo />
           </SheetHeader>
 
-          <nav className="flex flex-col justify-between h-full py-10 text-sm  gap-7">
+          <Navigation navigation={navigation} />
+          <nav className="hidden flex-col justify-between h-full py-10 text-sm  gap-7">
             <Menubar className="border-none flex flex-col  gap-3">
               <MenubarMenu>
                 <div className="flex items-center">
