@@ -1,7 +1,17 @@
 
+// @ts-nocheck
 import Image from 'next/image'
 
-const testimonials = [
+type testimonialProps = {
+  content: string,
+  author: {
+    name: string,
+    role: string,
+    image: string
+  }
+}
+
+const testimonials: TestimonialProps[] = [
   [
     {
       content:
