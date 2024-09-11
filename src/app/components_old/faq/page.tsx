@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import HeroSection from "@/components/final/HeroSections/HeroSection";
+import HeroSection from "@/registry/components/HeroSections/HeroSection";
 import CodeHighlight from "@/components/CodeHighlight";
-import Features from "@/components/final/Features/Features2";
-import Faq from "@/components/final/Faq";
+import Features from "@/registry/components/Features/Features2";
+import Faq from "@/registry/components/Faq";
 
 const HeroSectionCode = `import React from "react";
 import {
@@ -65,28 +65,15 @@ const Faq = () => {
   );
 };
 
-export default Faq;
-`;
+export default Faq;`;
 const page = () => {
   return (
     <div className="">
-      <Tabs defaultValue="preview" className="">
-        <TabsList>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Code</TabsTrigger>
-        </TabsList>
-        <TabsContent className="scale-75 border" value="preview">
-          <Faq />
-        </TabsContent>
-        <TabsContent
-          value="code"
-          className="w-96 md:w-[800px] ml-10 rounded-sm"
-        >
-          <CodeHighlight code={HeroSectionCode} />
-        </TabsContent>
-      </Tabs>
+
     </div>
   );
 };
 
 export default page;
+
+

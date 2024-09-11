@@ -55,12 +55,18 @@ const tools = [
     isPublished: true,
     beta: true,
   },
+  {
+    name: "Glass Morphism",
+    description: "To have a glass view",
+    url: "/tools/glass-morphism",
+    isPublished: true,
+    beta: true,
+  },
 ];
 
 const page = () => {
   return (
     <div className="">
-
       <h1 className="text-4xl font-bold font-passion ">All tools</h1>
       <p className="max-w-2xl text-lg text-muted-foreground mb-8">
         Beautifully designed. Copy and paste into your apps. Open Source.

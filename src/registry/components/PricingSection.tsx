@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../ui/button";
+import { Button } from "../../components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "../ui/badge";
+import { Badge } from "../../components/ui/badge";
 const PricingSection = () => {
   return (
     <section className="flex flex-col items-center overflow-y-hidden w-screen">

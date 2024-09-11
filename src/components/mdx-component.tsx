@@ -4,8 +4,10 @@
 import * as React from "react";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer/hooks";
-
+import ComponentPreview from '@/components/component-preview'
 import { cn } from "@/lib/utils";
+import HeroSection from '@/components/HeroSection'
+
 
 type componentsProps = {
   className: string;
@@ -180,6 +182,9 @@ const components = {
     />
   ),
   Image,
+  ComponentPreview
+  , HeroSection
+
 };
 
 interface MdxProps {
