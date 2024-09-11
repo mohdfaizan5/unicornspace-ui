@@ -88,7 +88,7 @@ const Page = () => {
             className="rounded-full"
           />
           <h1 className="md:text-4xl text-2xl font-bold">ReadMe - Generator</h1>
-          <p className="max-w-[75%] text-center">Let's get you set up.</p>
+          <p className="max-w-[75%] text-center">Let&apos;s get you set up.</p>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button onClick={handlePreview}>Click here to preview</Button>
