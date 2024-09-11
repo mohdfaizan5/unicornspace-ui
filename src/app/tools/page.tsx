@@ -41,6 +41,13 @@ const tools = [
     isPublished: true,
     beta: true,
   },
+  {
+    name: "Gradient Generator",
+    description: "Generate a gradient color for background",
+    url: "/tools/bg-generator",
+    isPublished: true,
+    beta: false,
+  },
 ];
 
 const page = () => {
