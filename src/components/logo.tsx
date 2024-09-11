@@ -9,10 +9,10 @@ const Logo = () => {
   
   return (
     <>
-      {theme === "light" ? (
+      {theme === "dark" ? (
         <Link href={"/"} className="flex items-center font-bold">
           <Image
-            src={"/logos/logo-black-256x256.png"}
+            src={"/logos/logo-white-256x256.png"}
             width={30}
             height={30}
             alt="logo"
@@ -22,7 +22,7 @@ const Logo = () => {
       ) : (
         <Link href={"/"} className="flex items-center font-bold">
           <Image
-            src={"/logos/logo-white-256x256.png"}
+            src={"/logos/logo-black-256x256.png"}
             width={30}
             height={30}
             alt="logo"

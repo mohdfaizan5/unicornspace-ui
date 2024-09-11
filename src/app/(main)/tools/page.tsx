@@ -8,14 +8,14 @@ const tools = [
     name: "Color Theme generator",
     description: "Generate Shadcn color themes",
     url: "/tools/color-theme-generator",
-    isPublished: true,
+    isPublished: false,
     beta: true,
   },
   {
     name: "Color contrast checker",
     description: "Check the contrast between two colors",
     url: "/tools/contrast-checker",
-    isPublished: true,
+    isPublished: false,
     beta: true,
   },
 
@@ -52,7 +52,7 @@ const tools = [
     name: "Other tool",
     description: "Other tool description",
     url: "/tools/other",
-    isPublished: true,
+    isPublished: false,
     beta: true,
   },
   {
@@ -77,7 +77,7 @@ const page = () => {
             tool.isPublished && (
               <div
                 key={i}
-                className="flex flex-col items-start gap-2 rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 md:py-12 min-w-96 relative"
+                className="flex flex-col items-start gap-2 overflow-hidden rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 md:py-12 min-w-96 relative"
               >
                 <h2 className="text-2xl font-bold leading-tight tracking-tighter md:text-3xl lg:leading-[1.1]">
                   {tool.name}

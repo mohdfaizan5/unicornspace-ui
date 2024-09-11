@@ -22,7 +22,7 @@ const ComponentPage = ({ params }: any) => {
 
   return (
     <div>
-      <article className="mx-auto max-w-xl py-8">
+      <div className="mx-auto max-w-xl py-8">
         <div className="mb-8 ">
           <h1 className="text-3xl font-bold">{guide.title}</h1>
           {
@@ -32,7 +32,8 @@ const ComponentPage = ({ params }: any) => {
           }
         </div>
         <Mdx code={guide.body.code} />
-      </article>
+      </div>
+      <div></div>
     </div>
   );
 };
