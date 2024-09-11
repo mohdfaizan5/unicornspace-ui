@@ -35,6 +35,20 @@ const tools = [
     beta: true,
   },
   {
+    name: "Gradient Generator",
+    description: "Generate a gradient color for background",
+    url: "/tools/bg-generator",
+    isPublished: true,
+    beta: false,
+  },
+  {
+    name: "Color Palette tool",
+    description: "Provides the color palette for the given image",
+    url: "/tools/colors-palettes",
+    isPublished: true,
+    beta: true,
+  },
+  {
     name: "Other tool",
     description: "Other tool description",
     url: "/tools/other",
