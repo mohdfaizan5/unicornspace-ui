@@ -1,3 +1,4 @@
+import ComponentPreview from "@/components/component-preview";
 import { Mdx } from "@/components/mdx-component";
 import { allComponents } from "contentlayer/generated";
 import { notFound } from "next/navigation";
@@ -21,7 +22,6 @@ const ComponentPage = ({ params }: any) => {
 
   return (
     <div>
-      {" "}
       <article className="mx-auto max-w-xl py-8">
         <div className="mb-8 ">
           <h1 className="text-3xl font-bold">{guide.title}</h1>

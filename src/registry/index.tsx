@@ -1,13 +1,14 @@
-import { Registry } from "./schema";
+// componentRegistry file is used to register all the components that are used in the project.
+import HeroSection from "./components/HeroSections/HeroSection";
 
-export const ui: Registry = {
-  "animated-counter-text": {
-    name: "Animated Counter Text",
-    component: () => (import("@/registry/components/AnimatedCounter")),
-  },
-  "hero-section-video": {
-    name: "Hero Section Video",
-
-  },
-
+interface ComponentRegistry {
+  [key: string]: React.ComponentType<any>;
 }
+
+
+const componentRegistry: ComponentRegistry = {
+  HeroSection,
+}
+
+
+export default componentRegistry;

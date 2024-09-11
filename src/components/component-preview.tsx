@@ -1,45 +1,63 @@
+"use client"
+
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeHighlight from "@/components/CodeHighlight";
-import { ui } from '@/registry';
+import componentRegistry from '@/registry';
 
-const ComponentPreview = ({ name }: { name: string }) => {
+// Function to get the component source code
+const getComponentSourceCode = (componentName: string): string => {
+  try {
+    // Assuming you have a method to fetch or map component source code
+    // You might need to manually map or use a tool to fetch this dynamically
+    const sourceCodeMap: { [key: string]: string } = {
+      HeroSection: `
+import React from 'react';
 
+const HeroSection = () => (
+  <div>
+    {/* Your component implementation */}
+  </div>
+);
 
-  const Preview = () => {
-    const Component = ui[name]?.component;
+export default HeroSection;
+      `,
+      // Add other components here
+    };
 
-    if (!Component) {
-      console.error(`Component with name "${name}" not found in registry.`);
-      return (
-        <p className="text-sm text-muted-foreground">
-          Component{" "}
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            {name}
-          </code>{" "}
-          not found in registry.
-        </p>
-      );
-    }
+    return sourceCodeMap[componentName] || 'Source code not available';
+  } catch (error) {
+    console.error('Error fetching source code:', error);
+    return 'Source code not available';
+  }
+};
 
-    return <Component />;
+const ComponentPreview = ({ name, code, ...props }: { name: string, code: string;[key: string]: any }) => {
+  const ComponentToRender = componentRegistry[name];
+
+  if (!ComponentToRender) {
+    return <div>Component not found</div>;
   }
 
-  return <Tabs defaultValue="preview" className="">
-    <TabsList>
-      <TabsTrigger value="preview">Preview</TabsTrigger>
-      <TabsTrigger value="code">Code</TabsTrigger>
-    </TabsList>
-    <TabsContent className="scale-75 border" value="preview">
+  // const code = getComponentSourceCode(name);
 
-    </TabsContent>
-    <TabsContent
-      value="code"
-      className="w-96 md:w-[800px] ml-10 rounded-sm"
-    >
-      <CodeHighlight code={name} />
-    </TabsContent>
-  </Tabs>
+  return (
+    <Tabs defaultValue="preview" className="">
+      <TabsList>
+        <TabsTrigger value="preview">Preview</TabsTrigger>
+        <TabsTrigger value="code">Code</TabsTrigger>
+      </TabsList>
+      <TabsContent className="scale-75 border" value="preview">
+        <ComponentToRender {...props} />
+      </TabsContent>
+      <TabsContent
+        value="code"
+        className="w-96 md:w-[800px] ml-10 rounded-sm"
+      >
+        <CodeHighlight code={code} />
+      </TabsContent>
+    </Tabs>
+  );
 }
 
-export default ComponentPreview
+export default ComponentPreview;

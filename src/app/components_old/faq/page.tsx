@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HeroSection from "@/registry/components/HeroSections/HeroSection";
 import CodeHighlight from "@/components/CodeHighlight";
@@ -77,20 +77,3 @@ const page = () => {
 export default page;
 
 
-const CompenentPreview = ({ name }: { name: string }) => {
-  return <Tabs defaultValue="preview" className="">
-    <TabsList>
-      <TabsTrigger value="preview">Preview</TabsTrigger>
-      <TabsTrigger value="code">Code</TabsTrigger>
-    </TabsList>
-    <TabsContent className="scale-75 border" value="preview">
-      <Faq />
-    </TabsContent>
-    <TabsContent
-      value="code"
-      className="w-96 md:w-[800px] ml-10 rounded-sm"
-    >
-      <CodeHighlight code={HeroSectionCode} />
-    </TabsContent>
-  </Tabs>
-}
