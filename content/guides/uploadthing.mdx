@@ -1,0 +1,152 @@
+# UploadThing
+
+UploadThing is a package used to add file uploads to your full stack TypeScript application. In this guide you will learn how to upload images inn your next.js application.
+
+## Installation
+
+Note:
+Use uploadthing official documentation for the latest version installation. [uploadthing](https://docs.uploadthing.com/getting-started/appdir)
+
+```bash
+npm install uploadthing @uploadthing/react
+```
+
+## Pre-requisites
+
+You need to sign-in using github account. Because you require env variables from uploadthing. 
+Once it's done, you can also view all your uploads in the uploadthing dashboard.
+[uploadthing signin](https://uploadthing.com/dashboard)
+
+## Add env variables
+
+Copy API keys from uploadthing > dashboard and paste into **.env** file.
+
+## Creating your first file route
+The following is a very minimalistic example, with a single FileRoute "imageUploader". It has:
+- Permitted types ["image", "video", etc]
+- Max file size
+- (Optional) `middleware` to authenticate and tag requests
+- `onUploadComplete` callback for when uploads are completed
+To get full insight into what you can do with the FileRoutes. Refer this [docs](https://docs.uploadthing.com/api-reference/server#file-routes)
+
+> File path - app/api/uploadthing/core.ts
+
+```ts
+import { createUploadthing, type FileRouter } from "uploadthing/next";
+import { UploadThingError } from "uploadthing/server";
+ 
+const f = createUploadthing();
+ 
+const auth = (req: Request) => ({ id: "fakeId" }); // Fake auth function
+ 
+// FileRouter for your app, can contain multiple FileRoutes
+export const ourFileRouter = {
+  // Define as many FileRoutes as you like, each with a unique routeSlug
+  imageUploader: f({ image: { maxFileSize: "4MB" } })
+    // Set permissions and file types for this FileRoute
+    .middleware(async ({ req }) => {
+      // This code runs on your server before upload
+      const user = await auth(req);
+ 
+      // If you throw, the user will not be able to upload
+      if (!user) throw new UploadThingError("Unauthorized");
+ 
+      // Whatever is returned here is accessible in onUploadComplete as `metadata`
+      return { userId: user.id };
+    })
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      console.log("Upload complete for userId:", metadata.userId);
+ 
+      console.log("file url", file.url);
+ 
+      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { uploadedBy: metadata.userId };
+    }),
+} satisfies FileRouter;
+ 
+export type OurFileRouter = typeof ourFileRouter;
+
+```
+
+## Create a Next.js API route
+> File path - app/api/uploadthing/route.ts
+
+```tsx
+import { createRouteHandler } from "uploadthing/next";
+ 
+import { ourFileRouter } from "./core";
+ 
+// Export routes for Next App Router
+export const { GET, POST } = createRouteHandler({
+  router: ourFileRouter,
+ 
+  // Apply an (optional) custom config:
+  // config: { ... },
+});
+```
+
+## Add Styles
+
+Add the below snippet in your **tailwind.config.ts** file (or) Wrap your Tailwind config with the `withUt` helper.
+Learn more about Tailwind helper & configuration in [theming docs](https://docs.uploadthing.com/theming#with-tailwindcss)
+
+```ts
+import { withUt } from "uploadthing/tw";
+
+export default withUt({
+  content: [
+    // Your existing Tailwind config
+  content: ["./src/**/*.{ts,tsx,mdx}"],
+  ],
+});
+
+```
+
+## Create The UploadThing Components (Recommended)
+You can import the components individually from `@uploadthing/react` instead.
+
+> File path - src/utils/uploadthing.ts
+
+```tsx
+import {
+  generateUploadButton,
+  generateUploadDropzone,
+} from "@uploadthing/react";
+ 
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
+ 
+export const UploadButton = generateUploadButton<OurFileRouter>();
+export const UploadDropzone = generateUploadDropzone<OurFileRouter>();
+
+```
+## Mount A Button And Upload!
+Create a component seperately as this needs to be a client component and will contain the code to upload images. 
+You can also customize the `UploadButton` to `UploadDropzone` to get a dropzone area instead of a button...
+
+```tsx
+"use client";
+ 
+import { UploadButton } from "@/utils/uploadthing";
+ 
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <UploadButton
+        endpoint="imageUploader"
+        onClientUploadComplete={(res) => {
+          console.log("Files: ", res);
+          alert("Upload Completed");
+        }}
+        onUploadError={(error: Error) => {
+          alert(`ERROR! ${error.message}`);
+        }}
+      />
+    </main>
+  );
+}
+```
+
+### 🎉 You're Done!
+#### Checkout our other [guides](https://unicornspace-ui.vercel.app/guides) . Keep learning, keep growing :)
+
