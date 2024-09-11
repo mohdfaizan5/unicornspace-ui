@@ -7,7 +7,7 @@ import TechStackIcons from "./tech-stack-icons";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen ">
       {/* <div className="absolute inset-0 -z-10 h-full w-full bg-background/60 opacity-5 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div> */}
       <main className="px-5 py-16 pb-30 sm:flex sm:flex-col items-center z-10 bg-transparent">
         <div className="absolute  inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
