@@ -22,9 +22,10 @@ export const navigation: NavigationProps[] = [
       { title: "Footer", href: "/docs/basics-of-time-travel" },
       {
         title: "Pricing",
-        href: "/docs/introduction-to-string-theory",
+        href: "/components/pricing",
       },
       { title: "Testimonials", href: "/components/testimonials" },
+      { title: "Faq", href: "/components/faq" },
     ],
   },
   {
