@@ -34,7 +34,7 @@ if (!user) redirect("/login");
 Install 
 
 ```bash
-npm install react-hook-form zod prisma i sonner
+npm install react-hook-form zod prisma sonner
 ```
 Install ShadCN components for Login
 
@@ -182,6 +182,8 @@ import { handlers } from "@/lib/auth"; // Referring to the auth.ts we just creat
 export const { GET, POST } = handlers;
 ```
 
+> (Optional) Create this inside `login` or `signin` folder. So that you can go on that route to enter your login credentials. Use this component inside `page.tsx`.
+
 ```tsx
 // signInForm.tsx
 "use client";
@@ -279,6 +281,8 @@ const SignInForm = () => {
 
 export default SignInForm;
 ```
+
+> (Optional) Create this inside `register` or `signup` folder. So that you can go on that route to register. Use this component inside `page.tsx`.
 
 ```tsx
 // signupForm.tsx
@@ -407,8 +411,8 @@ export default SignUpForm;
 // @/actions/auth.action.ts
 "use server";
 
-import { signIn, signOut } from "@/auth";
-import  from "@/lib/prisma";
+import { signIn, signOut } from "@/lib/auth";
+import prisma from "@/lib/db";
 import { signInFormSchema, signUpFormSchema } from "@/types/index";
 import { z } from "zod";
 
@@ -489,7 +493,7 @@ const getUserDetails = async (email: string) => {
 export { signInAction, signOutAction, signUpAction, getUserDetails };
 ```
 
-if you've not created a global prisma client
+If you've not created a global prisma client
 ```
 // @/lib/db.ts
 import { PrismaClient } from '@prisma/client'
@@ -508,3 +512,40 @@ export default prisma
 
 if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma
 ```
+
+> Follow these steps if `db.ts` throws some error
+
+```bash
+npm install prisma --save-dev
+npx prisma init --datasource-provider sqlite
+```
+
+> Add a basic Model in schema.prisma
+
+```prisma
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  password String
+  name  String?
+}
+```
+
+> Run migration command to create your database
+
+```bash
+npx prisma migrate dev --name init
+```
+
+> Run studio command to check data in your database
+
+```bash
+npx prisma studio
+```
+
+
+### 🎉 You're Done!
+
+#### Checkout our other [guides](https://unicornspace-ui.vercel.app/guides) . Keep learning, keep growing :)
+
+
