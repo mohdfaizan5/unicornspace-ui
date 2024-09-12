@@ -34,16 +34,12 @@ if (!user) redirect("/login");
 Install 
 
 ```bash
-npm install react-hook-form
-npm install zod
-npm install prisma
-npm i sonner
+npm install react-hook-form zod prisma i sonner
 ```
 Install ShadCN components for Login
 
 ```bash
-npm dlx shadcn-ui@latest add form
-npm dlx shadcn-ui@latest add input
+npx shadcn-ui@latest add form input
 ````
 
 ## Types 
@@ -73,13 +69,13 @@ export const signInFormSchema = z.object({
 ## Final code for Credentails provider
 
 ```tsx
-// ./auth.ts
+// @/lib/auth.ts
 import NextAuth, { AuthError, CredentialsSignin } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { signInFormSchema } from "../../../types";
-import { prisma } from "./lib/prisma";
+import { signInFormSchema } from "@/types/index";
+import  prisma  from "@/lib/db";
 import { z } from "zod";
-import { getUserDetails } from "./actions/auth.action";
+import { getUserDetails } from "@/actions/auth.action";
 
 class CustomAuthError extends CredentialsSignin {
   code = "Something went wrong while authenticating";
@@ -150,8 +146,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 ```
 
 ```tsx
-// ./middleware
-import { auth } from "@/auth";
+// @/middleware.ts
+import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
 const publicRoutes = ["/", "/login", "/signup"]; // Add your public routes here
@@ -176,8 +172,8 @@ export const config = {
 ```
 
 ```tsx
-// ./app/api/auth/[...nextauth]/route.ts
-import { handlers } from "@/auth"; // Referring to the auth.ts we just created
+// @/app/api/auth/[...nextauth]/route.ts
+import { handlers } from "@/lib/auth"; // Referring to the auth.ts we just created
 export const { GET, POST } = handlers;
 ```
 
@@ -199,10 +195,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { signInFormSchema } from "../../../types";
+import { signInFormSchema } from "@/types/index";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/auth";
+import { signIn } from "@/lib/auth";
 import { signInAction } from "@/actions/auth.action";
 
 const SignInForm = () => {
@@ -297,7 +293,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { signUpFormSchema } from "@/types/forms";
+import { signUpFormSchema } from "@/types/index";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -403,13 +399,12 @@ export default SignUpForm;
 ```
 
 ```tsx
-// auth.action.ts
+// @/actions/auth.action.ts
 "use server";
 
 import { signIn, signOut } from "@/auth";
-import { prisma } from "@/lib/prisma";
-// import { signInFormSchema, signUpFormSchema } from "@/types/forms";
-import { signInFormSchema } from "../../../types";
+import  from "@/lib/prisma";
+import { signInFormSchema, signUpFormSchema } from "@/types/index";
 import { z } from "zod";
 
 const signUpAction = async (data: z.infer<typeof signUpFormSchema>) => {
@@ -487,4 +482,24 @@ const getUserDetails = async (email: string) => {
 };
 
 export { signInAction, signOutAction, signUpAction, getUserDetails };
+```
+
+if you've not created a global prisma client
+```
+// @/lib/db.ts
+import { PrismaClient } from '@prisma/client'
+
+const prismaClientSingleton = () => {
+  return new PrismaClient()
+}
+
+declare const globalThis: {
+  prismaGlobal: ReturnType<typeof prismaClientSingleton>;
+} & typeof global;
+
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()
+
+export default prisma
+
+if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma
 ```
