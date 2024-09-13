@@ -13,18 +13,18 @@ export function CallToAction({ className }: React.ComponentProps<"div">) {
             )}
         >
             <div className="text-balance text-lg font-semibold leading-tight group-hover:underline">
-                Bring your app built with shadcn to life on Vercel
+                Bring Your Digital Vision to Life with Our Services
             </div>
-            <div>Trusted by OpenAI, Sonos, Chick-fil-A, and more.</div>
+            <div>Trusted by businesses and creatives alike.</div>
             <div>
-                Vercel provides tools and infrastructure to deploy apps and features at
-                scale.
+            We design and develop stunning websites, powerful eCommerce stores, and professional portfolios that stand out.
+            {/* Let's Build Your Dream Website Today */}
             </div>
             <Button size="sm" className="mt-2 w-fit">
-                Deploy Now
+                Get Started Now
             </Button>
             <Link
-                href="https://vercel.com/new?utm_source=shadcn_site&utm_medium=web&utm_campaign=docs_cta_deploy_now_callout"
+                href="https://unicornspace.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
                 className="absolute inset-0"
