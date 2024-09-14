@@ -4,9 +4,7 @@ import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeHighlight from "@/components/CodeHighlight";
 import componentRegistry from '@/registry';
-import ComponentWrapper from './component-wrapper';
-import { Button } from './ui/button';
-import { RotateCcw } from 'lucide-react';
+import ComponentWrapper from './component-wrapper2';
 import { ImSpinner } from "react-icons/im";
 
 
@@ -41,7 +39,7 @@ const ComponentPreview = ({ name, ...props }: {
                 Loading...
               </div>
             }
-          > <div className='scale-[60%] bg-background'>
+          ><div className='scale-[60%] bg-background'>
 
               <ComponentToRender.component {...props} />
             </div>
@@ -51,7 +49,7 @@ const ComponentPreview = ({ name, ...props }: {
 
       <TabsContent
         value="code"
-        className="w-96 md:w-[800px] ml-10 rounded-sm"
+        className="w-96 md:w-[800px] ml-10 rounded-sm "
       >
         <CodeHighlight code={ComponentToRender.code} />
       </TabsContent>

@@ -1,27 +1,31 @@
-import { cn } from "@/lib/utils";
+import React from 'react'
 
 interface ComponentWrapperProps {
-  className?: string;
-  children: any;
+  children: React.ReactNode
+  width?: string
+  scale?: number
+  className?: string
 }
-const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
-  return (
-    <div
-      className={cn(
-        "max-w-screen h-2/3 px-5 relative flex flex-col items-center justify-center rounded-xl bg-background p-0 md:border md:px-6",
-        className,
-      )}
-    >
-      <div
-        className={cn(
-          `absolute inset-0  size-full`,
-          `bg-[radial-gradient(#00000055_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff22_1px,transparent_0.6px)]`,
-          "lab-bg [background-size:16px_16px]",
-        )}
-      />
-      {children}
-    </div>
-  );
-};
 
-export default ComponentWrapper;
+export default function ComponentWrapper({
+  children,
+  width = '100%',
+  scale = 1,
+  className = '',
+}: ComponentWrapperProps) {
+  return (
+    <div className="flex justify-center items-center p-4 bg-gray-100 rounded-lg overflow-hidden">
+      <div
+        className={`bg-white rounded-md shadow-md ${className}`}
+        style={{
+          width,
+          transform: `scale(${scale})`,
+          transformOrigin: 'center',
+          maxWidth: '100%',
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}

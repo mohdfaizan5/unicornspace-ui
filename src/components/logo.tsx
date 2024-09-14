@@ -6,9 +6,10 @@ import React from "react";
 
 const Logo = () => {
   const { theme } = useTheme();
-  
+
   return (
     <>
+      <h1 className="text-white dark:text-black ">hi</h1>
       {theme === "dark" ? (
         <Link href={"/"} className="flex items-center font-bold">
           <Image
