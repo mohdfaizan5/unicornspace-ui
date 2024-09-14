@@ -182,8 +182,8 @@ const components = {
     />
   ),
   Image,
-  ComponentPreview
-  , HeroSection
+  ComponentPreview,
+  HeroSection
 
 };
 

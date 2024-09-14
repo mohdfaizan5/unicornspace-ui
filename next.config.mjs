@@ -15,10 +15,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'assets.awwwards.com',
-        port: '',
-        
+        hostname: 'assets.awwwards.com',        
       },
+      {
+        protocol: 'https',
+        hostname: '**'
+      }
     ],
   },
 
