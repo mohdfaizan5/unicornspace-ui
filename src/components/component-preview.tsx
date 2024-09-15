@@ -4,13 +4,16 @@ import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeHighlight from "@/components/CodeHighlight";
 import componentRegistry from '@/registry';
-import ComponentWrapper from './component-wrapper2';
+import ComponentWrapper from './component-wrapper';
 import { ImSpinner } from "react-icons/im";
 
 
 
-const ComponentPreview = ({ name, ...props }: {
+const ComponentPreview = ({ name, scale, width, height, ...props }: {
   name: string,
+  scale?: number,
+  height?: string,
+  width?: string,
   [key: string]: any
 }) => {
   console.log(name)
@@ -31,7 +34,7 @@ const ComponentPreview = ({ name, ...props }: {
         <TabsTrigger value="code">Code</TabsTrigger>
       </TabsList>
       <TabsContent value="preview" className="relative rounded-md h-[46rem]" >
-        <ComponentWrapper >
+        <ComponentWrapper scale={scale} width={width} height={height}>
           <React.Suspense
             fallback={
               <div className="flex items-center text-sm text-muted-foreground">
