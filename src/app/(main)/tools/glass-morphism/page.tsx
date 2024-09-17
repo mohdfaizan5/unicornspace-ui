@@ -1,19 +1,17 @@
 "use client";
-import Image from "next/image";
-import "@/styles/glass.css";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import CodeHighlight from "@/components/CodeHighlight";
 import { Input } from "@/components/ui/input";
 
 export default function Page() {
@@ -57,135 +55,118 @@ export default function Page() {
     setValue(hexToRgb(e));
   };
 
-  return (
-    <>
-      <div className="bg-[url('/glass.png')] h-[720px] w-[1280px] bg-no-repeat md:grid grid-cols-2 flex flex-col relative ">
-        <div className="">
-          <Image
-            src="/oval.svg"
-            alt="oval"
-            height={100}
-            width={100}
-            className="bg-blend-color-burn absolute"
-            style={{ left: "10%", top: "20%" }} // Hardcoded position
-          />
-          <Image
-            src="/oval.svg"
-            alt="oval"
-            height={100}
-            width={100}
-            className="bg-blend-color-burn absolute"
-            style={{ left: "50%", top: "40%" }} // Hardcoded position
-          />
-          <Image
-            src="/oval.svg"
-            alt="oval"
-            height={100}
-            width={100}
-            className="bg-blend-color-burn absolute"
-            style={{ left: "70%", top: "70%" }} // Hardcoded position
-          />
-          <div
-            className="glassmorphism flex items-center justify-center text-5xl rounded-full border-x-red-50 border-2 absolute"
-            style={{ left: "30%", top: "10%", transform: "rotate(-12deg)" }} // Hardcoded position and rotation
-          >
-            🦄
-          </div>
-          <div
-            className="glassmorphism w-32 h-32 rounded-3xl border-x-red-50 border-2 absolute"
-            style={{ left: "60%", top: "50%", transform: "rotate(-12deg)" }} // Hardcoded position and rotation
-          />
-          <div
-            id="glass"
-            className="glassmorphism w-[500px] h-72 rounded-3xl border-x-red-50 border-2 absolute"
-            style={{
-              left: "10%",
-              top: "60%",
-              background: `rgba(${value}, ${transparency})`,
-              transform: "rotate(-12deg)", // Hardcoded position and rotation
-            }}
-          />
-        </div>
-      </div>
-      <div className="flex justify-center ">
-        <Card className="bg-green-300 w-[470px]">
-          <CardHeader>
-            <CardTitle className="text-5xl">Setting</CardTitle>
-            <CardDescription>
-              Scroll to see the magic of morphism
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-4">
-            <CardTitle>
-              Transparency <span>{transparency}</span>
-            </CardTitle>
-            <Slider
-              defaultValue={[20]}
-              min={0}
-              max={1}
-              step={0.01}
-              onValueChange={(e) => {
-                setTransparency(e[0]);
-              }}
-            />
-            <CardTitle>
-              Blur value <span>{intensity}</span>
-            </CardTitle>
-            <Slider
-              defaultValue={[10]}
-              min={0}
-              max={20}
-              step={1}
-              onValueChange={(e) => {
-                setIntensity(e[0]);
-                handleIntensityChange(e[0]);
-              }}
-            />
-            <div className="flex justify-center items-center gap-3">
-              <label htmlFor="terms" className="font-semibold ">
-                Color
-              </label>
-              <Input
-                type="color"
-                onChange={(e) => handleColorChange(e.target.value)}
-              />
-              <Checkbox
-                id="outline"
-                className="h-10 w-10"
-                checked={checked}
-                onCheckedChange={onCheckedChange}
-              />
-              <label htmlFor="outline" className="font-semibold ">
-                Show Outline
-              </label>
-            </div>
-
-            <CardContent className=" flex flex-col gap-2">
-              <SyntaxHighlighter
-                language="css"
-                style={docco}
-                customStyle={{
-                  paddingLeft: 10,
-                  borderRadius: "10px",
-                  backgroundColor: "skyblue",
-                }}
-                wrapLines={true}
-                codeTagProps={{ style: { fontFamily: "inherit" } }}
-              >
-                {`
+  const [copyCode, setCopyCode] = useState<{ css: string; tailwind: string }>({
+    css: `
 background: rgba(${value}, ${transparency});
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( ${intensity}px );
 -webkit-backdrop-filter: blur(  ${intensity}px );
-border-radius: 10px;
+border-radius: 10px;`,
+    tailwind: `h-full w-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100`,
+  });
 
-                  `}
-              </SyntaxHighlighter>
-              <Button>Copy</Button>
-            </CardContent>
-          </CardContent>
-        </Card>
-      </div>
-    </>
+  return (
+    <main className=" flex flex-col md:flex-row">
+      <section className="relative bg-gradient-to-tr from-indigo-600  to-purple-500 bg-no-repeat w-[340px] h-[480px] overflow-hidden">
+        <div
+          className="flex items-center justify-center text-5xl rounded-lg  border-red-50 border-2 absolute"
+          style={{ transform: "rotate(-12deg)", left: "70%", top: "70%" }} // Hardcoded position and rotation
+        >
+          🦄
+        </div>
+        <div
+          className=" w-32 h-32 rounded-3xl border-red-50 border-2 absolute top-5 left-5"
+          style={{ transform: "rotate(-12deg)" }} // Hardcoded position and rotation
+        />
+        <div
+          id="glass"
+          className=" w-[70%] h-96 rounded-3xl border-red-50 border-2 absolute top-10 left-10"
+          style={{
+            background: `rgba(${value}, ${transparency})`,
+          }}
+        />
+      </section>
+      <Card className="md:max-w-96">
+        <CardHeader>
+          <CardTitle className="text-2xl">Setting</CardTitle>
+          <CardDescription className="">
+            Scroll to see the magic of morphism
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col justify-start gap-4">
+          <p>
+            Transparency <span>{transparency}</span>
+          </p>
+          <Slider
+            defaultValue={[20]}
+            min={0}
+            max={1}
+            step={0.01}
+            className="scale-75"
+            onValueChange={(e) => {
+              setTransparency(e[0]);
+            }}
+          />
+          <p>
+            Blur value <span>{intensity}</span>
+          </p>
+          <Slider
+            defaultValue={[10]}
+            min={0}
+            max={20}
+            step={1}
+            className="scale-75"
+            onValueChange={(e) => {
+              setIntensity(e[0]);
+              handleIntensityChange(e[0]);
+            }}
+          />
+          <div className="flex items-center gap-2">
+            <Label htmlFor="terms" className="font-semibold ">
+              Color
+            </Label>
+            <Input
+              className="w-24"
+              type="color"
+              onChange={(e) => handleColorChange(e.target.value)}
+            />
+            <Label
+              htmlFor="outline"
+              className="text-sm flex items-center gap-1"
+            >
+              <Checkbox
+                id="outline"
+                className=""
+                checked={checked}
+                onCheckedChange={onCheckedChange}
+              />
+              Show Outline
+            </Label>
+          </div>
+
+          <CardFooter className="flex flex-col w-full max-h-72  p-0 relative">
+            <CodeHighlight className="w-full" code={copyCode.css} />
+            <CodeHighlight className="w-full mt-4" code={copyCode.tailwind} />
+          </CardFooter>
+        </CardContent>
+      </Card>
+    </main>
   );
 }
+
+// const CodeHighlighter = (code: string) => {
+//   return (
+//     <pre className=" pl-3 mt-6 overflow-x-auto w-full rounded-lg border bg-black text-white pb-4">
+//       {code}
+//       <Button
+//         onClick={() => {
+
+//         }}
+//         className="absolute top-10 right-2 "
+//         size={"icon"}
+//       >
+//         <Clipboard size={14} />
+//       </Button>
+//     </pre>
+//   );
+// };
