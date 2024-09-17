@@ -8,7 +8,7 @@ export const navigation: NavigationProps[] = [
     title: "Introduction",
     links: [
       { title: "Getting started", href: "/" },
-      { title: "Installation", href: "/docs/installation", isPublished: true },
+      // { title: "Installation", href: "/docs/installation", isPublished: false },
     ],
   },
   {

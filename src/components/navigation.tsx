@@ -14,7 +14,7 @@ export function Navigation({ navigation, className }: { navigation: NavigationPr
       <ul role="list" className="space-y-9 w-full">
         {navigation.map((section) => (
           <li key={section.title}>
-            <h2 className="font-display font-medium text-slate-900 dark:text-white">
+            <h2 className="font-display font-medium text-black dark:text-white">
               {section.title}
             </h2>
             <ul
@@ -28,7 +28,7 @@ export function Navigation({ navigation, className }: { navigation: NavigationPr
                     className={clsx(
                       'block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full',
                       link.href === path
-                        ? 'font-semibold text-slate-900 before:bg-sky-900'
+                        ? 'font-semibold text-black before:bg-sky-900'
                         : 'text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300'
                     )}
                   >

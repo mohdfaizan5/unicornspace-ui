@@ -1,3 +1,4 @@
+// @ts-nocheck
 import clsx from 'clsx'
 
 
@@ -73,7 +74,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
           featured ? 'text-white' : 'text-slate-200'
         )}
       >
-        {features.map((feature) => (
+        {features.map((feature: any) => (
           <li key={feature} className="flex">
             <CheckIcon className={featured ? 'text-white' : 'text-slate-400'} />
             <span className="ml-4">{feature}</span>
@@ -82,7 +83,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
       </ul>
       <Button
         variant={featured ? "outline" : "default"}
-        
+
         color="white"
         className="mt-8"
         aria-label={`Get started with the ${name} plan for ${price}`}

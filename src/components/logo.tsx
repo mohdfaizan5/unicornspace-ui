@@ -9,7 +9,30 @@ const Logo = () => {
 
   return (
     <>
-      <h1 className="text-white dark:text-black ">hi</h1>
+
+      <Link href={"/"} className="flex items-center font-bold">
+        <Image
+          src={"/logos/logo-black-256x256.png"}
+          width={30}
+          height={30}
+          alt="logo"
+          className="dark:hidden block"
+        />
+        <Image
+          src={"/logos/logo-white-256x256.png"}
+          width={30}
+          height={30}
+          alt="logo"
+          className="hidden dark:block"
+        />
+        UnicornSpaceUI
+      </Link>
+
+    </>
+  );
+
+  return (
+    <>
       {theme === "dark" ? (
         <Link href={"/"} className="flex items-center font-bold">
           <Image

@@ -60,10 +60,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   console.log("guides url", guide?.slug);
 
   return (
-    <main className="w-screen px-5 overflow-x-hidden md:max-w-3xl py-8">
-      {/* <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold">{guide.title}</h1>
-      </div> */}
+    <main className=" overflow-x-hidden md:max-w-3xl">
       <Mdx code={guide.body.code} />
     </main>
   );

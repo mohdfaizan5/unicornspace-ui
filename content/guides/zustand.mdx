@@ -9,25 +9,26 @@ tags: state management, nextjs14
 
 Zustand is a small, fast and scalable bearbones state-management solution. It is a simple and straightforward library that allows you to manage the state of your application with ease. It is a great alternative to Redux and MobX.
 
-
 ## Installation
 
 ```terminal
 pnpm add zustand
 ```
 
-
 ```tsx
-import create from 'zustand'
+import create from "zustand";
 
 const useStore = create((set) => ({
   bears: 0,
   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
   removeAllBears: () => set({ bears: 0 }),
-}))
-
+}));
 ```
 
 > hi
 
+<Callout type="danger">
+  <p>Check out the official documentation for more information.</p>
+  <a href="https://zustand.surge.sh/">Zustand</a>
 
+</Callout>

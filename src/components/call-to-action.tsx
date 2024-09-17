@@ -24,7 +24,7 @@ export function CallToAction({ className }: React.ComponentProps<"div">) {
                 Get Started Now
             </Button>
             <Link
-                href="https://unicornspace.vercel.app/"
+                href="https://www.unicornspace.tech/"
                 target="_blank"
                 rel="noreferrer"
                 className="absolute inset-0"
