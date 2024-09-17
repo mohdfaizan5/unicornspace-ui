@@ -1,0 +1,91 @@
+---
+isPublished: true
+title: All you need to know about SEO for developers
+description: SEO is a crucial part of any website. Here's a guide for developers to understand SEO and how to implement it.
+---
+
+- SEO stands for Search Engine Optimization. It is the process of optimizing your website to get organic traffic from search engines like Google, Bing, Yahoo, etc.
+
+STEPS
+
+1. Write site config to include SEO metadata
+
+```
+export const siteConfig = {
+  name: "wooddecor",
+  url: "https://wooddecor.in",
+  ogImage: "/og.png",
+  description: "A Store for all your Sofa, Beds, Kitchens, Wood needs",
+  links: {
+    twitter: "https://twitter.com/mohdfaizan_5",
+    github: "https://github.com/mohdfaizan5",
+  },
+};
+
+export type SiteConfig = typeof siteConfig;
+```
+
+2. Write all the meta tags in the head of the document
+
+```tsx
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta property="og:title" content="Wood Decor" />
+  <meta property="og:description" content="{siteConfig.description}" />
+  <meta property="og:image" content="{siteConfig.ogImage}" />
+  <meta property="og:url" content="{siteConfig.url}" />
+  <meta property="og:type" content="website" />
+
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: siteConfig.url,
+      }),
+    }}
+  />
+</head>
+```
+
+3. Write a sitemap.xml file
+
+> WIP👷‍♀️
+
+4. Write dynmaic metadata generation script for dynamic routes
+
+```tsx
+type generateMetaDataProps = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({
+  params,
+}: generateMetaDataProps): Promise<Metadata> {
+  const slug = params.slug;
+  const products = await prisma.product.findUnique({
+    where: {
+      slug,
+    },
+    select: {
+      title: true,
+    },
+  });
+  return {
+    title: `${products?.title} - WoodDecor`,
+  };
+}
+```
+
+5. Write a robots.txt file and sitemap.xml file using next-sitemap
+   `
+   https://github.com/iamvishnusankar/next-sitemap#configuration
+
+6. Manifeto file (IDK what is it)
+   https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest
+
+
+7. Add alt tags to images, atleast fill the alt tag with the name of the image
