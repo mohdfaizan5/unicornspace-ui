@@ -1,4 +1,4 @@
-import CodeHighlight from '@/components/CodeHighlight'
+import CodeHighlight from '@/components/code-highlight'
 import React from 'react'
 const customScrollBarCode = `
 /* width */

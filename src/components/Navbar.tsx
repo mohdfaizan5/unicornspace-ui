@@ -1,3 +1,4 @@
+// TODO: Needs a refactor of code and the its structured and implemented
 import React from "react";
 import {
   Menubar,
@@ -13,7 +14,7 @@ import SearchEventListener from "./client/SearchEventListener";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCaretDown, FaGithub } from "react-icons/fa";
-import { ModeToggle } from "./ModeToggle";
+import { ModeToggle } from "./mode-toggle";
 import { siteConfig } from "@/config/site";
 import {
   Sheet,

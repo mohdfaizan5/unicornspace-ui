@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 import ComponentPreview from '@/components/component-preview'
 import { cn } from "@/lib/utils";
-import HeroSection from '@/components/HeroSection'
+import HeroSection from '@/components/hero-section'
 import { Callout } from "./call-out";
 
 
@@ -27,7 +27,7 @@ const components = {
   h2: ({ className, ...props }) => (
     <h2
       className={cn(
-        "mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+        "mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0s",
         className
       )}
       {...props}

@@ -1,4 +1,4 @@
-import ColorsCard from "@/components/tools/ColorsCard";
+import ColorsCard from "@/components/tools/colors-card";
 import colorsData from "@/data/colorsPalettes.json";
 
 const page = () => {

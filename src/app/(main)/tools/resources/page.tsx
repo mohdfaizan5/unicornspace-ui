@@ -1,4 +1,4 @@
-import ResourceCard from "@/components/tools/ResourceCard";
+import ResourceCard from "@/components/tools/resource-card";
 import resourceData from "@/data/resources.json";
 const page = () => {
   return (

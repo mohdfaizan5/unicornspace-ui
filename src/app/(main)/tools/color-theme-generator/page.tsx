@@ -12,11 +12,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 import SearchEventListener from "@/components/client/SearchEventListener";
-import Features from "@/components/Features";
-import Faq from "@/components/Faq";
-import Footer from "@/components/Footer";
+import Features from "@/registry/components/features";
+import Faq from "@/components/faq";
 import { hexToHSL } from "@/lib/utils";
 
 const page = () => {
