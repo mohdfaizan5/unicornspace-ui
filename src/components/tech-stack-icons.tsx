@@ -6,10 +6,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Icons } from './icons'
+import { cn } from '@/lib/utils'
 
-const TechStackIcons = () => {
+const TechStackIcons = ({ className }: { className?: string }) => {
   return (
-    <div className='py-4'>
+    <div className={cn('py-4', className)}>
       <TooltipProvider>
 
 

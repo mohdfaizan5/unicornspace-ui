@@ -11,8 +11,8 @@ import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
-import CodeHighlight from "@/components/CodeHighlight";
 import { Input } from "@/components/ui/input";
+import CodeHighlight from "@/components/code-highlight";
 
 export default function Page() {
   const [intensity, setIntensity] = useState<number>(10);

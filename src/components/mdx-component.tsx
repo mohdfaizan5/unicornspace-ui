@@ -158,7 +158,8 @@ const components = {
   Image,
   ComponentPreview,
   HeroSection,
-  Callout
+  Callout,
+  
 };
 
 interface MdxProps {
