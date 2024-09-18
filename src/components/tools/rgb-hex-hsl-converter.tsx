@@ -29,6 +29,8 @@ export default function EnhancedUniversalColorConverter() {
     setTimeout(() => setCopied(false), 1500)
   }
 
+  // TODO: Scope for improvement, this file is too long and can be split into smaller components and hooks and (take utility functions out)
+
   const updateColor = (newColor: Partial<ColorState>) => {
     setColor(prevColor => {
       const updatedColor = { ...prevColor, ...newColor }

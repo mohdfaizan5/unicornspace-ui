@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CodeHighlight from "@/components/CodeHighlight";
+import CodeHighlight from "@/components/code-highlight";
 import componentRegistry from '@/registry';
 import ComponentWrapper from './component-wrapper';
 import { ImSpinner } from "react-icons/im";

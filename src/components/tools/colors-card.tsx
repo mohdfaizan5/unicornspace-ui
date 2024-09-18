@@ -1,6 +1,5 @@
 "use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,6 +1,6 @@
+// TODO: Refactor the code and change the copy
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const testimonialsData = [
