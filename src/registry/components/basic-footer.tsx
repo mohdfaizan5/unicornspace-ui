@@ -10,7 +10,7 @@ const BasicFooter = () => {
     <footer className="py-10 flex px-5 md:px-10 justify-between items-center border-t border-white/20">
       <section className="space-y-1">
         <Logo />
-        <p className="text-xs opacity-80 ml-5">© 2023 Prisma Data, Inc.</p>
+        <p className="text-xs opacity-80 ml-5">© 2023 UnicornSpace, Inc.</p>
       </section>
       <section className="flex gap-3 items-center">
         <Link href={siteConfig.links.github}>

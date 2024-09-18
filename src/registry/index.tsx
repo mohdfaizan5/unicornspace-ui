@@ -1,4 +1,10 @@
+
+
+
+
+
 // componentRegistry file is used to register all the components that are used in the project.
+import { RegistrySchema } from "@/types/registry";
 import CallOutSection from "./components/CallOut";
 import { Faq1 } from "./components/Faq/faq1";
 import HeroSection3 from "./components/HeroSections/hero-section3";
@@ -6,12 +12,22 @@ import HeroSection from "./components/HeroSections/HeroSection";
 import { Pricing2 } from "./components/Pricing/pricing2";
 import { Testimonials3 } from "./components/testimonials/Testimonials3";
 import AnimatedText from "./components/TextAppearOnScroll.tsx";
-import { registrySchema } from "./schema";
 
+const Test = () => {
+  return (
+    <div>
+      <h1>Test</h1>
+    </div>
+  );
+}
 
-const componentRegistry: registrySchema = {
-  "Faq1" : {
-    component : Faq1,
+const componentRegistry: RegistrySchema = {
+  "Test": {
+    component: Test,
+    code: ""
+  },
+  "Faq1": {
+    component: Faq1,
     code: `
     
 import Image from 'next/image'
@@ -126,7 +142,7 @@ export function Faq1() {
   },
 
 
-  "Pricing2" : {
+  "Pricing2": {
     component: Pricing2,
     code: `
     import clsx from 'clsx'
@@ -294,7 +310,7 @@ export function Pricing2() {
   )
 }
 `
-},
+  },
 
   "Testimonials3": {
     component: Testimonials3,
