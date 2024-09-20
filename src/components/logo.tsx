@@ -1,35 +1,28 @@
-"use client";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Logo = () => {
-  const { theme } = useTheme();
-  
+
   return (
     <>
-      {theme === "light" ? (
-        <Link href={"/"} className="flex items-center font-bold">
-          <Image
-            src={"/logos/logo-black-256x256.png"}
-            width={30}
-            height={30}
-            alt="logo"
-          />
-          UnicornSpaceUI
-        </Link>
-      ) : (
-        <Link href={"/"} className="flex items-center font-bold">
-          <Image
-            src={"/logos/logo-white-256x256.png"}
-            width={30}
-            height={30}
-            alt="logo"
-          />
-          UnicornSpaceUI
-        </Link>
-      )}
+      <Link href={"/"} className="flex items-center font-bold">
+        <Image
+          src={"/logos/logo-black-256x256.png"}
+          width={30}
+          height={30}
+          alt="Unicorn Space UI logo"
+          className="dark:hidden block"
+        />
+        <Image
+          src={"/logos/logo-white-256x256.png"}
+          width={30}
+          height={30}
+          alt="Unicorn Space UI logo"
+          className="hidden dark:block"
+        />
+        UnicornSpaceUI
+      </Link>
+
     </>
   );
 };

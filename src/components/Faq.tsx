@@ -12,7 +12,7 @@ const Faq = () => {
       {/* <h2>Develop projects without the manual management</h2>
       <h3>hioajsdf</h3> */}
       <h1>FAQs</h1>
-      <div className=" py-10 pb-20 sm:w-[500px] text-xl">
+      <div className=" py-10 pb-20 sm:w-[500px] text-lg  sm:text-xl">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger>What is IndieTook?</AccordionTrigger>

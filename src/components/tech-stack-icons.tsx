@@ -6,14 +6,15 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Icons } from './icons'
+import { cn } from '@/lib/utils'
 
-const TechStackIcons = () => {
+const TechStackIcons = ({ className }: { className?: string }) => {
   return (
-    <div className='py-4'>
+    <div className={cn('py-4', className)}>
       <TooltipProvider>
 
 
-        <div className="flex-row gap-4 mx-auto flex w-full items-center justify-between">
+        <div className="flex-row gap-6 mx-auto flex w-full items-center justify-center">
           <Tooltip>
             <TooltipTrigger >
               <Icons.React />

@@ -1,80 +1,58 @@
-# UnicornSpace UI
+
+<div align="center">
+    <h1 align="center">Unicorn Space UI</h1>
+    <h5>Unicorn space UI is UI component library.</h5>
+</div>
+
+<div align="center">
+  <a href="https://unicornspace-ui.vercel.app/">Unicorn Space UI »</a>
+</div>
+<br/>
+
+<!--
+<p align="center">
+    <a href="#introduction"><strong>Introduction</strong></a> ·
+    <a href="#features"><strong>Features</strong></a> ·
+    <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+    <a href="#self-hosting"><strong>Self-hosting</strong></a> ·
+    <a href="#contributing"><strong>Contributing</strong></a>
+</p>
+  -->
+<div align="center">
+  <a href="https://github.com/mohdfaizan5/unicornspace-ui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mohdfaizan5/unicornspace-ui"></a>
+  <a href="https://twitter.com/mohdfaizan_5"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/mohdfaizan_5"></a>
+  <a href="https://github.com/mohdfaizan5/unicornspace-ui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <img alt="Discord" src="https://img.shields.io/discord/1151315619246002176">
+  </div>
+
+
+<br/>
+
+
+<div align="center">
+<a  href="https://unicornspace-ui.vercel.app/">
+  <img align="center" width="800px" alt="" src="https://github.com/user-attachments/assets/0f1e489e-d119-48cd-bbdd-df8c82e1a83b">
+</a>
+<div/>
+
+<!--## Tools
+- Theme 
+-->
+
+
+## Contributing
+
+Please read through our [contributing guide](.github/CONTRIBUTING.md) before starting any work.
+
+## Authors
+
+
+<a href="https://github.com/mohdfaizan5/unicornspace-ui/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mohdfaizan5/unicornspace-ui" />
+</a>
 
 
 
+## Inspiration & Credits
 
-
-V1:
-
-
-## Tools
-
-1. Glass Morphism generator (Akshy)
-2. Readme Generator(Akshy)
-3. Shadcn Theme generator
-4. Fonts in Use (Liktha)
-5. Color palettes (Liktha)
-6. HEX to RGB to RGBA to HLS (Tahir)
-7. magicpattern.design/tools/gradient-generator(Likitha)
-
-## Components
-
-1. Tailwind templates
-   1. a
-   2. b
-   3. c
-2. Ecommerce application
-3. Zulkifl Product
-
-
-## Guides
-1. NextAuth (Faizan)
-2. Razorpay (Faizan)
-3. Framer motion basics (Akshy)
-4. Prisma Basics (Tahir make existing better)
-5. Upload Thing (Tahir)
-6. Zustand (Likitha)
-
-
-- [ ] Change the project architechure
-- [ ] Commit it and let others pull it and make changes from there
-- [ ] <ComponentPreview/>   
-
-
-V2
-1. Great website inspirations 
-2. Beautiful SVG Shapes -> softr.io/tools/svg-shape-generator
-3. screenshot-beautifier.vercel.app/
-4.  bg.ibelick.com/
-5.  Beautiful SVG Waves -> softr.io/tools/svg-wave-generator
-6.  Resources
-
-
-
-<!-- - Team progress tracker (Tahir) -->
-
-## Components
-
-1. Header
-2. Hero Sections
-3. Image carousels
-4. Testimonials
-5. Pricing sections
-6. Footer
-7. Other
-
-
-
-
-## Guides
-
-1. Stripe 101
-2. Linux 101
-3. Lucia auth 101
-4. Saas 101
-5. TS cheatsheet
-6. UI Design Mastery
-
-
-## Areas to work on
-- [ ]
+Inspired by [Shadcn UI](https://ui.shadcn.com/docs), [Magic UI](https://magicui.design/), [Hexta Studio](https://ui.hextastudio.in/) and many more...
