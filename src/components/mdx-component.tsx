@@ -8,6 +8,7 @@ import ComponentPreview from '@/components/component-preview'
 import { cn } from "@/lib/utils";
 import HeroSection from '@/components/hero-section'
 import { Callout } from "./call-out";
+import CopyButton from "./copy-button";
 
 
 type componentsProps = {
@@ -137,15 +138,18 @@ const components = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }) => (
-    <pre
-      className={cn(
-        "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
-        className
-      )}
-      {...props}
-    />
-  ),
+  pre: ({ className, ...props }) => {
+    return <div className="relative">
+      <pre
+        className={cn(
+          "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
+          props.className
+        )}
+        {...props}
+      />
+      <CopyButton text="Work in progress..." />
+    </div>
+  },
   code: ({ className, ...props }) => (
     <code
       className={cn(
@@ -159,7 +163,7 @@ const components = {
   ComponentPreview,
   HeroSection,
   Callout,
-  
+
 };
 
 interface MdxProps {
