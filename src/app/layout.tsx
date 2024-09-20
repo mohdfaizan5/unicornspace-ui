@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins, Passion_One } from "next/font/google";
-import "@/styles/globals.css";
-import "@/styles/general.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Poppins, Passion_One } from "next/font/google";
 import Navbar from "@/components/navbar";
 import BasicFooter from "@/registry/components/basic-footer";
+
+import "@/styles/globals.css";
+import "@/styles/general.css";
 
 const inter = Poppins({
   weight: ["400", "200"],

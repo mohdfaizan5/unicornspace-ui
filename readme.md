@@ -31,7 +31,7 @@
 
 
 <a href="https://unicornspace-ui.vercel.app/">
-  <img alt="" src="https://github.com/dubinc/dub/assets/28986134/3815d859-afaa-48f9-a9b3-c09964e4d404">
+  <img alt="" src="/og unicorn space ui.png">
 </a>
 
 
