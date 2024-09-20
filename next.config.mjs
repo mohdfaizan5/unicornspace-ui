@@ -19,6 +19,12 @@ const nextConfig = {
         port: '',
         
       },
+      {
+        protocol: 'https',
+        hostname: 'www.magicpattern.design',
+        port: '',
+        
+      },
     ],
   },
 

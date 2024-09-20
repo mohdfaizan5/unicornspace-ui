@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import "@/styles/general.css";
+import Image from "next/image";
 
 const tools = [
   {
@@ -9,12 +10,16 @@ const tools = [
     description: "Generate Shadcn color themes",
     url: "/tools/color-theme-generator",
     isPublished: true,
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     beta: true,
   },
   {
     name: "Color contrast checker",
     description: "Check the contrast between two colors",
     url: "/tools/contrast-checker",
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     isPublished: true,
     beta: true,
   },
@@ -23,6 +28,8 @@ const tools = [
     name: "Fonts in Use",
     description: "Check out great some font combinations in use",
     url: "/tools/fonts-in-use",
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     isPublished: true,
     beta: false,
   },
@@ -31,6 +38,8 @@ const tools = [
     name: "Readme generator",
     description: "Generate a readme file for your project",
     url: "/tools/readme-generator",
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     isPublished: true,
     beta: true,
   },
@@ -38,6 +47,8 @@ const tools = [
     name: "Gradient Generator",
     description: "Generate a gradient color for background",
     url: "/tools/bg-generator",
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     isPublished: true,
     beta: false,
   },
@@ -45,6 +56,8 @@ const tools = [
     name: "Color Palette tool",
     description: "Provides the color palette for the given image",
     url: "/tools/colors-palettes",
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     isPublished: true,
     beta: true,
   },
@@ -52,6 +65,8 @@ const tools = [
     name: "Other tool",
     description: "Other tool description",
     url: "/tools/other",
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     isPublished: true,
     beta: true,
   },
@@ -59,6 +74,8 @@ const tools = [
     name: "Glass Morphism",
     description: "To have a glass view",
     url: "/tools/glass-morphism",
+    image:
+      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
     isPublished: true,
     beta: true,
   },
@@ -71,35 +88,47 @@ const page = () => {
       <p className="max-w-2xl text-lg text-muted-foreground mb-8">
         Beautifully designed. Copy and paste into your apps. Open Source.
       </p>
-      <section className="flex gap-3 flex-wrap mx-auto">
-        {tools.map(
-          (tool, i) =>
-            tool.isPublished && (
-              <div
-                key={i}
-                className="flex flex-col items-start gap-2 rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 md:py-12 min-w-96 relative"
-              >
-                <h2 className="text-2xl font-bold leading-tight tracking-tighter md:text-3xl lg:leading-[1.1]">
-                  {tool.name}
-                </h2>
-                <p className="opacity-90 text-sm">{tool.description}</p>
+      <section className="flex gap-8 flex-wrap mx-auto">
+        {tools.length > 0 &&
+          tools.map(
+            (tool, i) =>
+              tool.isPublished && (
+                <section className="w-96">
+                  <div
+                    key={i}
+                    className="flex flex-col items-start gap-2 rounded-xl border bg-card p-2 text-card-foreground shadow transition-colors hover:bg-muted/50 md:py-5 relative"
+                  >
+                    <div className="space-x-3">
+                      <Image
+                        className="w-full"
+                        src={tool.image}
+                        alt={tool.name}
+                        width={300}
+                        height={300}
+                      />
 
-                <div className="space-x-3 py-2">
-                  <Link href={tool.url} ><Button  size={"sm"}>
-                    Browser Tool <ArrowRight size={16} />
-                  </Button></Link>
-                  <Button size={"sm"} variant={"secondary"}>
-                    Documentation
-                  </Button>
-                </div>
-                {tool.beta && (
-                  <span className="absolute top-0 right-0 bg-accent dark:text-white text-xs font-bold px-2 py-1 rounded-bl-md">
-                    Beta
-                  </span>
-                )}
-              </div>
-            )
-        )}
+                      {/* <Link href={tool.url}>
+                      <Button size={"sm"}>
+                        Browser Tool <ArrowRight size={16} />
+                      </Button>
+                    </Link>
+                    <Button size={"sm"} variant={"secondary"}>
+                      Documentation
+                    </Button> */}
+                    </div>
+
+                    <section key={i} className="mt-3 mx-3">
+                      <h1 className="text-2xl font-bold font-passion ">
+                        {tool.name}
+                      </h1>
+                      <p className="max-w-80 text-[13px] tracking-tight ">
+                        {tool.description}
+                      </p>
+                    </section>
+                  </div>
+                </section>
+              )
+          )}
       </section>
     </div>
   );

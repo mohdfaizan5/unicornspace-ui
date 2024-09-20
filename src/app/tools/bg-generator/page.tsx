@@ -14,15 +14,15 @@ function GradientGenerator() {
   return (
     <section className='flex flex-col gap-5  ' >
       <h1 className="text-3xl font-bold mb-8 text-center font-passion">Gradient Generator</h1>
-      <div style={gradientStyle()} className='h-72 w-[680px] border ' > </div>
+      <div style={gradientStyle()} className='h-72 md:w-[680px]   border ' > </div>
       
-      <div className=' border flex gap-5 items-center justify-center px-10 py-5' >
+      <div className=' border flex flex-col md:flex-row gap-5 items-center justify-center px-10 py-5' >
         <div className='flex gap-x-5 flex-col items-center'>
         <h1 className="text-xl font-bold mb-3 text-center font-passion">Color 1</h1>
           <HexColorPicker className='' color={color1} onChange={setcolor1} ></HexColorPicker>
           <HexColorInput className='border-2 border-black text-center w-20 mt-3 ' color={color1} onChange={setcolor1} ></HexColorInput>
         </div>
-        <div className='flex gap-x-5 flex-col items-center '>
+        <div className='flex  gap-x-5 flex-col items-center '>
         <h1 className="text-xl font-bold mb-3 text-center font-passion ">Color 2</h1>
           <HexColorPicker className='' color={color2} onChange={setcolor2} ></HexColorPicker>
           <HexColorInput className='border-2 border-black text-center w-20 mt-3 ' color={color2} onChange={setcolor2} ></HexColorInput>
