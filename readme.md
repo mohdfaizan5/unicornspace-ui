@@ -29,11 +29,11 @@
 <br/>
 
 
-
-<a href="https://unicornspace-ui.vercel.app/">
-  <img alt="" src="/og unicorn space ui.png">
+<div align="center">
+<a  href="https://unicornspace-ui.vercel.app/">
+  <img align="center" width="800px" alt="" src="https://github.com/user-attachments/assets/0f1e489e-d119-48cd-bbdd-df8c82e1a83b">
 </a>
-
+<div/>
 
 <!--## Tools
 - Theme 
@@ -46,6 +46,7 @@ Please read through our [contributing guide](.github/CONTRIBUTING.md) before sta
 
 ## Authors
 
+
 <a href="https://github.com/mohdfaizan5/unicornspace-ui/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=mohdfaizan5/unicornspace-ui" />
 </a>
@@ -54,4 +55,4 @@ Please read through our [contributing guide](.github/CONTRIBUTING.md) before sta
 
 ## Inspiration & Credits
 
-Inspired by [Shadcn UI](), [Magic UI](), [Hexta Studio]() and many more...
+Inspired by [Shadcn UI](https://ui.shadcn.com/docs), [Magic UI](https://magicui.design/), [Hexta Studio](https://ui.hextastudio.in/) and many more...
