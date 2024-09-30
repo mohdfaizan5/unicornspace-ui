@@ -2,6 +2,7 @@ import Link from "next/link";
 import { allGuides, Guide } from "contentlayer/generated";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import "@/styles/mdx.css"
 
 function PostCard(guide: Guide) {
   return (
