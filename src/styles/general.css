@@ -18,9 +18,7 @@
   background: #555;
 }
 
-
-
-pre[data-filename]::before {
+/* pre[data-filename]::before {
   content: attr(data-filename);
   display: block;
   background-color: #2d2d2d;
@@ -28,4 +26,4 @@ pre[data-filename]::before {
   margin-bottom: 0.5em;
   color: #d4d4d4;
   font-family: monospace;
-}
+} */

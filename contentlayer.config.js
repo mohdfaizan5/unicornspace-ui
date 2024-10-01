@@ -6,6 +6,8 @@ import rehypeSlug from "rehype-slug";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import rehypeMdxCodeProps from "rehype-mdx-code-props";
+import rehypePrism from "rehype-prism-plus";
+import rehypeCodeTitles from "rehype-code-titles"; // for code block titles
 
 export const Component = defineDocumentType(() => ({
   name: "Component",
@@ -57,6 +59,7 @@ export default makeSource({
   mdx: {
     remarkPlugins: [remarkGfm, remarkFrontmatter],
     rehypePlugins: [
+      rehypeCodeTitles,
       rehypeMdxCodeProps,
       // rehypeMermaid,
       rehypeSlug,

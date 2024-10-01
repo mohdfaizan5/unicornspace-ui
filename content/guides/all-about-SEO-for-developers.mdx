@@ -6,14 +6,19 @@ description: SEO is a crucial part of any website. Here's a guide for developers
 
 ---
 
-hi
+```tsx:pages/_app.tsx
+for(int i = 0; i < 10; i++) {
+     std::cout << i << std::endl;
+}
+```
+
 
 <Steps>
 ### Create project
 
 Run the `init` command to create a new Next.js project or to setup an existing one:
 
-```bash
+```bash:terminal
 npx shadcn@latest init
 ```
 
@@ -39,7 +44,7 @@ STEPS
 
 1. Write site config to include SEO metadata
 
-```
+```tsx
 export const siteConfig = {
   name: "wooddecor",
   url: "https://wooddecor.in",

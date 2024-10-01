@@ -1,7 +1,12 @@
 export type NavigationProps = {
   title: string;
   href?: string;
-  links: { title: string; href: string; isPublished?: boolean, label?: string }[];
+  links: {
+    title: string;
+    href: string;
+    isPublished?: boolean;
+    label?: string;
+  }[];
 };
 
 export const navigation: NavigationProps[] = [
@@ -17,7 +22,7 @@ export const navigation: NavigationProps[] = [
     title: "Components",
     href: "/components",
     links: [
-      { title: "Hero section", href: "/components/hero" },
+      { title: "Hero section", href: "/components/hero", label: "Updated" },
       // {
       //   title: "Header",
       //   href: "/components/header/header",
@@ -35,7 +40,11 @@ export const navigation: NavigationProps[] = [
     title: "Tools",
     href: "/tools",
     links: [
-      { title: "Glass Morphism generator", href: "/tools/glass-morphism", label: "New" },
+      {
+        title: "Glass Morphism generator",
+        href: "/tools/glass-morphism",
+        label: "New",
+      },
       { title: "Readme generator", href: "/tools/readme-generator" },
       { title: "Shadcn Theme generator", href: "/tools/color-theme-generator" },
       { title: "Fonts in Use", href: "/tools/fonts-in-use" },

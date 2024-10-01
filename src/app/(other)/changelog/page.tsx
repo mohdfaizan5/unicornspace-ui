@@ -1,6 +1,10 @@
 import React from 'react'
 import "@/styles/typography.css";
 
+
+
+// TODO: convert this page from the normal HTML to a array of objects that can be used to generate the page
+
 const page = () => {
   return (
     <div className='max-w-4xl mx-auto px-5 mt-5 space-y-10'>
