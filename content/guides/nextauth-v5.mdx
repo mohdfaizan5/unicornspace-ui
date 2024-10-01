@@ -27,27 +27,31 @@ npm install next-auth@beta
 const user = await auth();
 if (!user) redirect("/login");
 ```
-{/* > If user is authenticated it will return or it will return `null`. */} 
+
+{/* > If user is authenticated it will return or it will return `null`. */}
 //TODO: this also is not working check it out
 
-## Pre-requisites 
-Install 
+## Pre-requisites
+
+Install
 
 ```bash
 npm install react-hook-form zod prisma sonner
 ```
+
 Install ShadCN components for Login
 
 ```bash
 npx shadcn-ui@latest add form input
 ```
 
-> RECOMMENDED : to generate env.local file 
+> RECOMMENDED : to generate env.local file
+
 ```bash
 npx auth secret
 ```
 
-## Types 
+## Types
 
 ```tsx
 // @/types/index.ts
@@ -78,7 +82,7 @@ export const signInFormSchema = z.object({
 import NextAuth, { AuthError, CredentialsSignin } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { signInFormSchema } from "@/types/index";
-import  prisma  from "@/lib/db";
+import prisma from "@/lib/db";
 import { z } from "zod";
 import { getUserDetails } from "@/actions/auth.action";
 
@@ -116,7 +120,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         const user = {
-          id: dbUser.id,
+          id: dbUser.id.toString(),
           email: dbUser.email,
         };
         return user;
@@ -158,14 +162,6 @@ import { NextResponse } from "next/server";
 const publicRoutes = ["/", "/login", "/signup"]; // Add your public routes here
 
 export default auth((req) => {
-  // console.log(req);
-  // console.log(req.auth);
-  // const path = req.nextUrl.pathname;
-  // if (publicRoutes.includes(path)) NextResponse.next();
-  // console.log("✅✅", req.nextUrl.pathname.startsWith("/courses"));
-  // if (req.nextUrl.pathname.startsWith("/courses")) {
-  //   return NextResponse.redirect(new URL("/login", req.url));
-  // }
   if (!req.auth) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
@@ -467,10 +463,27 @@ const signInAction = async (data: z.infer<typeof signInFormSchema>) => {
       success: true,
       data: req,
     };
-  } catch (error: any) {
+  } catch (error) {
+    if (error instanceof AuthError) {
+      console.log("error", error);
+      switch (error.type) {
+        case "CredentialsSignin": {
+          return {
+            success: false,
+            error: error.message.split("Read more")[0],
+          };
+        }
+        default: {
+          return {
+            success: false,
+            error: "Something went wrong",
+          };
+        }
+      }
+    }
     return {
       success: false,
-      error: `${error.cause.err.code}`,
+      error: "Something went wrong",
     };
   }
 };
@@ -494,7 +507,8 @@ export { signInAction, signOutAction, signUpAction, getUserDetails };
 ```
 
 If you've not created a global prisma client
-```
+
+```tsx
 // @/lib/db.ts
 import { PrismaClient } from '@prisma/client'
 
@@ -543,9 +557,6 @@ npx prisma migrate dev --name init
 npx prisma studio
 ```
 
-
 ### 🎉 You're Done!
 
 #### Checkout our other [guides](https://unicornspace-ui.vercel.app/guides) . Keep learning, keep growing :)
-
-
