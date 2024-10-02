@@ -13,6 +13,8 @@ import { Pricing2 } from "./components/Pricing/pricing2";
 import { Testimonials3 } from "./components/testimonials/Testimonials3";
 import AnimatedText from "./components/TextAppearOnScroll.tsx";
 import AnimatedBox from "./components/animated-box";
+import Pricing4 from "./components/Pricing/pricing4";
+import Testimonial4 from "./components/testimonials/Testimonials4";
 
 const Test = () => {
   return (
@@ -23,6 +25,15 @@ const Test = () => {
 }
 
 const componentRegistry: RegistrySchema = {
+  "Testimonial4":{
+    component: Testimonial4,
+    code: `Coming soon...`
+  },
+  "Pricing4":{
+    component: Pricing4,
+    code: `Coming soon...`
+    
+  },
   "AnimatedBox": {
     component: AnimatedBox,
     code: `Coming soon...`
