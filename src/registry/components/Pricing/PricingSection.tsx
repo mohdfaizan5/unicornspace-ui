@@ -101,7 +101,7 @@ const CustomList = ({
           <path
             stroke="currentColor"
             stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
             stroke-width="2"
             d="M1 5.917 5.724 10.5 15 1.5"
           />
@@ -130,7 +130,7 @@ const CustomList = ({
         >
           <path
             stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
             d="M6 18 18 6M6 6l12 12"
           />
         </svg>

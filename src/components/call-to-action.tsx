@@ -9,7 +9,7 @@ export function CallToAction({ className }: React.ComponentProps<"div">) {
     return (
         <div
             className={cn(
-                "group relative w-72  flex flex-col gap-2 rounded-lg border p-4 text-sm bg-background",
+                "group relative min-w-64  flex flex-col gap-2 rounded-lg border p-4 text-sm bg-background",
                 className
             )}
         >

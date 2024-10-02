@@ -88,5 +88,39 @@
   .rehype-code-title {
     @apply px-5 pb-2 mt-2 pt-1 z-10 -mb-2 font-mono text-xs font-bold text-gray-200 bg-[#0d1117]/95 rounded-t-lg border-b border-white;
   }
-}
 
+  /* Line highlight in code */
+
+  pre > code {
+    display: grid;
+  }
+
+  .line--highlighted {
+    background-color: rgba(200, 200, 255, 0.1);
+    border-left: 2px solid #60a5fa; /* Tailwind blue-400 */
+  }
+
+  .word--highlighted {
+    background-color: rgba(200, 200, 255, 0.1);
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.2rem;
+  }
+
+  [data-filename] {
+    position: relative;
+  }
+
+  [data-filename]::before {
+    content: attr(data-filename);
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    padding: 0.25rem 0.5rem;
+    background-color: #374151; /* Tailwind gray-700 */
+    color: #f3f4f6; /* Tailwind gray-100 */
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+}

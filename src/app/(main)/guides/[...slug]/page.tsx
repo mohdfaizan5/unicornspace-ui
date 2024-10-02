@@ -60,7 +60,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   console.log("guides url", guide?.slug);
 
   return (
-    <main className=" overflow-x-hidden md:max-w-3xl">
+    <main className=" overflow-x-hidden md:max-w-3xl prose dark:prose-invert">
       <Mdx code={guide.body.code} />
     </main>
   );

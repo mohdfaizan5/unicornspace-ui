@@ -1,8 +1,3 @@
-
-
-
-
-
 // componentRegistry file is used to register all the components that are used in the project.
 import { RegistrySchema } from "@/types/registry";
 import CallOutSection from "./components/CallOut";

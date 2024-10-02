@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "src/scripts/extract-component-code.ts"  ],
   "exclude": ["node_modules"]
 }

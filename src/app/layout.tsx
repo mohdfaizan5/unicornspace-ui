@@ -38,9 +38,9 @@ export default function RootLayout({
           <div className="relative flex min-h-screen flex-col antialiased bg-background">
             <Navbar />
             {children}
+            <BasicFooter />
           </div>
         </ThemeProvider>
-        <BasicFooter />
       </body>
     </html>
   );
