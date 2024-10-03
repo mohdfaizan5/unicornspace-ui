@@ -13,6 +13,7 @@ const CodeHighlight = ({
   className?: string;
 }) => {
   const [copied, setCopied] = useState(false);
+
   return (
     <div className={cn("relative rounded-sm", className)}>
       <Button

@@ -8,6 +8,8 @@ import { Pricing2 } from "./components/Pricing/pricing2";
 import { Testimonials3 } from "./components/testimonials/Testimonials3";
 import AnimatedText from "./components/TextAppearOnScroll.tsx";
 import AnimatedBox from "./components/animated-box";
+import { readFileContent } from "@/lib/readCode";
+import { AnimatedBoxCode } from "./component-code/animated-box";
 
 const Test = () => {
   return (
@@ -15,18 +17,25 @@ const Test = () => {
       <h1>Test</h1>
     </div>
   );
-}
+};
+
+// console.log("checking 🔥🔥🔥🔥");
+console.log(AnimatedBoxCode);
+
+// const getCodeFromText = async (a: string) => {
+//   return `string`;
+// };
 
 const componentRegistry: RegistrySchema = {
-  "AnimatedBox": {
+  AnimatedBox: {
     component: AnimatedBox,
-    code: `Coming soon...`
+    code: AnimatedBoxCode,
   },
-  "Test": {
+  Test: {
     component: Test,
-    code: ""
+    code: AnimatedBoxCode,
   },
-  "Faq1": {
+  Faq1: {
     component: Faq1,
     code: `
     
@@ -138,11 +147,10 @@ export function Faq1() {
   )
 }
 
-    `
+    `,
   },
 
-
-  "Pricing2": {
+  Pricing2: {
     component: Pricing2,
     code: `
     import clsx from 'clsx'
@@ -309,10 +317,10 @@ export function Pricing2() {
     </section>
   )
 }
-`
+`,
   },
 
-  "Testimonials3": {
+  Testimonials3: {
     component: Testimonials3,
     code: `
 import Image from 'next/image'
@@ -452,10 +460,10 @@ export function Testimonials3() {
     </section>
   )
 }
-`
+`,
   },
 
-  "HeroSection3": {
+  HeroSection3: {
     component: HeroSection3,
     code: `
 import { Button } from "@/components/ui/button";
@@ -503,7 +511,7 @@ export default function HeroSection3() {
 }
 `,
   },
-  "HeroSection": {
+  HeroSection: {
     component: HeroSection,
     code: `import React from "react";
 import Link from "next/link";
@@ -542,7 +550,7 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-`
+`,
   },
   "animated-text": {
     component: CallOutSection,
@@ -592,7 +600,6 @@ const Word = ({ children, progress, range }: any) => {
 export default AnimatedText;
 `,
   },
-}
-
+};
 
 export default componentRegistry;

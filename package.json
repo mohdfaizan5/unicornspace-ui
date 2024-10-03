@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "generate-registry": "npx tsc --noEmit src/scripts/generate-registry.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -83,6 +84,7 @@
     "eslint-config-next": "14.2.4",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }
 }
