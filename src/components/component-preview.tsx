@@ -22,16 +22,16 @@ const ComponentPreview = ({
     return <div>Component not found</div>;
   }
 
-  // console.log(ComponentToRender)
+  console.log(ComponentToRender.code);
 
   return (
-    <div className="relative my-4 flex flex-col space-y-2 lg:max-w-[120ch] overflow-auto">
+    <div className="relative my-4 flex flex-col space-y-2 overflow-auto">
       <Tabs defaultValue="preview" className="">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
-        <TabsContent value="preview" className="relative rounded-md h-[46rem]">
+        <TabsContent value="preview" className="relative rounded-md ">
           <ComponentWrapper>
             <React.Suspense
               fallback={
@@ -50,10 +50,11 @@ const ComponentPreview = ({
 
         <TabsContent
           value="code"
-          className="w-96 md:w-[800px] ml-10 rounded-sm "
+          className=" rounded-sm "
         >
+          {/* {ComponentToRender.code} */}
           <CodeHighlight
-            className="whitespace-pre-line"
+            className="w-full max-h-96 overflow-y-auto"
             code={ComponentToRender.code}
           />
         </TabsContent>

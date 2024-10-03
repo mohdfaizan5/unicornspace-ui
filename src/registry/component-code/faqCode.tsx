@@ -1,4 +1,4 @@
-export const faqCode = `import React from "react";
+export const FaqCode = `import React from "react";
 // TODO add proper question and answers
 import {
   Accordion,

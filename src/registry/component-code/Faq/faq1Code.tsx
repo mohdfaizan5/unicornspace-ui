@@ -1,4 +1,4 @@
-export const faq1Code = `
+export const Faq1Code = `
 import Image from 'next/image'
 
 const faqs = [

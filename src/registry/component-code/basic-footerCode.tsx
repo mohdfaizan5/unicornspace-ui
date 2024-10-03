@@ -1,4 +1,4 @@
-export const basicFooterCode = `import React from "react";
+export const BasicFooterCode = `import React from "react";
 import Logo from "../../components/logo";
 import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";

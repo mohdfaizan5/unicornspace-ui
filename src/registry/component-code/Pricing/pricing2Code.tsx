@@ -1,4 +1,4 @@
-export const pricing2Code = `// @ts-nocheck
+export const Pricing2Code = `// @ts-nocheck
 import clsx from 'clsx'
 
 
@@ -86,7 +86,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
 
         color="white"
         className="mt-8"
-        aria-label={\`Get started with the ${name} plan for ${price}\`}
+        aria-label={\`Get started with the \${name} plan for \${price}\`}
       >
         Get started
       </Button>

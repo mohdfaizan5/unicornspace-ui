@@ -1,4 +1,4 @@
-export const cta1Code = `import Logo from '@/components/logo'
+export const Cta1Code = `import Logo from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import { useId } from 'react'
 
@@ -39,7 +39,7 @@ function CircleBackground({
         />
         <path
           d="M1 279C1 125.465 125.465 1 279 1"
-          stroke={\`url(#${id})\`}
+          stroke={\`url(#\${id})\`}
           strokeLinecap="round"
         />
       </svg>

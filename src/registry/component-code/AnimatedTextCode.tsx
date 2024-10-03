@@ -21,7 +21,7 @@ function RevealTextOnScroll({ children, className }: RevealTextOnScrollProps) {
   return (
     <p
       ref={container}
-      className={\`flex flex-wrap font-medium text-3xl ${className}\`}
+      className={\`flex flex-wrap font-medium text-3xl \${className}\`}
     >
       {words.map((word: string, i: number) => {
         const start = i / words.length;

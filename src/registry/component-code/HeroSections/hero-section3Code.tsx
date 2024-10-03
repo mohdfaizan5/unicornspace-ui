@@ -1,4 +1,4 @@
-export const heroSection3Code = `
+export const HeroSection3Code = `
 import { Button } from "@/components/ui/button";
 
 

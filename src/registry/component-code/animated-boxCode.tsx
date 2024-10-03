@@ -1,4 +1,4 @@
-export const animatedBoxCode = `import React from 'react'
+export const AnimatedBoxCode = `import React from 'react'
 
 const AnimatedBox = () => {
   return (

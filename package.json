@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "npx tsc --noEmit",
+    "typecheck": "npx tsc --noEmit",
     "build:content": "contentlayer2 build"
   },
   "dependencies": {

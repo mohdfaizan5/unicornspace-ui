@@ -1,4 +1,4 @@
-export const features3Code = `// @ts-nocheck
+export const Features3Code = `// @ts-nocheck
 import { useId } from 'react'
 
 const features = [
@@ -75,13 +75,13 @@ function DeviceCardsIcon(props) {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M9 13a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H10a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H10a1 1 0 01-1-1v-2zm1 5a1 1 0 00-1 1v2a1 1 0 001 1h12a1 1 0 001-1v-2a1 1 0 00-1-1H10z"
-        fill={\`url(#${id}-gradient)\`}
+        fill={\`url(#\${id}-gradient)\`}
       />
       <rect x={9} y={6} width={14} height={4} rx={1} fill="#171717" />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
       <defs>
         <linearGradient
-          id={\`${id}-gradient\`}
+          id={\`\${id}-gradient\`}
           x1={16}
           y1={12}
           x2={16}

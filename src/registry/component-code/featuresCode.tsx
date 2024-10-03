@@ -1,4 +1,4 @@
-export const featuresCode = `import React from "react";
+export const FeaturesCode = `import React from "react";
 import { Card } from "@/components/ui/card";
 import { BsSpeedometer } from "react-icons/bs";
 import { IoCloudDownloadSharp } from "react-icons/io5";

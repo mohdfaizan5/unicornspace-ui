@@ -1,4 +1,4 @@
-export const pricing3Code = `// "use client";
+export const Pricing3Code = `// "use client";
 
 // import { useState } from 'react'
 // import clsx from 'clsx'
@@ -182,7 +182,7 @@ export const pricing3Code = `// "use client";
 //       <Button
 //         color={featured ? 'cyan' : 'gray'}
 //         className="mt-6"
-//         aria-label={\`Get started with the ${name} plan for ${price}\`}
+//         aria-label={\`Get started with the \${name} plan for \${price}\`}
 //       >
 //         {button.label}
 //       </Button>

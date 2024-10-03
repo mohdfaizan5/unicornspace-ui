@@ -1,4 +1,4 @@
-export const review1Code = `// "use client"
+export const Review1Code = `// "use client"
 
 // import { useEffect, useMemo, useRef, useState } from 'react'
 // import clsx from 'clsx'
@@ -174,7 +174,7 @@ export const review1Code = `// "use client"
 // }) {
 //   let columnRef = useRef()
 //   let [columnHeight, setColumnHeight] = useState(0)
-//   let duration = \`${columnHeight * msPerPixel}ms\`
+//   let duration = \`\${columnHeight * msPerPixel}ms\`
 
 //   useEffect(() => {
 //     let resizeObserver = new window.ResizeObserver(() => {

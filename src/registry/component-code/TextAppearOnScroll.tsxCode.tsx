@@ -1,4 +1,4 @@
-export const TextAppearOnScroll.tsxCode = `"use client";
+export const TextAppearOnScrollCode = `"use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 

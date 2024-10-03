@@ -33,7 +33,7 @@ const Features = () => {
     <div className="flex flex-col gap-3 pb-5 md:mx-auto md:grid md:grid-cols-4">
       {featuresData.map((feature, i) => (
         <div
-          className={\`flex md:col-span-2 gap-5 items-center ${
+          className={\`flex md:col-span-2 gap-5 items-center \${
             (i + 1) % 2 == 0 ? "col-start-2" : "col-start-4"
           }\`}
           key={i}

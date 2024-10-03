@@ -1,4 +1,4 @@
-export const header1Code = `// Incomplete
+export const Header1Code = `// Incomplete
 // Mobile nav not working coz it has used headlessUI heavily
 
 import Link from 'next/link'

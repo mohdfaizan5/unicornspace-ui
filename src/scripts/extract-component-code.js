@@ -8,8 +8,17 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-function toCamelCase(str) {
-  return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+function escapeCode(code) {
+  return code
+    .replace(/\\/g, "\\\\")
+    .replace(/'/g, "\\'")
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "\\r");
+}
+
+function toPascalCaseName(str) {
+  const string = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function extractComponentCode(componentPath, relativePath = "") {
@@ -29,18 +38,16 @@ function extractComponentCode(componentPath, relativePath = "") {
   } else if (path.extname(componentPath) === ".tsx") {
     const code = fs.readFileSync(componentPath, "utf-8");
     const componentName = path.basename(componentPath, ".tsx");
-    const camelCaseName = toCamelCase(componentName);
+    const PascalCaseName = toPascalCaseName(componentName);
     const outputPath = path.join(
       outputDir,
       relativePath.replace(/\.tsx$/, "Code.tsx")
     );
 
-    const exportedCode = `export const ${camelCaseName.toUpperCase()}Code = \`${code.replace(
-      /`/g,
-      "\\`"
-    )}\`;\n`;
+    const escapedCode = escapeCode(code);
+    const exportedCode = `export const ${PascalCaseName}Code = '${escapedCode}';\n`;
 
-    console.log(exportedCode);
+    // console.log(exportedCode);
 
     fs.writeFileSync(outputPath, exportedCode);
     console.log(`Extracted code for ${componentPath}`);

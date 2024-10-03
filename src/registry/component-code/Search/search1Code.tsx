@@ -1,1 +1,1 @@
-export const search1Code = ``;
+export const Search1Code = ``;

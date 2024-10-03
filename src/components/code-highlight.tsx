@@ -34,6 +34,8 @@ const CodeHighlight = ({
         customStyle={{ borderRadius: "16px" }}
         language="javascript"
         style={vs2015}
+        CodeTag={"div"}
+        wrapLongLines
       >
         {code}
       </SyntaxHighlighter>

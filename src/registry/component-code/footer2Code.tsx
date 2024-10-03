@@ -1,4 +1,4 @@
-export const footer2Code = `import React from "react";
+export const Footer2Code = `import React from "react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
