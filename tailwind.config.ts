@@ -21,7 +21,6 @@ const config = {
       fontFamily: {
         passion: "var(--passion)",
         poppins: "var(--poppins)",
-        
       },
       colors: {
         border: "hsl(var(--border))",
@@ -79,6 +78,7 @@ const config = {
       },
     },
   },
+  safelist: ["rehype-code-title"],
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
