@@ -29,9 +29,10 @@
 <br/>
 
 
-<div align="center">
-<a  href="https://unicornspace-ui.vercel.app/">
-  <img align="center" width="800px" alt="" src="https://github.com/user-attachments/assets/0f1e489e-d119-48cd-bbdd-df8c82e1a83b">
+
+<a align="center"  href="https://unicornspace-ui.vercel.app/">
+<!--  <img align="center" width="800px" alt="" src="https://github.com/user-attachments/assets/0f1e489e-d119-48cd-bbdd-df8c82e1a83b">-->
+  <img align="center"  alt="" src="https://github.com/user-attachments/assets/790890cd-cf32-493e-beb7-eb2b36dcd299">
 </a>
 <div/>
 
@@ -39,6 +40,18 @@
 - Theme 
 -->
 
+## 📌 Overview
+`/` = Homepage   
+`/tools` = Tools make your development and design easy.   
+`/components` = A ready to use response components.  
+`/guides` = Guides are indepth tutorials on concepts and tools.    
+
+## ⚙ Tech Stack
+- Next.js
+- TypeScript
+- Tailwind
+- Shadcn UI
+- Content layer & MDX
 
 ## Contributing
 
@@ -50,6 +63,8 @@ Please read through our [contributing guide](.github/CONTRIBUTING.md) before sta
 <a href="https://github.com/mohdfaizan5/unicornspace-ui/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=mohdfaizan5/unicornspace-ui" />
 </a>
+
+
 
 
 
