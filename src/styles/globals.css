@@ -123,4 +123,43 @@
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
   }
+
+  /* For copy button approach */
+  /* pre {
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: "Fira Code", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    counter-reset: line;
+  }
+
+  code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
+  }
+
+  code > [data-line].line--highlighted::before {
+    background-color: rgba(255, 255, 0, 0.2);
+  }
+
+  code > [data-line]:hover::before {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .word--highlighted {
+    background-color: rgba(255, 255, 0, 0.2);
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+  } */
 }

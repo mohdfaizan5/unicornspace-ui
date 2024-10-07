@@ -1,0 +1,102 @@
+---
+title: Shadcn Forms
+description: all different types of forms.
+---
+
+### Installation
+
+```tsx
+npx shadcn@latest add form
+```
+
+## Examples
+
+### Variant forms
+
+```tsx
+"use client";
+import React from "react";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { UseFormReturn } from "react-hook-form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+
+type FormProps = UseFormReturn<
+  {
+    title: string;
+    price: number;
+    colors: string[];
+    description?: string | undefined;
+    discountedPrice?: number | undefined;
+    isFeatured?: boolean | undefined;
+    category?: string | undefined;
+    image?: string | undefined;
+    variants?: string[] | undefined;
+  },
+  any,
+  undefined
+>;
+
+const VariantForm = ({ form }: { form: FormProps }) => {
+  const [text, setText] = React.useState("");
+  return (
+    <div>
+      <FormField
+        control={form.control}
+        name="variants"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Product Variants</FormLabel>
+            <div className="flex">
+              <FormControl className="flex gap-1">
+                <Input
+                  placeholder="Add a variant"
+                  value={text}
+                  onChange={(e) => {
+                    setText(e.target.value);
+                  }}
+                />
+              </FormControl>
+              <Button
+                type="button"
+                onClick={() => {
+                  if (text === "") return;
+                  let d;
+                  if (Array.isArray(field.value)) {
+                    d = [...field.value];
+                    // field.onChange([...d, text]);
+                    field.onChange([...field.value, text]);
+                  }
+                  setText("");
+                }}
+              >
+                <Plus />
+                Add variant
+              </Button>
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {field.value &&
+                field.value?.map((varient, i) => (
+                  <Badge key={i}>{varient}</Badge>
+                ))}
+            </div>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </div>
+  );
+};
+
+export default VariantForm;
+```

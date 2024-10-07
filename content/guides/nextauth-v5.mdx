@@ -21,7 +21,7 @@ NextAuth.js is a complete open-source authentication solution for Next.js applic
 npm install next-auth@beta
 ```
 
-### How to check where the user is authenticated or not in Server Compoent?
+### How to check where the user is authenticated or not in Server Component?
 
 ```tsx
 const user = await auth();
@@ -35,7 +35,7 @@ if (!user) redirect("/login");
 
 Install
 
-```bash
+```bash 
 npm install react-hook-form zod prisma sonner
 ```
 
@@ -51,10 +51,28 @@ npx shadcn-ui@latest add form input
 npx auth secret
 ```
 
+```terminal
+
+─ src
+  ├── actions
+  |   └─── auth.action.ts
+  ├── app
+  │   ├── api/auth/[...nextauth]/route.ts
+  |   ├── /signin/page.tsx
+  |   └── /signup/page.tsx
+  ├── components
+  |   ├── signup-form.tsx
+  |   └── signin-form.tsx
+  ├── types
+  |   └── index.ts
+  ├── lib
+  |   └── auth.ts
+  └── middleware.ts
+```
+
 ## Types
 
-```tsx
-// @/types/index.ts
+```tsx:@/types/index.ts
 import { z } from "zod";
 
 export const signUpFormSchema = z
@@ -77,8 +95,7 @@ export const signInFormSchema = z.object({
 
 ## Final code for Credentails provider
 
-```tsx
-// @/lib/auth.ts
+```tsx:@/lib/auth.ts
 import NextAuth, { AuthError, CredentialsSignin } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { signInFormSchema } from "@/types/index";
@@ -154,8 +171,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 });
 ```
 
-```tsx
-// @/middleware.ts
+```tsx:@/middleware.ts
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
@@ -172,16 +188,15 @@ export const config = {
 };
 ```
 
-```tsx
-// @/app/api/auth/[...nextauth]/route.ts
+```tsx:@/app/api/auth/[...nextauth]/route.ts
+
 import { handlers } from "@/lib/auth"; // Referring to the auth.ts we just created
 export const { GET, POST } = handlers;
 ```
 
 > (Optional) Create this inside `login` or `signin` folder. So that you can go on that route to enter your login credentials. Use this component inside `page.tsx`.
 
-```tsx
-// signInForm.tsx
+```tsx:signInForm.tsx
 "use client";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -280,8 +295,7 @@ export default SignInForm;
 
 > (Optional) Create this inside `register` or `signup` folder. So that you can go on that route to register. Use this component inside `page.tsx`.
 
-```tsx
-// signupForm.tsx
+```tsx:signupForm.tsx
 "use client";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -403,8 +417,7 @@ const SignUpForm = () => {
 export default SignUpForm;
 ```
 
-```tsx
-// @/actions/auth.action.ts
+```tsx:@/actions/auth.action.ts
 "use server";
 
 import { signIn, signOut } from "@/lib/auth";
@@ -508,23 +521,22 @@ export { signInAction, signOutAction, signUpAction, getUserDetails };
 
 If you've not created a global prisma client
 
-```tsx
-// @/lib/db.ts
-import { PrismaClient } from '@prisma/client'
+```tsx:@/lib/db.ts
+import { PrismaClient } from "@prisma/client";
 
 const prismaClientSingleton = () => {
-  return new PrismaClient()
-}
+  return new PrismaClient();
+};
 
 declare const globalThis: {
   prismaGlobal: ReturnType<typeof prismaClientSingleton>;
 } & typeof global;
 
-const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
 
-export default prisma
+export default prisma;
 
-if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma
+if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
 ```
 
 > Follow these steps if `db.ts` throws some error

@@ -65,6 +65,10 @@ git checkout -b my-new-branch
 pnpm install
 ```
 
+```bash
+node .\src\scripts\extract-component-code.js
+```
+
 <!--
 
 

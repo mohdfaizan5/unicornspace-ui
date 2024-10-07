@@ -46,7 +46,6 @@ function extractComponentCode(componentPath, relativePath = "") {
 
     const escapedCode = escapeCode(code);
     const exportedCode = `export const ${PascalCaseName}Code = '${escapedCode}';\n`;
-
     // console.log(exportedCode);
 
     fs.writeFileSync(outputPath, exportedCode);
