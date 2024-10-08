@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate-registry": "npx tsc --noEmit src/scripts/generate-registry.ts",
+    "generate-registry2": "npx tsc --noEmit src/scripts/generate-registry.ts",
+    "generate-registry": "node src/scripts/extract-component-code.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

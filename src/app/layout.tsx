@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Poppins, Passion_One } from "next/font/google";
 import Navbar from "@/components/navbar";
-import BasicFooter from "@/registry/components/basic-footer";
 
 import "@/styles/globals.css";
 import "@/styles/general.css";
+import BasicFooter from "@/registry/components/footer/basic-footer";
 
 const inter = Poppins({
   weight: ["400", "200"],
@@ -45,7 +45,9 @@ export default function RootLayout({
     </html>
   );
 }
-function localFont(arg0: { src: { path: string; weight: string; }[]; variable: string; }) {
+function localFont(arg0: {
+  src: { path: string; weight: string }[];
+  variable: string;
+}) {
   throw new Error("Function not implemented.");
 }
-

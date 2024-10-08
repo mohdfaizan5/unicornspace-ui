@@ -23,16 +23,17 @@ export const navigation: NavigationProps[] = [
     href: "/components",
     links: [
       { title: "Hero section", href: "/components/hero", label: "Updated" },
-      // {
-      //   title: "Header",
-      //   href: "/components/header/header",
-      // },
-      // { title: "Footer", href: "/docs/basics-of-time-travel" },
+      {
+        title: "Features",
+        href: "/components/features",
+        label: "Just Arrived🔥",
+      },
       {
         title: "Pricing",
         href: "/components/pricing",
       },
       { title: "Testimonials", href: "/components/testimonials" },
+      { title: "Others", href: "/components/other" },
       // { title: "Faq", href: "/components/faq" },
     ],
   },

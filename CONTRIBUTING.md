@@ -15,7 +15,6 @@ This repository is a
 This repository is structured as follows:
 
 ```
-
 ├── app
 ├── components
 ├── content

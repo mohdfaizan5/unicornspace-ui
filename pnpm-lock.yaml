@@ -14,9 +14,6 @@ importers:
       '@mdx-js/react':
         specifier: ^3.0.1
         version: 3.0.1(@types/react@18.3.3)(react@18.3.1)
-      '@next/font':
-        specifier: ^14.2.8
-        version: 14.2.8(next@14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@next/mdx':
         specifier: ^14.2.5
         version: 14.2.5(@mdx-js/loader@3.0.1(webpack@5.92.1(esbuild@0.18.20)))(@mdx-js/react@3.0.1(@types/react@18.3.3)(react@18.3.1))
@@ -597,11 +594,6 @@ packages:
 
   '@next/eslint-plugin-next@14.2.4':
     resolution: {integrity: sha512-svSFxW9f3xDaZA3idQmlFw7SusOuWTpDTAeBlO3AEPDltrraV+lqs7mAc6A27YdnpQVVIA3sODqUAAHdWhVWsA==}
-
-  '@next/font@14.2.8':
-    resolution: {integrity: sha512-yQbLs/Sc9PXXsJv3gj5w/2Ubesge+m1VJNH5io8KcxYJfjbJnAywtMvZRUbWX2hyeB/o7Xu1PJKAqbjaBrzDTQ==}
-    peerDependencies:
-      next: '*'
 
   '@next/mdx@14.2.5':
     resolution: {integrity: sha512-AROhSdXQg0/jt55iqxVSJqp9oaCyXwRe44/I17c77gDshZ6ex7VKBZDH0GljaxZ0Y4mScYUbFJJEh42Xw4X4Dg==}
@@ -5102,10 +5094,6 @@ snapshots:
   '@next/eslint-plugin-next@14.2.4':
     dependencies:
       glob: 10.3.10
-
-  '@next/font@14.2.8(next@14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
-    dependencies:
-      next: 14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@next/mdx@14.2.5(@mdx-js/loader@3.0.1(webpack@5.92.1(esbuild@0.18.20)))(@mdx-js/react@3.0.1(@types/react@18.3.3)(react@18.3.1))':
     dependencies:

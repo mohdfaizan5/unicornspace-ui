@@ -37,7 +37,7 @@ const featuresData = [
   },
 ];
 
-const Features = () => {
+const Features1 = () => {
   return (
     <section className="flex items-center flex-col my-16">
       <h2 className="font-bold text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
@@ -60,4 +60,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default Features1;
