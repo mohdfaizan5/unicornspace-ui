@@ -15,6 +15,7 @@ export const navigation: NavigationProps[] = [
 
     links: [
       { title: "Getting started", href: "/" },
+      // { title: "Changelog", href: "/changelog" },
       // { title: "Installation", href: "/docs/installation", isPublished: false },
     ],
   },
