@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { Badge } from "./ui/badge";
 import TechStackIcons from "./tech-stack-icons";
@@ -9,7 +9,7 @@ import { Icons } from "./icons";
 const HeroSection = () => {
   return (
     <section className="min-h-screen ">
-      <main className="px-5 py-16 pb-30 sm:flex sm:flex-col items-center z-10 bg-transparent relative">
+      <main className="py-16 pb-30 sm:flex sm:flex-col items-center z-10 bg-transparent relative">
         <div className="absolute  inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
         <Badge>🎉 Something special is waiting!</Badge>
         <h1 className="text-5xl mt-2 sm:text-6xl sm:w-2/3 sm:text-center font-passion font-bold">
@@ -22,10 +22,11 @@ const HeroSection = () => {
         </p>
         <Link href={"/components"}>
           <Button
-            className="w-[350px] font-semibold h-[50px] mt-10 text-lg"
+            className="group w-[350px] font-semibold h-[50px] mt-10 text-lg"
             variant={"default"}
           >
-            Start Here <FiArrowUpRight />
+            Start Here{" "}
+            <FiArrowRight className="transition-transform group-hover:translate-x-2 ml-1" />
           </Button>
         </Link>
         <div className="hidden md:block">

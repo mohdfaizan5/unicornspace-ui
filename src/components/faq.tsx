@@ -8,7 +8,7 @@ import {
 
 const Faq = () => {
   return (
-    <section className="bg-background min-h-screen py-10 px-5 flex flex-col items-center">
+    <section className="bg-background min-h-[70dvh] py-10 flex flex-col items-center">
       {/* <h2>Develop projects without the manual management</h2>
       <h3>hioajsdf</h3> */}
       <h1>FAQs</h1>

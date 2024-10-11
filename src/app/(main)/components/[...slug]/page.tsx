@@ -22,14 +22,12 @@ const ComponentPage = ({ params }: any) => {
 
   return (
     <div>
-      <div className="mx-auto max-w-xl py-8">
+      <div className="mx-auto max-w-5xl py-8">
         <div className="mb-8 ">
           <h1 className="text-3xl font-bold">{guide.title}</h1>
-          {
-            guide.description &&
-
+          {guide.description && (
             <div className="text-gray-500">{guide.description}</div>
-          }
+          )}
         </div>
         <Mdx code={guide.body.code} />
       </div>

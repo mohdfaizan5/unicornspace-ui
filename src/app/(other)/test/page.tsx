@@ -1,3 +1,4 @@
+import ComponentPreview from "@/components/component-preview";
 import { Faq1 } from "@/registry/components/FAQ/faq1";
 import Features2 from "@/registry/components/features/Features2";
 import { Features3 } from "@/registry/components/features/features3";
@@ -8,7 +9,9 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="min-h-[300vh] mt-20">
+    <div className="min-h-[300vh] mt-20 md:px-40">
+      <ComponentPreview name={"HeroSection1"} width="500px" scale={0.8} />
+
       {/* <Pricing3 /> */}
       {/* <SocialProof /> */}
       <CallOutSection />

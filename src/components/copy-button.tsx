@@ -2,14 +2,21 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Check, Clipboard } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const CopyButton = ({ text }: { text: string }) => {
+const CopyButton = ({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) => {
   const [copied, setCopied] = React.useState(false);
   return (
     <Button
       size={"icon"}
       variant={"outline"}
-      className="size-8 absolute top-1 right-1"
+      className={cn("px-2", className)}
       onClick={() => {
         setCopied(true);
         navigator.clipboard.writeText(text);

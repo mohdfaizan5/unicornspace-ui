@@ -1,6 +1,7 @@
 import { allGuides } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-component";
 import { notFound } from "next/navigation";
+import { CallToAction } from "@/components/call-to-action";
 
 // export const generateStaticParams = async () => {
 //   const slug = params.slug?.join("/") || ""
@@ -60,8 +61,12 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   console.log("guides url", guide?.slug);
 
   return (
-    <main className=" overflow-x-hidden md:max-w-3xl prose dark:prose-invert">
-      <Mdx code={guide.body.code} />
+    <main className=" flex items-start md:justify-between prose dark:prose-invert">
+      <Mdx
+        className="md:max-w-2xl md:sticky md:top-0 md:overflow-hidden"
+        code={guide.body.code}
+      />
+      <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
     </main>
   );
 };

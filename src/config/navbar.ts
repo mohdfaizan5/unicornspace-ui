@@ -12,9 +12,9 @@ export type NavigationProps = {
 export const navigation: NavigationProps[] = [
   {
     title: "Introduction",
-
+    href: "/components/get-started",
     links: [
-      { title: "Getting started", href: "/" },
+      { title: "Getting started", href: "/components/get-started" },
       // { title: "Installation", href: "/docs/installation", isPublished: false },
     ],
   },
@@ -22,7 +22,11 @@ export const navigation: NavigationProps[] = [
     title: "Components",
     href: "/components",
     links: [
-      { title: "Hero section", href: "/components/hero", label: "Updated" },
+      {
+        title: "Hero section",
+        href: "/components/hero-section",
+        label: "Updated",
+      },
       {
         title: "Features",
         href: "/components/features",
@@ -49,19 +53,24 @@ export const navigation: NavigationProps[] = [
       { title: "Readme generator", href: "/tools/readme-generator" },
       { title: "Shadcn Theme generator", href: "/tools/color-theme-generator" },
       { title: "Fonts in Use", href: "/tools/fonts-in-use" },
-      { title: "Color palette", href: "/tools/colors-palettes" },
+      { title: "Color palette", href: "/tools/color-palettes" },
       {
         title: "Color converter",
         href: "/tools/color-convertor",
+        label: "Updated",
       },
       {
         title: "Gradient Generator",
         href: "/tools/bg-generator",
       },
-      // {
-      //   title: "Color contrast checker",
-      //   href: "/tools/contrast-checker",
-      // },
+      {
+        title: "Color contrast checker",
+        href: "/tools/contrast-checker",
+      },
+      {
+        title: "Resources",
+        href: "/tools/resources",
+      },
     ],
   },
   {

@@ -1,27 +1,14 @@
 [
   {
-    "title": "string",
+    "title": "shadcn",
     "description": "string",
-    "image": "string",
+    "image": "https://private-user-images.githubusercontent.com/79694828/373512912-071c749c-0deb-4d02-b68a-d8f8b9ae6f67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg2NDM3NjEsIm5iZiI6MTcyODY0MzQ2MSwicGF0aCI6Ii83OTY5NDgyOC8zNzM1MTI5MTItMDcxYzc0OWMtMGRlYi00ZDAyLWI2OGEtZDhmOGI5YWU2ZjY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDExVDEwNDQyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlMzc4ZDQ4NDExNmY0MTg2N2RiY2JmYmFiMmQ5NjFlYmUwYjg4NjcyZTcyODNkZjIzNmUyMGM3OGFiNjg2MjImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.HRzXVZbgSAyFG90eY4pKJ0eVCUcfG-STQTLxi80yD9U",
     "category": "string"
   },
   {
     "title": "string",
     "description": "string",
-    "image": "string",
-    "category": "string"
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "image": "string",
-    "category": "string"
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "image": "string",
+    "image": "https://private-user-images.githubusercontent.com/79694828/373512912-071c749c-0deb-4d02-b68a-d8f8b9ae6f67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjg2NDM3NjEsIm5iZiI6MTcyODY0MzQ2MSwicGF0aCI6Ii83OTY5NDgyOC8zNzM1MTI5MTItMDcxYzc0OWMtMGRlYi00ZDAyLWI2OGEtZDhmOGI5YWU2ZjY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDExVDEwNDQyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlMzc4ZDQ4NDExNmY0MTg2N2RiY2JmYmFiMmQ5NjFlYmUwYjg4NjcyZTcyODNkZjIzNmUyMGM3OGFiNjg2MjImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.HRzXVZbgSAyFG90eY4pKJ0eVCUcfG-STQTLxi80yD9U",
     "category": "string"
   }
-
 ]

@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import HeroSection from "@/components/hero-section";
 import { Callout } from "./call-out";
 import CopyButton from "./copy-button";
+import "@/styles/mdx.css";
 
 type componentsProps = {
   className: string;
@@ -226,13 +227,14 @@ const components = {
 
 interface MdxProps {
   code: string;
+  className?: string;
 }
 
-export function Mdx({ code }: MdxProps) {
+export function Mdx({ code, className }: MdxProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <div className="mdx">
+    <div className={cn("mdx", className)}>
       <Component components={components} />
     </div>
   );
