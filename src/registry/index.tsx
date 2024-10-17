@@ -1,6 +1,5 @@
 // componentRegistry file is used to register all the components that are used in the project.
 import { RegistrySchema } from "@/types/registry";
-import { Faq1 } from "./components/FAQ/faq1";
 import HeroSection3 from "./components/hero-sections/hero-section3";
 import { Pricing2 } from "./components/pricing/pricing2";
 import { Faq1Code } from "./component-code/Faq/faq1Code";
@@ -31,16 +30,52 @@ import TextAppearOnScroll from "./components/others/TextAppearOnScroll";
 import { PricingSectionCode } from "./component-code/Pricing/PricingSectionCode";
 import { TextAppearOnScrollCode } from "./component-code/others/TextAppearOnScrollCode";
 import CallOutSection from "./components/others/call-out";
+import Navbar1 from "./components/navbars/navbar1";
+import { Navbar1Code } from "./component-code/navbars/navbar1Code";
+import ProductImageCarousel from "./components/ecommerce/product-image-carousel";
+import ProductSection1 from "./components/ecommerce/product-section1";
+import CustomerReviews from "./components/testimonials/customer-reviews";
+import HeroSection4 from "./components/hero-sections/hero-section4";
+import Navbar2 from "./components/navbars/navbar2";
+import { Faq1 } from "./components/FAQ/faq1";
+import Faq2 from "./components/FAQ/faq2";
+import { Faq2Code } from "./component-code/Faq/faq2Code";
+import Footer1 from "./components/footer/footer1";
+import BasicFooter from "./components/footer/basic-footer";
+import Footer2 from "./components/footer/footer2";
 
 const componentRegistry: RegistrySchema = {
   Faq1: {
     component: Faq1,
     code: Faq1Code,
   },
+  Faq2: {
+    component: Faq2,
+    code: Faq2Code,
+  },
 
   CTA1: {
     component: Cta1,
     code: Cta1Code,
+  },
+
+  Navbar1: {
+    component: Navbar1,
+    code: Navbar1Code,
+  },
+  Navbar2: {
+    component: Navbar2,
+    code: "WIP",
+  },
+
+  // Ecommerce
+  "product-image-carousel": {
+    component: ProductImageCarousel,
+    code: `Product`,
+  },
+  ProductSection1: {
+    component: ProductSection1,
+    code: `Product`,
   },
 
   // Pricing
@@ -88,6 +123,11 @@ const componentRegistry: RegistrySchema = {
     code: HeroSection3Code,
   },
 
+  HeroSection4: {
+    component: HeroSection4,
+    code: "WIP",
+  },
+
   // Testimonials
 
   Testimonials1: {
@@ -103,6 +143,24 @@ const componentRegistry: RegistrySchema = {
   Testimonials3: {
     component: Testimonials3,
     code: Testimonials3Code,
+  },
+  CustomerReviews: {
+    component: CustomerReviews,
+    code: `Testimonials3Code`,
+  },
+
+  // Footer
+  BasicFooter: {
+    component: BasicFooter,
+    code: `CallOutSection`,
+  },
+  Footer1: {
+    component: Footer1,
+    code: `CallOutSection`,
+  },
+  Footer2: {
+    component: Footer2,
+    code: `CallOutSection`,
   },
 
   // Other

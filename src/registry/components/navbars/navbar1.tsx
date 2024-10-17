@@ -13,11 +13,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../../../components/ui/button";
 
-const Navbar = () => {
+const Navbar1 = () => {
   return (
-    <header className="py-7 flex justify-between px-16 items-center  z-10">
+    <header className="py-7 flex justify-between px-5 md:px-16 items-center  z-10">
       <div>
-        <h3 className="text-3xl font-semibold flex items-center">
+        <Link href={"#"} className="text-3xl font-semibold flex items-center">
           <Image
             src={"/logos/logo-black-256x256.png"}
             height={50}
@@ -26,19 +26,24 @@ const Navbar = () => {
             className="hidden md:block"
           />{" "}
           UnicornSpace
-        </h3>
+        </Link>
       </div>
-      <nav className="text-white/70 text-sm sm:flex gap-2 hidden">
-        <Link href={"#"}>Features</Link>
-        <Link href={"#"}>Pricing</Link>
-        <Link href={"#"}>Roadmap</Link>
-        <Link href={"#"}>Changelog</Link>
+      <nav className="text-foreground/70 text-sm sm:flex gap-2 hidden">
+        <Link href={"#"} className="hover:text-foreground hover:scale-105">
+          Features
+        </Link>
+        <Link href={"#"} className="hover:text-foreground hover:scale-105">
+          Pricing
+        </Link>
+        <Link href={"#"} className="hover:text-foreground hover:scale-105">
+          Roadmap
+        </Link>
       </nav>
       <div className="sm:flex  hidden gap-2">
-        <Link href={"/login"}>
+        <Link href={"#"}>
           <Button variant={"outline"}>Login</Button>
         </Link>
-        <Link href={"signup"}>
+        <Link href={"#"}>
           <Button variant={"default"}>Get started now</Button>
         </Link>
       </div>
@@ -49,9 +54,13 @@ const Navbar = () => {
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
-              <SheetTitle>Menu</SheetTitle>
+              <SheetTitle>UnicornSpace</SheetTitle>
               <SheetDescription className="flex flex-col justify-between h-[85vh]">
-                n
+                <nav className="text-foreground/70 flex flex-col space-y-2 mt-10">
+                  <Link href={"#"}>Features</Link>
+                  <Link href={"#"}>Pricing</Link>
+                  <Link href={"#"}>Roadmap</Link>
+                </nav>
                 <div className="flex gap-5 justify-center">
                   <Button variant={"outline"}>Login</Button>
                   <Button>Get started</Button>
@@ -65,4 +74,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar1;

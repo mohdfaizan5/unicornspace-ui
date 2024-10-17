@@ -2,6 +2,7 @@ import { allGuides } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-component";
 import { notFound } from "next/navigation";
 import { CallToAction } from "@/components/call-to-action";
+import Image from "next/image";
 
 // export const generateStaticParams = async () => {
 //   const slug = params.slug?.join("/") || ""
@@ -62,11 +63,22 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <main className=" flex items-start md:justify-between prose dark:prose-invert">
-      <Mdx
-        className="md:max-w-2xl md:sticky md:top-0 md:overflow-hidden"
-        code={guide.body.code}
-      />
-      <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
+      <div className="max-w-96 md:max-w-2xl md:sticky md:top-0 md:overflow-hidden">
+        <h1 className="text-4xl font-bold">{guide.title}</h1>
+        <p className="text-lg text-neutral-500">{guide.description}</p>
+        {guide.thumbnail && (
+          <Image
+            className=" md:min-w-96 max-w-96 md:max-w-xl py-2"
+            src={`/images/guides/${guide.thumbnail}`}
+            width={720}
+            height={320}
+            // public\images\guides\Authjs part 1.png
+            alt={`\images\guides\${guide.title}`}
+          />
+        )}
+        <Mdx code={guide.body.code} />
+      </div>
+      <CallToAction className="hidden md:block mt-10 md:sticky md:top-0 md:overflow-hidden" />
     </main>
   );
 };

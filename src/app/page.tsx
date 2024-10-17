@@ -8,7 +8,7 @@ import { Icons } from "@/components/icons";
 
 const page = () => {
   return (
-    <div>
+    <div className="selection:bg-primary/20">
       <HeroSection />
       <Testimonials />
       <Faq />

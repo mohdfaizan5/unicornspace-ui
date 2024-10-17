@@ -40,6 +40,7 @@ export const Guide = defineDocumentType(() => ({
     isPublished: { type: "boolean", required: true },
     tags: { type: "string", required: false },
     author: { type: "string", required: false },
+    thumbnail: { type: "string", required: false },
   },
   computedFields: {
     slug: {

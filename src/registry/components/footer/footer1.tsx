@@ -1,8 +1,8 @@
 import React from "react";
-import { Separator } from "../../../components/ui/separator";
+import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
-const Footer = () => {
+const Footer1 = () => {
   return (
     <footer className="bg-background rounded-lg shadow w-screen overflow-x-hidden border-t px-5 mt-10 ">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -59,4 +59,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer1;
