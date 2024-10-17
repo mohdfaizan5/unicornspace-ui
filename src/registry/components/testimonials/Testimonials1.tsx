@@ -35,7 +35,7 @@ const testimonialsData = [
   },
 ];
 
-const Testimonials = () => {
+const Testimonials1 = () => {
   return (
     <section className="">
       <h3 className="text-brand-text2 font-semibold text-3xl text-center mb-8">
@@ -81,4 +81,4 @@ const Testimonial = ({ data }: any) => {
   );
 };
 
-export default Testimonials;
+export default Testimonials1;

@@ -1,15 +1,15 @@
-"use client"
-import { Slider } from '@radix-ui/react-slider'
-import React, { useState } from 'react'
-import { HexColorInput, HexColorPicker } from 'react-colorful'
+"use client";
+import { Slider } from "@radix-ui/react-slider";
+import React, { useState } from "react";
+import { HexColorInput, HexColorPicker } from "react-colorful";
 function GradientGenerator() {
-  const [color1, setcolor1] = useState('#e66465')
-  const [color2, setcolor2] = useState('#9198e5')
-  const [direction, setdirection] = useState('90')
+  const [color1, setcolor1] = useState("#e66465");
+  const [color2, setcolor2] = useState("#9198e5");
+  const [direction, setdirection] = useState("90");
   function gradientStyle() {
-    return{
-      background:`linear-gradient(${direction}deg,${color1},${color2} )`
-    }
+    return {
+      background: `linear-gradient(${direction}deg,${color1},${color2} )`,
+    };
   }
   return (
     <section className='flex flex-col gap-5  ' >
@@ -28,20 +28,22 @@ function GradientGenerator() {
           <HexColorInput className='border-2 border-black text-center w-20 mt-3 ' color={color2} onChange={setcolor2} ></HexColorInput>
         </div>
         <div>
-      <input
-        value={direction}
-        onChange={(e) => setdirection(e.target.value)}
-        type="range"
-        min={0}
-        max={100}
-      />
-      <p>Direction: {direction}</p>
-      
+          <input
+            value={direction}
+            onChange={(e) => setdirection(e.target.value)}
+            type="range"
+            min={0}
+            max={100}
+          />
+          <p>Direction: {direction}</p>
+        </div>
       </div>
-      </div>
-      <p className='text-center' > background: linear-gradient({direction}deg , {color1}, {color2});</p>
+      <p className="text-center">
+        {" "}
+        background: linear-gradient({direction}deg , {color1}, {color2});
+      </p>
     </section>
-  )
+  );
 }
 
-export default GradientGenerator
+export default GradientGenerator;

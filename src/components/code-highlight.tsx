@@ -13,6 +13,7 @@ const CodeHighlight = ({
   className?: string;
 }) => {
   const [copied, setCopied] = useState(false);
+
   return (
     <div className={cn("relative rounded-sm", className)}>
       <Button
@@ -33,6 +34,8 @@ const CodeHighlight = ({
         customStyle={{ borderRadius: "16px" }}
         language="javascript"
         style={vs2015}
+        CodeTag={"div"}
+        wrapLongLines
       >
         {code}
       </SyntaxHighlighter>

@@ -28,8 +28,7 @@ npx prisma init --datasource-provider sqlite
 
 2. Model your data in the Prisma schema
 
-```js
-// prisma/schema.prisma
+```js:prisma/schema.prisma
 
 model User {
   id    Int     @id @default(autoincrement())
@@ -52,11 +51,21 @@ npx prisma migrate dev --name init
 
 - This command created a new migration, applied it to the database, and updated the Prisma Client API.
 
+<details>
+<summary>Know in detail</summary>
+
+this command did 3 things
+
+- It created a new SQL migration file for this migration in the prisma/migrations directory.
+- It executed the SQL migration file against the database.
+- It ran prisma generate under the hood (which installed the @prisma/client package and generated a tailored Prisma Client API based on your models)
+</details>
+
 🎉 Congratulations, you now have your database and tables ready.
 
-4. Create a **@/lib/db.ts** file and create a global Client
+> Now you can interact with the prisma client to interact with db, but while using Nextjs you can encounter problem **connection pooling** which means since nextjs is a edge time framework so it is not actively running all the time, and if you don't use global prisma client (which I'll show below) it will create unnecessary connections with the database 4. Create a **@/lib/db.ts** file and create a global Client reference -> https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices
 
-```ts
+```ts:lib/db.ts
 import { PrismaClient } from "@prisma/client";
 
 const prismaClientSingleton = () => {

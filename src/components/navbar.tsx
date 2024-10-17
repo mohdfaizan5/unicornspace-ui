@@ -1,3 +1,4 @@
+"use client";
 // TODO: Needs a refactor of code and the its structured and implemented
 import React from "react";
 import {
@@ -10,7 +11,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Button } from "./ui/button";
-import SearchEventListener from "./client/SearchEventListener";
+import CommandMenu from "./client/command-menu";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCaretDown, FaGithub } from "react-icons/fa";
@@ -28,26 +29,51 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Logo from "./logo";
 import { Navigation } from "./navigation";
 import { navigation } from "@/config/navbar";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const path = usePathname();
+  // console.log(path.includes("/components"))
   return (
     <header className="sticky right-0  top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/8opacity-75  transition-all duration-300 px-6">
       <div className="flex h-14 max-w-screen-2xl items-center justify-between ">
         <Logo />
         <nav className="hidden md:flex text-[13px] items-center gap-4">
-          <Link className="hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300" href={"/components"}>
+          <Link
+            className={cn(
+              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300",
+              path.includes("/components") &&
+                "font-bold opacity-90  underline decoration-dotted"
+            )}
+            href={"/components"}
+          >
             Components
           </Link>
-          <Link className="hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300" href={"/tools"}>
+          <Link
+            className={cn(
+              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300",
+              path.includes("/tools") &&
+                "font-bold opacity-90 underline  decoration-dotted"
+            )}
+            href={"/tools"}
+          >
             Tools
           </Link>
 
-          <Link className="hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300" href={"/guides"}>
+          <Link
+            className={cn(
+              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300",
+              path.includes("/guides") &&
+                "font-bold opacity-90 underline decoration-dotted"
+            )}
+            href={"/guides"}
+          >
             Guides
           </Link>
         </nav>
         <div className="flex items-center gap-2">
-          {/* <SearchEventListener /> */}
+          <CommandMenu className="hidden md:block" />
           <Link href={siteConfig.links.github} target="_blank">
             <Button
               variant={"secondary"}
@@ -71,7 +97,7 @@ const Navbar = () => {
 const MobileNavbar = () => {
   return (
     <div className="md:hidden">
-      <Sheet >
+      <Sheet>
         <SheetTrigger>
           <HamburgerMenuIcon fontSize={28} />
         </SheetTrigger>

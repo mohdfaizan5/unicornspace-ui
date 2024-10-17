@@ -1,0 +1,47 @@
+---
+isPublished: false
+title: React Hooks
+description: Learn All you need to know about react hooks
+tags: Reactjs, nextjs14, React Hooks
+---
+
+# React hooks
+
+## useOptimistic
+
+This hook lets to create blazing fast UI by updating the UI first and mean while mutating(making changes) the db, its being optimistic that mutating the db will work, if the mutation fails it removes the data from the UI
+
+- Benefit is user shouldn't wait for db query to go to db and then update the UI
+- Fast reponse to user and better UX than revalidating the path.
+- Works like use state
+
+```tsx
+// const [optimisticData, setOptimisticData] = useOptimistic(data, func)
+
+const [optimisticPets, setOptimisticPets] = useOptimistic(
+  data,
+  (state, newPet) => {
+    return [...state, newPet];
+  }
+);
+
+// use this when you want to update the data, first it update the DOM and then db mutating
+setOptimisticPets(formData);
+```
+
+> REversing the optimistic update
+> What is things go wrong and the db mutation fails, our user might assume that they have updated the data, this will lead to mis understanding of update on ui
+> It will automatically the error thing for us
+
+> NOTE: It has a down side if you try to suddenly interact with the database as soon as you added in Optimistic data, you might encounter some bugs, this might also be because you might have run `revalidatePath` which also takes some time, for now don't think and stress on performance
+
+## flushSync
+
+React by default will batch the state updates, if you want to get a state update of this behavior we can use flushSync, which will make sure that it updates first and then other react updates are done
+
+```tsx
+flushSync(() => {
+  updateUiFirst();
+});
+```
+

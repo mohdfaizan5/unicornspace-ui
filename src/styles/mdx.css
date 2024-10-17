@@ -74,4 +74,8 @@
   @apply mt-8 mb-4 text-base font-semibold;
 }
 
+p > code {
+  @apply dark:bg-white/10 bg-black/10 px-1 rounded;
+}
+
 

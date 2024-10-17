@@ -1,36 +1,36 @@
+import { ChevronsUp, Citrus, Microscope, ShieldCheck } from "lucide-react";
 import React from "react";
-import { VscWorkspaceTrusted } from "react-icons/vsc";
 
 const featuresData: { title: React.ReactNode; icon: any }[] = [
   {
     title: "Science-driven nutrition supplement",
-    icon: <VscWorkspaceTrusted />,
+    icon: <Microscope />,
   },
   {
     title: "75 ingredients your body can easily absorb",
-    icon: <VscWorkspaceTrusted />,
+    icon: <ShieldCheck />,
   },
   {
     title: "Third-party certified for safety",
-    icon: <VscWorkspaceTrusted />,
+    icon: <ShieldCheck />,
   },
   {
     title: "Optimized for flavor without artificial sweeteners",
-    icon: <VscWorkspaceTrusted />,
+    icon: <Citrus />,
   },
   {
     title: "Trusted by leading doctors and scientists",
-    icon: <VscWorkspaceTrusted />,
+    icon: <ShieldCheck />,
   },
   {
     title: `Continuously improved since 2010`,
-    icon: <VscWorkspaceTrusted />,
+    icon: <ChevronsUp />,
   },
 ];
 
-const Features = () => {
+const Features2 = () => {
   return (
-    <div className="flex flex-col gap-3 pb-5 md:mx-auto md:grid md:grid-cols-4">
+    <div className=" pb-5 grid grid-cols-4">
       {featuresData.map((feature, i) => (
         <div
           className={`flex md:col-span-2 gap-5 items-center ${
@@ -39,16 +39,16 @@ const Features = () => {
           key={i}
         >
           <span
-            className={`text-2xl bg-brand-primary text-white rounded-full p-2 font-light  top-0 
+            className={`text-2xl bg-primary text-white rounded-full p-2 font-light top-0 
             `}
           >
             {feature.icon}
           </span>
-          <p className=" text-balance max-w-72 my-0 ">{feature.title}</p>
+          <p className=" text-balance max-w-72 my-0">{feature.title}</p>
         </div>
       ))}
     </div>
   );
 };
 
-export default Features;
+export default Features2;

@@ -12,10 +12,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import Navbar from "@/components/navbar";
-import SearchEventListener from "@/components/client/SearchEventListener";
-import Features from "@/registry/components/features";
-import Faq from "@/components/faq";
 import { hexToHSL } from "@/lib/utils";
 
 const page = () => {
@@ -147,9 +143,6 @@ const page = () => {
           </Card>
         </section>
       </section>
-      <Features />
-      {/* <Faq/> */}
-      {/* <Footer/> */}
     </div>
   );
 };
