@@ -70,7 +70,7 @@ const Footer2 = () => {
               </li>
               <li>
                 <Link
-                  href="https://sarom.info/catalogpdf/BENTLEY.pdf"
+                  href="#"
                   className="text-gray-400 hover:text-white transition"
                 >
                   Leatherette Fabric
@@ -78,7 +78,7 @@ const Footer2 = () => {
               </li>
               <li>
                 <Link
-                  href="https://sarom.info/catalogpdf/SOOFFICE.pdf"
+                  href="#"
                   className="text-gray-400 hover:text-white transition"
                 >
                   Suede Fabric (Non Shaded)
@@ -111,7 +111,7 @@ const Footer2 = () => {
               <li className="flex items-start">
                 <MapPin className="mr-2 h-10 w-10 mt-1" />
                 <Link
-                  href="https://maps.app.goo.gl/keBZbAcunBgA97wu9"
+                  href="#"
                   target="_blank"
                   className="text-gray-400 hover:text-white transition text-sm"
                 >
@@ -135,7 +135,7 @@ const Footer2 = () => {
               width={20}
               height={20}
               quality={100}
-              src="/unicorn-space-logo-white-256x256.webp"
+              src="/logos/logo-black-256x256.png"
               className="inline-block mx-2"
               alt="UnicornSpace logo"
             />

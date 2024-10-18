@@ -1,10 +1,4 @@
 import ComponentPreview from "@/components/component-preview";
-import { Faq1 } from "@/registry/components/FAQ/faq1";
-import Features2 from "@/registry/components/features/Features2";
-import { Features3 } from "@/registry/components/features/features3";
-import CallOutSection from "@/registry/components/others/call-out";
-import { Pricing3 } from "@/registry/components/pricing/pricing3";
-import SocialProof from "@/registry/components/reviews/social-proof";
 import React from "react";
 import Navbar2 from "../../../registry/components/navbars/navbar2";
 import Navbar1 from "@/registry/components/navbars/navbar1";

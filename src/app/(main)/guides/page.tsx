@@ -47,44 +47,43 @@ function PostCard(guide: Guide) {
       </CardFooter>
     </Card>
   );
-
-  return (
-    <div className="mb-8 w-80 bg-muted  py-5 rounded-sm">
-      <Link
-        href={guide.slug}
-        className="group flex flex-col gap-2 items-center"
-      >
-        {guide.thumbnail && (
-          <Image
-            src={`/images/guides/${guide.thumbnail}`}
-            width={320}
-            height={120}
-            // public\images\guides\Authjs part 1.png
-            alt={`\images\guides\${guide.title}`}
-          />
-        )}
-        <h2 className="px-5 text-left mb-1 text-xl font-semibold flex gap-2 items-center">
-          {guide.title}{" "}
-          <ArrowRight size={16} className="group-hover:ml-2 transition" />
-        </h2>
-      </Link>
-      <p className="text-muted-foreground px-5 ">{guide.description}</p>
-      {guide.tags && (
-        <div className="py-2 flex gap-1 flex-wrap px-5 ">
-          {guide.tags &&
-            guide.tags.split(",").map((tag, idx) => (
-              <Badge
-                className="font-normal text-xs"
-                variant="secondary"
-                key={idx}
-              >
-                #{tag.trim()}
-              </Badge>
-            ))}
-        </div>
-      )}
-    </div>
-  );
+  // return (
+  //   <div className="mb-8 w-80 bg-muted  py-5 rounded-sm">
+  //     <Link
+  //       href={guide.slug}
+  //       className="group flex flex-col gap-2 items-center"
+  //     >
+  //       {guide.thumbnail && (
+  //         <Image
+  //           src={`/images/guides/${guide.thumbnail}`}
+  //           width={320}
+  //           height={120}
+  //           // public\images\guides\Authjs part 1.png
+  //           alt={`\images\guides\${guide.title}`}
+  //         />
+  //       )}
+  //       <h2 className="px-5 text-left mb-1 text-xl font-semibold flex gap-2 items-center">
+  //         {guide.title}{" "}
+  //         <ArrowRight size={16} className="group-hover:ml-2 transition" />
+  //       </h2>
+  //     </Link>
+  //     <p className="text-muted-foreground px-5 ">{guide.description}</p>
+  //     {guide.tags && (
+  //       <div className="py-2 flex gap-1 flex-wrap px-5 ">
+  //         {guide.tags &&
+  //           guide.tags.split(",").map((tag, idx) => (
+  //             <Badge
+  //               className="font-normal text-xs"
+  //               variant="secondary"
+  //               key={idx}
+  //             >
+  //               #{tag.trim()}
+  //             </Badge>
+  //           ))}
+  //       </div>
+  //     )}
+  //   </div>
+  // );
 }
 
 export default function Home() {

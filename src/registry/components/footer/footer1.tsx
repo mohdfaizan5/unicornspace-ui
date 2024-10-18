@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Footer1 = () => {
   return (
-    <footer className="bg-background rounded-lg shadow w-screen overflow-x-hidden border-t px-5 mt-10 ">
+    <footer className="bg-background rounded-lg shadow overflow-x-hidden border-t px-5 mt-10 ">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
@@ -13,7 +13,7 @@ const Footer1 = () => {
           >
             <h3 className="text-4xl flex items-center">
               <Image
-                src={"/logo-base-256x256.png"}
+                src={"/logos/logo-black-256x256.png"}
                 height={60}
                 width={60}
                 alt="abs img"

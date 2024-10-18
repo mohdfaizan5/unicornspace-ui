@@ -1,31 +1,22 @@
 // componentRegistry file is used to register all the components that are used in the project.
 import { RegistrySchema } from "@/types/registry";
 import HeroSection3 from "./components/hero-sections/hero-section3";
-import { Pricing2 } from "./components/pricing/pricing2";
 import { Faq1Code } from "./component-code/Faq/faq1Code";
 import { Pricing2Code } from "./component-code/Pricing/pricing2Code";
 import { Cta1 } from "./components/CTA/cta1";
 import { Cta1Code } from "./component-code/CTA/cta1Code";
-import Features1 from "./components/features/Features1";
 import { Features1Code } from "./component-code/Features/Features1Code";
-import Features2 from "./components/features/Features2";
 import { Features2Code } from "./component-code/Features/Features2Code";
-import { Features3 } from "./components/features/features3";
 import { Features3Code } from "./component-code/Features/features3Code";
 import HeroSection1 from "./components/hero-sections/HeroSection1";
 import { HeroSectionCode } from "./component-code/HeroSections/HeroSectionCode";
 import HeroSection2 from "./components/hero-sections/HeroSection2";
 import { HeroSection2Code } from "./component-code/HeroSections/HeroSection2Code";
 import { HeroSection3Code } from "./component-code/HeroSections/hero-section3Code";
-import PricingSection1 from "./components/pricing/pricing1";
-import { Pricing3 } from "./components/pricing/pricing3";
 import { Pricing3Code } from "./component-code/Pricing/pricing3Code";
 import { Testimonials1Code } from "./component-code/testimonials/Testimonials1Code";
 import { Testimonials2Code } from "./component-code/testimonials/Testimonials2Code";
 import { Testimonials3Code } from "./component-code/testimonials/Testimonials3Code";
-import Testimonials1 from "./components/testimonials/testimonials1";
-import Testimonials2 from "./components/testimonials/testimonials2";
-import { Testimonials3 } from "./components/testimonials/testimonials3";
 import TextAppearOnScroll from "./components/others/TextAppearOnScroll";
 import { PricingSectionCode } from "./component-code/Pricing/PricingSectionCode";
 import { TextAppearOnScrollCode } from "./component-code/others/TextAppearOnScrollCode";
@@ -37,12 +28,30 @@ import ProductSection1 from "./components/ecommerce/product-section1";
 import CustomerReviews from "./components/testimonials/customer-reviews";
 import HeroSection4 from "./components/hero-sections/hero-section4";
 import Navbar2 from "./components/navbars/navbar2";
-import { Faq1 } from "./components/FAQ/faq1";
-import Faq2 from "./components/FAQ/faq2";
 import { Faq2Code } from "./component-code/Faq/faq2Code";
 import Footer1 from "./components/footer/footer1";
 import BasicFooter from "./components/footer/basic-footer";
 import Footer2 from "./components/footer/footer2";
+import { Faq1 } from "./components/Faq/faq1";
+import Faq2 from "./components/Faq/faq2";
+import PricingSection1 from "./components/Pricing/pricing1";
+import { Pricing2 } from "./components/Pricing/pricing2";
+import { Pricing3 } from "./components/Pricing/pricing3";
+import Features1 from "./components/Features/Features1";
+import Features2 from "./components/Features/Features2";
+import { Features3 } from "./components/Features/features3";
+import Testimonials1 from "./components/testimonials/Testimonials1";
+import Testimonials2 from "./components/testimonials/Testimonials2";
+import { Testimonials3 } from "./components/testimonials/Testimonials3";
+import { Navbar2Code } from "./component-code/navbars/navbar2Code";
+import { ProductImageCarouselCode } from "./component-code/ecommerce/product-image-carouselCode";
+import { BasicFooterCode } from "./component-code/footer/basic-footerCode";
+import { Footer1Code } from "./component-code/footer/footer1Code";
+import { Footer2Code } from "./component-code/footer/footer2Code";
+import { CallOutCode } from "./component-code/others/call-outCode";
+import { ProductSection1Code } from "./component-code/ecommerce/product-section1Code";
+import { HeroSection4Code } from "./component-code/hero-sections/hero-section4Code";
+import { CustomerReviewsCode } from "./component-code/testimonials/customer-reviewsCode";
 
 const componentRegistry: RegistrySchema = {
   Faq1: {
@@ -65,17 +74,17 @@ const componentRegistry: RegistrySchema = {
   },
   Navbar2: {
     component: Navbar2,
-    code: "WIP",
+    code: Navbar2Code,
   },
 
   // Ecommerce
   "product-image-carousel": {
     component: ProductImageCarousel,
-    code: `Product`,
+    code: ProductImageCarouselCode,
   },
   ProductSection1: {
     component: ProductSection1,
-    code: `Product`,
+    code: ProductSection1Code,
   },
 
   // Pricing
@@ -125,7 +134,7 @@ const componentRegistry: RegistrySchema = {
 
   HeroSection4: {
     component: HeroSection4,
-    code: "WIP",
+    code: HeroSection4Code,
   },
 
   // Testimonials
@@ -146,28 +155,28 @@ const componentRegistry: RegistrySchema = {
   },
   CustomerReviews: {
     component: CustomerReviews,
-    code: `Testimonials3Code`,
+    code: CustomerReviewsCode,
   },
 
   // Footer
   BasicFooter: {
     component: BasicFooter,
-    code: `CallOutSection`,
+    code: BasicFooterCode,
   },
   Footer1: {
     component: Footer1,
-    code: `CallOutSection`,
+    code: Footer1Code,
   },
   Footer2: {
     component: Footer2,
-    code: `CallOutSection`,
+    code: Footer2Code,
   },
 
   // Other
 
   CallOutSection: {
     component: CallOutSection,
-    code: `CallOutSection`,
+    code: CallOutCode,
   },
   TextAppearOnScroll: {
     component: TextAppearOnScroll,

@@ -19,6 +19,7 @@ export function Navigation({
   return (
     <nav className={clsx("text-base lg:text-sm w-full py-5", className)}>
       <ul role="list" className="space-y-9 w-full">
+        
         {navigation.map((section) => (
           <li key={section.title}>
             {section.href ? (
