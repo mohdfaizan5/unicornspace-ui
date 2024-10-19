@@ -65,16 +65,17 @@ import Cta1 from "./components/CTA/cta1";
 import { Cta1Code } from "./component-code/CTA/cta1Code";
 import { Faq1Code } from "./component-code/Faq/faq1Code";
 import Faq1 from "./components/Faq/faq1";
-import Features3 from "./components/Features/features3";
 import Pricing4 from "./components/Pricing/pricing4";
 import Features4 from "./components/Features/features4";
 import Features5 from "./components/Features/features5";
-import Testimonials3 from "./components/testimonials/Testimonials3";
 import Testimonials5 from "./components/testimonials/testimonials5";
 import Footer3 from "./components/footer/footer3";
 import NewsLettersForm from "./components/others/news-letter1";
 import NewsLettersForm2 from "./components/others/news-letter2";
 import Profile from "./components/others/profile";
+
+import { Testimonials3 } from "./components/testimonials/Testimonials3";
+import Features3 from "./components/Features/features3";
 
 
 
