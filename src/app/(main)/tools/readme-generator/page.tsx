@@ -1,108 +1,140 @@
- 
 "use client";
-
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Textarea } from "@/components/ui/textarea";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import ReactMarkdown from "react-markdown";
+import CodeHighlight from "@/components/code-highlight";
 import { useState } from "react";
-import { formFields } from "./objects";
+import { generateReadme } from "./return";
+import { FormField } from "./custom-form";
 
-const Page = () => {
-  const { register, handleSubmit, watch } = useForm({
-    defaultValues: formFields.reduce(
-      (acc, field) => ({ ...acc, [field.name]: "" }),
-      {}
-    ),
-  });
+export default function Page() {
+  const { register, handleSubmit, reset } = useForm();
+  const [readmeContent, setReadmeContent] = useState("");
 
-  // State for dialog visibility and content
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [dialogContent, setDialogContent] = useState<string | null>(null);
-
-  // Handle form submission
-  const onSubmit = (data: Record<string, string>) => {
-    console.log("Form Data Submitted:", data);
-  };
-
-  // Handle preview
-  const handlePreview = () => {
-    // Format the form values for display
-    const formattedValues = Object.entries(watch())
-      .map(([key, value]) => `${key}: ${value}`)
-      .join("\n");
-
-    setDialogContent(formattedValues);
-    setIsDialogOpen(true);
+  const onSubmit = (data: any) => {
+    const content = generateReadme(data);
+    setReadmeContent(content);
   };
 
   return (
-    <ScrollArea className="">
-      <main className="grid grid-rows-1 md:grid-cols-1 place-content-center gap-2">
-        <div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Fill in the Credentials</CardTitle>
-              <CardDescription>
-                Choose the words that describe your project perfectly.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                {formFields.map((field) => (
-                  <div key={field.id} className="mb-4">
-                    <Label className="text-xl" htmlFor={field.id}>
-                      {field.label}
-                    </Label>
-                    <Textarea
-                      id={field.id}
-                      // @ts-ignore
-                      {...register(field.name)}
-                      className="w-full p-2 border rounded"
-                      placeholder={field.placeholder}
-                    />
-                  </div>
-                ))}
-                <Button type="submit" className="mt-4">
-                  Submit
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-        <div className="flex flex-col items-center justify-center h-full bg-red-400 gap-4 rounded-2xl p-5">
-          <Image
-            src={"/logos/logo-black-256x256.png"}
-            alt="Logo"
-            height={100}
-            width={100}
-            className="rounded-full"
-          />
-          <h1 className="md:text-4xl text-2xl font-bold">ReadMe - Generator</h1>
-          <p className="max-w-[75%] text-center">Let&apos;s get you set up.</p>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button onClick={handlePreview}>Click here to preview</Button>
-            </DialogTrigger>
-            <DialogContent className="w-full">
-              <pre className="flex">{dialogContent}</pre>{" "}
-              {/* Display the preview content */}
-            </DialogContent>
-          </Dialog>
-        </div>
-      </main>
-    </ScrollArea>
-  );
-};
+    <main className="p-4">
+      <Card className="w-full max-w-[720px] mx-auto">
+        <CardHeader>
+          <CardTitle className="text-center text-lg sm:text-2xl">
+            README Generator
+          </CardTitle>
+          <CardDescription className="text-center text-sm">
+            Fill in the details to generate your README.
+          </CardDescription>
+        </CardHeader>
 
-export default Page;
+        <CardContent>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-6"
+          >
+            {/* Required Fields */}
+            <FormField
+              label="Project Title"
+              registerProps={register("title", { required: true })}
+              placeholder="Enter your project title"
+            />
+            <FormField
+              label="Project Description"
+              registerProps={register("description", { required: true })}
+              type="textarea"
+              placeholder="Briefly describe your project."
+            />
+
+            {/* Optional Fields */}
+            <FormField
+              label="Main Application Routes"
+              registerProps={register("routes")}
+              placeholder="E.g., Homepage, Dashboard, Components"
+              optional
+            />
+            <FormField
+              label="Route Descriptions"
+              registerProps={register("route_introduction")}
+              type="textarea"
+              placeholder="Describe each route briefly."
+              optional
+            />
+            <FormField
+              label="Live Demo URL"
+              registerProps={register("link")}
+              type="url"
+              placeholder="Provide the live demo link."
+              optional
+            />
+            <FormField
+              label="Project Image URL"
+              registerProps={register("image")}
+              type="url"
+              placeholder="Provide an image link (if available)."
+              optional
+            />
+            <FormField
+              label="Technologies Used"
+              registerProps={register("techstack")}
+              placeholder="E.g., React, Tailwind CSS, Prisma"
+              optional
+            />
+            <FormField
+              label="Contributors (Name:Link format, comma separated)"
+              registerProps={register("contributors")}
+              type="textarea"
+              placeholder="E.g., John Doe:https://github.com/johndoe, Jane Smith:https://github.com/janesmith"
+              optional
+            />
+            <FormField
+              label="Contact Gmail"
+              registerProps={register("gmail")}
+              type="email"
+              placeholder="Provide a contact email."
+              optional
+            />
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button type="submit" className="w-full sm:w-auto">
+                Generate README
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => reset()}
+                className="w-full sm:w-auto"
+              >
+                Reset Form
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+
+        <CardFooter className="mt-4 flex flex-col">
+          <CodeHighlight
+            className="w-full min-h-[12rem] rounded-md overflow-auto"
+            code={readmeContent}
+          />
+          {/* TODO:To work on this later */}
+          {/* <div>
+            <h2 className="text-lg font-semibold">Preview:</h2>
+            <div
+              className="markdown-preview"
+              dangerouslySetInnerHTML={{ __html: readmeContent }} // Render HTML directly
+            />
+          </div> */}
+        </CardFooter>
+      </Card>
+    </main>
+  );
+}
