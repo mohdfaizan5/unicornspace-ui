@@ -36,7 +36,7 @@ const Navbar = () => {
   const path = usePathname();
   // console.log(path.includes("/components"))
   return (
-    <header className="sticky right-0  top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/8opacity-75  transition-all duration-300 px-6">
+    <header className="sticky right-0  top-0 z-50 w-full border-b border-border/40 bg-background/15 backdrop-blur supports-[backdrop-filter]:bg-background/8opacity-75  transition-all duration-300 px-6">
       <div className="flex h-14 max-w-screen-2xl items-center justify-between ">
         <Logo />
         <nav className="hidden md:flex text-[13px] items-center gap-4">
