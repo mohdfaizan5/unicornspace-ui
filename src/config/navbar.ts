@@ -119,4 +119,27 @@ export const navigation: NavigationProps[] = [
       // },
     ],
   },
+  {
+    title: "Blogs",
+    href: "/blogs",
+    links: [
+      {
+        title: "CSS",
+        href: "/blogs/css"
+      },
+      {
+        title: "All you need to know about fonts",
+        href: "/blogs/all-about-fonts"
+      },
+      {
+        title: "All about SEO for developers",
+        href: "/blogs/all-about-SEO-for-developers"
+      },
+      {
+        title: "Npm vs Pnpm vs Bun vs Yarn",
+        href: "/blogs/npm-vs-pnpm-vs-bun-vs-yarn"
+      },
+    ]
+  },
+  
 ];
