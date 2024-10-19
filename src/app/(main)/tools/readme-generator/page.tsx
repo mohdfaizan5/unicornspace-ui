@@ -53,6 +53,12 @@ export default function Page() {
               type="textarea"
               placeholder="Briefly describe your project."
             />
+            <FormField
+              label="Features"
+              registerProps={register("features")}
+              type="textarea"
+              placeholder="List the features (one per line)."
+            />
 
             {/* Optional Fields */}
             <FormField
@@ -63,14 +69,14 @@ export default function Page() {
             />
             <FormField
               label="Route Descriptions"
-              registerProps={register("route_introduction")}
+              registerProps={register("roadmap")}
               type="textarea"
               placeholder="Describe each route briefly."
               optional
             />
             <FormField
               label="Live Demo URL"
-              registerProps={register("link")}
+              registerProps={register("demoLink")}
               type="url"
               placeholder="Provide the live demo link."
               optional
@@ -102,6 +108,12 @@ export default function Page() {
               placeholder="Provide a contact email."
               optional
             />
+            <FormField
+              label="License"
+              registerProps={register("license")}
+              placeholder="E.g., MIT"
+              optional
+            />
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
@@ -125,14 +137,12 @@ export default function Page() {
             className="w-full min-h-[12rem] rounded-md overflow-auto"
             code={readmeContent}
           />
-          {/* TODO:To work on this later */}
-          {/* <div>
+          <div>
             <h2 className="text-lg font-semibold">Preview:</h2>
-            <div
-              className="markdown-preview"
-              dangerouslySetInnerHTML={{ __html: readmeContent }} // Render HTML directly
-            />
-          </div> */}
+            <div className="markdown-preview">
+              <ReactMarkdown>{readmeContent}</ReactMarkdown>
+            </div>
+          </div>
         </CardFooter>
       </Card>
     </main>
