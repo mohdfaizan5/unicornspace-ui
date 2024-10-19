@@ -9,7 +9,7 @@ function PostCard(blog: Blog) {
   // console.log("🎈🎈",blog.slug);
 
   return (
-    <Card className="w-[320px]  overflow-hidden" >
+    <Card className="max-w-2xl overflow-hidden" >
       <Link href={blog.slug}>
         <CardHeader className="p-0 overflow-hidden">
           {/* {blog.thumbnail && (
@@ -53,7 +53,7 @@ export default function Page() {
       <p className="max-w-2xl text-lg  text-muted-foreground mb-8">
         Blogs to increase you in your knowledge
       </p>
-      <main className="grid auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full">
+      <main className="flex flex-col w-full gap-2">
         {blogs.map((blog, idx) => {
           if (blog.isPublished) return <PostCard key={idx} {...blog} />;
         })}

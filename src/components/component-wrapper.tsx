@@ -16,13 +16,13 @@ export default function ComponentWrapper({
   className = '',
 }: ComponentWrapperProps) {
   return (
-    <div className="flex justify-center items-center p-4 bg-gray-100 rounded-lg overflow-hidden">
+    <div className="flex justify-center items-center p-2 bg-gray-100 rounded-lg overflow-hidden">
       <div
-        className={`bg-white rounded-md shadow-md ${className}`}
+        className={`scale-[60%] bg-background p-2 md:p-5 rounded-md shadow-md ${className}`}
         style={{
           width,
           height,
-          transform: `scale(${scale})`,
+          // transform: `scale(${scale})`,
           transformOrigin: 'center',
           maxWidth: '100%',
         }}
