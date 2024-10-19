@@ -92,8 +92,11 @@ export default function Home() {
   const guides = allGuides;
 
   return (
-    <div className=" py-8">
-      <h1>Guides</h1>
+    <div className="">
+      <h1 className="text-4xl font-bold font-passion ">Guides</h1>
+      <p className="max-w-2xl text-lg  text-muted-foreground mb-8">
+      Clear, step-by-step follow-along guides for every level. (Complex concepts made easy.)
+      </p>
       <main className="grid auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full">
         {guides.map((guide, idx) => {
           if (guide.isPublished) return <PostCard key={idx} {...guide} />;

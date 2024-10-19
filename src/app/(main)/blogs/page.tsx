@@ -48,10 +48,10 @@ export default function Page() {
   const blogs = allBlogs
 
   return (
-    <div className=" py-8">
+    <div className="">
       <h1 className="text-4xl font-bold font-passion ">Blogs</h1>
       <p className="max-w-2xl text-lg  text-muted-foreground mb-8">
-        Blogs to increase you in your knowledge
+      Informative articles, tech trends and development tips. Stay updated and inspired on your journey!
       </p>
       <main className="flex flex-col w-full gap-2">
         {blogs.map((blog, idx) => {
