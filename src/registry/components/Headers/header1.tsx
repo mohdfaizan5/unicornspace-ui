@@ -6,10 +6,6 @@ import { Button } from '@/components/ui/button'
 import Logo from '@/components/logo'
 import clsx from 'clsx'
 
-
-
-
-
 function MobileNavIcon({ open } : {open : any}) {
   return (
     <svg

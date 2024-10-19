@@ -1,7 +1,7 @@
 import { ChevronsUp, Citrus, Microscope, ShieldCheck } from "lucide-react";
 import React from "react";
 
-const featuresData: { title: React.ReactNode; icon: any }[] = [
+const featuresData: { title: React.ReactNode; icon: React.ReactNode }[] = [
   {
     title: "Science-driven nutrition supplement",
     icon: <Microscope />,

@@ -31,7 +31,7 @@ function ColorsCard(props: ColorsCardType) {
   };
   const { title, description, colors } = props;
   return (
-    <Card className="w-80 h-[400px] md:mt-[50px] md:shadow-md rounded-none ">
+    <Card  className="w-80 h-[400px] md:mt-[50px] md:shadow-md rounded-none ">
       <Link href={props.href}>
         <Image
           className="mb-2"
@@ -49,7 +49,7 @@ function ColorsCard(props: ColorsCardType) {
               // const finalColor = `bg-[${color}]`.toLowerCase();
               // console.log(finalColor);
               return (
-                <Tooltip>
+                <Tooltip key={i}>
                   <TooltipTrigger
                     onClick={() => {
                       navigator.clipboard.writeText(color);

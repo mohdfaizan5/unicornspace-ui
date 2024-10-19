@@ -3,6 +3,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
+
+interface Props{
+  data: {
+    description: string;
+    name: string;
+    subTitle: string;
+    image: string
+  }
+}
+
 const testimonialsData = [
   {
     description:
@@ -60,7 +70,7 @@ const Testimonials1 = () => {
   );
 };
 
-const Testimonial = ({ data }: any) => {
+const Testimonial = ({ data }: Props) => {
   const { description, image, name, subTitle } = data;
   return (
     <Card className="bg-brand-bg/30 p-6">

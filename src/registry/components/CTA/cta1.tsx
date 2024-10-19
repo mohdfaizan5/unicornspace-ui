@@ -1,8 +1,9 @@
-import Logo from "@/components/logo";
+import Logo from "@/components/logo"; // Adjust this import if needed
 import { Button } from "@/components/ui/button";
-import { Circle } from "lucide-react";
+import { Circle } from "lucide-react"; // This import is not used but kept if needed for future use
 import { useId } from "react";
 
+// CircleBackground component
 function CircleBackground({
   color = "#fff",
   width = 558,
@@ -47,7 +48,8 @@ function CircleBackground({
   );
 }
 
-export function Cta1() {
+// Main Cta1 component
+export default function Cta1() {
   return (
     <section
       id="cta1"
@@ -55,9 +57,6 @@ export function Cta1() {
     >
       <div className="absolute top-1/2 left-20 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
         <CircleBackground color="#fff" className="animate-spin-slower" />
-        {/* <Circle
-          className="text-background size-[500px] font"
-        /> */}
       </div>
       <section className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-md sm:text-center">
@@ -66,7 +65,7 @@ export function Cta1() {
           </h2>
           <p className="mt-4 text-lg text-gray-300">
             It takes 30 seconds to sign up. Download the app and create an
-            account today and we’ll send you a tip guaranteed to double your
+            account today and we&#39;ll send you a tip guaranteed to double your
             first investment.
           </p>
           <div className="mt-8 flex justify-center">

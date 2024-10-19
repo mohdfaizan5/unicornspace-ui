@@ -1,22 +1,55 @@
 import clsx from 'clsx'
 import { useId } from 'react'
-import { Button } from '@/components/ui/button'
 import { CheckIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+interface planProps{
+  name:string,
+  description:string,
+  price:number
+  features:string[]
+  href:string
+  featured?:boolean
+}
+interface GridsProps{
+  x:string,
+  y:string
+}
+export function GridPattern(props:GridsProps) {
+  let patternId = useId()
 
-function Plan({ name, description, price, features, href, featured }:any) {
+  return (
+    <svg aria-hidden="true" className="absolute inset-0 h-full w-full">
+      <defs>
+        <pattern
+          id={patternId}
+          width="128"
+          height="128"
+          patternUnits="userSpaceOnUse"
+          {...props}
+        >
+          <path d="M0 128V.5H128" fill="none" stroke="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${patternId})`} />
+    </svg>
+  )
+}
+
+function Plan({ name, description, price, features, href, featured }:planProps) {
   return (
     <div
       className={clsx(
-        'relative px-4 py-16 sm:rounded-5xl sm:px-10 md:py-12 lg:px-12',
-        featured && 'bg-blue-600 sm:shadow-lg'
+        ' rounded-[50px] relative px-4 py-16 sm:rounded-5xl sm:px-10 md:py-12 lg:px-12',
+        featured && 'bg-blue-600 sm:shadow-lg '
       )}
     >
       {featured && (
-        <div className="absolute inset-0 text-white/10 [mask-image:linear-gradient(white,transparent)]">
+        <div className=" absolute inset-0 text-white/10 [mask-image:linear-gradient(white,transparent)]">
           <GridPattern x="50%" y="50%" />
         </div>
       )}
-      <div className="relative flex flex-col">
+      <div className=" rounded-lg relative flex flex-col">
         <h3
           className={clsx(
             'mt-7 text-lg font-semibold tracking-tight',
@@ -64,40 +97,50 @@ function Plan({ name, description, price, features, href, featured }:any) {
             {features.map((feature:any) => (
               <li key={feature} className="flex py-2">
                 <CheckIcon
-                  className={clsx(
-                    'h-8 w-8 flex-none',
                 
-                  )}
+                  className=
+                    'h-4 w-4 flex-none'
+        
+                  
                 />
                 <span className="ml-4">{feature}</span>
               </li>
             ))}
           </ul>
         </div>
+        <Link href={'#'} >
         <Button
-        
-          color={featured ? 'white' : 'slate'}
-          className="mt-8"
+
+          className={clsx("mt-8 font-extrabold w-full",featured ?'bg-white text-blue-600 hover:bg-white hover:text-blue-600' : 'bg-black ')}
           aria-label={`Get started with the ${name} plan for $${price}`}
         >
           Get started
         </Button>
+        </Link>
       </div>
     </div>
   )
 }
 
- function Pricing4() {
+export default function Pricing4() {
   return (
     <section
       id="pricing"
       aria-labelledby="pricing-title"
-      className="scroll-mt-14 pt-16 pb-8 sm:scroll-mt-32 sm:pt-20 sm:pb-10 lg:pt-32 lg:pb-16"
+      className="scroll-mt-14  pb-8  sm:scroll-mt-32 sm:pt-20 sm:pb-10 lg:pt-1 lg:pb-16"
     >
-  
-       
+      <div className='mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:max-w-4xl lg:px-12'>
+        
+        <p className=" font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
+          Pick your package
+        </p>
+        <p className="mt-4 max-w-xl text-[16px] tracking-tight text-slate-600">
+          “Everything Starts as a Square” is available in two different packages
+          so you can pick the one that’s right for you.
+        </p>
+      </div>
       <div className="mx-auto mt-16 max-w-5xl lg:px-6">
-        <div className="grid bg-slate-50 sm:px-6 sm:pb-16 md:grid-cols-2 md:rounded-6xl md:px-8 md:pt-16 lg:p-20">
+        <div className="grid rounded-[50px] bg-slate-50 sm:px-6 sm:pb-16 md:grid-cols-2 md:rounded-6xl md:px-8 md:pt-16 lg:p-20">
           <Plan
             name="Essential"
             description="The perfect starting point if you’re on a budget."
@@ -126,28 +169,5 @@ function Plan({ name, description, price, features, href, featured }:any) {
         </div>
       </div>
     </section>
-  )
-}
-
-export default Pricing4
-
-export function GridPattern(props:any) {
-  let patternId = useId()
-
-  return (
-    <svg aria-hidden="true" className="absolute inset-0 h-full w-full">
-      <defs>
-        <pattern
-          id={patternId}
-          width="128"
-          height="128"
-          patternUnits="userSpaceOnUse"
-          {...props}
-        >
-          <path d="M0 128V.5H128" fill="none" stroke="currentColor" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill={`url(#${patternId})`} />
-    </svg>
   )
 }

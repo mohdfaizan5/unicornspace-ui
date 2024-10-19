@@ -91,9 +91,9 @@ const page = () => {
           tools.map(
             (tool, i) =>
               tool.isPublished && (
-                <Link href={`${tool.url}`} className="w-96">
+                <Link key={i} href={`${tool.url}`} className="w-96">
                   <div
-                    key={i}
+                    
                     className="flex flex-col items-start gap-2 rounded-xl border bg-card p-2 text-card-foreground shadow transition-colors hover:bg-muted/50 md:py-5 relative h-96"
                   >
                     <div className="h-[80%] mx-auto">

@@ -82,7 +82,7 @@ function QuoteIcon(props) {
   );
 }
 
-export function Testimonials3() {
+export default function Testimonials3() {
   return (
     <section
       id="testimonials"
