@@ -36,15 +36,15 @@ const Navbar = () => {
   const path = usePathname();
   // console.log(path.includes("/components"))
   return (
-    <header className="sticky right-0  top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/8opacity-75  transition-all duration-300 px-6">
+    <header className="sticky right-0  top-0 z-50 w-full border-b border-border/40 bg-background/15 backdrop-blur supports-[backdrop-filter]:bg-background/8opacity-75  transition-all duration-300 px-6">
       <div className="flex h-14 max-w-screen-2xl items-center justify-between ">
         <Logo />
-        <nav className="hidden md:flex text-[13px] items-center gap-4">
+        <nav className="hidden md:flex text-[14px] items-center gap-5">
           <Link
             className={cn(
-              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300",
+              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
               path.includes("/components") &&
-                "font-bold opacity-90  underline decoration-dotted"
+                "font-bold opacity-90  underline decoration-dotted underline-offset-2"
             )}
             href={"/components"}
           >
@@ -52,9 +52,9 @@ const Navbar = () => {
           </Link>
           <Link
             className={cn(
-              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300",
+              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
               path.includes("/tools") &&
-                "font-bold opacity-90 underline  decoration-dotted"
+                "font-bold opacity-90 underline  decoration-dotted underline-offset-2"
             )}
             href={"/tools"}
           >
@@ -63,13 +63,23 @@ const Navbar = () => {
 
           <Link
             className={cn(
-              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-300",
+              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
               path.includes("/guides") &&
-                "font-bold opacity-90 underline decoration-dotted"
+                "font-bold opacity-90 underline decoration-dotted underline-offset-2"
             )}
             href={"/guides"}
           >
             Guides
+          </Link>
+          <Link
+            className={cn(
+              "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
+              path.includes("/blogs") &&
+                "font-bold opacity-90 underline decoration-dotted underline-offset-2"
+            )}
+            href={"/blogs"}
+          >
+            Blogs
           </Link>
         </nav>
         <div className="flex items-center gap-2">

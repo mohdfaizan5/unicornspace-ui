@@ -18,33 +18,35 @@ function PostCard(guide: Guide) {
 
   return (
     <Card className="w-[320px]  overflow-hidden">
-      <CardHeader className="p-0 overflow-hidden">
-        {guide.thumbnail && (
-          <Image
-            src={`/images/guides/${guide.thumbnail}`}
-            width={320}
-            height={120}
-            // public\images\guides\Authjs part 1.png
-            alt={`\images\guides\${guide.title}`}
-          />
-        )}
-      </CardHeader>
-      <CardContent className="mt-4 pb-4">
-        <CardTitle className="pb-1"> {guide.title}</CardTitle>
-        <CardDescription> {guide.description}</CardDescription>
-      </CardContent>
-      <CardFooter className="py-2 pb-4 flex gap-1 flex-wrap px-5">
-        {guide.tags &&
-          guide.tags.split(",").map((tag, idx) => (
-            <Badge
-              className="font-normal text-xs"
-              variant="default"
-              key={idx}
-            >
-              #{tag.trim()}
-            </Badge>
-          ))}
-      </CardFooter>
+      <Link href={guide.slug}>
+        <CardHeader className="p-0 overflow-hidden">
+          {guide.thumbnail && (
+            <Image
+              src={`/images/guides/${guide.thumbnail}`}
+              width={320}
+              height={120}
+              // public\images\guides\Authjs part 1.png
+              alt={`\images\guides\${guide.title}`}
+            />
+          )}
+        </CardHeader>
+        <CardContent className="mt-4 pb-4">
+          <CardTitle className="pb-1"> {guide.title}</CardTitle>
+          <CardDescription> {guide.description}</CardDescription>
+        </CardContent>
+        <CardFooter className="py-2 pb-4 flex gap-1 flex-wrap px-5">
+          {guide.tags &&
+            guide.tags.split(",").map((tag, idx) => (
+              <Badge
+                className="font-normal text-xs"
+                variant="default"
+                key={idx}
+              >
+                #{tag.trim()}
+              </Badge>
+            ))}
+        </CardFooter>
+      </Link>
     </Card>
   );
   // return (

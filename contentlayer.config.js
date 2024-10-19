@@ -54,10 +54,33 @@ export const Guide = defineDocumentType(() => ({
     },
   },
 }));
+export const Blog = defineDocumentType(() => ({
+  name: "Blog",
+  filePathPattern: `blogs/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: false },
+    isPublished: { type: "boolean", required: true },
+    tags: { type: "string", required: false },
+    author: { type: "string", required: false },
+    // thumbnail: { type: "string", required: false },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+  },
+}));
 
 export default makeSource({
   contentDirPath: "content/",
-  documentTypes: [Guide, Component],
+  documentTypes: [Guide, Component,Blog],
   mdx: {
     remarkPlugins: [remarkGfm, remarkFrontmatter],
     rehypePlugins: [

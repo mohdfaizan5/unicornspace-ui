@@ -25,7 +25,7 @@ const ComponentPreview = ({
   console.log(ComponentToRender.code);
 
   return (
-    <div className="relative my-4 flex flex-col space-y-2 overflow-auto">
+    <div className="relative my-4 z-10 flex flex-col space-y-2 overflow-auto">
       <Tabs defaultValue="preview" className="">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
@@ -41,9 +41,9 @@ const ComponentPreview = ({
                 </div>
               }
             >
-              <div className="scale-[60%] bg-background">
+              {/* <div className="scale-[60%] bg-background/30"> */}
                 <ComponentToRender.component {...props} />
-              </div>
+              {/* </div> */}
             </React.Suspense>
           </ComponentWrapper>
         </TabsContent>
