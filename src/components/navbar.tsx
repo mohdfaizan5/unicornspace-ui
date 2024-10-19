@@ -44,7 +44,7 @@ const Navbar = () => {
             className={cn(
               "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
               path.includes("/components") &&
-                "font-bold opacity-90  underline decoration-dotted"
+                "font-bold opacity-90  underline decoration-dotted underline-offset-2"
             )}
             href={"/components"}
           >
@@ -54,7 +54,7 @@ const Navbar = () => {
             className={cn(
               "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
               path.includes("/tools") &&
-                "font-bold opacity-90 underline  decoration-dotted"
+                "font-bold opacity-90 underline  decoration-dotted underline-offset-2"
             )}
             href={"/tools"}
           >
@@ -65,7 +65,7 @@ const Navbar = () => {
             className={cn(
               "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
               path.includes("/guides") &&
-                "font-bold opacity-90 underline decoration-dotted"
+                "font-bold opacity-90 underline decoration-dotted underline-offset-2"
             )}
             href={"/guides"}
           >
@@ -74,8 +74,8 @@ const Navbar = () => {
           <Link
             className={cn(
               "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
-              path.includes("/guides") &&
-                "font-bold opacity-90 underline decoration-dotted"
+              path.includes("/blogs") &&
+                "font-bold opacity-90 underline decoration-dotted underline-offset-2"
             )}
             href={"/blogs"}
           >
