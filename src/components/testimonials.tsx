@@ -39,7 +39,7 @@ const testimonialsData = [
 
 const Testimonials = () => {
   return (
-    <section className=" px-10">
+    <section className="">
       <h3 className="text-brand-text2 font-semibold text-3xl text-center mb-8">
         See what people are{" "}
         <span className="text-brand-primary font-black ">saying! </span>

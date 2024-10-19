@@ -1,0 +1,368 @@
+@layer base {
+  /* https://goldencode.framer.website */
+  :root {
+    /* 5rd color */
+    /* hsl(97, 73%, 57%) */
+    --primary: 59 100% 50%;
+    --secondary-foreground: 59 100% 50%;
+    --accent-foreground: 59 100% 50%;
+
+    /* 2nd color - Text color */
+    /* hsl(80, 11%, 5%) */
+    --foreground: 0 0% 100%;
+    --card-foreground: 0 0% 100%;
+    --popover-foreground: 0 0% 100%;
+
+    /* 4rd color */
+    /* hsl(94, 100%, 10%) */
+    --secondary: 94 100% 10%;
+    --muted: 94 100% 10%;
+    --accent: 94 100% 10%;
+
+    /* 1st color */
+    /* hsl(0, 0%, 100%) */
+    --background: 0 0% 0%;
+    --card: 0 0% 0%;
+    --popover: 0 0% 0%;
+
+    /* 3rd color */
+    /* Little (light) less than background */
+    --primary-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* 6rd color */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --muted-foreground: 240 3.8% 46.1%;
+    --destructive: 0 84.2% 60.2%;
+    --ring: 0 0% 100%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 59 100% 50%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+/*  */
+
+@layer base {
+  /* https://unifiersofjapan.framer.website/ */
+  :root {
+    /* 5rd color */
+    /* hsl(97, 73%, 57%) */
+    --primary: 345 100% 45%;
+    --secondary-foreground: 345 100% 45%;
+    --accent-foreground: 345 100% 45%;
+
+    /* 2nd color - Text color */
+    /* hsl(80, 11%, 5%) */
+    --foreground: 345 100% 45%;
+    --card-foreground: 345 100% 45%;
+    --popover-foreground: 345 100% 45%;
+
+    /* 4rd color */
+    /* hsl(94, 100%, 10%) */
+    --secondary: 26, 56%, 8%;
+    --muted: 26, 56%, 8%;
+    --accent: 26, 56%, 8%;
+
+    /* 1st color */
+    /* hsl(0, 0%, 100%) */
+    --background: 56 100% 94%;
+    --card: 56 100% 94%;
+    --popover: 56 100% 94%;
+
+    /* 3rd color */
+    /* Little (light) less than background */
+    --primary-foreground: 220 67% 6%;
+    --destructive-foreground: 220 67% 6%;
+
+    /* 6rd color */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --muted-foreground: 240 3.8% 46.1%;
+    --destructive: 0 84.2% 60.2%;
+    --ring: 345 100% 45%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 345 100% 45%;
+    --foreground: 0 0% 98%;
+
+    --card: 345 100% 45%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 345 100% 45%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 345 100% 45%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+/*  */
+
+@layer base {
+  /* wise.com */
+  :root {
+    /* 5rd color */
+    /* hsl(97, 73%, 57%) */
+    --primary: 97 73% 57%;
+    --secondary-foreground: 97 73% 57%;
+    --accent-foreground: 97 73% 57%;
+
+    /* 2nd color - Text color */
+    /* hsl(80, 11%, 5%) */
+    --foreground: 80 11% 5%;
+    --card-foreground: 80 11% 5%;
+    --popover-foreground: 80 11% 5%;
+
+    /* 4rd color */
+    /* hsl(94, 100%, 10%) */
+    --secondary: 94 100% 10%;
+    --muted: 94 100% 10%;
+    --accent: 94 100% 10%;
+
+    /* 1st color */
+    /* hsl(0, 0%, 100%) */
+    --background: 0 0% 100%;
+    --card: 0 0% 100%;
+    --popover: 0 0% 100%;
+
+    /* 3rd color */
+    /* Little (light) less than background */
+    --primary-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* 6rd color */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --muted-foreground: 240 3.8% 46.1%;
+    --destructive: 0 84.2% 60.2%;
+    --ring: 80 11% 5%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 80 11% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 80 11% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 80 11% 5%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 97 73% 57%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+/*  */
+
+@layer base {
+  /* https://astra-agency.vercel.app/ */
+  :root {
+    /* 5rd color */
+    /* hsl(97, 73%, 57%) */
+    --primary: 220 100% 40%;
+    --secondary-foreground: 220 100% 40%;
+    --accent-foreground: 220 100% 40%;
+
+    /* 2nd color - Text color */
+    /* hsl(80, 11%, 5%) */
+    --foreground: 210 14% 97%;
+    --card-foreground: 210 14% 97%;
+    --popover-foreground: 210 14% 97%;
+
+    /* 4rd color */
+    /* hsl(94, 100%, 10%) */
+    --secondary: 220 12% 20%;
+    --muted: 220 12% 20%;
+    --accent: 220 12% 20%;
+
+    /* 1st color */
+    /* hsl(0, 0%, 100%) */
+    --background: 220 67% 4%;
+    --card: 220 67% 4%;
+    --popover: 220 67% 4%;
+
+    /* 3rd color */
+    /* Little (light) less than background */
+    --primary-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* 6rd color */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --muted-foreground: 240 3.8% 46.1%;
+    --destructive: 0 84.2% 60.2%;
+    --ring: 210 14% 97%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 210 14% 97%;
+    --foreground: 0 0% 98%;
+
+    --card: 210 14% 97%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 210 14% 97%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 100% 40%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+/*  */
+
+@layer base {
+  /* https://en.minea.com/ */
+  :root {
+    /* 1st color */
+    --primary: 0, 0%, 9%;
+    --secondary-foreground: 0, 0%, 9%;
+    --accent-foreground: 0, 0%, 9%;
+
+    /* 2nd color - Text color */
+    --foreground: 60, 1%, 20%;
+    --card-foreground: 60, 1%, 20%;
+    --popover-foreground: 60, 1%, 20%;
+
+    /* 3rd color - Secondary */
+    --secondary: 41 100% 51%;
+    --muted: 41 100% 51%;
+    --accent: 41 100% 51%;
+
+    /* 4th color - background */
+    --background: 0 0% 100%;
+    --card: 0 0% 100%;
+    --popover: 0 0% 100%;
+
+    /* 3rd color */
+    /* Little (light) less than background */
+    --primary-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* 6rd color */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --muted-foreground: 240 3.8% 46.1%;
+    --destructive: 0 84.2% 60.2%;
+    --ring: 60, 1%, 20%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 60, 1%, 20%;
+    --foreground: 0 0% 98%;
+
+    --card: 60, 1%, 20%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 60, 1%, 20%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0, 0%, 9%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}

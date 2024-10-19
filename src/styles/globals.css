@@ -4,35 +4,39 @@
 
 @layer base {
   :root {
+    /* 1st color */
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 240 5.9% 10%;
+    /* 3rd color */
     --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
+    /* 2nd color - Text color */
+    --foreground: 240 10% 3.9%;
+    --card-foreground: 240 10% 3.9%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* 4rd color */
+    --secondary: 240 4.8% 95.9%;
+    --muted: 240 4.8% 95.9%;
+    --accent: 240 4.8% 95.9%;
+
+    /* 5rd color */
+    --primary: 240 5.9% 10%;
+    --secondary-foreground: 240 5.9% 10%;
+    --accent-foreground: 240 5.9% 10%;
+
+    /* 6rd color */
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
+
+    --muted-foreground: 240 3.8% 46.1%;
+    --destructive: 0 84.2% 60.2%;
     --ring: 240 10% 3.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Doesn't change */
   }
 
   .dark {
@@ -86,7 +90,80 @@
     content: counter(step);
   }
   .rehype-code-title {
-    @apply px-5 pb-2 mt-2 pt-1 z-10 -mb-2 font-mono text-xs font-bold text-gray-200 bg-[#0d1117]/95 rounded-t-lg border-b border-white;
+    @apply px-5 pb-2 mt-2 pt-1 z-10 -mb-2 font-mono text-xs font-bold text-gray-200 bg-[#0d1117]/95 rounded-t-lg border-b border-white w-full;
   }
-}
 
+  /* Line highlight in code */
+
+  pre > code {
+    display: grid;
+  }
+
+  .line--highlighted {
+    background-color: rgba(200, 200, 255, 0.1);
+    border-left: 2px solid #60a5fa; /* Tailwind blue-400 */
+  }
+
+  .word--highlighted {
+    background-color: rgba(200, 200, 255, 0.1);
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.2rem;
+  }
+
+  [data-filename] {
+    position: relative;
+  }
+
+  [data-filename]::before {
+    content: attr(data-filename);
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    padding: 0.25rem 0.5rem;
+    background-color: #374151; /* Tailwind gray-700 */
+    color: #f3f4f6; /* Tailwind gray-100 */
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+  /* For copy button approach */
+  /* pre {
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: "Fira Code", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    counter-reset: line;
+  }
+
+  code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
+  }
+
+  code > [data-line].line--highlighted::before {
+    background-color: rgba(255, 255, 0, 0.2);
+  }
+
+  code > [data-line]:hover::before {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .word--highlighted {
+    background-color: rgba(255, 255, 0, 0.2);
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+  } */
+}

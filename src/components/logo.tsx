@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "./ui/badge";
 
 const Logo = () => {
-
   return (
     <>
       <Link href={"/"} className="flex items-center font-bold">
@@ -20,9 +20,11 @@ const Logo = () => {
           alt="Unicorn Space UI logo"
           className="hidden dark:block"
         />
-        UnicornSpaceUI
+        UnicornSpaceUI{" "}
+        <Badge variant={"secondary"} className="scale-[80%]">
+          Beta
+        </Badge>
       </Link>
-
     </>
   );
 };
