@@ -3,9 +3,9 @@ import HeroSection from "@/components/hero-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Icons } from "@/components/icons";
 import Image from "next/image";
-import { Testimonials3 } from "@/registry/components/testimonials/testimonials3";
 import WorkWithUs from "@/components/work-with-us";
 import Features3 from "@/registry/components/features/features3";
+import Testimonials3 from "@/registry/components/testimonials/testimonials3";
 
 const page = () => {
   return (

@@ -1,11 +1,7 @@
 import { RegistrySchema } from "@/types/registry";
 
 import HeroSection3 from "./components/hero-sections/hero-section3";
-import { Pricing2Code } from "./component-code/Pricing/pricing2Code";
-import { Features1Code } from "./component-code/Features/Features1Code";
-import { Features2Code } from "./component-code/Features/Features2Code";
-import { Features3Code } from "./component-code/Features/features3Code";
-import HeroSection1 from "./components/hero-sections/hero-section1";
+import { Pricing2Code } from "./component-code/pricing/pricing2Code";
 import { HeroSectionCode } from "./component-code/HeroSections/HeroSectionCode";
 import HeroSection2 from "./components/hero-sections/hero-section2";
 // Hero Sections
@@ -17,24 +13,20 @@ import { HeroSection4Code } from "./component-code/hero-sections/hero-section4Co
 import { HeroSection6Code } from "./component-code/hero-sections/hero-section6Code";
 
 // Pricing Components
-import Pricing2 from "./components/Pricing/pricing2";
-import Pricing3 from "./components/Pricing/pricing3";
-import Pricing4 from "./components/Pricing/pricing4";
-import PricingSection1 from "./components/Pricing/pricing1";
-import { Pricing2Code } from "./component-code/Pricing/pricing2Code";
-import { Pricing3Code } from "./component-code/Pricing/pricing3Code";
-import { Pricing4Code } from "./component-code/Pricing/pricing4Code";
-import { PricingSectionCode } from "./component-code/Pricing/PricingSectionCode";
+import Pricing2 from "./components/pricing/pricing2";
+import Pricing3 from "./components/pricing/pricing3";
+import Pricing4 from "./components/pricing/pricing4";
+import PricingSection1 from "./components/pricing/pricing1";
+import { Pricing3Code } from "./component-code/pricing/pricing3Code";
+import { Pricing4Code } from "./component-code/pricing/pricing4Code";
 
 // Features Components
-import Features3 from "./components/Features/features3";
-import Features4 from "./components/Features/features4";
-import Features5 from "./components/Features/features5";
-import { Features1Code } from "./component-code/Features/Features1Code";
-import { Features2Code } from "./component-code/Features/Features2Code";
-import { Features3Code } from "./component-code/Features/features3Code";
-import { Features4Code } from "./component-code/Features/features4Code";
-import { Features5Code } from "./component-code/Features/features5Code";
+import Features3 from "./components/features/features3";
+import Features4 from "./components/features/features4";
+import Features5 from "./components/features/features5";
+import { Features3Code } from "./component-code/features/features3Code";
+import { Features4Code } from "./component-code/features/features4Code";
+import { Features5Code } from "./component-code/features/features5Code";
 
 // Testimonials and Reviews
 import Testimonials1 from "./components/testimonials/testimonials1";
@@ -43,13 +35,12 @@ import Testimonials3 from "./components/testimonials/testimonials3";
 import Testimonials5 from "./components/testimonials/testimonials5";
 import Testimonial4 from "./components/testimonials/testimonials4";
 import CustomerReviews from "./components/testimonials/customer-reviews";
-import SocialProof from "./components/Reviews/social-proof";
 import { Testimonials1Code } from "./component-code/testimonials/Testimonials1Code";
 import { Testimonials2Code } from "./component-code/testimonials/Testimonials2Code";
 import { Testimonials3Code } from "./component-code/testimonials/Testimonials3Code";
 
 import TextAppearOnScroll from "./components/others/text-appear-on-scroll";
-import { PricingSectionCode } from "./component-code/Pricing/PricingSectionCode";
+import { PricingSectionCode } from "./component-code/pricing/PricingSectionCode";
 import { TextAppearOnScrollCode } from "./component-code/others/TextAppearOnScrollCode";
 import CallOutSection from "./components/others/call-out";
 import { CustomerReviewsCode } from "./component-code/testimonials/customer-reviewsCode";
@@ -72,8 +63,6 @@ import { Footer2Code } from "./component-code/footer/footer2Code";
 import { Footer3Code } from "./component-code/footer/footer3Code";
 
 // Callouts and Forms
-import CallOutSection from "./components/others/call-out";
-import TextAppearOnScroll from "./components/others/TextAppearOnScroll";
 import NewsLettersForm from "./components/others/news-letter1";
 import NewsLettersForm2 from "./components/others/news-letter2";
 import Profile from "./components/others/profile";
@@ -86,8 +75,8 @@ import { ProfileCode } from "./component-code/others/profileCode";
 // CTA Components
 import Cta1 from "./components/CTA/cta1";
 import Cta2 from "./components/CTA/cta2";
-import { Cta1Code } from "./component-code/CTA/cta1Code";
-import { Cta2Code } from "./component-code/CTA/cta2Code";
+import { Cta1Code } from "./component-code/cta/cta1Code";
+import { Cta2Code } from "./component-code/cta/cta2Code";
 
 // Ecommerce Components
 import ProductImageCarousel from "./components/ecommerce/product-image-carousel";
@@ -96,18 +85,19 @@ import { ProductImageCarouselCode } from "./component-code/ecommerce/product-ima
 import { ProductSection1Code } from "./component-code/ecommerce/product-section1Code";
 
 // FAQ Components
-import Faq1 from "./components/Faq/faq1";
-import Faq2 from "./components/Faq/faq2";
-import { Faq1Code } from "./component-code/Faq/faq1Code";
-import { Faq2Code } from "./component-code/Faq/faq2Code";
+import Faq1 from "./components/faq/faq1";
+import Faq2 from "./components/faq/faq2";
+import { Faq1Code } from "./component-code/faq/faq1Code";
+import { Faq2Code } from "./component-code/faq/faq2Code";
 
 // Dialogs and Cards
 import SearchComponent from "./components/dialog/dialog1";
 import BioCard from "./components/cards/card2";
 // Newsletters
 import NewsLetter1 from "./components/news-letters/news-letter1";
-import Features1 from "./components/Features/features1";
-import Features2 from "./components/Features/features2";
+import Features1 from "./components/features/features1";
+import Features2 from "./components/features/features2";
+import SocialProof from "./components/reviews/social-proof";
 
 //
 const componentRegistry: RegistrySchema = {

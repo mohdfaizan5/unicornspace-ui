@@ -13,8 +13,8 @@ export default function BioCard() {
         Software designer, founder, and amateur astronaut.
       </h1>
       <p className="text-zinc-400 mb-6">
-        I'm Spencer, a software designer and entrepreneur based in New York
-        City. I'm the founder and CEO of Planetaria, where we develop
+        Im Spencer, a software designer and entrepreneur based in New York
+        City. Im the founder and CEO of Planetaria, where we develop
         technologies that empower regular people to explore space on their own
         terms.
       </p>
