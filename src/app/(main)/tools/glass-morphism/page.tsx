@@ -66,7 +66,13 @@ border-radius: 10px;`,
   });
 
   return (
-    <main className=" flex flex-col md:flex-row">
+    <>
+    <h1 className="text-3xl font-bold font-passion ">Glass Morphism</h1>
+      <p className="max-w-2xl text-md text-muted-foreground mb-8">
+      Copy and paste this Glassmorphism CSS snippet into your frontend project for an amazing CSS glass effect.
+      </p>
+    <main className=" flex flex-col justify-evenly md:flex-row">
+      
       <section className="relative bg-gradient-to-tr from-indigo-600  to-purple-500 bg-no-repeat w-[340px] h-[480px] overflow-hidden">
         <div
           className="flex items-center justify-center text-5xl rounded-lg  border-red-50 border-2 absolute"
@@ -151,6 +157,7 @@ border-radius: 10px;`,
         </CardContent>
       </Card>
     </main>
+    </>
   );
 }
 

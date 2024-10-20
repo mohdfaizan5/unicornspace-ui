@@ -5,24 +5,24 @@ import "@/styles/general.css";
 import Image from "next/image";
 
 const tools = [
-  {
-    name: "Color Theme generator",
-    description: "Generate Shadcn color themes",
-    url: "/tools/color-theme-generator",
-    isPublished: true,
-    image:
-      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
-    beta: true,
-  },
-  {
-    name: "Color contrast checker",
-    description: "Check the contrast between two colors",
-    url: "/tools/contrast-checker",
-    image:
-      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
-    isPublished: true,
-    beta: true,
-  },
+  // {
+  //   name: "Color Theme generator",
+  //   description: "Generate Shadcn color themes",
+  //   url: "/tools/color-theme-generator",
+  //   isPublished: true,
+  //   image:
+  //     "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
+  //   beta: true,
+  // },
+  // {
+  //   name: "Color contrast checker",
+  //   description: "Check the contrast between two colors",
+  //   url: "/tools/contrast-checker",
+  //   image:
+  //     "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
+  //   isPublished: true,
+  //   beta: true,
+  // },
 
   {
     name: "Fonts in Use",
@@ -32,30 +32,39 @@ const tools = [
     isPublished: true,
     beta: false,
   },
-
   {
-    name: "Readme generator",
-    description: "Generate a readme file for your project",
-    url: "/tools/readme-generator",
-    image: "/assets/tools/colors-palettes.png",
+    name: "Color Palette tool",
+    description: "Provides the color palette for the given image",
+    url: "/tools/color-palettes",
+    image:
+      "/assets/tools/colors-palettes.png",
     isPublished: true,
     beta: true,
   },
+
   {
     name: "Gradient Generator",
     description: "Generate a gradient color for background",
     url: "/tools/bg-generator",
-    image:
-      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
+    image: "/assets/tools/gradient-generator.png" ,
     isPublished: true,
     beta: false,
   },
   {
-    name: "Color Palette tool",
-    description: "Provides the color palette for the given image",
-    url: "/tools/colors-palettes",
+    name: "Readme generator",
+    description: "Generate a readme file for your project",
+    url: "/tools/readme-generator",
+    image: "/assets/tools/readme-generator.png",
+    isPublished: true,
+    beta: true,
+  },
+  
+  {
+    name: "Glass Morphism",
+    description: "To have a glass view",
+    url: "/tools/glass-morphism",
     image:
-      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
+      "/assets/tools/glass-morphism.png",
     isPublished: true,
     beta: true,
   },
@@ -68,15 +77,7 @@ const tools = [
     isPublished: true,
     beta: true,
   },
-  {
-    name: "Glass Morphism",
-    description: "To have a glass view",
-    url: "/tools/glass-morphism",
-    image:
-      "https://www.magicpattern.design/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fbrandflow-bucket%2Fmagipattern%2Fmockups%2Fmesh-gradients.jpg&w=1080&q=75",
-    isPublished: true,
-    beta: true,
-  },
+  
 ];
 
 const page = () => {
