@@ -52,6 +52,11 @@ import { CallOutCode } from "./component-code/others/call-outCode";
 import { ProductSection1Code } from "./component-code/ecommerce/product-section1Code";
 import { HeroSection4Code } from "./component-code/hero-sections/hero-section4Code";
 import { CustomerReviewsCode } from "./component-code/testimonials/customer-reviewsCode";
+import Features4 from "./components/Features/features4";
+import { Features5 } from "./components/Features/features5";
+import SearchComponent from "./components/dialog/dialog1";
+import BioCard from "./components/cards/card2";
+import NewsLetter1 from "./components/news-letters/news-letter1";
 
 const componentRegistry: RegistrySchema = {
   Faq1: {
@@ -116,6 +121,14 @@ const componentRegistry: RegistrySchema = {
     component: Features3,
     code: Features3Code,
   },
+  Features4: {
+    component: Features4,
+    code: "WIP",
+  },
+  Features5: {
+    component: Features5,
+    code: "WIP",
+  },
 
   // Hero sections
   HeroSection1: {
@@ -171,7 +184,6 @@ const componentRegistry: RegistrySchema = {
     component: Footer2,
     code: Footer2Code,
   },
-
   // Other
 
   CallOutSection: {
@@ -181,6 +193,27 @@ const componentRegistry: RegistrySchema = {
   TextAppearOnScroll: {
     component: TextAppearOnScroll,
     code: TextAppearOnScrollCode,
+  },
+
+  // dialog section
+
+  SearchComponent: {
+    component: SearchComponent,
+    code: "WIP",
+  },
+
+  // Cards
+
+  Card1: {
+    component: BioCard,
+    code: "WIP",
+  },
+
+  // News letter
+
+  NewsLetter1: {
+    component: NewsLetter1,
+    code: "WIP",
   },
 };
 
