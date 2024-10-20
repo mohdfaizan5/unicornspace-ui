@@ -105,7 +105,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
   );
 }
 
-export function Pricing2() {
+export default function Pricing2() {
   return (
     <section
       id="pricing"
