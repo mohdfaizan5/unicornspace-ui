@@ -1,5 +1,9 @@
-// @ts-nocheck
 import { useId } from "react";
+
+interface Props{
+  className: string
+}
+
 
 const features = [
   {
@@ -40,7 +44,7 @@ const features = [
   },
 ];
 
-function DeviceArrowIcon(props) {
+function DeviceArrowIcon(props:Props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <path
@@ -60,7 +64,7 @@ function DeviceArrowIcon(props) {
   );
 }
 
-function DeviceCardsIcon(props) {
+function DeviceCardsIcon(props: Props) {
   let id = useId();
 
   return (
@@ -96,7 +100,7 @@ function DeviceCardsIcon(props) {
   );
 }
 
-function DeviceClockIcon(props) {
+function DeviceClockIcon(props: Props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
@@ -116,7 +120,7 @@ function DeviceClockIcon(props) {
   );
 }
 
-function DeviceListIcon(props) {
+function DeviceListIcon(props: Props) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <path
@@ -139,7 +143,7 @@ function DeviceListIcon(props) {
   );
 }
 
-function DeviceLockIcon(props) {
+function DeviceLockIcon(props: Props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
@@ -159,7 +163,7 @@ function DeviceLockIcon(props) {
   );
 }
 
-function DeviceChartIcon(props: any) {
+function DeviceChartIcon(props: Props) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <path
@@ -185,14 +189,14 @@ function DeviceChartIcon(props: any) {
   );
 }
 
-export function Features3() {
+export default function Features3() {
   return (
     <section
       id="secondary-features"
       aria-label="Features for building a portfolio"
-      className=""
+      className="flex  items-center justify-center"
     >
-      <section className=" max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className=" max-w-7xl px-4 sm:px-6 lg:px-8  ">
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-medium tracking-tigh">
             Now is the time to build your project.

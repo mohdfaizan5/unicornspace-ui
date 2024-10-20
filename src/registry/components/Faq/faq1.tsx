@@ -1,6 +1,4 @@
 import Image from "next/image";
-
-// TODO change it our Unicorn Space UI FAQ questions
 const faqs = [
   [
     {
@@ -17,11 +15,11 @@ const faqs = [
     {
       question: "What was that testimonial about tax fraud all about?",
       answer:
-        "TaxPal is just a software application, ultimately your books are your responsibility.",
+        "TaxPal is just a software application; ultimately, your books are your responsibility.",
     },
     {
       question:
-        "TaxPal sounds horrible but why do I still feel compelled to purchase?",
+        "TaxPal sounds horrible, but why do I still feel compelled to purchase?",
       answer:
         "This is the power of excellent visual design. You just can’t resist it, no matter how poorly it actually functions.",
     },
@@ -34,12 +32,12 @@ const faqs = [
     },
     {
       question: "Can we expect more inventory features?",
-      answer: "In life it’s really better to never expect anything at all.",
+      answer: "In life, it’s really better to never expect anything at all.",
     },
   ],
 ];
 
-export function Faq1() {
+export default function Faq1() {
   return (
     <section
       id="faq"
@@ -51,7 +49,7 @@ export function Faq1() {
         src={
           "https://salient.tailwindui.com/_next/static/media/background-faqs.55d2e36a.jpg"
         }
-        alt=""
+        alt="FAQ Background"
         width={1558}
         height={946}
         unoptimized
@@ -62,11 +60,11 @@ export function Faq1() {
             id="faq-title"
             className="font-display text-3xl tracking-tight text-foreground sm:text-4xl"
           >
-            Frequently asked questions
+            Frequently Asked Questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-foreground/80">
             If you can’t find what you’re looking for, email our support team
-            and if you’re lucky someone will get back to you.
+            and if you’re lucky, someone will get back to you.
           </p>
         </div>
         <ul

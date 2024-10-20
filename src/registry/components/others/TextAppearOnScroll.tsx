@@ -1,5 +1,5 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 
 function TextAppearOnScroll({
@@ -34,7 +34,13 @@ function TextAppearOnScroll({
   );
 }
 
-const Word = ({ children, progress, range }: any) => {
+interface Props{
+  children:string
+  progress:MotionValue<number>
+  range: number[]
+}
+
+const Word = ({ children, progress, range }: Props) => {
   const opacity = useTransform(progress, range, [0, 1]);
 
   return (
