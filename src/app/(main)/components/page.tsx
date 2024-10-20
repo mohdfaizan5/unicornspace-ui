@@ -51,28 +51,33 @@ const page = () => {
         Beautifully designed. Copy and paste into your apps. Open Source.
       </p>
       <section className="flex gap-11 flex-wrap ">
-        {allComponents.map((tool, i) => (
-          <Link
-            key={i}
-            href={tool.slug}
-            className="flex flex-col items-center  rounded-xl  border bg-card p-4 text-card-foreground  shadow transition-colors hover:bg-muted/50 sm:p-7 w-96 relative space-y-2 "
-          >
-            <h2 className="text-xl font-bold ">{tool.title}</h2>
-  
-            {tool.image && (
-              <Image
-                className="w-fit h-fit"
-                alt=""
-                width={200}
-                height={200}
-                src={tool.image } 
-              ></Image>
-            )}
-            
-            <p className="opacity-90 text-sm ">{tool.description}</p>
-            {/* <p className="opacity-90 text-sm">{}</p> */}
-          </Link>
-        ))}
+        {allComponents.map((tool, i) => {
+          if (tool.slugAsParams !== "get-started") {
+            console.log(tool);
+            return (
+              <Link
+                key={i}
+                href={tool.slug}
+                className="flex flex-col items-center  rounded-xl  border bg-card p-4 text-card-foreground  shadow transition-colors hover:bg-muted/50 sm:p-7 w-96 relative space-y-2 "
+              >
+                <h2 className="text-xl font-bold ">{tool.title}</h2>
+
+                {tool.image && (
+                  <Image
+                    className="w-fit h-fit"
+                    alt=""
+                    width={200}
+                    height={200}
+                    src={tool.image}
+                  ></Image>
+                )}
+
+                <p className="opacity-90 text-sm ">{tool.description}</p>
+                {/* <p className="opacity-90 text-sm">{}</p> */}
+              </Link>
+            );
+          }
+        })}
       </section>
     </div>
   );

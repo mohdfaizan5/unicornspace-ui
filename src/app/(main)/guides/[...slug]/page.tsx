@@ -68,10 +68,10 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
         <p className="text-lg text-neutral-500">{guide.description}</p>
         {guide.thumbnail && (
           <Image
-            className=" md:min-w-96 max-w-96 md:max-w-xl py-2"
+            className=" md:min-w-96 max-w-96 md:max-w-xl py-2 rounded-2xl overflow-hidden"
             src={`/images/guides/${guide.thumbnail}`}
-            width={720}
-            height={320}
+            width={780}
+            height={380}
             // public\images\guides\Authjs part 1.png
             alt={`\images\guides\${guide.title}`}
           />

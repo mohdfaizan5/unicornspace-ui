@@ -1,4 +1,3 @@
-
 "use client";
 import Link from "next/link";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
@@ -14,7 +13,7 @@ interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
 }
 
 // GridPattern component with type annotations
-export function GridPattern({
+function GridPattern({
   width,
   height,
   x,
@@ -219,7 +218,7 @@ function Resource({ resource }: ResourceProps) {
 }
 
 // Resources component
-export function Features5() {
+export default function Features5() {
   return (
     <div className="my-16 xl:max-w-none">
       <h2 className="text-3xl" id="resources">
@@ -233,7 +232,6 @@ export function Features5() {
     </div>
   );
 }
-
 
 /*
 

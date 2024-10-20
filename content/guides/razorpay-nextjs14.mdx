@@ -4,6 +4,7 @@ title: Razorpay in Nextjs 14 the no BS way.
 description: Learn how to implement Razorpay API for payments in your projects.
 tags: Nextjs, Razorpay, Payments, API, Integration
 thumbnail: Razorpay guide.png
+author: Faizan
 ---
 
 # Intro
@@ -24,7 +25,7 @@ npm i razorpay
 
 1. create a file that interacts with client side code in `@/src/components/checkout-razorpay.tsx`
 
-```ts
+```ts:@/src/components/checkout-razorpay.tsx
 "use client";
 import { useState } from "react";
 import Script from "next/script";
@@ -173,9 +174,7 @@ export default CheckoutWithRazorpay;
 
 2. serverside code, create a API route in `@/src/app/api/verify/route.ts`
 
-```ts
-// @/src/app/api/verify/route.ts
-
+```ts:@/src/app/api/verify/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 
@@ -216,9 +215,7 @@ export async function POST(request: NextRequest) {
 
 3. serverside code, create a API route in `@/src/app/api/order/route.ts`
 
-```ts
-// @/src/app/api/order/route.ts
-
+```ts:@/src/app/api/order/route.ts
 import Razorpay from "razorpay";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -246,7 +243,7 @@ export async function POST(request: NextRequest) {
 
 4. create a `.env` file in the root of your project
 
-```env
+```env:.env
 RAZORPAY_KEY_ID=""
 RAZORPAY_KEY_SECRET=""
 ```
