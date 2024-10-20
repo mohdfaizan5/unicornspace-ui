@@ -34,7 +34,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased bg-background`}
         suppressHydrationWarning={true}
       >
-        <ThemeProvider attribute="class" defaultTheme={"light"}>
+        <ThemeProvider attribute="class" defaultTheme={"dark"}>
           <div className="relative flex min-h-screen flex-col antialiased bg-background">
             <Navbar />
             {children}
