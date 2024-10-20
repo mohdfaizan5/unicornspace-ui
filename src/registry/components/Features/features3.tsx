@@ -1,9 +1,8 @@
 import { useId } from "react";
 
-interface Props{
-  className: string
+interface Props {
+  className: string;
 }
-
 
 const features = [
   {
@@ -44,7 +43,7 @@ const features = [
   },
 ];
 
-function DeviceArrowIcon(props:Props) {
+function DeviceArrowIcon(props: Props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <path
@@ -194,7 +193,7 @@ export default function Features3() {
     <section
       id="secondary-features"
       aria-label="Features for building a portfolio"
-      className="flex  items-center justify-center"
+      className="flex mt-10 md:mt-0 items-center justify-center"
     >
       <section className=" max-w-7xl px-4 sm:px-6 lg:px-8  ">
         <div className="mx-auto max-w-2xl sm:text-center">

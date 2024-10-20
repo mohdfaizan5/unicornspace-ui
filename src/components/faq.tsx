@@ -11,7 +11,7 @@ const Faq = () => {
     <section className="bg-background px-5 md:px-10 min-h-[70dvh] py-10 flex flex-col items-center">
       {/* <h2>Develop projects without the manual management</h2>
       <h3>hioajsdf</h3> */}
-      <h1>FAQs</h1>
+      <h1 className="text-3xl">FAQs</h1>
       <div className="py-10 pb-20 sm:w-[500px] text-lg sm:text-xl">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">

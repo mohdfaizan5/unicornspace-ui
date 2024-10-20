@@ -92,11 +92,11 @@ export const navigation: NavigationProps[] = [
     title: "Guides",
     href: "/guides",
     links: [
-      { title: "Next Auth(Faizan)", href: "/guides/nextauth-v5" },
-      { title: "Razorpay nextjs(Faizan)", href: "/guides/razorpay-nextjs14" },
+      { title: "Next Auth", href: "/guides/nextauth-v5", label: "Updated" },
+      { title: "Razorpay nextjs", href: "/guides/razorpay-nextjs14" },
       // { title: "Stripe", href: "/guides/stripe" },
-      { title: "Prisma Basics(Faizan)", href: "/guides/prisma" },
-      { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },
+      { title: "Prisma Basics", href: "/guides/prisma", label: "New!" },
+      // { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },
       // { title: "Typescript Basics(Akshy)", href: "/guides/typescript-50" },
       // {
       //   title: "ContentLayer & MDX❌ (Tahir)",
@@ -104,7 +104,7 @@ export const navigation: NavigationProps[] = [
       // },
       { title: "UploadThing (Tahir)", href: "/guides/uploadthing" },
       {
-        title: "SEO - The Fundamentals (Faizan)",
+        title: "SEO - The Fundamentals",
         href: "/guides/seo-the-fundamentals",
       },
       // { title: "SEO - Getting Hands dirty❌", href: "/guides/uploadthing" },

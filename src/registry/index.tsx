@@ -269,12 +269,6 @@ const componentRegistry: RegistrySchema = {
     component: Profile,
     code: ProfileCode,
   },
-  // dialog section
-
-  SearchComponent: {
-    component: SearchComponent,
-    code: "WIP",
-  },
 
   // Cards
 

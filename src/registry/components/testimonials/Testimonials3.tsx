@@ -75,7 +75,7 @@ export function Testimonials3() {
     >
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl md:text-center">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
+          <h2 className="font-display text-center text-3xl tracking-tight sm:text-4xl">
             Loved by developers like you
           </h2>
         </div>

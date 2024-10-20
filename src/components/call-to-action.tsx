@@ -12,7 +12,9 @@ export function CallToAction({ className }: React.ComponentProps<"div">) {
         className
       )}
     >
-      <div className="text-balance text-lg font-semibold leading-tight group-hover:underline">
+      {/* <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#fd366e_80%)]"></div> */}
+
+      <div className="text-balance z-10 text-lg font-semibold leading-tight group-hover:underline">
         Bring Your Digital Vision to Life with Our Services
       </div>
       <div>Trusted by businesses and creatives alike.</div>

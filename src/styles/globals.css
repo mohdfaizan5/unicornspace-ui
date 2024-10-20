@@ -36,12 +36,14 @@
     --destructive: 0 84.2% 60.2%;
     --ring: 240 10% 3.9%;
 
-    --radius: 0.5rem; /* Doesn't change */
+    --radius: 0.6rem; /* Doesn't change */
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* --background: 240 10% 3.9%; */
+    --background: 210 10% 4%;
+    /* --foreground: 0 0% 98%; */
+    --foreground: 0 0% 100%;
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -90,7 +92,7 @@
     content: counter(step);
   }
   .rehype-code-title {
-    @apply px-5 pb-2 mt-2 pt-1 z-10 -mb-2 font-mono text-xs font-bold text-gray-200 bg-[#0d1117]/95 rounded-t-lg border-b border-white w-full;
+    @apply px-5 pb-2 mt-2 pt-1 z-10 -mb-2 font-mono text-xs font-bold text-gray-200 bg-[#0d1117]/95 rounded-t-lg border-b border-white max-w-fit;
   }
 
   /* Line highlight in code */

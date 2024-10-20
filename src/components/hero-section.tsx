@@ -19,16 +19,21 @@ const HeroSection = () => {
           height={600}
           alt=""
         />
-        <Badge>🎉 Something special is waiting!</Badge>
-        <h1 className="text-5xl mt-2 sm:text-6xl sm:w-2/3 sm:text-center font-passion font-bold">
+        <Badge className="opacity-0  [--slidein-delay:300ms]  blur-lg animate-slidein">
+          🎉 Something special is waiting!
+        </Badge>
+        <h1 className="text-5xl mt-2 sm:text-6xl sm:w-2/3 sm:text-center font-passion font-bold  blur-lg opacity-0 [--slidein-delay:300ms] animate-slidein">
           Build faster, smarter, and more efficiently.
         </h1>
-        <p className="text-[22px] sm:text-[18px] opacity-75 mb-6 mt-5 md:max-w-[600px] md:text-center font-medium">
+        <p className="text-lg sm:text-[18px] blur-lg opacity-0 mb-6 mt-5 md:max-w-[600px] md:text-center font-medium  [--slidein-delay:400ms] animate-slidein text-foreground/75">
           Meet UnicornSpaceUI, the library for all your daily tool for all
           Nextjs and Web Development. Focus on getting things done, not
           re-inventing again and again.
         </p>
-        <Link href={"/components"}>
+        <Link
+          href={"/components"}
+          className=" blur-lg opacity-0 [--slidein-delay:500ms] animate-slidein "
+        >
           <Button
             className="group w-[350px] font-semibold h-[50px] mt-10 text-lg"
             variant={"default"}
@@ -38,7 +43,7 @@ const HeroSection = () => {
           </Button>
         </Link>
         <div className="hidden md:block">
-          <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute md:top-36 md:left-36 blur-[1px] -rotate-6 scale-105">
+          <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute md:top-36 md:left-36  blurblur-lg1px] -rotate-6 scale-105">
             <Icons.React className="" />
           </div>
           <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute md:top-36 md:right-36 rotate-6">
@@ -47,10 +52,10 @@ const HeroSection = () => {
           <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute md:top-80 md:left-72 scale-105 -rotate-12">
             <Icons.framerMotion className="" />
           </div>
-          <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute md:top-80 blur-[1px] md:right-72 rotate-12">
+          <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute md:top-80  blurblur-lg1px] md:right-72 rotate-12">
             <Icons.shadCn className="" />
           </div>
-          <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute bottom-5  blur-[1px] -z-10">
+          <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute bottom-5   blurblur-lg1px] -z-10">
             <Icons.typescript className="" />
           </div>
         </div>

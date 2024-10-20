@@ -11,6 +11,7 @@ import { Callout } from "./call-out";
 import CopyButton from "./copy-button";
 import "@/styles/mdx.css";
 import MermaidDiagram from "./mermaid-diagram";
+import WorkWithUs from "./work-with-us";
 
 type componentsProps = {
   className: string;
@@ -120,7 +121,7 @@ const components = {
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-md border", className)} alt={alt} {...props} />
+    <img className={cn("rounded-2xl overflow-hidden border", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
@@ -175,7 +176,7 @@ const components = {
   // ),
   pre: ({ className, ...props }) => {
     return (
-      <div className="relative max-w-xl">
+      <div className="relative max-w-2xl mb-2">
         <pre
           className={cn(
             "mb-4 overflow-x-auto rounded-lg  bg-black py-4",
@@ -183,7 +184,7 @@ const components = {
           )}
           {...props}
         />
-        <CopyButton className="absolute right-2 top-2" text={"codeContent"} />
+        {/* <CopyButton className="absolute right-2 top-2" text={"codeContent"} /> */}
       </div>
     );
   },
@@ -225,6 +226,7 @@ const components = {
     />
   ),
   Diagram: MermaidDiagram,
+  WorkWithUs,
 };
 
 interface MdxProps {
