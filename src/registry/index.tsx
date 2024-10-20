@@ -2,13 +2,11 @@ import { RegistrySchema } from "@/types/registry";
 
 import HeroSection3 from "./components/hero-sections/hero-section3";
 import { Pricing2Code } from "./component-code/pricing/pricing2Code";
-import { HeroSectionCode } from "./component-code/HeroSections/HeroSectionCode";
 import HeroSection2 from "./components/hero-sections/hero-section2";
 // Hero Sections
 import HeroSection4 from "./components/hero-sections/hero-section4";
 import HeroSection6 from "./components/hero-sections/hero-section6";
-import { HeroSection2Code } from "./component-code/HeroSections/HeroSection2Code";
-import { HeroSection3Code } from "./component-code/HeroSections/hero-section3Code";
+
 import { HeroSection4Code } from "./component-code/hero-sections/hero-section4Code";
 import { HeroSection6Code } from "./component-code/hero-sections/hero-section6Code";
 
@@ -35,16 +33,13 @@ import Testimonials3 from "./components/testimonials/testimonials3";
 import Testimonials5 from "./components/testimonials/testimonials5";
 import Testimonial4 from "./components/testimonials/testimonials4";
 import CustomerReviews from "./components/testimonials/customer-reviews";
-import { Testimonials1Code } from "./component-code/testimonials/Testimonials1Code";
-import { Testimonials2Code } from "./component-code/testimonials/Testimonials2Code";
-import { Testimonials3Code } from "./component-code/testimonials/Testimonials3Code";
+
 
 import TextAppearOnScroll from "./components/others/text-appear-on-scroll";
-import { PricingSectionCode } from "./component-code/pricing/PricingSectionCode";
-import { TextAppearOnScrollCode } from "./component-code/others/TextAppearOnScrollCode";
+
 import CallOutSection from "./components/others/call-out";
 import { CustomerReviewsCode } from "./component-code/testimonials/customer-reviewsCode";
-import { SocialProofCode } from "./component-code/Reviews/social-proofCode";
+import { SocialProofCode } from "./component-code/reviews/social-proofCode";
 
 // Navbar Components
 import Navbar1 from "./components/navbars/navbar1";
@@ -67,14 +62,13 @@ import NewsLettersForm from "./components/others/news-letter1";
 import NewsLettersForm2 from "./components/others/news-letter2";
 import Profile from "./components/others/profile";
 import { CallOutCode } from "./component-code/others/call-outCode";
-import { TextAppearOnScrollCode } from "./component-code/others/TextAppearOnScrollCode";
+
 import { NewsLetter1Code } from "./component-code/others/news-letter1Code";
 import { NewsLetter2Code } from "./component-code/others/news-letter2Code";
 import { ProfileCode } from "./component-code/others/profileCode";
 
 // CTA Components
-import Cta1 from "./components/CTA/cta1";
-import Cta2 from "./components/CTA/cta2";
+
 import { Cta1Code } from "./component-code/cta/cta1Code";
 import { Cta2Code } from "./component-code/cta/cta2Code";
 
@@ -98,6 +92,20 @@ import NewsLetter1 from "./components/news-letters/news-letter1";
 import Features1 from "./components/features/features1";
 import Features2 from "./components/features/features2";
 import SocialProof from "./components/reviews/social-proof";
+import Cta1 from "./components/cta/cta1";
+import Cta2 from "./components/cta/cta2";
+import { Features1Code } from "./component-code/features/features1Code";
+import { Features2Code } from "./component-code/features/features2Code";
+import HeroSection1 from "./components/hero-sections/hero-section1";
+import { Testimonials1Code } from "./component-code/testimonials/testimonials1Code";
+import { Testimonials2Code } from "./component-code/testimonials/testimonials2Code";
+import { Testimonials3Code } from "./component-code/testimonials/testimonials3Code";
+import { TextAppearOnScrollCode } from "./component-code/others/text-appear-on-scrollCode";
+import Pricing1 from "./components/pricing/pricing1";
+import { Pricing1Code } from "./component-code/pricing/pricing1Code";
+import { HeroSection1Code } from "./component-code/hero-sections/hero-section1Code";
+import { HeroSection2Code } from "./component-code/hero-sections/hero-section2Code";
+import { HeroSection3Code } from "./component-code/hero-sections/hero-section3Code";
 
 //
 const componentRegistry: RegistrySchema = {
@@ -141,8 +149,8 @@ const componentRegistry: RegistrySchema = {
   // Pricing
 
   Pricing1: {
-    component: PricingSection1,
-    code: PricingSectionCode, // cross check
+    component: Pricing1,
+    code: Pricing1Code, // cross check
   },
   Pricing2: {
     component: Pricing2,
@@ -183,7 +191,7 @@ const componentRegistry: RegistrySchema = {
   // Hero sections
   HeroSection1: {
     component: HeroSection1,
-    code: HeroSectionCode, // may be its HeroSection1Code
+    code: HeroSection1Code, // may be its HeroSection1Code
   },
   HeroSection2: {
     component: HeroSection2,

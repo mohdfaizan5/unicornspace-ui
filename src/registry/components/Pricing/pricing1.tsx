@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../../../components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "../../../components/ui/badge";
-const PricingSection1 = () => {
+const Pricing1 = () => {
   return (
     <section className="flex flex-col items-center overflow-y-hidden w-full">
       <h1 className="text-6xl font-bold">Pricing</h1>
@@ -148,4 +148,4 @@ const CustomList = ({
   }
 };
 
-export default PricingSection1;
+export default Pricing1;
