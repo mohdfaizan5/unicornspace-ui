@@ -23,7 +23,7 @@ const page = () => {
           <input
             type="color"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              console.log(e.target.value);
+              // console.log(e.target.value);
               const root = document.querySelector(
                 ":root"
               ) as HTMLElement | null;

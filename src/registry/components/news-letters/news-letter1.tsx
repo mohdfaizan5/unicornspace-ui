@@ -12,7 +12,7 @@ export default function NewsLetter1() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the email to your server
-    console.log("Subscribing email:", email);
+    // console.log("Subscribing email:", email);
     setIsSubscribed(true);
   };
 

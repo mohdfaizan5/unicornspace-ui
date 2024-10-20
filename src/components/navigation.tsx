@@ -14,7 +14,7 @@ export function Navigation({
 }) {
   let router = useRouter();
   const path = usePathname();
-  console.log(path);
+  // console.log(path);
 
   return (
     <nav className={clsx("text-base lg:text-sm w-full py-5", className)}>

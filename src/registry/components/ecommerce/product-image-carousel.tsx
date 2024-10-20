@@ -36,7 +36,9 @@ const ProductImageCarousel = () => {
           <CarouselItem className="">
             <Image
               className="mx-auto"
-              src={"/assets/Faizan Majoon Jar.png"}
+              src={
+                "https://www.apple.com/v/macbook-pro/ak/images/overview/closer-look/3d_viewer_pf_16__b8iq7yl5sewi_large.jpg"
+              }
               width={350}
               height={400}
               alt=""
@@ -45,13 +47,15 @@ const ProductImageCarousel = () => {
           <CarouselItem className="">
             <Image
               className="mx-auto"
-              src={"/assets/features.png"}
+              src={
+                "https://www.apple.com/v/macbook-pro/ak/images/overview/closer-look/3d_viewer_pt_closed__xhvulpfj67m2_large.jpg"
+              }
               width={400}
               height={400}
               alt=""
             />
           </CarouselItem>
-          <CarouselItem className="">
+          {/* <CarouselItem className="">
             <Image
               className="mx-auto my-auto"
               src={"/assets/Faizan Majoon Jar UR.png"}
@@ -59,7 +63,7 @@ const ProductImageCarousel = () => {
               height={400}
               alt=""
             />
-          </CarouselItem>
+          </CarouselItem> */}
         </CarouselContent>
         <div className="flex justify-between   top-[50%] right-0 left-0">
           <Button

@@ -32,7 +32,7 @@ async function getBlogFromParams({params} : BlogPageProps){
 
 export default async function Page({params}: {params : {slug : string}}) {
 
-    console.log("slug", params);
+    // console.log("slug", params);
 
     const blog = await getBlogFromParams({params})
 
@@ -40,7 +40,7 @@ export default async function Page({params}: {params : {slug : string}}) {
         notFound()
     }
 
-    console.log(blog.slug);
+    // console.log(blog.slug);
 
   return (
     <main className="flex flex-col md:flex-row justify-between   items-start prose dark:prose-invert">

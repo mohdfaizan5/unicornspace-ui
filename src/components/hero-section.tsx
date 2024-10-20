@@ -34,13 +34,19 @@ const HeroSection = () => {
           href={"/components"}
           className=" blur-lg opacity-0 [--slidein-delay:500ms] animate-slidein "
         >
-          <Button
+          {/* <Button
             className="group w-[350px] font-semibold h-[50px] mt-10 text-lg"
             variant={"default"}
           >
             Start Here{" "}
             <FiArrowRight className="transition-transform group-hover:translate-x-2 ml-1" />
-          </Button>
+          </Button> */}
+          <button className="group flex transition-transform duration-300  items-center justify-center w-[350px]  h-12 px-10 select-none rounded-lg hover:bg-gradient-to-b hover:from-zinc-800 hover:via-zinc-700 hover:to-zinc-600  text-base leading-8 text-zinc-50 shadow-[0_-1px_0_1px_rgba(0,0,0,0.8)_inset,0_0_0_1px_rgb(9_9_11)_inset,0_0.5px_0_1.5px_#71717a_inset] bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-700 active:shadow-[0_3px_0_0_rgba(0,0,0)_inset]">
+            <span className="flex mx-auto items-center group-active:[transform:translate3d(0,1px,0)]">
+              Start Here{" "}
+              <FiArrowRight className="transition-transform group-hover:translate-x-[6px] ml-1" />
+            </span>
+          </button>
         </Link>
         <div className="hidden md:block">
           <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl p-2 absolute md:top-36 md:left-36  blurblur-lg1px] -rotate-6 scale-105">

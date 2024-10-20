@@ -53,7 +53,7 @@ export default function Profile() {
           <div className="relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full bg-slate-200 md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
             <Image
               className="absolute inset-0 h-full w-full object-cover"
-              src={'https://github.com/shadcn.png'}
+              src={'https://github.com/mohdfaizan5.png'}
               width={500}
               height={500}
               alt=""

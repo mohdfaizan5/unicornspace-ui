@@ -41,7 +41,7 @@ export default function HeroSection5() {
         <div className="inline-flex items-center bg-gray-800 rounded-full px-4 py-2 mb-8">
           {[...Array(5)].map((_, i) => (
             <Avatar key={i}>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://github.com/likithanagaraj.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           ))}

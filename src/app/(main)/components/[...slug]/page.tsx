@@ -4,7 +4,7 @@ import { allComponents } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 const getGuideFromParams = ({ params }: { params: { slug: string } }) => {
-  console.log("✅⚡from getGuideFromParams");
+  // console.log("✅⚡from getGuideFromParams");
   let slug = params.slug;
   slug = `/components/${slug.toString().split(",").join("/")}`;
   const component = allComponents.find((component) => component.slug === slug);

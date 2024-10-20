@@ -53,7 +53,7 @@ const page = () => {
       <section className="flex gap-11 flex-wrap ">
         {allComponents.map((tool, i) => {
           if (tool.slugAsParams !== "get-started") {
-            console.log(tool);
+            // console.log(tool);
             return (
               <Link
                 key={i}

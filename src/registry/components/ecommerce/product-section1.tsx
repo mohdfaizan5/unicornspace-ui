@@ -39,13 +39,13 @@ const ProductImageCarousel = () => {
           <CarouselItem className="">
             <Image
               className="mx-auto"
-              src={"/assets/Faizan Majoon Jar.png"}
+              src={"https://www.apple.com/v/macbook-pro/ak/images/overview/closer-look/3d_viewer_pt_closed__xhvulpfj67m2_large.jpg"}
               width={350}
               height={400}
               alt=""
             />
           </CarouselItem>
-          <CarouselItem className="">
+          {/* <CarouselItem className="">
             <Image
               className="mx-auto"
               src={"/assets/features.png"}
@@ -53,11 +53,11 @@ const ProductImageCarousel = () => {
               height={400}
               alt=""
             />
-          </CarouselItem>
+          </CarouselItem> */}
           <CarouselItem className="">
             <Image
               className="mx-auto my-auto"
-              src={"/assets/Faizan Majoon Jar UR.png"}
+              src={"https://www.apple.com/v/macbook-pro/ak/images/overview/closer-look/3d_viewer_pf_16__b8iq7yl5sewi_large.jpg"}
               width={400}
               height={400}
               alt=""
@@ -102,10 +102,9 @@ const ProductSection1 = () => {
   return (
     <div className="min-h-[70vh] flex mx-auto flex-col-reverse md:flex-row mt-5 md:mt-0 items-center justify-center md:gap-5">
       <section className="md:max-w-[500px] px-5 flex flex-col gap-2 py-3 ">
-        <h2 className="mb-3 text-3xl font-semibold"> Majoon-e-Keemya Kit</h2>
+        <h2 className="mb-3 text-3xl font-semibold">Macbook Pro</h2>
         <p className="text-brand-text2/80 text-[15px] mb-3">
-          Majoon Keemya, the ancient formula for modern pain relief. Experience
-          renewed strength, vitality & Improve overall well-being. Order today.
+          The most powerful Macbook Pro ever. With the Apple M3 Pro or M3 Max
           Limited time offer: Experience the difference.
         </p>
         {/* <h2 className="">

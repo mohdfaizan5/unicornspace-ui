@@ -12,7 +12,7 @@ export async function readFileContent(filePath: string): Promise<string> {
     "Faq.tsx"
     // filePath
   );
-  console.log("fullPath", fullPath);
+  // console.log("fullPath", fullPath);
   try {
     return await fs.readFile(fullPath, "utf-8");
   } catch (error) {

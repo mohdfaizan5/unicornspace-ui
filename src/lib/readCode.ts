@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 import path from "path";
 
 export async function readFileContent(componentName: string): Promise<string> {
-  console.log("path 🔥🔥🔥🔥");
+  // console.log("path 🔥🔥🔥🔥");
 
   const fullPath = path.join(
     process.cwd(),

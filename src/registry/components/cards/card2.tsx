@@ -6,7 +6,7 @@ export default function BioCard() {
   return (
     <div className="bg-zinc-900 text-white p-8 max-w-2xl rounded-lg">
       <Avatar className="mb-6">
-        <AvatarImage src="https://github.com/shadcn.png" />
+        <AvatarImage src="https://github.com/likithanagaraj.png" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <h1 className="text-4xl font-bold mb-4 leading-tight">

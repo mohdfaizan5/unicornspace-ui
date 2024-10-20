@@ -38,7 +38,7 @@ async function getGuideFromParams({ params }: GuidePageProps) {
 
   // const guide = allGuides.find((guide) => guide.slug === slug);
   const guide = allGuides.find((guide) => {
-    console.log("-", guide.slug);
+    // console.log("-", guide.slug);
     return guide.slug === slug;
   });
 
@@ -51,15 +51,15 @@ async function getGuideFromParams({ params }: GuidePageProps) {
 }
 
 const PostLayout = async ({ params }: { params: { slug: string } }) => {
-  console.log("✅from PostLayout");
-  console.log("slug ", params);
+  // console.log("✅from PostLayout");
+  // console.log("slug ", params);
 
   const guide = await getGuideFromParams({ params });
 
   if (!guide) {
     notFound();
   }
-  console.log("guides url", guide?.slug);
+  // console.log("guides url", guide?.slug);
 
   return (
     <main className=" flex items-start md:justify-between prose dark:prose-invert">

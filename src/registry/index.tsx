@@ -31,9 +31,8 @@ import Testimonials1 from "./components/testimonials/testimonials1";
 import Testimonials2 from "./components/testimonials/testimonials2";
 import Testimonials3 from "./components/testimonials/testimonials3";
 import Testimonials5 from "./components/testimonials/testimonials5";
-import Testimonial4 from "./components/testimonials/testimonials4";
+import Testimonials4 from "./components/testimonials/testimonials4";
 import CustomerReviews from "./components/testimonials/customer-reviews";
-
 
 import TextAppearOnScroll from "./components/others/text-appear-on-scroll";
 
@@ -106,6 +105,7 @@ import { Pricing1Code } from "./component-code/pricing/pricing1Code";
 import { HeroSection1Code } from "./component-code/hero-sections/hero-section1Code";
 import { HeroSection2Code } from "./component-code/hero-sections/hero-section2Code";
 import { HeroSection3Code } from "./component-code/hero-sections/hero-section3Code";
+import { Testimonials4Code } from "./component-code/testimonials/testimonials4Code";
 
 //
 const componentRegistry: RegistrySchema = {
@@ -230,8 +230,8 @@ const componentRegistry: RegistrySchema = {
     code: Testimonials3Code,
   },
   Testimonials4: {
-    component: Testimonial4,
-    code: Testimonials3Code,
+    component: Testimonials4,
+    code: Testimonials4Code,
   },
 
   Testimonial5: {

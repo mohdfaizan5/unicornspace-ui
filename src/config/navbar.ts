@@ -8,13 +8,14 @@ export type NavigationProps = {
     label?: string;
   }[];
 };
+// 🔂🔁❌
 
 export const navigation: NavigationProps[] = [
   {
     title: "Introduction",
     href: "/components/get-started",
     links: [
-      { title: "Getting started🔂", href: "/components/get-started" },
+      { title: "Getting started", href: "/components/get-started" },
       // { title: "Installation", href: "/docs/installation", isPublished: false },
     ],
   },
@@ -23,35 +24,30 @@ export const navigation: NavigationProps[] = [
     href: "/components",
     links: [
       {
-        title: "Hero section✅",
+        title: "Hero section",
         href: "/components/hero-section",
         label: "Updated",
       },
       {
-        title: "Navbar✅",
+        title: "Navbar",
         href: "/components/navbar",
         // label: "Updated",
       },
       {
-        title: "Features✅",
+        title: "Features",
         href: "/components/features",
         label: "Just Arrived🔥",
       },
       {
-        title: "Pricing✅",
+        title: "Pricing",
         href: "/components/pricing",
       },
-      { title: "Testimonials ✅", href: "/components/testimonials" },
-      { title: "Others 🔁", href: "/components/other" },
-      { title: "Faq✅", href: "/components/faq" },
-      { title: "Footers✅", href: "/components/footer" },
-      // { title: "Cards❌", href: "/components/cards" },
-      { title: "CTA's & Sections❌", href: "/components/cta-and-sections" },
-      { title: "Ecommerce❌", href: "/components/ecommerce" },
-      // { title: "Minimal", href: "/components/ecommerce" },
-      // { title: "Dialog⌛", href: "/components/dialog" },
-      { title: "News Letter❌", href: "/components/news-letter" },
-      { title: "Cards ❌", href: "/components/cards" },
+      { title: "Testimonials", href: "/components/testimonials" },
+      { title: "Other", href: "/components/other" },
+      { title: "Faq", href: "/components/faq" },
+      { title: "Footers", href: "/components/footer" },
+      { title: "CTA's & Sections", href: "/components/cta-and-sections" },
+      { title: "Ecommerce", href: "/components/ecommerce" },
     ],
   },
   {
@@ -59,15 +55,15 @@ export const navigation: NavigationProps[] = [
     href: "/tools",
     links: [
       {
-        title: "Glass Morphism generator🔁",
+        title: "Glass Morphism generator",
         href: "/tools/glass-morphism",
         label: "New",
       },
-      { title: "Readme generator🔁", href: "/tools/readme-generator" },
+      { title: "Readme generator", href: "/tools/readme-generator" },
       // { title: "Shadcn Theme generator", href: "/tools/color-theme-generator" },
-      { title: "Shadcn Themes🔁", href: "/tools/shadcn-color-themes" },
-      { title: "Fonts in Use🔁", href: "/tools/fonts-in-use" },
-      { title: "Color palettes🔁", href: "/tools/color-palettes" },
+      // { title: "Shadcn Themes", href: "/tools/shadcn-color-themes" },
+      { title: "Fonts in Use", href: "/tools/fonts-in-use" },
+      { title: "Color palettes", href: "/tools/color-palettes" },
       {
         title: "Color converter",
         href: "/tools/color-convertor",
@@ -82,10 +78,10 @@ export const navigation: NavigationProps[] = [
       //   href: "/tools/contrast-checker",
       // label: "for V4"
       // },
-      {
-        title: "Resources❌",
-        href: "/tools/resources",
-      },
+      // {
+      //   title: "Resources❌",
+      //   href: "/tools/resources",
+      // },
     ],
   },
   {
@@ -102,7 +98,7 @@ export const navigation: NavigationProps[] = [
       //   title: "ContentLayer & MDX❌ (Tahir)",
       //   href: "/guides/contentlayer-mdx-nextjs14",
       // },
-      { title: "UploadThing (Tahir)", href: "/guides/uploadthing" },
+      { title: "UploadThing", href: "/guides/uploadthing" },
       {
         title: "SEO - The Fundamentals",
         href: "/guides/seo-the-fundamentals",
