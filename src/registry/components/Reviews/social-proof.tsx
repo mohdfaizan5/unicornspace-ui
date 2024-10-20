@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-import AnimatedCounter from "../others/AnimatedCounter";
+import AnimatedCounter from "../others/animated-counter";
 
 const SocialProof = () => {
   // const ref = useRef(null);

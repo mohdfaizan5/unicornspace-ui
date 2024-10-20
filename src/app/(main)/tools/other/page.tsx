@@ -24,8 +24,8 @@ const customScrollBarCode = `
 const page = () => {
   return (
     <div>
-      <h2>Custom Scroll Bar</h2>
-                <CodeHighlight code={customScrollBarCode} />
+      <h1 className="text-3xl font-bold font-passion ">Work In Progress</h1>
+      {/* <CodeHighlight code={customScrollBarCode} /> */}
 
     </div>
   )

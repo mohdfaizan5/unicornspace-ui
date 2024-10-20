@@ -31,7 +31,7 @@ function ColorsCard(props: ColorsCardType) {
   };
   const { title, description, colors } = props;
   return (
-    <Card  className="w-80 h-[400px] md:mt-[50px] md:shadow-md rounded-none ">
+    <Card  className="w-80 h-[400px] md:shadow-md rounded-none ">
       <Link href={props.href}>
         <Image
           className="mb-2"

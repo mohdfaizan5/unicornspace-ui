@@ -32,7 +32,7 @@ export default function Page() {
             README Generator
           </CardTitle>
           <CardDescription className="text-center text-sm">
-            Fill in the details to generate your README.
+            Fill in the details to generate a README file for your project.
           </CardDescription>
         </CardHeader>
 

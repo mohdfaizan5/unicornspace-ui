@@ -1,12 +1,16 @@
 import { RegistrySchema } from "@/types/registry";
 
-// Hero Sections
-import HeroSection1 from "./components/hero-sections/HeroSection1";
-import HeroSection2 from "./components/hero-sections/HeroSection2";
 import HeroSection3 from "./components/hero-sections/hero-section3";
+import { Pricing2Code } from "./component-code/Pricing/pricing2Code";
+import { Features1Code } from "./component-code/Features/Features1Code";
+import { Features2Code } from "./component-code/Features/Features2Code";
+import { Features3Code } from "./component-code/Features/features3Code";
+import HeroSection1 from "./components/hero-sections/hero-section1";
+import { HeroSectionCode } from "./component-code/HeroSections/HeroSectionCode";
+import HeroSection2 from "./components/hero-sections/hero-section2";
+// Hero Sections
 import HeroSection4 from "./components/hero-sections/hero-section4";
 import HeroSection6 from "./components/hero-sections/hero-section6";
-import { HeroSectionCode } from "./component-code/HeroSections/HeroSectionCode";
 import { HeroSection2Code } from "./component-code/HeroSections/HeroSection2Code";
 import { HeroSection3Code } from "./component-code/HeroSections/hero-section3Code";
 import { HeroSection4Code } from "./component-code/hero-sections/hero-section4Code";
@@ -43,6 +47,11 @@ import SocialProof from "./components/Reviews/social-proof";
 import { Testimonials1Code } from "./component-code/testimonials/Testimonials1Code";
 import { Testimonials2Code } from "./component-code/testimonials/Testimonials2Code";
 import { Testimonials3Code } from "./component-code/testimonials/Testimonials3Code";
+
+import TextAppearOnScroll from "./components/others/text-appear-on-scroll";
+import { PricingSectionCode } from "./component-code/Pricing/PricingSectionCode";
+import { TextAppearOnScrollCode } from "./component-code/others/TextAppearOnScrollCode";
+import CallOutSection from "./components/others/call-out";
 import { CustomerReviewsCode } from "./component-code/testimonials/customer-reviewsCode";
 import { SocialProofCode } from "./component-code/Reviews/social-proofCode";
 
