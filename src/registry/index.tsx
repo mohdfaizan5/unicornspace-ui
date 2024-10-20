@@ -29,14 +29,14 @@ import { Faq2Code } from "./component-code/Faq/faq2Code";
 import Footer1 from "./components/footer/footer1";
 import BasicFooter from "./components/footer/basic-footer";
 import Footer2 from "./components/footer/footer2";
-import Faq2 from "./components/Faq/faq2";
-import PricingSection1 from "./components/Pricing/pricing1";
-import { Pricing2 } from "./components/Pricing/pricing2";
-import { Pricing3 } from "./components/Pricing/pricing3";
-import Features1 from "./components/Features/Features1";
-import Features2 from "./components/Features/Features2";
-import Testimonials1 from "./components/testimonials/Testimonials1";
-import Testimonials2 from "./components/testimonials/Testimonials2";
+import Faq2 from "./components/faq/faq2";
+import PricingSection1 from "./components/pricing/pricing1";
+import { Pricing2 } from "./components/pricing/pricing2";
+import { Pricing3 } from "./components/pricing/pricing3";
+import Features1 from "./components/features/features1";
+import Features2 from "./components/features/features2";
+import Testimonials1 from "./components/testimonials/testimonials1";
+import Testimonials2 from "./components/testimonials/testimonials2";
 import { Navbar2Code } from "./component-code/navbars/navbar2Code";
 import { ProductImageCarouselCode } from "./component-code/ecommerce/product-image-carouselCode";
 import { BasicFooterCode } from "./component-code/footer/basic-footerCode";
@@ -48,9 +48,11 @@ import { HeroSection4Code } from "./component-code/hero-sections/hero-section4Co
 import { CustomerReviewsCode } from "./component-code/testimonials/customer-reviewsCode";
 import HeroSection6 from "./components/hero-sections/hero-section6";
 import { HeroSection6Code } from "./component-code/hero-sections/hero-section6Code";
-import Cta2 from "./components/CTA/cta2";
-import Testimonial4, { StarRating } from "./components/testimonials/Testimonials4";
-import SocialProof from "./components/Reviews/social-proof";
+import Cta2 from "./components/cta/cta2";
+import Testimonial4, {
+  StarRating,
+} from "./components/testimonials/testimonials4";
+import SocialProof from "./components/reviews/social-proof";
 import { SocialProofCode } from "./component-code/Reviews/social-proofCode";
 import { StarRatingCode } from "./component-code/Reviews/star-ratingCode";
 import { Pricing4Code } from "./component-code/Pricing/pricing4Code";
@@ -61,31 +63,28 @@ import { NewsLetter2Code } from "./component-code/others/news-letter2Code";
 import { NewsLetter1Code } from "./component-code/others/news-letter1Code";
 import { ProfileCode } from "./component-code/others/profileCode";
 import { Cta2Code } from "./component-code/CTA/cta2Code";
-import Cta1 from "./components/CTA/cta1";
+import Cta1 from "./components/cta/cta1";
 import { Cta1Code } from "./component-code/CTA/cta1Code";
 import { Faq1Code } from "./component-code/Faq/faq1Code";
-import Faq1 from "./components/Faq/faq1";
-import Pricing4 from "./components/Pricing/pricing4";
-import Features4 from "./components/Features/features4";
-import Features5 from "./components/Features/features5";
+import Faq1 from "./components/faq/faq1";
+import Pricing4 from "./components/pricing/pricing4";
+import Features4 from "./components/features/features4";
 import Testimonials5 from "./components/testimonials/testimonials5";
 import Footer3 from "./components/footer/footer3";
 import NewsLettersForm from "./components/others/news-letter1";
 import NewsLettersForm2 from "./components/others/news-letter2";
 import Profile from "./components/others/profile";
 
+//
+import { Testimonials3 } from "./components/testimonials/testimonials3";
+import Features3 from "./components/features/features3";
 
-// 
-import { Testimonials3 } from "./components/testimonials/Testimonials3";
-import Features3 from "./components/Features/features3";
-
-import Features4 from "./components/Features/features4";
-import { Features5 } from "./components/Features/features5";
+import { Features5 } from "./components/features/features5";
 import SearchComponent from "./components/dialog/dialog1";
 import BioCard from "./components/cards/card2";
 import NewsLetter1 from "./components/news-letters/news-letter1";
 
-// 
+//
 const componentRegistry: RegistrySchema = {
   Faq1: {
     component: Faq1,
@@ -104,14 +103,13 @@ const componentRegistry: RegistrySchema = {
     component: Cta2,
     code: Cta2Code,
   },
- 
 
   Navbar1: {
     component: Navbar1,
     code: Navbar1Code,
   },
   Navbar2: {
-    component: Navbar2, 
+    component: Navbar2,
     code: Navbar2Code,
   },
 
@@ -141,7 +139,7 @@ const componentRegistry: RegistrySchema = {
   },
   Pricing4: {
     component: Pricing4,
-    code:Pricing4Code,
+    code: Pricing4Code,
   },
 
   // Features
@@ -165,7 +163,6 @@ const componentRegistry: RegistrySchema = {
   Features5: {
     component: Features5,
     code: Features5Code,
-
   },
 
   // Hero sections
@@ -213,7 +210,7 @@ const componentRegistry: RegistrySchema = {
     component: Testimonial4,
     code: Testimonials3Code,
   },
-  
+
   Testimonial5: {
     component: Testimonials5,
     code: Testimonials3Code,
@@ -270,10 +267,8 @@ const componentRegistry: RegistrySchema = {
   },
   Profile: {
     component: Profile,
-    code: ProfileCode,}
-        ,
-
-
+    code: ProfileCode,
+  },
   // dialog section
 
   SearchComponent: {

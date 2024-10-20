@@ -53,7 +53,7 @@ export const Icons = {
       fill="none"
       stroke="currentColor"
       strokeWidth="1"
-      stroke-linecap="round"
+      strokeLinecap="round"
       strokeLinejoin="round"
     >
       <title>Framer Motion</title>
@@ -77,7 +77,7 @@ export const Icons = {
         y2="208"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
+        strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="16"
       ></line>
@@ -88,7 +88,7 @@ export const Icons = {
         y2="192"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
+        strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="16"
       ></line>

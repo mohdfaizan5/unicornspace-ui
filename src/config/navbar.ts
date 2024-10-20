@@ -49,10 +49,9 @@ export const navigation: NavigationProps[] = [
       { title: "CTA's & Sections❌", href: "/components/cta-and-sections" },
       { title: "Ecommerce❌", href: "/components/ecommerce" },
       // { title: "Minimal", href: "/components/ecommerce" },
-      { title: "Dialog⌛", href: "/components/dialog" },
+      // { title: "Dialog⌛", href: "/components/dialog" },
       { title: "News Letter❌", href: "/components/news-letter" },
-      { title: "Cards ❌", href: "/components/cards" }
-
+      { title: "Cards ❌", href: "/components/cards" },
     ],
   },
   {
@@ -93,27 +92,27 @@ export const navigation: NavigationProps[] = [
     title: "Guides",
     href: "/guides",
     links: [
-      { title: "Next Auth🔂", href: "/guides/nextauth-v5" },
-      { title: "Razorpay nextjs", href: "/guides/razorpay-nextjs14" },
+      { title: "Next Auth(Faizan)", href: "/guides/nextauth-v5" },
+      { title: "Razorpay nextjs(Faizan)", href: "/guides/razorpay-nextjs14" },
       // { title: "Stripe", href: "/guides/stripe" },
-      { title: "Prisma Basics", href: "/guides/prisma" },
-      { title: "Prisma Advanced🔁", href: "/guides/prisma-advanced" },
-      { title: "Typescript Basics🔁", href: "/guides/typescript-50" },
+      { title: "Prisma Basics(Faizan)", href: "/guides/prisma" },
+      { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },
+      // { title: "Typescript Basics(Akshy)", href: "/guides/typescript-50" },
+      // {
+      //   title: "ContentLayer & MDX❌ (Tahir)",
+      //   href: "/guides/contentlayer-mdx-nextjs14",
+      // },
+      { title: "UploadThing (Tahir)", href: "/guides/uploadthing" },
       {
-        title: "ContentLayer & MDX❌",
-        href: "/guides/contentlayer-mdx-nextjs14",
-      },
-      { title: "UploadThing🔂", href: "/guides/uploadthing" },
-      {
-        title: "SEO - The Fundamentals❌",
+        title: "SEO - The Fundamentals (Faizan)",
         href: "/guides/seo-the-fundamentals",
       },
-      { title: "SEO - Getting Hands dirty❌", href: "/guides/uploadthing" },
-      {
-        title: "Project Development Checklist❌",
-        href: "/guides/project-development-checklist",
-      },
-      { title: "Design Principles (5)❌", href: "/guides/design-priciples" },
+      // { title: "SEO - Getting Hands dirty❌", href: "/guides/uploadthing" },
+      // {
+      //   title: "Project Development Checklist❌",
+      //   href: "/guides/project-development-checklist",
+      // },
+      // { title: "Design Principles (5)(Faizan)", href: "/guides/design-priciples" },
       // { title: "UI UX", href: "/guides/uploadthing" },
       // { title: "Best Layouts", href: "/guides/uploadthing" },
       // { title: "All about Fonts in Nextjs", href: "/guides/all-about-fonts" },
@@ -123,27 +122,26 @@ export const navigation: NavigationProps[] = [
       // },
     ],
   },
-  {
-    title: "Blogs",
-    href: "/blogs",
-    links: [
-      {
-        title: "CSS",
-        href: "/blogs/css"
-      },
-      {
-        title: "All you need to know about fonts",
-        href: "/blogs/all-about-fonts"
-      },
-      {
-        title: "All about SEO for developers",
-        href: "/blogs/all-about-SEO-for-developers"
-      },
-      {
-        title: "Npm vs Pnpm vs Bun vs Yarn",
-        href: "/blogs/npm-vs-pnpm-vs-bun-vs-yarn"
-      },
-    ]
-  },
-  
+  // {
+  //   title: "Blogs",
+  //   href: "/blogs",
+  //   links: [
+  //     {
+  //       title: "CSS",
+  //       href: "/blogs/css"
+  //     },
+  //     {
+  //       title: "All you need to know about fonts",
+  //       href: "/blogs/all-about-fonts"
+  //     },
+  //     {
+  //       title: "All about SEO for developers",
+  //       href: "/blogs/all-about-SEO-for-developers"
+  //     },
+  //     {
+  //       title: "Npm vs Pnpm vs Bun vs Yarn",
+  //       href: "/blogs/npm-vs-pnpm-vs-bun-vs-yarn"
+  //     },
+  //   ]
+  // },
 ];

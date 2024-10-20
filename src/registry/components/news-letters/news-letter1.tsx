@@ -21,8 +21,8 @@ export default function NewsLetter1() {
       <div className="bg-zinc-900 text-white p-6 rounded-lg max-w-md">
         <h2 className="text-3xl font-bold mb-4">Thanks for subscribing.</h2>
         <p className="text-zinc-400">
-          I'll send you an email any time I publish a new blog post, release a
-          new project, or have anything interesting to share that I think you'd
+          I will send you an email any time I publish a new blog post, release a
+          new project, or have anything interesting to share that I think you would
           want to hear about. You can unsubscribe at any time, no hard feelings.
         </p>
       </div>

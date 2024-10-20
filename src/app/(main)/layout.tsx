@@ -6,7 +6,6 @@ import { navigation } from "@/config/navbar";
 import { allComponents } from "contentlayer/generated";
 import Image from "next/image";
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +18,7 @@ export default function RootLayout({
           <Navigation navigation={navigation} />
         </ScrollArea>
       </aside>
-      <div className="py-8 px-6 overflow-y-auto flex-1">{children}</div>
+      <div className="py-8 z-10 px-6 overflow-y-auto flex-1">{children}</div>
       {/* <CallToAction className="mt-10  md:sticky md:top-0 md:overflow-hidden" /> */}
 
       <Image

@@ -100,7 +100,7 @@ const CustomList = ({
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
+            strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
             d="M1 5.917 5.724 10.5 15 1.5"
@@ -129,7 +129,7 @@ const CustomList = ({
           className="size-5"
         >
           <path
-            stroke-linecap="round"
+            strokeLinecap="round"
             strokeLinejoin="round"
             d="M6 18 18 6M6 6l12 12"
           />

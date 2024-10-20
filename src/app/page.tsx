@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import React from "react";
 import { Icons } from "@/components/icons";
 import Image from "next/image";
-import { Testimonials3 } from "@/registry/components/testimonials/Testimonials3";
+import { Testimonials3 } from "@/registry/components/testimonials/testimonials3";
 import Features3 from "./(other)/test/page";
 
 const page = () => {
