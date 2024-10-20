@@ -49,6 +49,10 @@ export const navigation: NavigationProps[] = [
       { title: "CTA's & Sections❌", href: "/components/cta-and-sections" },
       { title: "Ecommerce❌", href: "/components/ecommerce" },
       // { title: "Minimal", href: "/components/ecommerce" },
+      { title: "Dialog⌛", href: "/components/dialog" },
+      { title: "News Letter❌", href: "/components/news-letter" },
+      { title: "Cards ❌", href: "/components/cards" }
+
     ],
   },
   {

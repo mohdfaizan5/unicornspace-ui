@@ -228,3 +228,4 @@ export default function Features3() {
     </section>
   );
 }
+

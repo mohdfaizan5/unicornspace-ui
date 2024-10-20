@@ -1,3 +1,4 @@
+
 export const generateReadme = (formData: Record<string, any>): string => {
   const {
     title,
@@ -9,6 +10,7 @@ export const generateReadme = (formData: Record<string, any>): string => {
     roadmap,
     contributors,
     gmail,
+    license,
   } = formData;
 
   return `
@@ -32,6 +34,10 @@ ${features
 
 <br/>
 
+<a align="center" href="${demoLink}">
+  <img align="center" width="720px" height="300px" alt="" src="${image}">
+</a>
+
 ## Tech Stack
 ${techstack
       ? (techstack as string).split(',').map((tech: string) => `- ${tech.trim()}`).join('\n')
@@ -52,7 +58,7 @@ ${contributors
 <br/>
 
 ## License
-This project is licensed under the ${formData.license || "MIT"} License.
+This project is licensed under the ${license || "MIT"} License.
 
 <br/>
 

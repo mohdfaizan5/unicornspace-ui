@@ -74,11 +74,18 @@ import NewsLettersForm from "./components/others/news-letter1";
 import NewsLettersForm2 from "./components/others/news-letter2";
 import Profile from "./components/others/profile";
 
+
+// 
 import { Testimonials3 } from "./components/testimonials/Testimonials3";
 import Features3 from "./components/Features/features3";
 
+import Features4 from "./components/Features/features4";
+import { Features5 } from "./components/Features/features5";
+import SearchComponent from "./components/dialog/dialog1";
+import BioCard from "./components/cards/card2";
+import NewsLetter1 from "./components/news-letters/news-letter1";
 
-
+// 
 const componentRegistry: RegistrySchema = {
   Faq1: {
     component: Faq1,
@@ -158,6 +165,7 @@ const componentRegistry: RegistrySchema = {
   Features5: {
     component: Features5,
     code: Features5Code,
+
   },
 
   // Hero sections
@@ -251,6 +259,7 @@ const componentRegistry: RegistrySchema = {
     component: TextAppearOnScroll,
     code: TextAppearOnScrollCode,
   },
+
   NewsLettersForm: {
     component: NewsLettersForm,
     code: NewsLetter1Code,
@@ -261,7 +270,29 @@ const componentRegistry: RegistrySchema = {
   },
   Profile: {
     component: Profile,
-    code: ProfileCode,
+    code: ProfileCode,}
+        ,
+
+
+  // dialog section
+
+  SearchComponent: {
+    component: SearchComponent,
+    code: "WIP",
+  },
+
+  // Cards
+
+  Card1: {
+    component: BioCard,
+    code: "WIP",
+  },
+
+  // News letter
+
+  NewsLetter1: {
+    component: NewsLetter1,
+    code: "WIP",
   },
 };
 

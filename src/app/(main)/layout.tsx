@@ -5,7 +5,7 @@ import { guidesSidebarData } from "@/config/guides";
 import { navigation } from "@/config/navbar";
 import { allComponents } from "contentlayer/generated";
 import Image from "next/image";
-import Link from "next/link";
+
 
 export default function RootLayout({
   children,
@@ -25,7 +25,7 @@ export default function RootLayout({
       <Image
         src={"/assets/left-light-effect.svg"}
         width={980}
-        className="fixed z-0 -rotate-90 bottom-0 md:-top-32 dark:opacity-60  -right-16 md:-right-32"
+        className="fixed z-0 pointer-events-none -rotate-90 bottom-0 md:-top-32 dark:opacity-60  -right-16 md:-right-32"
         height={600}
         alt=""
       />
