@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Poppins, Passion_One } from "next/font/google";
 import Navbar from "@/components/navbar";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 import "@/styles/globals.css";
 import "@/styles/general.css";
@@ -41,7 +42,8 @@ export default function RootLayout({
             <BasicFooter />
           </div>
         </ThemeProvider>
-      </body>
+        <GoogleTagManager gtmId="GTM-MXP8KBJ7" />
+        </body>
     </html>
   );
 }

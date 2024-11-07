@@ -68,7 +68,7 @@ const page = () => {
                     alt=""
                     width={200}
                     height={200}
-                    src={tool.image}
+                    src={tool.image.trim()}
                   ></Image>
                 )}
 

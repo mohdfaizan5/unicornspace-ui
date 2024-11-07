@@ -22,7 +22,7 @@ function PostCard(guide: Guide) {
         <CardHeader className="p-0 overflow-hidden">
           {guide.thumbnail && (
             <Image
-              src={`/images/guides/${guide.thumbnail}`}
+              src={`/images/guides/${guide.thumbnail.trim()}`}
               width={320}
               height={120}
               // public\images\guides\Authjs part 1.png
