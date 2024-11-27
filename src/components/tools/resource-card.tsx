@@ -14,22 +14,23 @@ import Image from "next/image";
 type ResourceCardType = {
   title: string;
   description: string;
-  image: string;
+  link: string;
   category: string;
 };
 
 function ResourceCard({
   title,
   description,
-  image,
+  // image,
+  link,
   category,
 }: ResourceCardType) {
   return (
     <>
       <Card className="w-96 h-72 md:mt-[50px] md:shadow-md rounded-none">
-        <CardHeader className="p-0">
+        {/* <CardHeader className="p-0">
           <Image height={500} width={500} alt="" src={image} />
-        </CardHeader>
+        </CardHeader> */}
 
         <CardContent className="flex flex-col gap-1 items-start">
           <Badge variant={"outline"} className="text-[10px] mx-auto">

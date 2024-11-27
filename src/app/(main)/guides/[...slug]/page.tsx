@@ -3,6 +3,9 @@ import { Mdx } from "@/components/mdx-component";
 import { notFound } from "next/navigation";
 import { CallToAction } from "@/components/call-to-action";
 import Image from "next/image";
+// import { getTableOfContents } from "@/lib/toc";
+// import { DashboardTableOfContents } from "@/components/toc";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 // export const generateStaticParams = async () => {
 //   const slug = params.slug?.join("/") || ""
@@ -20,6 +23,35 @@ import Image from "next/image";
 //   return { title: guide.title };
 // };
 
+export async function generateStaticParams() {
+  return allGuides.map((guide) => {
+    return {
+      params: {
+        slug: guide.slug.split("/").join(","),
+      },
+    };
+  });
+}
+
+export async function generateMetaData({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const guide = await getGuideFromParams({ params });
+  if (!guide) {
+    return {
+      title: "Guide not found",
+      description: "Guide not found",
+    };
+  }
+
+  return {
+    title: guide.title,
+    description: guide.description,
+  };
+}
+
 type GuidePageProps = {
   params: {
     slug: string;
@@ -30,8 +62,7 @@ async function getGuideFromParams({ params }: GuidePageProps) {
   console.log("✅⚡from getGuideFromParams");
   // console.log("slug", allGuides[0].slug);
   // console.log("slugAsParams", allGuides[0].slugAsParams);
-
-  let slug = params.slug;
+  let slug = await params.slug;
 
   // converting it into a way to use it further
   slug = `/guides/${slug.toString().split(",").join("/")}`;
@@ -59,10 +90,12 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   if (!guide) {
     notFound();
   }
+  // const toc = await getTableOfContents(guide.body.raw);
+
   // console.log("guides url", guide?.slug);
 
   return (
-    <main className=" flex items-start md:justify-between prose dark:prose-invert">
+    <main className="flex items-start md:justify-between prose dark:prose-invert">
       <div className="max-w-96 md:max-w-2xl md:sticky md:top-0 md:overflow-hidden">
         <h1 className="text-4xl font-bold">{guide.title}</h1>
         <p className="text-lg text-neutral-500">{guide.description}</p>
@@ -78,7 +111,14 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
         )}
         <Mdx code={guide.body.code} />
       </div>
-      <CallToAction className="hidden md:block mt-10 md:sticky md:top-0 md:overflow-hidden" />
+      {/* <div className="md:sticky md:top-0 md:overflow-hidden ml-2 hidden text-sm xl:block">
+        <div className="sticky top-16 -mt-10 pt-4">
+          <ScrollArea className="h-full pb-10">
+            {toc && <DashboardTableOfContents toc={toc} />}
+            <CallToAction className="hidden md:block mt-10 md:sticky md:top-0 md:overflow-hidden" />
+          </ScrollArea>
+        </div>
+      </div> */}
     </main>
   );
 };

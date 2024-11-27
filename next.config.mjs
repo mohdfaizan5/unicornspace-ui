@@ -4,7 +4,7 @@ import { withContentlayer } from "next-contentlayer2";
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify: true,
   images: {
     remotePatterns: [
       {
