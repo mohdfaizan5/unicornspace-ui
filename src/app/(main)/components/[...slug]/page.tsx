@@ -3,6 +3,35 @@ import { Mdx } from "@/components/mdx-component";
 import { allComponents } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
+export async function generateStaticParams() {
+  return allComponents.map((component) => {
+    return {
+      params: {
+        slug: component.slug.split("/").join(","),
+      },
+    };
+  });
+}
+
+export async function generateMetaData({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const component = await getGuideFromParams({ params });
+  if (!component) {
+    return {
+      title: "Component not found",
+      description: "Component not found",
+    };
+  }
+
+  return {
+    title: component.title,
+    description: component.description,
+  };
+}
+
 const getGuideFromParams = async({ params }: { params: { slug: string } }) => {
   // console.log("✅⚡from getGuideFromParams");
   let slug =await params.slug;

@@ -3,44 +3,72 @@ import { Mdx } from "@/components/mdx-component";
 import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
+// for SEO
+export async function generateMetaData({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const blog = await getBlogFromParams({ params });
+  if (!blog) {
+    return {
+      title: "Blog not found",
+      description: "Blog not found",
+    };
+  }
+
+  return {
+    title: blog.title,
+    description: blog.description,
+  };
+}
+
+// for making the file generate during build time
+export async function generateStaticParams() {
+  return allBlogs.map((blog) => {
+    return {
+      params: {
+        slug: blog.slug.split("/").join(","),
+      },
+    };
+  });
+}
 
 type BlogPageProps = {
-    params: {
-        slug : string
-    }
-}
+  params: {
+    slug: string;
+  };
+};
 
 async function getBlogFromParams({params} : BlogPageProps){
 
     let slug =await params.slug
 
-    // converting it into a way to use it further
-    
-    slug = `/blogs/${slug.toString().split(",").join("/")}`
+  // converting it into a way to use it further
 
-    const blog = allBlogs.find((blog)=> {
-        return blog.slug === slug
-    })
+  slug = `/blogs/${slug.toString().split(",").join("/")}`;
 
-    if(!blog){
-        return null
-    }
+  const blog = allBlogs.find((blog) => {
+    return blog.slug === slug;
+  });
 
-    return blog
+  if (!blog) {
+    return null;
+  }
+
+  return blog;
 }
 
+export default async function Page({ params }: { params: { slug: string } }) {
+  // console.log("slug", params);
 
-export default async function Page({params}: {params : {slug : string}}) {
+  const blog = await getBlogFromParams({ params });
 
-    // console.log("slug", params);
+  if (!blog) {
+    notFound();
+  }
 
-    const blog = await getBlogFromParams({params})
-
-    if(!blog){
-        notFound()
-    }
-
-    // console.log(blog.slug);
+  // console.log(blog.slug);
 
   return (
     <main className="flex flex-col md:flex-row justify-between   items-start prose dark:prose-invert">
@@ -58,12 +86,11 @@ export default async function Page({params}: {params : {slug : string}}) {
           />
         )} */}
 
-        <Mdx code={blog.body.code}/>
+        <Mdx code={blog.body.code} />
       </div>
       <div>
-      <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
-
+        <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
       </div>
     </main>
-  )
+  );
 }

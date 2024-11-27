@@ -33,7 +33,6 @@ const page = () => {
                 )}
 
                 <p className="opacity-90 text-sm ">{tool.description}</p>
-                {/* <p className="opacity-90 text-sm">{}</p> */}
               </Link>
             );
           }

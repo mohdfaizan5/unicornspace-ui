@@ -3,8 +3,8 @@ import { Mdx } from "@/components/mdx-component";
 import { notFound } from "next/navigation";
 import { CallToAction } from "@/components/call-to-action";
 import Image from "next/image";
-import { getTableOfContents } from "@/lib/toc";
-import { DashboardTableOfContents } from "@/components/toc";
+// import { getTableOfContents } from "@/lib/toc";
+// import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 // export const generateStaticParams = async () => {
@@ -22,6 +22,35 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 //   if (!guide) throw new Error(`Post not found for slug: ${params.slug}`);
 //   return { title: guide.title };
 // };
+
+export async function generateStaticParams() {
+  return allGuides.map((guide) => {
+    return {
+      params: {
+        slug: guide.slug.split("/").join(","),
+      },
+    };
+  });
+}
+
+export async function generateMetaData({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const guide = await getGuideFromParams({ params });
+  if (!guide) {
+    return {
+      title: "Guide not found",
+      description: "Guide not found",
+    };
+  }
+
+  return {
+    title: guide.title,
+    description: guide.description,
+  };
+}
 
 type GuidePageProps = {
   params: {
@@ -61,7 +90,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   if (!guide) {
     notFound();
   }
-  const toc = await getTableOfContents(guide.body.raw);
+  // const toc = await getTableOfContents(guide.body.raw);
 
   // console.log("guides url", guide?.slug);
 
@@ -89,7 +118,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
             <CallToAction className="hidden md:block mt-10 md:sticky md:top-0 md:overflow-hidden" />
           </ScrollArea>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };
