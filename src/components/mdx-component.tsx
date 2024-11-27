@@ -84,7 +84,7 @@ const components = {
       )}
       {...props}
     />
-  ),
+  ), 
   a: ({ className, ...props }) => (
     <a
       className={cn("font-medium underline underline-offset-4", className)}

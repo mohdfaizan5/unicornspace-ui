@@ -66,8 +66,8 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   // console.log("guides url", guide?.slug);
 
   return (
-    <main className="flex items-start md:justify-between prose dark:prose-invert">
-      <div className="max-w-96 md:max-w-2xl md:sticky md:top-0 md:overflow-hidden">
+    <main className="flex items-start md:justify-between px-10  prose dark:prose-invert">
+      <div className=" md:max-w-2xl md:sticky  md:top-0 md:overflow-hidden">
         <h1 className="text-4xl font-bold">{guide.title}</h1>
         <p className="text-lg text-neutral-500">{guide.description}</p>
         {guide.thumbnail && (
@@ -82,7 +82,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
         )}
         <Mdx code={guide.body.code} />
       </div>
-      <div className="md:sticky md:top-0 md:overflow-hidden ml-2 hidden text-sm xl:block">
+      <div className="  fixed h-full max-w-[350px] md:right-5  md:top-5  md:overflow-hidden ml-2 hidden text-sm xl:block   ">
         <div className="sticky top-16 -mt-10 pt-4">
           <ScrollArea className="h-full pb-10">
             {toc && <DashboardTableOfContents toc={toc} />}

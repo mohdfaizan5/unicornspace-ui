@@ -3,9 +3,9 @@ import { Mdx } from "@/components/mdx-component";
 import { allComponents } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
-const getGuideFromParams = ({ params }: { params: { slug: string } }) => {
+const getGuideFromParams = async({ params }: { params: { slug: string } }) => {
   // console.log("✅⚡from getGuideFromParams");
-  let slug = params.slug;
+  let slug =await params.slug;
   slug = `/components/${slug.toString().split(",").join("/")}`;
   const component = allComponents.find((component) => component.slug === slug);
   if (!component) {
@@ -14,8 +14,8 @@ const getGuideFromParams = ({ params }: { params: { slug: string } }) => {
   return component;
 };
 
-const ComponentPage = ({ params }: any) => {
-  const guide = getGuideFromParams({ params });
+const ComponentPage =async ({ params }: any) => {
+  const guide =await getGuideFromParams({ params });
   if (!guide) {
     return notFound();
   }

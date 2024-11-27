@@ -16,8 +16,8 @@ const page = () => {
           <div key={i}
             className="flex flex-col  rounded-xl border bg-card text-card-foreground shadow transition-colors  p-5 w-[299px]"
           >
-            <textarea className={`text-2xl h-12 w-auto  font-bold text-card-foreground resize-none  ${fontCombination.font1.font.className}`}>{fontCombination.font1.name}</textarea>
-            <textarea className={`opacity-90 h-12 text-smtext-card-foreground resize-none  ${fontCombination.font1.font.className} ${fontCombination.font2.font.className} `}>{fontCombination.font2.name}</textarea>
+            <textarea defaultValue={fontCombination.font1.name} className={`text-2xl h-12 w-auto  font-bold text-card-foreground resize-none  ${fontCombination.font1.font.className}`}></textarea>
+            <textarea defaultValue={fontCombination.font2.name} className={`opacity-90 h-12 text-smtext-card-foreground resize-none  ${fontCombination.font1.font.className} ${fontCombination.font2.font.className} `}></textarea>
             <Link href={fontCombination.example_website} className={`underline `} target="_blank" >Inspiration</Link>
           </div>
         ))}

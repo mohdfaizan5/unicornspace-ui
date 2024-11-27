@@ -12,7 +12,7 @@ type BlogPageProps = {
 
 async function getBlogFromParams({params} : BlogPageProps){
 
-    let slug = params.slug
+    let slug =await params.slug
 
     // converting it into a way to use it further
     
