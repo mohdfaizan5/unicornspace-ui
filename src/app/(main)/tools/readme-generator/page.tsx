@@ -1,4 +1,7 @@
 "use client";
+
+// TODO: This page needs to be made server side rendered and the code needs to be cleaned up
+
 import {
   Card,
   CardContent,

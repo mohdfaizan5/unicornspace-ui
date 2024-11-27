@@ -1,4 +1,7 @@
 "use client";
+
+// TODO: This page needs to be made server side rendered and the code needs to be cleaned up
+
 import {
   Card,
   CardContent,
@@ -67,96 +70,96 @@ border-radius: 10px;`,
 
   return (
     <>
-    <h1 className="text-3xl font-bold font-passion ">Glass Morphism</h1>
+      <h1 className="text-3xl font-bold font-passion ">Glass Morphism</h1>
       <p className="max-w-2xl text-md text-muted-foreground mb-8">
-      Copy and paste this Glassmorphism CSS snippet into your frontend project for an amazing CSS glass effect.
+        Copy and paste this Glassmorphism CSS snippet into your frontend project
+        for an amazing CSS glass effect.
       </p>
-    <main className=" flex flex-col justify-evenly md:flex-row">
-      
-      <section className="relative bg-gradient-to-tr from-indigo-600  to-purple-500 bg-no-repeat w-[340px] h-[480px] overflow-hidden">
-        <div
-          className="flex items-center justify-center text-5xl rounded-lg  border-red-50 border-2 absolute"
-          style={{ transform: "rotate(-12deg)", left: "70%", top: "70%" }} // Hardcoded position and rotation
-        >
-          🦄
-        </div>
-        <div
-          className=" w-32 h-32 rounded-3xl border-red-50 border-2 absolute top-5 left-5"
-          style={{ transform: "rotate(-12deg)" }} // Hardcoded position and rotation
-        />
-        <div
-          id="glass"
-          className=" w-[70%] h-96 rounded-3xl border-red-50 border-2 absolute top-10 left-10"
-          style={{
-            background: `rgba(${value}, ${transparency})`,
-          }}
-        />
-      </section>
-      <Card className="md:max-w-96">
-        <CardHeader>
-          <CardTitle className="text-2xl">Setting</CardTitle>
-          <CardDescription className="">
-            Scroll to see the magic of morphism
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col justify-start gap-4">
-          <p>
-            Transparency <span>{transparency}</span>
-          </p>
-          <Slider
-            defaultValue={[20]}
-            min={0}
-            max={1}
-            step={0.01}
-            className="scale-75"
-            onValueChange={(e) => {
-              setTransparency(e[0]);
-            }}
-          />
-          <p>
-            Blur value <span>{intensity}</span>
-          </p>
-          <Slider
-            defaultValue={[10]}
-            min={0}
-            max={20}
-            step={1}
-            className="scale-75"
-            onValueChange={(e) => {
-              setIntensity(e[0]);
-              handleIntensityChange(e[0]);
-            }}
-          />
-          <div className="flex items-center gap-2">
-            <Label htmlFor="terms" className="font-semibold ">
-              Color
-            </Label>
-            <Input
-              className="w-24"
-              type="color"
-              onChange={(e) => handleColorChange(e.target.value)}
-            />
-            <Label
-              htmlFor="outline"
-              className="text-sm flex items-center gap-1"
-            >
-              <Checkbox
-                id="outline"
-                className=""
-                checked={checked}
-                onCheckedChange={onCheckedChange}
-              />
-              Show Outline
-            </Label>
+      <main className=" flex flex-col justify-evenly md:flex-row">
+        <section className="relative bg-gradient-to-tr from-indigo-600  to-purple-500 bg-no-repeat w-[340px] h-[480px] overflow-hidden">
+          <div
+            className="flex items-center justify-center text-5xl rounded-lg  border-red-50 border-2 absolute"
+            style={{ transform: "rotate(-12deg)", left: "70%", top: "70%" }} // Hardcoded position and rotation
+          >
+            🦄
           </div>
+          <div
+            className=" w-32 h-32 rounded-3xl border-red-50 border-2 absolute top-5 left-5"
+            style={{ transform: "rotate(-12deg)" }} // Hardcoded position and rotation
+          />
+          <div
+            id="glass"
+            className=" w-[70%] h-96 rounded-3xl border-red-50 border-2 absolute top-10 left-10"
+            style={{
+              background: `rgba(${value}, ${transparency})`,
+            }}
+          />
+        </section>
+        <Card className="md:max-w-96">
+          <CardHeader>
+            <CardTitle className="text-2xl">Setting</CardTitle>
+            <CardDescription className="">
+              Scroll to see the magic of morphism
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col justify-start gap-4">
+            <p>
+              Transparency <span>{transparency}</span>
+            </p>
+            <Slider
+              defaultValue={[20]}
+              min={0}
+              max={1}
+              step={0.01}
+              className="scale-75"
+              onValueChange={(e) => {
+                setTransparency(e[0]);
+              }}
+            />
+            <p>
+              Blur value <span>{intensity}</span>
+            </p>
+            <Slider
+              defaultValue={[10]}
+              min={0}
+              max={20}
+              step={1}
+              className="scale-75"
+              onValueChange={(e) => {
+                setIntensity(e[0]);
+                handleIntensityChange(e[0]);
+              }}
+            />
+            <div className="flex items-center gap-2">
+              <Label htmlFor="terms" className="font-semibold ">
+                Color
+              </Label>
+              <Input
+                className="w-24"
+                type="color"
+                onChange={(e) => handleColorChange(e.target.value)}
+              />
+              <Label
+                htmlFor="outline"
+                className="text-sm flex items-center gap-1"
+              >
+                <Checkbox
+                  id="outline"
+                  className=""
+                  checked={checked}
+                  onCheckedChange={onCheckedChange}
+                />
+                Show Outline
+              </Label>
+            </div>
 
-          <CardFooter className="flex flex-col w-full max-h-72  p-0 relative">
-            <CodeHighlight className="w-full" code={copyCode.css} />
-            <CodeHighlight className="w-full mt-4" code={copyCode.tailwind} />
-          </CardFooter>
-        </CardContent>
-      </Card>
-    </main>
+            <CardFooter className="flex flex-col w-full max-h-72  p-0 relative">
+              <CodeHighlight className="w-full" code={copyCode.css} />
+              <CodeHighlight className="w-full mt-4" code={copyCode.tailwind} />
+            </CardFooter>
+          </CardContent>
+        </Card>
+      </main>
     </>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Poppins, Passion_One } from "next/font/google";
 import Navbar from "@/components/navbar";
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager } from "@next/third-parties/google";
 
 import "@/styles/globals.css";
 import "@/styles/general.css";
@@ -31,6 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId={process.env.GOOGLE_TAG_MANAGER_ID as string} />
+
       <body
         className={`${inter.className} antialiased bg-background`}
         suppressHydrationWarning={true}
@@ -43,7 +45,7 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
         <GoogleTagManager gtmId="GTM-MXP8KBJ7" />
-        </body>
+      </body>
     </html>
   );
 }
