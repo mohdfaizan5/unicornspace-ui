@@ -160,6 +160,8 @@ function ReviewColumn({
 
 function ReviewGrid() {
   const containerRef = useRef<HTMLDivElement>(null)
+  // TODO: fix this for react 19 and nextjs 15
+  // @ts-ignore
   const isInView = useInView(containerRef, { once: true, amount: 0.4 })
 
   useEffect(() => {

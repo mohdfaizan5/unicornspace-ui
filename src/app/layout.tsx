@@ -45,7 +45,6 @@ export default function RootLayout({
             <BasicFooter />
           </div>
         </ThemeProvider>
-        <GoogleTagManager gtmId={process.env.GOOGLE_TAG_MANAGER_ID as string}  />
         </body>
     </html>
   );

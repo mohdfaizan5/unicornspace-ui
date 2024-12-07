@@ -78,10 +78,10 @@ export const navigation: NavigationProps[] = [
       //   href: "/tools/contrast-checker",
       // label: "for V4"
       // },
-      // {
-      //   title: "Resources❌",
-      //   href: "/tools/resources",
-      // },
+      {
+        title: "Resources",
+        href: "/tools/resources",
+      },
     ],
   },
   {
