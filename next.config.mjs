@@ -9,7 +9,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'assets.awwwards.com',        
+        hostname: 'assets.awwwards.com',
       },
       {
         protocol: 'https',
@@ -17,6 +17,11 @@ const nextConfig = {
       }
     ],
   },
+  // experimental: {
+  //   turbo: {
+
+  //   }
+  // }
 
 };
 

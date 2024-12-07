@@ -10,6 +10,8 @@ function TextAppearOnScroll({
   const container = useRef(null);
 
   const { scrollYProgress } = useScroll({
+    // TODO: fix this for react 19 and nextjs 15
+    // @ts-ignore
     target: container,
 
     offset: ["start 0.9", "start 0.2"],
@@ -34,10 +36,10 @@ function TextAppearOnScroll({
   );
 }
 
-interface Props{
-  children:string
-  progress:MotionValue<number>
-  range: number[]
+interface Props {
+  children: string;
+  progress: MotionValue<number>;
+  range: number[];
 }
 
 const Word = ({ children, progress, range }: Props) => {

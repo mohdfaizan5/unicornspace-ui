@@ -20,7 +20,7 @@ function ShowcaseContainer() {
         <div className="bg-gray-100 p-4 rounded-lg shadow col-span-4 row-span-12">
           <h2 className="text-lg font-semibold">Stripe</h2>
           <p className="text-sm text-gray-600">
-            Architecting a live look at reliability: Stripe's viral Black Friday
+            Architecting a live look at reliability: Stripes viral Black Friday
             site
           </p>
         </div>
@@ -30,7 +30,7 @@ function ShowcaseContainer() {
             From monolith to micro-frontend solution
           </h2>
           <p className="text-sm text-gray-600">
-            Chick-fil-A's transformation to a micro-frontend architecture
+            Chick-fil-As transformation to a micro-frontend architecture
           </p>
         </div>
 

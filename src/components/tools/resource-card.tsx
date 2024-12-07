@@ -1,16 +1,12 @@
-"use client";
-import React, { useState } from "react";
-import { FaRegHeart } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import Image from "next/image";
+import Link from "next/link";
+import {
+  CircleArrowOutDownRight,
+  CircleArrowOutUpRight,
+  MoveUpRight,
+} from "lucide-react";
+
 type ResourceCardType = {
   title: string;
   description: string;
@@ -26,29 +22,36 @@ function ResourceCard({
   category,
 }: ResourceCardType) {
   return (
-    <>
-      <Card className="w-96 h-72 md:mt-[50px] md:shadow-md rounded-none">
-        {/* <CardHeader className="p-0">
-          <Image height={500} width={500} alt="" src={image} />
-        </CardHeader> */}
-
-        <CardContent className="flex flex-col gap-1 items-start">
-          <Badge variant={"outline"} className="text-[10px] mx-auto">
-            {category}
-          </Badge>
-          <h2 className="text-[16px] font-bold font-grotesk leading-6 mt-2 text-center">
-            {title}
-          </h2>
-          <p>{description}</p>
-          <div className="w-full flex items-center justify-between">
+    <Link href={link} target="_blank">
+      <Card className="w-80 rounded-lg md:shadow-md group">
+        <CardContent className=" p-6 flex flex-col gap-1 items-start">
+          <div className="flex justify-between w-full items-center">
+            <h2 className="font-bold font-grotesk leading-6 mt-2 line-clamp-1 ">
+              {title}
+            </h2>
+            <div  className="p-1  border rounded-full">
+              <MoveUpRight size={14} className="group-hover:rotate-45 transition-all duration-200 group-hover:translate-x-2"/>
+            </div>
+            {/* <CircleArrowOutUpRight size={16}/> */}
+          </div>
+          <p className="font-normal text-sm text-[#888888] line-clamp-2">
+            {description}
+          </p>
+          <div>
+            <Badge variant={"secondary"} className="text-[10px]">
+              {category}
+            </Badge>
+          </div>
+          {/* <div className="w-full flex items-center justify-between">
             <Button className="w-full" variant={"default"}>
               Visit
-            </Button>
-            {/* <CustomBtn1 /> */}
+            </Button> 
           </div>
+            */}
+          {/* <CustomBtn1 /> */}
         </CardContent>
       </Card>
-    </>
+    </Link>
   );
 }
 
