@@ -10,21 +10,49 @@ If you need any help, feel free to reach out to [@mohdfaizan_5](https://twitter.
 
 This repository is a
 
+<!-- SFI -->
+<!-- TODO -->
+
+
 ## Structure
 
 This repository is structured as follows:
 
 ```
-├── app
-├── components
-├── content
-└── registry
-    ├── default
-    │   ├── example
-    │   └── ui
-    └── new-york
-        ├── example
-        └── ui
+
+
+├── content   
+|    ├── blogs
+|    ├── components
+|    └── guides
+├── src             
+|    ├── actions
+|    ├── app
+|    |    ├── (main)
+|    |    |      ├── blogs
+|    |    |      ├── components
+|    |    |      ├── get-started
+|    |    |      ├── guides
+|    |    |      ├── tools
+|    |    |      └── layout.tsx
+|    |    ├── (other)
+|    |    |      ├── changelog
+|    |    |      ├── showcase
+|    |    |      └── test
+|    |    └── api
+|    |         └── generate-banner
+|    ├── components
+|    ├── config
+|    ├── data
+|    ├── hooks
+|    ├── lib
+|    ├── registry
+|    ├── script
+|    ├── styles
+|    └── types
+├── contentlayer.config.js
+└── package.json
+
 ```
 
 | Path              | Description                              |
@@ -33,6 +61,7 @@ This repository is structured as follows:
 | `/src/components` | The React components for the website.    |
 | `/src/content`    | The content for the website.             |
 | `/src/registry`   | The registry for the components.         |
+<!-- TODO: Refer the above tree structure and add description to path -->
 
 ## Development
 
@@ -67,6 +96,58 @@ pnpm install
 ```bash
 node .\src\scripts\extract-component-code.js
 ```
+
+### Components
+We use a registry system for developing components. You can find the source code for the components under ``/src/registry``. The components are organized by styles.
+
+```
+├── src
+     └──registry
+          ├──component-code
+          ├──components
+          ├──index.tsx
+          └──schema.ts
+```
+After adding or modifying the components before commiting, please ensure that:
+
+1. You run ``pnpm generate-registry`` to update the registry.
+
+
+### Tools
+Handy utilities to boost your development process. 
+The Tools are organized by styles.
+```
+├── src
+     └── app
+          └── (main)
+                └── tools
+```
+
+
+### Guides
+Clear, step-by-step follow-along guides for every level. (Complex concepts made easy.)
+The Tools are organized by styles.
+```
+├── content
+     └── guides
+```
+
+### Blogs
+Clear, step-by-step follow-along guides for every level. (Complex concepts made easy.)
+The Tools are organized by styles.
+```
+├── content
+     └── blogs
+```
+
+### Commit Convention
+Before you create a Pull Request, please check whether your commits comply with the commit conventions used in this repository.
+
+## Requests for new components
+
+If you have a request for a new component, please open a discussion on GitHub. We'll be happy to help you out.
+
+
 
 <!--
 
@@ -152,9 +233,6 @@ If you are interested in the detailed specification you can visit
 https://www.conventionalcommits.org/ or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
-## Requests for new components
-
-If you have a request for a new component, please open a discussion on GitHub. We'll be happy to help you out.
 
 ## CLI
 

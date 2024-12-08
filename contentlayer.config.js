@@ -54,6 +54,7 @@ export const Guide = defineDocumentType(() => ({
     },
   },
 }));
+
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: `blogs/**/*.mdx`,

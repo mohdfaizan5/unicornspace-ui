@@ -2,45 +2,47 @@ import { CallToAction } from "@/components/call-to-action";
 import { Mdx } from "@/components/mdx-component";
 import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
+import { FaLinkedin } from "react-icons/fa";
 
 // for SEO
-export async function generateMetaData({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const blog = await getBlogFromParams({ params });
-  if (!blog) {
-    return {
-      title: "Blog not found",
-      description: "Blog not found",
-    };
-  }
+// export async function generateMetaData({
+//   params,
+// }: {
+//   params: { slug: string };
+// }) {
+//   const blog = await getBlogFromParams({ params });
+//   if (!blog) {
+//     return {
+//       title: "Blog not found",
+//       description: "Blog not found",
+//     };
+//   }
 
-  return {
-    title: blog.title,
-    description: blog.description,
-  };
-}
+//   return {
+//     title: blog.title,
+//     description: blog.description,
+//   };
+// }
 
 // for making the file generate during build time
-export async function generateStaticParams() {
-  return allBlogs.map((blog) => {
-    return {
-      params: {
-        slug: blog.slug.split("/").join(","),
-      },
-    };
-  });
-}
+// export async function generateStaticParams() {
+//   return allBlogs.map((blog) => {
+//     return {
+//       params: {
+//         slug: blog.slug.split("/").join(","),
+//       },
+//     };
+//   });
+// }
 
 type BlogPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-async function getBlogFromParams({ params }: BlogPageProps) {
+async function getBlogFromParams(props: { params: { slug: string } }) {
+  let params = props.params;
   let slug = params.slug;
 
   // converting it into a way to use it further
@@ -58,10 +60,15 @@ async function getBlogFromParams({ params }: BlogPageProps) {
   return blog;
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   // console.log("slug", params);
+  const slug = await params;
 
-  const blog = await getBlogFromParams({ params });
+  const blog = await getBlogFromParams({ params: { slug: slug.slug } });
 
   if (!blog) {
     notFound();
