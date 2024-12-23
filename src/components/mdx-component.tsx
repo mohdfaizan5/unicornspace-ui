@@ -12,6 +12,7 @@ import CopyButton from "./copy-button";
 import "@/styles/mdx.css";
 import MermaidDiagram from "./mermaid-diagram";
 import WorkWithUs from "./work-with-us";
+import reactNodeToString from "react-node-to-string";
 
 type componentsProps = {
   className: string;
@@ -84,7 +85,7 @@ const components = {
       )}
       {...props}
     />
-  ), 
+  ),
   a: ({ className, ...props }) => (
     <a
       className={cn("font-medium underline underline-offset-4", className)}
@@ -121,7 +122,11 @@ const components = {
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-2xl overflow-hidden border", className)} alt={alt} {...props} />
+    <img
+      className={cn("rounded-2xl overflow-hidden border", className)}
+      alt={alt}
+      {...props}
+    />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
@@ -175,8 +180,13 @@ const components = {
   //   </code>
   // ),
   pre: ({ className, ...props }) => {
+    // console.log("🔥🔥🔥", props);
+    // console.log()
+
     return (
       <div className="relative max-w-2xl mb-2">
+        {/* <div dangerouslySetInnerHTML={{ __html: props.children }} /> */}
+        <CopyButton text={reactNodeToString(props.children)} className="absolute right-1 top-1 z-50"/>
         <pre
           className={cn(
             "mb-4 overflow-x-auto rounded-lg  bg-black py-4",

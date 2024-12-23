@@ -23,7 +23,8 @@ const HeroSection = () => {
           🎉 Something special is waiting!
         </Badge>
         <h1 className="text-5xl mt-2 sm:text-6xl sm:w-2/3 sm:text-center font-passion font-bold  blur-lg opacity-0 [--slidein-delay:300ms] animate-slidein">
-          Build faster, smarter, and more efficiently.
+          {/* Build faster, smarter, and more efficiently. */}
+          Create Startups 300% Faster With This Shadcn Tools
         </h1>
         <p className="text-lg sm:text-[18px] blur-lg opacity-0 mb-6 mt-5 md:max-w-[600px] md:text-center font-medium  [--slidein-delay:400ms] animate-slidein text-foreground/75">
           Meet UnicornSpaceUI, the library for all your daily tool for all

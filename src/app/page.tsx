@@ -33,7 +33,7 @@ const page = () => {
         </section>
         <CardContent>
           <h1 className=" font-bold font-passion text-base max-w-72 text-center">
-            Sync all your favorite tools and libraries in one place.
+            Create Startups 500% Faster With This Shadcn Tool.
           </h1>
         </CardContent>
       </Card>

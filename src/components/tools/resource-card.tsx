@@ -5,6 +5,7 @@ import {
   CircleArrowOutDownRight,
   CircleArrowOutUpRight,
   MoveUpRight,
+  Star,
 } from "lucide-react";
 
 type ResourceCardType = {
@@ -12,6 +13,7 @@ type ResourceCardType = {
   description: string;
   link: string;
   category: string;
+  isFavorite?: boolean;
 };
 
 function ResourceCard({
@@ -20,17 +22,24 @@ function ResourceCard({
   // image,
   link,
   category,
+  isFavorite,
 }: ResourceCardType) {
   return (
     <Link href={link} target="_blank">
       <Card className="w-80 rounded-lg md:shadow-md group">
         <CardContent className=" p-6 flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full items-center">
-            <h2 className="font-bold font-grotesk leading-6 mt-2 line-clamp-1 ">
-              {title}
+            <h2 className="flex items-center gap-1 font-bold font-grotesk leading-6 mt-2 line-clamp-1 ">
+              {title}{" "}
+              {isFavorite && (
+                <Star className="text-amber-400 fill-amber-500" size={16} />
+              )}
             </h2>
-            <div  className="p-1  border rounded-full">
-              <MoveUpRight size={14} className="group-hover:rotate-45 transition-all duration-200 group-hover:translate-x-2"/>
+            <div className="p-1  border rounded-full">
+              <MoveUpRight
+                size={14}
+                className="group-hover:rotate-45 transition-all duration-200 group-hover:translate-x-2"
+              />
             </div>
             {/* <CircleArrowOutUpRight size={16}/> */}
           </div>
