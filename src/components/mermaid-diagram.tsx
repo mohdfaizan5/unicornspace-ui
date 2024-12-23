@@ -12,7 +12,13 @@ const MermaidDiagram = ({ code }: { code: string }) => {
       className="mermaid flex flex-col items-center mx-auto"
       suppressHydrationWarning
     >
-      {`${code}`}
+      {`---
+config:
+  look: classic
+  theme: neo
+  layout: dagre
+---
+${code}`}
       {/* classDef notExposed fill:#fff0,stroke:#000,stroke-width:1px,border-radius:20px;
 class B,C,D notExposed;
 classDef notResearched fill:#40E0D0,stroke:#333,stroke-width:2px;

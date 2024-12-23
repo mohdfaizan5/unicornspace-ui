@@ -7,7 +7,7 @@ thumbnail: Authjs part 1.png
 author: Faizan
 ---
 
-{/* Authentication is a crucial part of any web application. It is the process of verifying the identity of a user. */}
+Authentication is a crucial part of any web application. It is the process of verifying the identity of a user.
 
 ## What is NextAuth.js?
 
@@ -196,9 +196,59 @@ export const { GET, POST } = handlers;
 
 > (Optional) Create this inside `login` or `signin` folder. So that you can go on that route to enter your login credentials. Use this component inside `page.tsx`.
 
+```tsx:app/(auth)/layout.tsx
+import React, { ReactNode } from "react";
+import AvatarList from "@/components/avatars-list";
+import Logo from "@/components/logo";
+import { auth } from "@/lib/auth";
+import { Quote } from "lucide-react";
+import { redirect } from "next/navigation";
+
+const layout = async ({ children }: { children: ReactNode }) => {
+  const session = await auth();
+  if (session?.user) redirect("/app");
+  return (
+    <div className="flex   min-h-screen ">
+      <div className="h-full flex flex-col items-center justify-center w-full">
+        <Logo full className="flex-row" width={60} />
+        {children}
+      </div>
+      <div className="hidden lg:flex min-h-screen items-center bg-primary/35  justify-center w-[50dvw] p-6 sticky">
+        <div>
+          <Quote className="rotate-180 fill-black opacity-70" />
+          <h3 className="text-balance font-medium">
+            I gave @workspace a try today and I was positively impressed! Very
+            quick setup to get a working with management automatically for you 👌 10/10 will play
+            more
+          </h3>
+          <AvatarList className="mt-10" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default layout;
+
+```
+```tsx:app/(auth)/signin/page.tsx
+import SignInForm from "@/components/signin-form";
+import React from "react";
+
+const page = async () => {
+  return (
+    <div>
+      <SignInForm className="" />
+    </div>
+  );
+};
+
+export default page;
+```
+
 ```tsx:signInForm.tsx
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -211,15 +261,17 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+
 import Link from "next/link";
 import { signInFormSchema } from "@/types/index";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/lib/auth";
 import { signInAction } from "@/actions/auth.action";
+import { Input } from "./ui/input";
+import { LoaderCircleIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const SignInForm = () => {
+const SignInForm = ({ className }: { className?: string }) => {
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -229,13 +281,16 @@ const SignInForm = () => {
   });
 
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
   const onSubmit = async (values: z.infer<typeof signInFormSchema>) => {
+    setLoading(true);
     console.log(values);
     try {
       const result = await signInAction(values);
       if (result.success) {
         toast.success("Login Success");
-        router.push("/courses");
+        router.push("/app");
       } else {
         console.log("Login Failed", result.error);
         toast.error(`Login Failed: ${result.error}`);
@@ -244,49 +299,82 @@ const SignInForm = () => {
       console.log(error);
       console.log("Login Failed");
     }
+    setLoading(false);
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col items-center justify-center gap-2"
-      >
-        <FormField
-          name="email"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="name@example.com" {...field} />
-              </FormControl>
+    <div className={cn(" flex items-center justify-center p-4", className)}>
+      <div className="w-full max-w-md space-y-6  p-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-2">Sign In</h2>
+          <p className="text-sm text-muted-foreground">
+            Enter your email and password to access your account
+          </p>
+        </div>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 w-full"
+          >
+            <FormField
+              name="email"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="space-y-2">
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="name@example.com"
+                      {...field}
+                      className="w-full"
+                    />
+                  </FormControl>
+                  <FormMessage className="text-xs" />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="password"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="space-y-2">
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      placeholder="******"
+                      {...field}
+                      className="w-full"
+                    />
+                  </FormControl>
+                  <FormMessage className="text-xs" />
+                </FormItem>
+              )}
+            />
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="password"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="******" {...field} />
-              </FormControl>
+            <div className="flex flex-col space-y-4 pt-2">
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? (
+                  <LoaderCircleIcon className="animate-spin" />
+                ) : (
+                  "Login"
+                )}
+              </Button>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button className="w-full">Login</Button>
-        <Link className="underline text-primary text-sm" href={"/signup"}>
-          Don&apos;t have an account?
-        </Link>
-      </form>
-    </Form>
+              <div className="text-center">
+                <Link
+                  href="/signup"
+                  className="underline text-primary text-sm hover:text-primary/80 transition-colors"
+                >
+                  Don&apos;t have an account?
+                </Link>
+              </div>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </div>
   );
 };
 
@@ -295,10 +383,34 @@ export default SignInForm;
 
 > (Optional) Create this inside `register` or `signup` folder. So that you can go on that route to register. Use this component inside `page.tsx`.
 
+```tsx:app/(auth)/signin/page.tsx
+import Logo from "@/components/logo";
+import { Shapes } from "@/components/shapes";
+import SignUpForm from "@/components/signup-form";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import React from "react";
+
+const page = async () => {
+  const session = await auth();
+  if (session?.user) redirect("/app");
+  return (
+    <div className="">
+      <SignUpForm />
+    </div>
+  );
+};
+
+export default page;
+
+```
+
+
 ```tsx:signupForm.tsx
 "use client";
+
 import React from "react";
-import { useForm } from "react-hook-form";
+import { ControllerRenderProps, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -329,92 +441,303 @@ const SignUpForm = () => {
     },
   });
   const router = useRouter();
-
+  const [loading, setLoading] = useState(false);
   const onSubmit = async (values: z.infer<typeof signUpFormSchema>) => {
+    setLoading(true);
     console.log(values);
+
     const res = await signUpAction(values);
+    console.log(" 😂😂",res)
     if (res.success) {
       toast.success(res.data);
-      router.push("/login");
+      router.push("/app");
     } else {
       toast.error(res.error);
     }
+    setLoading(false);
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col items-center justify-center"
-      >
-        <FormField
-          name="name"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="name" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="email"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="name@example.com" {...field} />
-              </FormControl>
+    <div className="min-h-screen flex items-center justify-center w-[500px]">
+      <div className="w-full max-w-md space-y-6 p-6 rounded-lg shadow-sm">
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-semibold mb-2">Create Your Account</h2>
+          <p className="text-sm text-muted-foreground">
+            Sign up to get started
+          </p>
+        </div>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="password"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" {...field} />
-              </FormControl>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              name="name"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="space-y-2">
+                  <FormLabel className="font-medium">Username</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="name"
+                      {...field}
+                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/30"
+                    />
+                  </FormControl>
+                  <FormDescription className="text-xs pl-1 text-muted-foreground">
+                    This is your public display name.
+                  </FormDescription>
+                  <FormMessage className="text-xs pl-1" />
+                </FormItem>
+              )}
+            />
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="confirmPassword"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
-              <FormControl>
-                <Input type="password" {...field} />
-              </FormControl>
+            <FormField
+              name="email"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="space-y-2">
+                  <FormLabel className="font-medium">Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="name@example.com"
+                      {...field}
+                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/30"
+                    />
+                  </FormControl>
+                  <FormMessage className="text-xs pl-1" />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="password"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="space-y-2">
+                  <FormLabel className="font-medium">Password</FormLabel>
+                  <FormControl>
+                    <PasswordField field={field} />
+                    {/* <Input
+                      type="password"
+                      {...field}
+                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/30"
+                    /> */}
+                  </FormControl>
+                  <FormMessage className="text-xs pl-1" />
+                </FormItem>
+              )}
+            />
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button>Register</Button>
-        <Link className="text-sm mt-5 text-blue-600" href="/login">
-          Already have an account?
-        </Link>
-      </form>
-    </Form>
+            <FormField
+              name="confirmPassword"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="space-y-2">
+                  <FormLabel className="font-medium">
+                    Confirm Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      {...field}
+                      className="w-full transition-all duration-300 focus:ring-2 focus:ring-primary/30"
+                    />
+                  </FormControl>
+                  <FormMessage className="text-xs pl-1" />
+                </FormItem>
+              )}
+            />
+
+            <div className="pt-2 space-y-4">
+              <Button
+                type="submit"
+                className="w-full transition-transform duration-200 active:scale-95"
+                disabled={loading}
+              >
+                {loading ? (
+                  <LoaderCircleIcon className="animate-spin" />
+                ) : (
+                  "Register"
+                )}
+              </Button>
+
+              <div className="text-center">
+                <Link
+                  href="/signin"
+                  className="text-sm text-primary hover:opacity-80 transition-opacity"
+                >
+                  Already have an account?
+                </Link>
+              </div>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </div>
   );
 };
 
 export default SignUpForm;
+
+import { Label } from "@/components/ui/label";
+import {
+  Check,
+  Eye,
+  EyeOff,
+  LoaderCircle,
+  LoaderCircleIcon,
+  X,
+} from "lucide-react";
+import { useMemo, useState } from "react";
+
+function PasswordField({
+  field,
+}: {
+  field: ControllerRenderProps<
+    {
+      password: string;
+      name: string;
+      email: string;
+      confirmPassword: string;
+    },
+    "password"
+  >;
+}) {
+  const [password, setPassword] = useState(field.value);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const toggleVisibility = () => setIsVisible((prevState) => !prevState);
+
+  const checkStrength = (pass: string) => {
+    const requirements = [
+      { regex: /.{8,}/, text: "At least 8 characters" },
+      { regex: /[0-9]/, text: "At least 1 number" },
+      { regex: /[a-z]/, text: "At least 1 lowercase letter" },
+      { regex: /[A-Z]/, text: "At least 1 uppercase letter" },
+    ];
+
+    return requirements.map((req) => ({
+      met: req.regex.test(pass),
+      text: req.text,
+    }));
+  };
+
+  const strength = checkStrength(password);
+
+  const strengthScore = useMemo(() => {
+    return strength.filter((req) => req.met).length;
+  }, [strength]);
+
+  const getStrengthColor = (score: number) => {
+    if (score === 0) return "bg-border";
+    if (score <= 1) return "bg-red-500";
+    if (score <= 2) return "bg-orange-500";
+    if (score === 3) return "bg-amber-500";
+    return "bg-emerald-500";
+  };
+
+  const getStrengthText = (score: number) => {
+    if (score === 0) return "Enter a password";
+    if (score <= 2) return "Weak password";
+    if (score === 3) return "Medium password";
+    return "Strong password";
+  };
+
+  return (
+    <div>
+      {/* Password input field with toggle visibility button */}
+      <div className="space-y-2">
+        <Label htmlFor="input-51">Input with password strength indicator</Label>
+        <div className="relative">
+          <Input
+            id="input-51"
+            className="pe-9"
+            placeholder="Password"
+            type={isVisible ? "text" : "password"}
+            {...field}
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              field.onChange(e.target.value);
+            }}
+            aria-invalid={strengthScore < 4}
+            aria-describedby="password-strength"
+          />
+          <button
+            className="absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-lg text-muted-foreground/80 outline-offset-2 transition-colors hover:text-foreground focus:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+            type="button"
+            onClick={toggleVisibility}
+            aria-label={isVisible ? "Hide password" : "Show password"}
+            aria-pressed={isVisible}
+            aria-controls="password"
+          >
+            {isVisible ? (
+              <EyeOff size={16} strokeWidth={2} aria-hidden="true" />
+            ) : (
+              <Eye size={16} strokeWidth={2} aria-hidden="true" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Password strength indicator */}
+      <div
+        className="mb-4 mt-3 h-1 w-full overflow-hidden rounded-full bg-border"
+        role="progressbar"
+        aria-valuenow={strengthScore}
+        aria-valuemin={0}
+        aria-valuemax={4}
+        aria-label="Password strength"
+      >
+        <div
+          className={`h-full ${getStrengthColor(
+            strengthScore
+          )} transition-all duration-500 ease-out`}
+          style={{ width: `${(strengthScore / 4) * 100}%` }}
+        ></div>
+      </div>
+
+      {/* Password strength description */}
+      <p
+        id="password-strength"
+        className="mb-2 text-sm font-medium text-foreground"
+      >
+        {getStrengthText(strengthScore)}. Must contain:
+      </p>
+
+      {/* Password requirements list */}
+      <ul className="space-y-1.5" aria-label="Password requirements">
+        {strength.map((req, index) => (
+          <li key={index} className="flex items-center gap-2">
+            {req.met ? (
+              <Check
+                size={16}
+                className="text-emerald-500"
+                aria-hidden="true"
+              />
+            ) : (
+              <X
+                size={16}
+                className="text-muted-foreground/80"
+                aria-hidden="true"
+              />
+            )}
+            <span
+              className={`text-xs ${
+                req.met ? "text-emerald-600" : "text-muted-foreground"
+              }`}
+            >
+              {req.text}
+              <span className="sr-only">
+                {req.met ? " - Requirement met" : " - Requirement not met"}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 ```
 
 ```tsx:@/actions/auth.action.ts

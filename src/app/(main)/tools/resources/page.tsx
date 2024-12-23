@@ -24,7 +24,7 @@ const page = (props: { searchParams: SearchParams }) => {
   // }
   return (
     <div className="">
-      <ResourceGallery data={resourcesData}/>
+      <ResourceGallery data={resourcesData} />
 
       {/* <h1 className="text-2xl font-bold">Resources</h1>
       <div className="flex flex-wrap gap-x-2 gap-y-1 py-4">
@@ -51,7 +51,6 @@ const page = (props: { searchParams: SearchParams }) => {
 
 export default page;
 
-
 const resourcesData: Resource[] = [
   {
     category: "logo",
@@ -74,6 +73,78 @@ const resourcesData: Resource[] = [
     title: "Shadcn Form Builder",
     isFavorite: true,
   },
+
+  {
+    category: "UI",
+    description: "Illustrations",
+    link: "https://illlustrations.co/?cs/",
+    title: "Illlustrations co",
+    isFavorite: true,
+  },
+  {
+    category: "icons",
+    description: "https://3dicons.co/?cs",
+    link: "https://3dicons.co/?cs",
+    title: "3dicons",
+    isFavorite: true,
+  },
+  {
+    category: "assets",
+    description: "",
+    link: "https://coolshap.es/",
+    title: "Coolshapes",
+    isFavorite: true,
+  },
+  {
+    category: "inspiration",
+    description: "https://3dicons.co/?cs",
+    link: "https://designvault.io/type/landing-page/",
+    title: "Landing page collections",
+    isFavorite: true,
+  },
+  {
+    category: "inspiration",
+    description: "",
+    link: "https://minimal.gallery/",
+    title: "minimal.gallery collections",
+    isFavorite: true,
+  },
+  {
+    category: "inspiration",
+    description: "",
+    link: "https://saaslandingpage.com/",
+    title: "SaaS Landing page collections",
+    isFavorite: true,
+  },
+  {
+    category: "inspiration",
+    description: "",
+    link: "https://www.twblocks.com/",
+    title: "Landing page components collections",
+    isFavorite: true,
+  },
+  {
+    category: "tools",
+    description: "Make documentations",
+    link: "https://fumadocs.vercel.app/",
+    title: "Fuma docs",
+    isFavorite: false,
+  },
+  {
+    category: "tools",
+    description: "Query params manager nextjs library",
+    link: "https://nuqs.47ng.com/",
+    title: "Nuqs",
+    isFavorite: false,
+  },
+  {
+    category: "other",
+    description: "",
+    link: "https://css-shape.com/",
+    title: "CSS shapes",
+    isFavorite: false,
+  },
+
   {
     category: "UI",
     description: "A collection of free resources for designers.",
@@ -114,6 +185,13 @@ const resourcesData: Resource[] = [
     description: "Button design tools",
     link: "https://buttons.ibelick.com/",
     title: "Buttons by iBelick",
+    isFavorite: false,
+  },
+  {
+    category: "tool",
+    description: "Custom cursor codes",
+    link: "https://cursify.vercel.app/components",
+    title: "Cursify",
     isFavorite: false,
   },
   {

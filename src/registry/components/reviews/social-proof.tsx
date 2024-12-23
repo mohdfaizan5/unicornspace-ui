@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { FaStarHalfAlt } from "react-icons/fa";

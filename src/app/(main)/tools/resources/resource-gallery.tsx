@@ -58,6 +58,7 @@ export default function ResourceGallery({ data }: { data: Resource[] }) {
             description={resource.description}
             title={resource.title}
             link={resource.link}
+            isFavorite={resource.isFavorite}
           />
         ))}
       </main>

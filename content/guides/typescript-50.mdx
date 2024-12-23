@@ -3,20 +3,92 @@ isPublished: true
 title: TypeScript 50
 description: Learn all you need to know about Typescript 5 in detailed.
 tags: TypeScript, TS, Beginner, V5.6
-thumbnail: TS guide.png
+thumbnail: TS-guide.png
 ---
 
 # Typescript
 
-what is difference between `?.` and `!.`?
+# Introduction
+Typescript is Javascript with superpowers, It is a Strict syntactical superset of javascript and adds optional typing to the languate
+* it was developed by Microsoft
 
-```ts
-object?.name;
-object!.name;
+> TypeScript is like more powerful version of JS, it lets you do everything that javascript does, but it adds some extra feture to make your life easier when writing larger and more complex programs 
+
+|Strongly typed Benefits|Loosly typed Benefits|
+|---|---|
+|Lesser runtime errors|Easy to write code|
+|String codebase|Fast to bootstrap|
+|Easy to catch bugs at compile time|Low learning curve|
+
+```tsx
+// ts
+let number = 10;
+number = "Hi" // Error
+
+// js
+let number = 10;
+number = "Hi" // No Error
+
 ```
 
-DOUBT: what is dispatchedSignIn & dispatchedLogIn in the course?
--> may be for the errors handling.
+
+> the term strongly typed and loos refrs to how programming languages handle types, particularly how srict they are about types conversions and type safety.
+
+## Where and how does TypeScript code run?
+
+TS never runs in your browser.  Your browser can only understand JS.
+1. JS is runime language (only browser/ runtimes (node, deno...) can understand)
+2. TS is something that gets compiled (transpile) into JS
+3. While TS is compiled down to JS, you get 'type checking'[similar to c++], if there's an error the conversion of TS to JS will fail.
+
+{/* <Diagram code={`graph LR
+TS[TypeScript] -->|Transpile| JS[JavaScript]
+JS -->|Run| Browser
+JS -->|Run| Node
+JS -->|Run| Deno`}/> */}
+
+# Basics
+## Static typing
+## optional chaining
+## type guards
+## any type
+## function parameter
+## void
+## array types
+### multi dimentional Arrays
+## objects
+## type alias
+## readonly
+## intersection types
+## Anotations
+## tsconfig.json
+## Interface
+## Types
+## Unions
+## literal types
+## tuples
+## Intersections
+## Arrays
+## declaration merging
+
+# Intermediate
+
+## Generics
+### Generic functions with multiple types
+
+## Enums
+
+
+
+# Advance and other
+{/*
+## How to use one value from a type
+
+Useful because it has you're fetching from one source of truth and you need not update everywhere if you plan to change in future
+
+```tsx
+const pet: Pet["id"] = "hit";
+```
 
 ## Omit
 
@@ -34,10 +106,12 @@ type Pet2 = Omit<Pet, "id">;
 //    age: number;
 ```
 
-## How to use one value from a type
+what is difference between `?.` and `!.`?
 
-Useful because it has you're fetching from one source of truth and you need not update everywhere if you plan to change in future
-
-```tsx
-const pet: Pet["id"] = "hit";
+```ts
+object?.name;
+object!.name;
 ```
+
+DOUBT: what is dispatchedSignIn & dispatchedLogIn in the course?
+-> may be for the errors handling. */}

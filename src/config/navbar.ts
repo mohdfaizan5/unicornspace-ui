@@ -54,12 +54,12 @@ export const navigation: NavigationProps[] = [
     title: "Tools",
     href: "/tools",
     links: [
-      {
-        title: "Glass Morphism generator",
-        href: "/tools/glass-morphism",
-        label: "New",
-      },
-      { title: "Readme generator", href: "/tools/readme-generator" },
+      // {
+      //   title: "Glass Morphism generator",
+      //   href: "/tools/glass-morphism",
+      //   label: "New",
+      // },
+      // { title: "Readme generator", href: "/tools/readme-generator" },
       // { title: "Shadcn Theme generator", href: "/tools/color-theme-generator" },
       // { title: "Shadcn Themes", href: "/tools/shadcn-color-themes" },
       { title: "Fonts in Use", href: "/tools/fonts-in-use" },
@@ -69,10 +69,10 @@ export const navigation: NavigationProps[] = [
         href: "/tools/color-convertor",
         label: "Updated",
       },
-      {
-        title: "Gradient Generator",
-        href: "/tools/bg-generator",
-      },
+      // {
+      //   title: "Gradient Generator",
+      //   href: "/tools/bg-generator",
+      // },
       // {
       //   title: "Color contrast checker",
       //   href: "/tools/contrast-checker",
@@ -98,7 +98,7 @@ export const navigation: NavigationProps[] = [
       //   title: "ContentLayer & MDX❌ (Tahir)",
       //   href: "/guides/contentlayer-mdx-nextjs14",
       // },
-      { title: "UploadThing", href: "/guides/uploadthing" },
+      // { title: "UploadThing", href: "/guides/uploadthing" },
       {
         title: "SEO - The Fundamentals",
         href: "/guides/seo-the-fundamentals",

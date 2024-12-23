@@ -204,6 +204,32 @@ const andFilter = await prisma.user.findMany({
 //   },
 // })
 ```
+### How to add multiple values or loop in the query
+
+```ts
+tasks.forEach(async (task) => {
+  await prisma.task.create({
+    data: {
+      title: task.title,
+      description: task.description,
+    },
+  });
+});
+
+// OR
+for (const task of tasks) {
+  await prisma.task.create({
+    data: {
+      title: task.title,
+      description: task.description,
+    },
+  });
+}
+
+```
+
+
+
 
 ## Enum
 

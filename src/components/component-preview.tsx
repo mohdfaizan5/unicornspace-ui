@@ -6,6 +6,8 @@ import CodeHighlight from "@/components/code-highlight";
 import componentRegistry from "@/registry";
 import ComponentWrapper from "./component-wrapper";
 import { ImSpinner } from "react-icons/im";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const ComponentPreview = ({
   name,
@@ -30,6 +32,9 @@ const ComponentPreview = ({
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
+          <Link href={`/blocks/${name}`}>
+            <Button>See full component</Button>
+          </Link>
         </TabsList>
         <TabsContent value="preview" className="relative rounded-md ">
           <ComponentWrapper>
@@ -42,16 +47,13 @@ const ComponentPreview = ({
               }
             >
               {/* <div className="scale-[60%] bg-background/30"> */}
-                <ComponentToRender.component {...props} />
+              <ComponentToRender.component {...props} />
               {/* </div> */}
             </React.Suspense>
           </ComponentWrapper>
         </TabsContent>
 
-        <TabsContent
-          value="code"
-          className=" rounded-sm "
-        >
+        <TabsContent value="code" className=" rounded-sm ">
           {/* {ComponentToRender.code} */}
           <CodeHighlight
             className="w-full max-h-96 overflow-y-auto"
