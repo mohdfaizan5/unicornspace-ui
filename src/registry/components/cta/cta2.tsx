@@ -15,10 +15,10 @@ export function Cta2() {
               icons from scratch.
             </p>
             <div className="mt-8 flex gap-4">
-              <Button  className='bg-blue-600 hover:bg-blue-500'>
+              <Button  className=''>
                 Get sample chapter
               </Button>
-              <Button  variant="outline" className='border border-blue-600 text-blue-600 font-extrabold hover:bg-blue-50 hover:text-blue-600'>
+              <Button  variant="outline" className='border '>
                 Buy book
               </Button>
             </div>

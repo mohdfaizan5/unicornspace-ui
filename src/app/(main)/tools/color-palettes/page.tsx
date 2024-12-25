@@ -16,7 +16,7 @@ const page = () => {
         Discover the newest hand-picked palettes for your websites. Get
         inspiration for your design and art projects.
       </p>
-      <div className="grid md:grid-cols-2 mt-7 md:mt-0 justify-center  gap-20">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 mx-auto mt-7 md:mt-0 justify-center  gap-10">
         {colorsData.map((color, i) => (
           <ColorsCard
             image={color.image}
