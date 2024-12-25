@@ -39,7 +39,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <ThemeProvider   attribute="class" defaultTheme={"dark"} >
-          <div className="relative flex min-h-screen flex-col antialiased mx-auto  max-w-7xl bg-background">
+          <div className="relative flex min-h-screen flex-col antialiased mx-auto  max-w-[1560] bg-background">
             <Navbar />
             {children}
             <BasicFooter />

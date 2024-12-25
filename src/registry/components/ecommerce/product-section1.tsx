@@ -33,7 +33,7 @@ const ProductImageCarousel = () => {
     });
   }, [api]);
   return (
-    <section className="md:max-w-[29rem] relative">
+    <section className=" relative">
       <Carousel setApi={setApi} opts={{ loop: false }}>
         <CarouselContent className="relative">
           <CarouselItem className="">
@@ -45,15 +45,6 @@ const ProductImageCarousel = () => {
               alt=""
             />
           </CarouselItem>
-          {/* <CarouselItem className="">
-            <Image
-              className="mx-auto"
-              src={"/assets/features.png"}
-              width={400}
-              height={400}
-              alt=""
-            />
-          </CarouselItem> */}
           <CarouselItem className="">
             <Image
               className="mx-auto my-auto"
@@ -100,7 +91,8 @@ const ProductImageCarousel = () => {
 
 const ProductSection1 = () => {
   return (
-    <div className="min-h-[70vh] flex mx-auto flex-col-reverse md:flex-row mt-5 md:mt-0 items-center justify-center md:gap-5">
+    <div className="min-h-[70vh] flex mx-auto flex-col  mt-5  items-center justify-center md:gap-5">
+      <ProductImageCarousel />
       <section className="md:max-w-[500px] px-5 flex flex-col gap-2 py-3 ">
         <h2 className="mb-3 text-3xl font-semibold">Macbook Pro</h2>
         <p className="text-brand-text2/80 text-[15px] mb-3">
@@ -187,7 +179,7 @@ const ProductSection1 = () => {
           </Button>
         </Link>
       </section>
-      <ProductImageCarousel />
+    
     </div>
   );
 };

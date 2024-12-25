@@ -50,7 +50,7 @@ export default function ResourceGallery({ data }: { data: Resource[] }) {
           </Button>
         ))}
       </div>
-      <main className="grid grid-cols-1 gap-x-2 sm:grid-cols-2 md:grid-cols-3">
+      <main className="grid grid-cols-1 gap-2 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {filteredResources.map((resource, i) => (
           <ResourceCard
             key={i}

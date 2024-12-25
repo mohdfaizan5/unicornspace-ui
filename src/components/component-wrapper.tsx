@@ -18,7 +18,7 @@ export default function ComponentWrapper({
   return (
     <div className="flex justify-center items-center p-2  g-gray-100 rounded-lg overflow-hidden">
       <div
-        className={`scale-[90%] md:scale-[95%] bg-background border p-2 md:p-5 rounded-md shadow-md ${className}`}
+        className={`scale-[90%] md:scale-[95%] bg-background border border-gray-300 p-2 md:p-5 rounded-md shadow-md ${className}`}
         style={{
           width,
           height,

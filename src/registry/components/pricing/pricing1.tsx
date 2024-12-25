@@ -9,7 +9,7 @@ const Pricing1 = () => {
       <p className="text-md mt-3 opacity-70 font-light ">
         $100 off for the first 3710 customers (7 left)
       </p>
-      <div className="flex flex-col md:flex-row justify-center gap-10 my-10">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-2  justify-center gap-10 my-10">
         <Card
           className={`flex flex-col justify-between px-10 py-10 border min-h-[80dvh] w-96 `}
         >

@@ -30,7 +30,7 @@ const featuresData: { title: React.ReactNode; icon: React.ReactNode }[] = [
 
 const Features2 = () => {
   return (
-    <div className=" pb-5 grid grid-cols-4">
+    <div className=" pb-5 grid grid-cols-4 dark:bg-black dark:text-white">
       {featuresData.map((feature, i) => (
         <div
           className={`flex md:col-span-2 gap-5 items-center ${
@@ -39,7 +39,7 @@ const Features2 = () => {
           key={i}
         >
           <span
-            className={`text-2xl bg-primary text-white rounded-full p-2 font-light top-0 
+            className={`text-2xl  rounded-full p-2 font-light top-0 
             `}
           >
             {feature.icon}

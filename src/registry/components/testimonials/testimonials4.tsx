@@ -87,17 +87,17 @@ function Testimonials4({ id }: any) {
     <aside
       id={id}
       aria-label={`Testimonial from Unkonown`}
-      className="relative bg-slate-100 py-16 sm:py-32"
+      className="relative  py-16 sm:py-32"
     >
-      <div className="text-slate-900/10">
+      <div className="text-slate-900/10 dark:text-slate-100/10">
         <GridPattern x="50%" patternTransform="translate(0 80)" />
       </div>
       <Container size="xs" className="relative">
         <figure>
-          <div className="flex text-slate-900 sm:justify-center">
+          <div className="flex  sm:justify-center">
             <StarRating />
           </div>
-          <blockquote className="mt-10 font-display text-3xl font-medium tracking-tight text-slate-900 sm:text-center">
+          <blockquote className="mt-10 font-display text-3xl font-medium tracking-tight  sm:text-center">
             {children.children}
           </blockquote>
           <figcaption className="mt-10 flex items-center sm:justify-center">

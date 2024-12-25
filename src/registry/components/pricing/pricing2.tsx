@@ -66,7 +66,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
       <p
         className={clsx(
           "mt-2 text-base",
-          featured ? "text-white" : "text-muted-foreground"
+          featured ?"dark:text-black text-white" : "text-muted-foreground"
         )}
       >
         {description}
@@ -83,7 +83,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
         role="list"
         className={clsx(
           "order-last mt-10 flex flex-col gap-y-3 text-sm",
-          featured ? "text-white" : "text-foreground/80"
+          featured ? "dark:text-black text-white" : "text-foreground/80"
         )}
       >
         {features.map((feature: any) => (
@@ -126,7 +126,7 @@ export default function Pricing2() {
             work well for you.
           </p>
         </div>
-        <div className="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
+        <div className="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-2 gap-2 xl:mx-0 xl:gap-x-8">
           <Plan
             name="Starter"
             price="$9"

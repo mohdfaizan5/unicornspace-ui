@@ -53,7 +53,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
         <h3
           className={clsx(
             'mt-7 text-lg font-semibold tracking-tight',
-            featured ? 'text-white' : 'text-slate-900'
+            featured ? 'text-white' : ''
           )}
         >
           {name}
@@ -61,7 +61,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
         <p
           className={clsx(
             'mt-2 text-lg tracking-tight',
-            featured ? 'text-white' : 'text-slate-600'
+            featured ? 'text-white' : ''
           )}
         >
           {description}
@@ -70,7 +70,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
           <span
             className={clsx(
               'text-[1.75rem] leading-tight',
-              featured ? 'text-blue-200' : 'text-slate-500'
+              featured ? 'text-blue-200' : ''
             )}
           >
             $
@@ -78,7 +78,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
           <span
             className={clsx(
               'ml-1 mt-1 text-7xl tracking-tight',
-              featured ? 'text-white' : 'text-slate-900'
+              featured ? 'text-white' : ''
             )}
           >
             {price}
@@ -91,7 +91,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
               '-my-2 divide-y text-base tracking-tight',
               featured
                 ? 'divide-white/10 text-white'
-                : 'divide-slate-200 text-slate-900'
+                : ''
             )}
           >
             {features.map((feature:any) => (
@@ -111,7 +111,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
         <Link href={'#'} >
         <Button
 
-          className={clsx("mt-8 font-extrabold w-full",featured ?'bg-white text-blue-600 hover:bg-white hover:text-blue-600' : 'bg-black ')}
+          className={clsx("mt-8 font-extrabold w-full",featured ?'bg-white text-blue-600 hover:bg-white hover:text-blue-600' : '')}
           aria-label={`Get started with the ${name} plan for $${price}`}
         >
           Get started
@@ -131,16 +131,16 @@ export default function Pricing4() {
     >
       <div className='mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:max-w-4xl lg:px-12'>
         
-        <p className=" font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
+        <p className=" font-display text-5xl font-extrabold tracking-tight  sm:text-6xl">
           Pick your package
         </p>
-        <p className="mt-4 max-w-xl text-[16px] tracking-tight text-slate-600">
+        <p className="mt-4 max-w-xl text-[16px] tracking-tight ">
           “Everything Starts as a Square” is available in two different packages
           so you can pick the one that’s right for you.
         </p>
       </div>
       <div className="mx-auto mt-16 max-w-5xl lg:px-6">
-        <div className="grid rounded-[50px] bg-slate-50 sm:px-6 sm:pb-16 md:grid-cols-2 md:rounded-6xl md:px-8 md:pt-16 lg:p-20">
+        <div className="grid rounded-[50px]  sm:px-6 sm:pb-16 md:grid-cols-2 md:rounded-6xl md:px-8 md:pt-16 lg:p-20">
           <Plan
             name="Essential"
             description="The perfect starting point if you’re on a budget."
