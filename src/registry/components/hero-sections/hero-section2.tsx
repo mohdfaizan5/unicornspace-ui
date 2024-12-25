@@ -4,25 +4,21 @@ import Image from "next/image";
 
 const HeroSection2 = () => {
   return (
-    <div className="px-6 lg:px-0 lg:pt-4 flex justify-center items-center">
-      <section className="relative md:w-[60vw] text-center lg:text-left flex flex-col items-center lg:items-start">
-        {/* <div className="absolute w-28 left-0 -top-20 hidden lg:block">
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t via-slate-50/50 from-slate-50 h-28" />
-          <img src="/snake-1.png" className="w-full" alt="asdfjasd" />
-        </div> */}
-        <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-5xl lg:text-7xl">
+    <div className="px-6 lg:px-0 lg:pt-4 flex justify-center items-center bg-white dark:bg-white">
+      <section className="relative md:w-[60vw] p-2 text-center lg:text-left flex flex-col items-center lg:items-start">
+        <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-5xl md:text-5xl lg:text-7xl dark:text-black">
           Your Image on a{" "}
           <span className="bg-green-600 px-2 text-white">Custom</span> Phone
           Case
         </h1>
-        <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">
+        <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap dark:text-black">
           Capture your favorite memories with your own,{" "}
           <span className="font-semibold">one-of-one</span> phone case.
           CaseCobra allows you to protect your memories, not just your phone
           case.
         </p>
 
-        <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
+        <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start dark:text-black">
           <div className="space-y-2">
             <li className="flex gap-1.5 items-center text-left">
               <Check className="h-5 w-5 shrink-0 text-green-600" />
@@ -87,18 +83,19 @@ const HeroSection2 = () => {
               <Star className="h-4 w-4 text-green-600 fill-green-600" />
             </div>
 
-            <p>
+            <p className="dark:text-black">
               <span className="font-semibold">1.250</span> happy customers
             </p>
           </div>
         </div>
       </section>
-      <section>
+      <section className="w-full sm:w-[50%]   max-w-[300px] mr-5  mx-auto my-12">
         <Image
-          src={"/phone-template-dark-edges.png"}
-          alt=""
-          width={200}
-          height={200}
+          src="/phone-template-white-edges.png"
+          alt="Phone Case Template"
+          width={600}  
+          height={600} 
+          className="w-full h-auto object-contain" 
         />
       </section>
     </div>

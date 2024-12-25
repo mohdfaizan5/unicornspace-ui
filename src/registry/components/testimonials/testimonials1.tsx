@@ -54,16 +54,10 @@ const Testimonials1 = () => {
         See what our customers{" "}
         <span className="text-brand-primary ">
           say!{" "}
-          <Image
-            src={"/svgs/chat-text.svg"}
-            width={30}
-            className="inline -mt-3"
-            height={30}
-            alt=""
-          />
+         
         </span>
       </h3>
-      <div className=" flex flex-col md:flex-row gap-2">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
         {testimonialsData.map((testimonial, index) => (
           <Testimonial key={index} data={testimonial} />
         ))}

@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 
 const HeroSection1 = () => {
   return (
-    <section className="min-h-screen">
+    <section className="">
       <div className="absolute inset-0 -z-10 h-full w-full bg-background/60 opacity-5 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
       <Navbar />
       <main className="px-5 py-16 pb-30 sm:flex sm:flex-col items-center">
@@ -21,7 +21,7 @@ const HeroSection1 = () => {
           Focus on building, not managing and tracking what is left. Free for
           individuals.
         </p>
-        <Link href={""}>
+        <Link href={"#"}>
           <Button
             className="w-[350px] font-semibold h-[50px] mt-10 text-lg"
             variant={"default"}

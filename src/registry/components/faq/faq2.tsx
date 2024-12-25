@@ -9,7 +9,7 @@ import {
 
 const Faq2 = () => {
   return (
-    <section className="bg-background min-h-screen py-10 px-5 flex flex-col items-center">
+    <section className="bg-background  py-10 px-5 flex flex-col items-center">
       <h1 className="text-3xl font-bold mb-6">Frequently Asked Questions</h1>
       <div className="py-10 pb-20 sm:w-[500px] text-xl">
         <Accordion type="single" collapsible>

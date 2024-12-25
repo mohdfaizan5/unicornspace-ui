@@ -44,14 +44,14 @@ export default function CustomerReviews() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {data.reviews.map((review, index) => (
-          <div key={index} className="bg-gray-100 p-6 rounded-lg">
+          <div key={index} className="border  focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700  p-6 rounded-lg">
             <div className="flex mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-6 h-6 text-green-500 fill-current" />
               ))}
             </div>
             <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
-            <p className="text-gray-600 mb-4">{review.content}</p>
+            <p className="  mb-4">{review.content}</p>
             <p className="font-medium">{review.author}</p>
           </div>
         ))}

@@ -102,14 +102,14 @@ interface TestimonialProps{
 }
 function Testimonial({ author, children }: TestimonialProps) {
   return (
-    <figure className="rounded-4xl p-8 shadow-md ring-1 ring-slate-900/5">
+    <figure className="rounded-4xl p-8 shadow-md border rounded-lg border-gray-300">
       <blockquote>
-        <p className="text-sm tracking-tight text-slate-900 before:content-['“'] after:content-['”']">
+        <p className="text-sm tracking-tight  before:content-['“'] after:content-['”']">
           {children}
         </p>
       </blockquote>
       <figcaption className="mt-6 flex items-center">
-        <div className="overflow-hidden rounded-full bg-slate-50">
+        <div className="overflow-hidden rounded-full ">
           <Image
             className="h-12 w-12 object-cover"
             src={author.image}
@@ -120,7 +120,7 @@ function Testimonial({ author, children }: TestimonialProps) {
           
         </div>
         <div className="ml-4">
-          <div className="text-[15px] font-medium leading-4 tracking-tight text-slate-900">
+          <div className="text-[15px] font-medium leading-4 tracking-tight text-slate-400">
             {author.name}
           </div>
           <div className="mt-1 text-sm text-slate-600">{author.role}</div>
@@ -134,10 +134,10 @@ export default function Testimonials5() {
   return (
     <section className="py-8 sm:py-10 ">
       <div className="text-center mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:max-w-4xl lg:px-12">
-        <h2 className="font-display text-4xl font-bold tracking-tight text-slate-900">
+        <h2 className="font-display text-4xl font-bold tracking-tight ">
           Some kind words from early customers...
         </h2>
-        <p className="mt-4 text-[16px] tracking-tight text-slate-600">
+        <p className="mt-4 text-[16px] tracking-tight ">
           I worked with a small group of early access customers to make sure all
           of the content in the book was exactly what they needed. Hears what
           they had to say about the finished product.

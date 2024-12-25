@@ -30,7 +30,7 @@ const ProductImageCarousel = () => {
     });
   }, [api]);
   return (
-    <section className="md:max-w-[29rem] relative">
+    <section className="md:max-w-[29rem] relative mx-auto">
       <Carousel setApi={setApi} opts={{ loop: false }}>
         <CarouselContent className="relative">
           <CarouselItem className="">
@@ -55,15 +55,17 @@ const ProductImageCarousel = () => {
               alt=""
             />
           </CarouselItem>
-          {/* <CarouselItem className="">
+          <CarouselItem className="">
             <Image
-              className="mx-auto my-auto"
-              src={"/assets/Faizan Majoon Jar UR.png"}
-              width={400}
+              className="mx-auto"
+              src={
+                "https://www.apple.com/v/macbook-pro/ak/images/overview/closer-look/3d_viewer_pf_16__b8iq7yl5sewi_large.jpg"
+              }
+              width={350}
               height={400}
               alt=""
             />
-          </CarouselItem> */}
+          </CarouselItem>
         </CarouselContent>
         <div className="flex justify-between   top-[50%] right-0 left-0">
           <Button
@@ -88,12 +90,12 @@ const ProductImageCarousel = () => {
           </Button>
         </div>
       </Carousel>
-      <div className=" absolute top-0 right-0 flex bg-brand-secondary px-1 py-1 -rotate-3 text-xs">
+      {/* <div className=" absolute top-0 right-0 flex bg-brand-secondary px-1 py-1 -rotate-3 text-xs">
         <p className="relative">
           Best seller
           <WiStars className="text-white absolute size-6 -top-2 -right-3 animate-pulse" />
         </p>
-      </div>
+      </div> */}
     </section>
   );
 };
