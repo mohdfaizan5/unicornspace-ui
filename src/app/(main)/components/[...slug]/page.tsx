@@ -69,7 +69,8 @@ const ComponentPage = async ({
         </div>
         <Mdx code={guide.body.code} />
       </div>
-      <div></div>
+      <div>
+      </div>
     </div>
   );
 };

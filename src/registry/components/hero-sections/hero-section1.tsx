@@ -21,7 +21,7 @@ const HeroSection1 = () => {
           Focus on building, not managing and tracking what is left. Free for
           individuals.
         </p>
-        <Link href={""}>
+        <Link href={"#"}>
           <Button
             className="w-[350px] font-semibold h-[50px] mt-10 text-lg"
             variant={"default"}
