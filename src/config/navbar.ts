@@ -67,7 +67,7 @@ export const navigation: NavigationProps[] = [
       {
         title: "Color converter",
         href: "/tools/color-convertor",
-        label: "Updated",
+        
       },
       // {
       //   title: "Gradient Generator",
@@ -80,7 +80,7 @@ export const navigation: NavigationProps[] = [
       // },
       {
         title: "Resources",
-        href: "/tools/resources",
+        href: "/tools/resources",label: "New added",
       },
     ],
   },
@@ -91,9 +91,9 @@ export const navigation: NavigationProps[] = [
       { title: "Next Auth", href: "/guides/nextauth-v5", label: "Updated" },
       { title: "Razorpay nextjs", href: "/guides/razorpay-nextjs14" },
       // { title: "Stripe", href: "/guides/stripe" },
-      { title: "Prisma Basics", href: "/guides/prisma", label: "New!" },
+      { title: "Prisma Basics", href: "/guides/prisma" },
       // { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },
-      // { title: "Typescript Basics(Akshy)", href: "/guides/typescript-50" },
+      { title: "Typescript Basics", href: "/guides/typescript-50" },
       // {
       //   title: "ContentLayer & MDX❌ (Tahir)",
       //   href: "/guides/contentlayer-mdx-nextjs14",
@@ -102,6 +102,7 @@ export const navigation: NavigationProps[] = [
       {
         title: "SEO - The Fundamentals",
         href: "/guides/seo-the-fundamentals",
+        label: "New!",
       },
       // { title: "SEO - Getting Hands dirty❌", href: "/guides/uploadthing" },
       // {

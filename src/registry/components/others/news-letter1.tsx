@@ -7,7 +7,7 @@ export default function NewsLettersForm() {
     <section
       id="free-chapters"
       aria-label="Free preview"
-      className="scroll-mt-14 bg-blue-500 sm:scroll-mt-32"
+      className="scroll-mt-14  sm:scroll-mt-32"
     >
       <div className="overflow-hidden lg:relative ">
         <div 
@@ -15,16 +15,16 @@ export default function NewsLettersForm() {
         >
           <svg className="absolute -top-32 left-0 w-full sm:left-3/4 sm:-top-5 sm:ml-8 sm:w-auto md:left-2/3 lg:left-auto lg:right-2 lg:ml-0 xl:right-auto xl:left-2/3" />
           <div>
-            <h2 className="font-display text-5xl font-extrabold tracking-tight text-white sm:w-3/4 sm:text-6xl md:w-2/3 lg:w-auto">
+            <h2 className="font-display text-5xl font-extrabold tracking-tight  sm:w-3/4 sm:text-6xl md:w-2/3 lg:w-auto">
               Get the free sample chapters
             </h2>
-            <p className="mt-4 text-lg tracking-tight text-blue-200">
+            <p className="mt-4 text-lg tracking-tight ">
               Enter your email address and I’ll send you a sample from the book
               containing two of my favorite chapters.
             </p>
           </div>
           <form className="lg:pl-16">
-            <h3 className="text-base font-medium tracking-tight text-white">
+            <h3 className="text-base font-medium tracking-tight">
               Get two free chapters straight to your inbox{' '}
               <span aria-hidden="true">&rarr;</span>
             </h3>

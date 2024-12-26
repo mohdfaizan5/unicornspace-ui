@@ -41,7 +41,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
     <div
       className={clsx(
         ' rounded-[50px] relative px-4 py-16 sm:rounded-5xl sm:px-10 md:py-12 lg:px-12',
-        featured && 'bg-blue-600 sm:shadow-lg '
+        featured && 'bg-primary sm:shadow-lg '
       )}
     >
       {featured && (
@@ -70,7 +70,7 @@ function Plan({ name, description, price, features, href, featured }:planProps) 
           <span
             className={clsx(
               'text-[1.75rem] leading-tight',
-              featured ? 'text-blue-200' : ''
+              featured ? 'text-muted-foreground' : ''
             )}
           >
             $

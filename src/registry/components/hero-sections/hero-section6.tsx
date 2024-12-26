@@ -15,7 +15,7 @@ const HeroSection6 = () => {
               New
             </span>{" "}
             <span className="text-sm font-medium">
-              Unicon is out! See what&apos;s new
+              Unicorn is out! See what&apos;s new
             </span>
             <svg
             
