@@ -88,8 +88,8 @@ export default function Testimonials3() {
               <ul role="list" className="flex flex-col gap-y-6 sm:gap-y-8">
                 {column.map((testimonial, testimonialIndex) => (
                   <li key={testimonialIndex}>
-                    <figure className="relative rounded-2xl dark:bg-white/70 bg-card p-6 shadow-xl shadow-slate-900/10">
-                      <QuoteIcon className="absolute top-6 left-6 fill-[#FE9567]/15" />
+                    <figure className="relative rounded-2xl dark:bg-primary bg-card p-6 shadow-xl shadow-slate-900/10">
+                      <QuoteIcon className="absolute top-6 left-6 fill-primary/5" />
                       <blockquote className="relative">
                         <p className="text-lg tracking-tight text-slate-900">
                           {testimonial.content}
