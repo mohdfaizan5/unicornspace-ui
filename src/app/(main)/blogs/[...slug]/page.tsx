@@ -2,45 +2,79 @@ import { CallToAction } from "@/components/call-to-action";
 import { Mdx } from "@/components/mdx-component";
 import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
+import { FaLinkedin } from "react-icons/fa";
 
+// for SEO
+// export async function generateMetaData({
+//   params,
+// }: {
+//   params: { slug: string };
+// }) {
+//   const blog = await getBlogFromParams({ params });
+//   if (!blog) {
+//     return {
+//       title: "Blog not found",
+//       description: "Blog not found",
+//     };
+//   }
+
+//   return {
+//     title: blog.title,
+//     description: blog.description,
+//   };
+// }
+
+// for making the file generate during build time
+// export async function generateStaticParams() {
+//   return allBlogs.map((blog) => {
+//     return {
+//       params: {
+//         slug: blog.slug.split("/").join(","),
+//       },
+//     };
+//   });
+// }
 
 type BlogPageProps = {
-    params: {
-        slug : string
-    }
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+async function getBlogFromParams(props: { params: { slug: string } }) {
+  let params = props.params;
+  let slug = params.slug;
+
+  // converting it into a way to use it further
+
+  slug = `/blogs/${slug.toString().split(",").join("/")}`;
+
+  const blog = allBlogs.find((blog) => {
+    return blog.slug === slug;
+  });
+
+  if (!blog) {
+    return null;
+  }
+
+  return blog;
 }
 
-async function getBlogFromParams({params} : BlogPageProps){
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // console.log("slug", params);
+  const slug = await params;
 
-    let slug = params.slug
+  const blog = await getBlogFromParams({ params: { slug: slug.slug } });
 
-    // converting it into a way to use it further
-    
-    slug = `/blogs/${slug.toString().split(",").join("/")}`
+  if (!blog) {
+    notFound();
+  }
 
-    const blog = allBlogs.find((blog)=> {
-        return blog.slug === slug
-    })
-
-    if(!blog){
-        return null
-    }
-
-    return blog
-}
-
-
-export default async function Page({params}: {params : {slug : string}}) {
-
-    // console.log("slug", params);
-
-    const blog = await getBlogFromParams({params})
-
-    if(!blog){
-        notFound()
-    }
-
-    // console.log(blog.slug);
+  // console.log(blog.slug);
 
   return (
     <main className="flex flex-col md:flex-row justify-between   items-start prose dark:prose-invert">
@@ -58,12 +92,11 @@ export default async function Page({params}: {params : {slug : string}}) {
           />
         )} */}
 
-        <Mdx code={blog.body.code}/>
+        <Mdx code={blog.body.code} />
       </div>
       <div>
-      <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
-
+        <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
       </div>
     </main>
-  )
+  );
 }

@@ -4,12 +4,12 @@ import { withContentlayer } from "next-contentlayer2";
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify: true,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'assets.awwwards.com',        
+        hostname: 'assets.awwwards.com',
       },
       {
         protocol: 'https',
@@ -17,6 +17,11 @@ const nextConfig = {
       }
     ],
   },
+  // experimental: {
+  //   turbo: {
+
+  //   }
+  // }
 
 };
 

@@ -25,7 +25,7 @@ const CopyButton = ({
       }}
     >
       {copied ? (
-        <Check className="text-green-700" size={16} />
+        <Check className="text-green-700 ease-in-out" size={16} />
       ) : (
         <Clipboard size={16} />
       )}

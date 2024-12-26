@@ -42,7 +42,7 @@ export default function Faq1() {
     <section
       id="faq"
       aria-labelledby="faq-title"
-      className="relative overflow-hidden bg-background py-20 sm:py-32"
+      className="relative overflow-hidden py-20 sm:py-32 bg-white"
     >
       <Image
         className="absolute top-0 left-1/2 max-w-none translate-x-[-30%] -translate-y-1/4"
@@ -58,11 +58,11 @@ export default function Faq1() {
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2
             id="faq-title"
-            className="font-display text-3xl tracking-tight text-foreground sm:text-4xl"
+            className="font-display text-3xl tracking-tight text-gray-900 sm:text-4xl"
           >
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-lg tracking-tight text-foreground/80">
+          <p className="mt-4 text-lg tracking-tight text-gray-600">
             If you can’t find what you’re looking for, email our support team
             and if you’re lucky, someone will get back to you.
           </p>
@@ -76,10 +76,10 @@ export default function Faq1() {
               <ul role="list" className="flex flex-col gap-y-8">
                 {column.map((faq, faqIndex) => (
                   <li key={faqIndex}>
-                    <h3 className="font-display text-lg leading-7 text-foreground font-semibold">
+                    <h3 className="text-lg leading-7 font-semibold text-gray-900">
                       {faq.question}
                     </h3>
-                    <p className="mt-4 text-sm text-foreground/80">
+                    <p className="mt-4 text-sm text-gray-600">
                       {faq.answer}
                     </p>
                   </li>

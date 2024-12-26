@@ -17,12 +17,12 @@ function PostCard(guide: Guide) {
   const imageLink = `${guide.thumbnail}`;
 
   return (
-    <Card className="w-[320px]  overflow-hidden">
+    <Card className="w-[320px] dark:border-[1px]  dark:border-gray-800  overflow-hidden">
       <Link href={guide.slug}>
         <CardHeader className="p-0 overflow-hidden">
           {guide.thumbnail && (
             <Image
-              src={`/images/guides/${guide.thumbnail}`}
+              src={`/images/guides/${guide.thumbnail.trim()}`}
               width={320}
               height={120}
               // public\images\guides\Authjs part 1.png

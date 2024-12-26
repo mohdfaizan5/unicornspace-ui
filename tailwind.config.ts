@@ -63,7 +63,7 @@ const config = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
+          from: { blockSize: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {

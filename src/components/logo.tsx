@@ -10,14 +10,15 @@ const Logo = () => {
           src={"/logos/logo-black-256x256.png"}
           width={30}
           height={30}
-          alt="Unicorn Space UI logo"
+          // alt="Unicorn Space UI logo"
+          alt=""
           className="dark:hidden block"
         />
         <Image
           src={"/logos/logo-white-256x256.png"}
           width={30}
           height={30}
-          alt="Unicorn Space UI logo"
+          alt=""
           className="hidden dark:block"
         />
         UnicornSpaceUI{" "}

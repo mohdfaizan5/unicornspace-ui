@@ -47,9 +47,9 @@ const Features1 = () => {
         Taxonomy also includes a blog and a full-featured documentation site
         built.
       </p>
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-2">
-        {featuresData.map((feature) => (
-          <Card className="p-7 py-8 w-96 md:w-80" key={feature.title}>
+      <section className="grid grid-cols-1 xl:grid-cols-2 gap-2">
+        {featuresData.map((feature,i) => (
+          <Card className="p-7 py-8 w-96 md:w-80" key={i}>
             <div className={"text-primary"}>{feature.logo}</div>
             <h3 className="text-xl mt-3 mb-1 font-medium">{feature.title}</h3>
             <p className="text-xs">{feature.description}</p>

@@ -62,7 +62,7 @@ export default function ColorConverter() {
   };
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full mx-auto max-w-3xl h-full">
       <CardHeader>
         <CardTitle>Colour picker</CardTitle>
       </CardHeader>

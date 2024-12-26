@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { FaStarHalfAlt } from "react-icons/fa";
@@ -47,14 +47,14 @@ const SocialProof = () => {
         </p>
       </section>
       <section className="flex gap-3 py-3 mx-auto">
-        <div className="p-6 border w-44 flex flex-col items-center rounded-sm bg-white">
+        <div className="p-6 border w-44 flex flex-col items-center rounded-sm ">
           <h2 className="gradient-brand text-4xl font-bold ">
             <AnimatedCounter from={0} to={10} /> +
           </h2>
           {/* <p className="text-xs">Satisfied</p> */}
           <h3 className="my-0">Benefits</h3>
         </div>
-        <div className="p-6 border w-40 flex flex-col items-center rounded-sm bg-white">
+        <div className="p-6 border w-40 flex flex-col items-center rounded-sm ">
           <h2 className="gradient-brand text-4xl font-bold ">
             <AnimatedCounter from={0} to={7} /> +
           </h2>

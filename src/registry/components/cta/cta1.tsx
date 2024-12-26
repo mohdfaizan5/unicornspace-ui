@@ -53,7 +53,7 @@ export default function Cta1() {
   return (
     <section
       id="cta1"
-      className="relative h-96 overflow-hidden bg-primary py-20 sm:py-28"
+      className="relative h-96 overflow-hidden bg-slate-950 py-20 sm:py-28"
     >
       <div className="absolute top-1/2 left-20 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
         <CircleBackground color="#fff" className="animate-spin-slower" />
@@ -63,7 +63,7 @@ export default function Cta1() {
           <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl">
             Get your first tips today
           </h2>
-          <p className="mt-4 text-lg text-gray-300">
+          <p className="mt-4 text-lg text-slate-50">
             It takes 30 seconds to sign up. Download the app and create an
             account today and we&#39;ll send you a tip guaranteed to double your
             first investment.
