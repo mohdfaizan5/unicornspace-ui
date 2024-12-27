@@ -24,7 +24,7 @@ const Footer2 = () => {
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   Privacy Policy
                 </Link>
@@ -32,7 +32,7 @@ const Footer2 = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   Terms of Use
                 </Link>
@@ -40,7 +40,7 @@ const Footer2 = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   FAQ
                 </Link>
@@ -48,7 +48,7 @@ const Footer2 = () => {
               <li>
                 <Link
                   href="tel:+919341817975"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   Contact Us
                 </Link>
@@ -63,7 +63,7 @@ const Footer2 = () => {
               <li>
                 <Link
                   href={"https://sarom.info/catalogpdf/VELVETO.pdf"}
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   Suede Fabrics
                 </Link>
@@ -71,7 +71,7 @@ const Footer2 = () => {
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   Leatherette Fabric
                 </Link>
@@ -79,7 +79,7 @@ const Footer2 = () => {
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   Suede Fabric (Non Shaded)
                 </Link>
@@ -94,7 +94,7 @@ const Footer2 = () => {
                 <Phone className="mr-2 h-4 w-4" />
                 <Link
                   href="tel:+919341817975"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   +91 9341817975
                 </Link>
@@ -103,7 +103,7 @@ const Footer2 = () => {
                 <Mail className="mr-2 h-4 w-4" />
                 <Link
                   href="mailto:md.azmath84@gmail.com"
-                  className="text-gray-400 hover:text-white transition"
+                  className="text-gray-400 hover:scale-105 transition"
                 >
                   md.azmath84@gmail.com
                 </Link>
@@ -113,7 +113,7 @@ const Footer2 = () => {
                 <Link
                   href="#"
                   target="_blank"
-                  className="text-gray-400 hover:text-white transition text-sm"
+                  className="text-gray-400 hover:scale-105 transition text-sm"
                 >
                   No. 10/7, Begur Hulimavu Rd, Raghavendra Layout, Akshaya
                   Gardens, Hulimavu, Bengaluru, Karnataka 560068
@@ -128,7 +128,7 @@ const Footer2 = () => {
             href="https://www.unicornspace.tech/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-sm text-gray-400 hover:text-white transition mb-4"
+            className="flex items-center text-sm text-gray-400 hover:scale-105 transition mb-4"
           >
             Made by
             <Image

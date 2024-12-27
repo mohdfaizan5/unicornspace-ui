@@ -28,7 +28,7 @@
 
 <a align="center"  href="https://unicornspace-ui.vercel.app/">
 <!--  <img align="center" width="800px" alt="" src="https://github.com/user-attachments/assets/0f1e489e-d119-48cd-bbdd-df8c82e1a83b">-->
-  <img align="center"  alt="" src="https://github.com/user-attachments/assets/790890cd-cf32-493e-beb7-eb2b36dcd299">
+  <img align="center"  alt="og image" src="https://github.com/user-attachments/assets/790890cd-cf32-493e-beb7-eb2b36dcd299">
 </a>
 <div/>
 

@@ -8,7 +8,7 @@ const HeroSection2 = () => {
       <section className="relative md:w-[60vw] p-2 text-center lg:text-left flex flex-col items-center lg:items-start">
         <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-5xl md:text-5xl lg:text-7xl dark:text-black">
           Your Image on a{" "}
-          <span className="bg-green-600 px-2 text-white">Custom</span> Phone
+          <span className="bg-primary/80 px-2 text-white">Custom</span> Phone
           Case
         </h1>
         <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap dark:text-black">
