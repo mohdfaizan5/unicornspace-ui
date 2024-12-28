@@ -19,35 +19,35 @@ const getGuideFromParams = async ({
   return component;
 };
 
-export async function generateStaticParams() {
-  return allComponents.map((component) => {
-    return {
-      params: {
-      slug: component.slug.split("/").join(","),
-      },
-    };
-  });
-}
-
 // COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ slug: string }>;
-// }) {
-//   const component = await getGuideFromParams({ params });
-//   if (!component) {
+// export async function generateStaticParams() {
+//   return allComponents.map((component) => {
 //     return {
-//       title: "Component not found",
-//       description: "Component not found",
+//       params: {
+//       slug: component.slug.split("/").join(","),
+//       },
 //     };
-//   }
-
-//   return {
-//     title: component.title,
-//     description: component.description,
-//   };
+//   });
 // }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const component = await getGuideFromParams({ params });
+  if (!component) {
+    return {
+      title: "Component not found",
+      description: "Component not found",
+    };
+  }
+
+  return {
+    title: component.title,
+    description: component.description,
+  };
+}
 
 const ComponentPage = async ({
   params,
@@ -70,8 +70,7 @@ const ComponentPage = async ({
         </div>
         <Mdx code={guide.body.code} />
       </div>
-      <div>
-      </div>
+      <div></div>
     </div>
   );
 };
