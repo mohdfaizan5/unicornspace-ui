@@ -108,82 +108,37 @@ const MobileNavbar = () => {
   return (
     <div className="lg:hidden">
       <Sheet>
-        <SheetTrigger>
-          <HamburgerMenuIcon fontSize={28} />
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <HamburgerMenuIcon className="h-5 w-5" />
+          </Button>
         </SheetTrigger>
-        <SheetContent className="overflow-auto" side={"left"}>
+
+        <SheetContent className="overflow-auto" side="left">
           <SheetHeader>
             <Logo />
           </SheetHeader>
 
-          <Navigation navigation={navigation} />
-          <nav className="hidden flex-col justify-between h-full py-10 text-sm  gap-7">
-            <Menubar className="border-none flex flex-col  gap-3">
-              <MenubarMenu>
-                <div className="flex items-center">
-                  <Link className="hover:underline" href={"/components"}>
-                    Components
-                  </Link>
-                  <MenubarTrigger className="p-0">
-                    <FaCaretDown />
-                  </MenubarTrigger>
-                </div>
-                <MenubarContent>
-                  <MenubarItem>
-                    HeroSections <MenubarShortcut>⌘T</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Forms</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Testimonials</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Pricing</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Footers</MenubarItem>
-                </MenubarContent>
-              </MenubarMenu>
-              <MenubarMenu>
-                <div className="flex items-center gap-1">
-                  <Link className="hover:underline" href={"/tools"}>
-                    Tools
-                  </Link>
-                  <MenubarTrigger className="p-1">
-                    <FaCaretDown />
-                  </MenubarTrigger>
-                </div>
-                <MenubarContent>
-                  <MenubarItem>
-                    Components <MenubarShortcut>⌘T</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarItem>Colors generator</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Practical Fonts</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Contrast checker</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Other tools</MenubarItem>
-                </MenubarContent>
-              </MenubarMenu>
-              <Link className="hover:underline" href={"/guides"}>
-                Guides
-              </Link>
-            </Menubar>
+          <div className="flex flex-col space-y-6 mt-6">
+            <Navigation
+              navigation={navigation}
+              className="flex flex-col space-y-4"
+            />
 
-            <div className="flex items-center gap-2 w-full justify-between">
-              {/* <SearchEventListener /> */}
+            <div className="flex items-center gap-2">
               <Link href={siteConfig.links.github} target="_blank">
                 <Button
-                  variant={"secondary"}
-                  size={"sm"}
-                  className="text-[13px] flex items-center gap-1"
+                  variant="secondary"
+                  size="sm"
+                  className="text-sm flex items-center gap-1"
                 >
                   Star
-                  <FaGithub />
+                  <FaGithub className="h-4 w-4" />
                 </Button>
               </Link>
               <ModeToggle />
             </div>
-          </nav>
+          </div>
         </SheetContent>
       </Sheet>
     </div>

@@ -29,24 +29,25 @@ export async function generateStaticParams() {
   });
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const component = await getGuideFromParams({ params });
-  if (!component) {
-    return {
-      title: "Component not found",
-      description: "Component not found",
-    };
-  }
+// COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: Promise<{ slug: string }>;
+// }) {
+//   const component = await getGuideFromParams({ params });
+//   if (!component) {
+//     return {
+//       title: "Component not found",
+//       description: "Component not found",
+//     };
+//   }
 
-  return {
-    title: component.title,
-    description: component.description,
-  };
-}
+//   return {
+//     title: component.title,
+//     description: component.description,
+//   };
+// }
 
 const ComponentPage = async ({
   params,

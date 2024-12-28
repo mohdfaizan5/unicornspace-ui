@@ -40,6 +40,8 @@ type Params = Promise<{ slug: string }>;
 //   return allGuides.map((guides) => ({ slug: guides._raw.flattenedPath }));
 // };
 
+
+// COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR
 // export const generateMetadata = ({ params }: { params: { slug: string } }) => {
 //   const guide = allGuides.find(
 //     (guide) => guide._raw.flattenedPath === params.slug
@@ -48,15 +50,15 @@ type Params = Promise<{ slug: string }>;
 //   return { title: guide.title };
 // };
 
-export async function generateStaticParams() {
-  return allGuides.map((guide) => {
-    return {
-      params: {
-        slug: guide.slug.split("/").join(","),
-      },
-    };
-  });
-}
+// export async function generateStaticParams() {
+//   return allGuides.map((guide) => {
+//     return {
+//       params: {
+//         slug: guide.slug.split("/").join(","),
+//       },
+//     };
+//   });
+// }
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { slug } = await params;
