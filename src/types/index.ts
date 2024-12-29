@@ -13,7 +13,7 @@ export type SearchParams = Promise<{
 */
 
 export interface Resource {
-  category: string;
+  category: "UI" | "Typography" | "resources" | "tools" | "inspiration" | "assets" | "other" |"icons"
   description: string;
   link: string;
   title: string;

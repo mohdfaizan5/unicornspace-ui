@@ -15,7 +15,7 @@ const Faq = () => {
       <div className="py-10 pb-20 sm:w-[500px] text-lg sm:text-xl">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
-            <AccordionTrigger>What is UnicornSpaceUI?</AccordionTrigger>
+            <AccordionTrigger className="text-left">What is UnicornSpaceUI?</AccordionTrigger>
             <AccordionContent>
               UnicornSpaceUI is a Next.js and Web Development tool designed to
               simplify your workflow by providing reusable components, guides,
@@ -24,7 +24,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-2">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               Is UnicornSpaceUI suitable for big projects?
             </AccordionTrigger>
             <AccordionContent>
@@ -35,7 +35,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-3">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               How will UnicornSpaceUI benefit me?
             </AccordionTrigger>
             <AccordionContent>
@@ -46,7 +46,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-4">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               How do I get started with UnicornSpaceUI?
             </AccordionTrigger>
             <AccordionContent>
@@ -57,7 +57,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-5">
-            <AccordionTrigger>
+            <AccordionTrigger className="text-left">
               Can UnicornSpaceUI scale with my project?
             </AccordionTrigger>
             <AccordionContent>

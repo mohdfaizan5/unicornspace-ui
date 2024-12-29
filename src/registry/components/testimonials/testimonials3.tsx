@@ -1,3 +1,4 @@
+import { Icons } from "@/components/icons";
 import Image from "next/image";
 
 type TestimonialProps = {
@@ -21,7 +22,7 @@ const testimonials: TestimonialProps[][] = [
         "It is a great tool that helps me to save time and focus on the core functionality of my project.",
       author: {
         name: "Mohammed Tahir",
-        role: "Developer",
+        role: "FrontEnd Developer",
         image: "https://github.com/muhammedtahir1.png",
       },
     },
@@ -40,7 +41,7 @@ const testimonials: TestimonialProps[][] = [
       content: "It's a thing I use on my daily basis.",
       author: {
         name: "Akshy",
-        role: "Student",
+        role: "Technical Student",
         image: "https://github.com/mehwish75.png",
       },
     },
@@ -51,7 +52,7 @@ const testimonials: TestimonialProps[][] = [
         "UnicornSpaceUI is so simple that people can’t help but fall in love with it. Simplicity is easy when you just skip tons of mission-critical features.",
       author: {
         name: "Likitha N",
-        role: "Backend Engineer at PassionateSouls",
+        role: "Backend Engineer, PassionateSouls",
         image: "https://github.com/likithanagaraj.png",
       },
     },
@@ -73,10 +74,11 @@ export default function Testimonials3() {
       aria-label="What our customers are saying"
       className="bg-slate-50/0 z-10 py-20 sm:py-32"
     >
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <div className="mx-auto max-w-2xl md:text-center">
-          <h2 className="font-display text-center text-3xl tracking-tight sm:text-4xl">
-            Loved by developers like you
+          <h2 className="font-display text-center text-3xl tracking-tight sm:text-4xl relative">
+            <Icons.fire className="dark:fill-white size-14 absolute right-7 md:right-10 -top-14 animate-pulse" />
+            Loved by startups & developers like you
           </h2>
         </div>
         <ul
@@ -85,32 +87,32 @@ export default function Testimonials3() {
         >
           {testimonials.map((column, columnIndex) => (
             <li className="z-10" key={columnIndex}>
-              <ul role="list" className="flex flex-col gap-y-6 sm:gap-y-8">
+              <ul role="list" className="flex flex-col gap-y-4 sm:gap-y-8">
                 {column.map((testimonial, testimonialIndex) => (
                   <li key={testimonialIndex}>
-                    <figure className="relative rounded-2xl dark:bg-primary bg-card p-6 shadow-xl shadow-slate-900/10">
+                    <figure className="relative rounded-2xl dark:bg-[hsl(240,3%,14%,1)] bg-card/40 p-6 shadow-xl shadow-primary/5">
                       <QuoteIcon className="absolute top-6 left-6 fill-primary/5" />
                       <blockquote className="relative">
-                        <p className="text-lg tracking-tight text-slate-900">
+                        <p className="text-lg tracking-tight ">
                           {testimonial.content}
                         </p>
                       </blockquote>
-                      <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <figcaption className="relative mt-4 flex items-center justify-between border-t border-slate-100 pt-4">
                         <div>
-                          <div className="font-display text-base text-slate-900">
+                          <div className="font-display text-base ">
                             {testimonial.author.name}
                           </div>
-                          <div className="mt-1 text-sm text-slate-500">
+                          <div className=" text-sm text-muted-foreground">
                             {testimonial.author.role}
                           </div>
                         </div>
                         <div className="overflow-hidden rounded-full bg-slate-50">
                           <Image
-                            className="h-14 w-14 object-cover"
+                            className="h-12 w-12 object-cover"
                             src={testimonial.author.image}
                             alt={testimonial.author.name} // Use author name for better accessibility
-                            width={56}
-                            height={56}
+                            width={50}
+                            height={50}
                           />
                         </div>
                       </figcaption>

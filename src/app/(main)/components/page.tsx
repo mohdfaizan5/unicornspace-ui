@@ -1,3 +1,4 @@
+import componentRegistry from "@/registry";
 import { allComponents } from "contentlayer/generated";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,8 +9,9 @@ const page = () => {
     <div>
       <h1 className="text-4xl font-bold font-passion ">All Components</h1>
       <p className="max-w-2xl text-lg  text-muted-foreground mb-8">
-        Beautifully designed. Copy and paste into your apps. Open Source.
+      {Object.keys(componentRegistry).length}+ components beautifully designed. Copy and paste into your apps. Open Source.
       </p>
+      <p></p>
       <section className="flex gap-11 flex-wrap ">
         {allComponents.map((tool, i) => {
           if (tool.slugAsParams !== "get-started") {

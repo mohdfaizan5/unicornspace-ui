@@ -58,10 +58,6 @@ const ComponentPage = async ({
 }: {
   params: Promise<{ block: string }>;
 }) => {
-  // const guide = await getGuideFromParams({ params });
-  // if (!guide) {
-  //   return notFound();
-  // }
   const slug = await params;
 
   const ComponentToRender = componentRegistry[slug.block];
@@ -70,16 +66,8 @@ const ComponentPage = async ({
     return <div>Component not found</div>;
   }
   return (
-    <div className="w-full">
-      <div className="mx-auto max-w-5xl py-8">
-        {/* <div className="mb-8 ">
-          <h1 className="text-3xl font-bold">{guide.title}</h1>
-          {guide.description && (
-            <div className="text-gray-500">{guide.description}</div>
-          )}
-        </div> */}
-      </div>
-      <BackButton />
+    <div className="w-full mx-autopy-8 px-8 min-h-[90dvh]">
+      <BackButton  className="m-2"/>
       <React.Suspense
         fallback={
           <div className="flex items-center text-sm text-muted-foreground">
@@ -88,9 +76,9 @@ const ComponentPage = async ({
           </div>
         }
       >
-        {/* <div className="scale-[60%] bg-background/30"> */}
-        <ComponentToRender.component />
-        {/* </div> */}
+        <div className=" scale-75 ">
+          <ComponentToRender.component />
+        </div>
       </React.Suspense>
     </div>
   );

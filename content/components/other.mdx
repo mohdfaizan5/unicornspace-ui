@@ -1,5 +1,7 @@
 ---
 title: Other stuff
+order: 11
+isPublished: true
 description: The hero section is the first section of a page and is used to introduce the page content
 image: /images/faq.png
 ---
@@ -26,3 +28,47 @@ The news letter is the section you let your audience to give a idea of what does
 ## Cards
 
 <ComponentPreview name={"Card1"} />
+
+```css:typography.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-bold text-4xl;
+  }
+  h2 {
+    @apply font-bold text-3xl;
+  }
+  h3 {
+    @apply font-bold text-2xl border-b;
+  }
+  p {
+    @apply text-sm;
+  }
+}
+
+```
+
+## Shapes for easy access and icons
+
+```tsx:/components/shapes.tsx
+import { cn } from "@/lib/utils";
+
+type Props = {
+  className?: string;
+};
+export const Shapes = {
+  CrownHappy: ({ className }: Props) => (
+    <svg>
+
+    </svg>
+  ),
+  Star_1: ({ className }: Props) => (
+    <svg>
+    </svg>
+  ),
+};
+
+```

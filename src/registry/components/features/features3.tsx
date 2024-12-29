@@ -1,3 +1,4 @@
+import { Icons } from "@/components/icons";
 import { useId } from "react";
 
 interface Props {
@@ -196,16 +197,7 @@ export default function Features3() {
       className="flex mt-10 md:mt-0 items-center justify-center"
     >
       <section className=" max-w-7xl px-4 sm:px-6 lg:px-8  ">
-        <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-medium tracking-tigh">
-            Now is the time to build your project.
-          </h2>
-          <p className="mt-2  text-foreground/60">
-            With typical workflow benefits, you have to start your project right
-            away. With UnicornSpaceUI, it’s never too late to build your nest
-            egg.
-          </p>
-        </div>
+   
         <ul
           role="list"
           className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 lg:grid-cols-2 md:gap-y-10 lg:max-w-none "
