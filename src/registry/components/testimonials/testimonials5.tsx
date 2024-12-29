@@ -102,7 +102,7 @@ interface TestimonialProps{
 }
 function Testimonial({ author, children }: TestimonialProps) {
   return (
-    <figure className="rounded-4xl p-8 shadow-md border rounded-lg border-gray-300">
+    <figure className="rounded-4xl p-8 shadow-md border rounded-lg border-gray-300 dark:bg-[hsl(240,3%,14%,1)] bg-card/40">
       <blockquote>
         <p className="text-sm tracking-tight  before:content-['“'] after:content-['”']">
           {children}

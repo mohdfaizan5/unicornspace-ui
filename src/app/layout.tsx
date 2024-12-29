@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Poppins, Passion_One } from "next/font/google";
 import Navbar from "@/components/navbar";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import "@/styles/globals.css";
 import "@/styles/general.css";
@@ -29,23 +29,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   return (
     <html lang="en">
       <GoogleTagManager gtmId={process.env.GOOGLE_TAG_MANAGER_ID as string} />
-
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID as string} />
       <body
         className={`${inter.className} antialiased bg-background`}
         suppressHydrationWarning={true}
       >
-        <ThemeProvider   attribute="class" defaultTheme={"dark"} >
+        <ThemeProvider attribute="class" defaultTheme={"dark"}>
           <div className="relative flex min-h-screen flex-col antialiased mx-auto  max-w-[1560] bg-background">
             <Navbar />
             {children}
             <BasicFooter />
           </div>
         </ThemeProvider>
-        </body>
+      </body>
     </html>
   );
 }

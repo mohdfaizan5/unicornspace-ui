@@ -45,6 +45,8 @@ export const Component = defineDocumentType(() => ({
     description: { type: "string", required: false },
     author: { type: "string", required: false },
     image: { type: "string", required: false },
+    isPublished: { type: "boolean", required: true },
+    order: { type: "number", required: false, }
   },
   computedFields: {
     slug: {

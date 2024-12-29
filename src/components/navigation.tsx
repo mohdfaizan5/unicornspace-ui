@@ -19,12 +19,11 @@ export function Navigation({
   return (
     <nav className={clsx("text-base lg:text-sm w-full py-5", className)}>
       <ul role="list" className="space-y-9 w-full">
-        
         {navigation.map((section) => (
           <li key={section.title}>
             {section.href ? (
               <Link href={section.href}>
-                <h2 className="font-display font-medium text-black dark:text-white">
+                <h2 className="font-display font-medium text-black dark:text-white ">
                   {section.title}
                 </h2>
               </Link>
@@ -45,7 +44,7 @@ export function Navigation({
                       "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full",
                       link.href === path
                         ? "font-semibold text-black dark:text-white  before:bg-primary"
-                        : "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600  hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
+                        : `text-muted-foreground`
                     )}
                   >
                     {link.title}

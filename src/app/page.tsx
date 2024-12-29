@@ -9,9 +9,19 @@ import Testimonials3 from "@/registry/components/testimonials/testimonials3";
 
 const page = () => {
   return (
-    <div className="selection:bg-primary/20">
+    <div className="selection:bg-primary/20 ">
       <HeroSection />
-      <Features3 />
+      <section className="mx-auto max-w-2xl sm:text-center relative py-10">
+        <Icons.CrownHappy className="dark:fill-white text-white animate-pulse" />
+        <h2 className="text-3xl font-medium tracking-tight ">
+          Now is the time to build your dream project.
+        </h2>
+        <p className="mt-2  text-foreground/60">
+          With typical workflow benefits, you have to start your project right
+          away. With UnicornSpaceUI, it’s never too late to build your nest egg.
+        </p>
+      </section>
+      {/* <Features3 /> */}
       <div className="relative min-h-[70vh]  overflow-hidden flex items-center justify-center">
         <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[320px] w-[320px] md:h-[500px] md:w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(253,54,110,.15),rgba(255,255,255,0))]"></div>
         <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(253,54,110,.15),rgba(255,255,255,0))]"></div>

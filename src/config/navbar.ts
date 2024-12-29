@@ -26,21 +26,21 @@ export const navigation: NavigationProps[] = [
       {
         title: "Hero section",
         href: "/components/hero-section",
-        label: "Updated",
-      },
-      {
-        title: "Navbar",
-        href: "/components/navbar",
         // label: "Updated",
       },
       {
         title: "Features",
         href: "/components/features",
-        label: "Just Arrived🔥",
+        // label: "Just Arrived🔥",
       },
       {
         title: "Pricing",
         href: "/components/pricing",
+      },
+      {
+        title: "Navbar",
+        href: "/components/navbar",
+        // label: "Updated",
       },
       { title: "Testimonials", href: "/components/testimonials" },
       { title: "Other", href: "/components/other" },
@@ -67,7 +67,6 @@ export const navigation: NavigationProps[] = [
       {
         title: "Color converter",
         href: "/tools/color-convertor",
-        
       },
       // {
       //   title: "Gradient Generator",
@@ -80,7 +79,8 @@ export const navigation: NavigationProps[] = [
       // },
       {
         title: "Resources",
-        href: "/tools/resources",label: "New added",
+        href: "/tools/resources",
+        label: "New added",
       },
     ],
   },

@@ -29,12 +29,12 @@ const Navbar1 = () => {
       <div>
         <Link
           href={"#"}
-          className="text-2xl md:text-3xl font-semibold flex items-center text-foreground"
+          className="text-2xl md:text-2xl font-semibold flex items-center text-foreground"
         >
           <Image
             src={logoSrc}
-            height={50}
-            width={50}
+            height={46}
+            width={46}
             alt="UnicornSpace logo"
             className="hidden md:block"
           />{" "}

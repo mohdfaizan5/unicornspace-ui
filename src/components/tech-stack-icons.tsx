@@ -1,68 +1,52 @@
-import React from 'react'
+import React from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { Icons } from './icons'
-import { cn } from '@/lib/utils'
+} from "@/components/ui/tooltip";
+import { Icons } from "./icons";
+import { cn } from "@/lib/utils";
 
 const TechStackIcons = ({ className }: { className?: string }) => {
   return (
-    <div className={cn('py-4', className)}>
+    <div className={cn("py-4", className)}>
       <TooltipProvider>
-
-
-        <div className="flex-row gap-6 mx-auto flex w-full items-center justify-center">
+        <div className="flex-row gap-6 mx-auto flex w-full items-start justify-center">
           <Tooltip>
-            <TooltipTrigger >
+            <TooltipTrigger>
               <Icons.React />
             </TooltipTrigger>
-            <TooltipContent side='bottom'>
-              React
-            </TooltipContent>
+            <TooltipContent side="bottom">React</TooltipContent>
           </Tooltip>
           <Tooltip>
-            <TooltipTrigger >
+            <TooltipTrigger>
               <Icons.TailwindCSS />
             </TooltipTrigger>
-            <TooltipContent side='bottom'>
-              TailwindCSS
-            </TooltipContent>
+            <TooltipContent side="bottom">TailwindCSS</TooltipContent>
           </Tooltip>
           <Tooltip>
-            <TooltipTrigger >
+            <TooltipTrigger>
               <Icons.framerMotion />
             </TooltipTrigger>
-            <TooltipContent side='bottom'>
-              Framer Motion
-            </TooltipContent>
+            <TooltipContent side="bottom">Framer Motion</TooltipContent>
           </Tooltip>
           <Tooltip>
-            <TooltipTrigger >
+            <TooltipTrigger>
               <Icons.typescript />
             </TooltipTrigger>
-            <TooltipContent side='bottom'>
-              TypeScript
-            </TooltipContent>
-
+            <TooltipContent side="bottom">TypeScript</TooltipContent>
           </Tooltip>
           <Tooltip>
-            <TooltipTrigger >
+            <TooltipTrigger>
               <Icons.shadCn />
             </TooltipTrigger>
-            <TooltipContent side='bottom'>
-              ShadCn
-            </TooltipContent>
+            <TooltipContent side="bottom">ShadCn</TooltipContent>
           </Tooltip>
-
-
         </div>
       </TooltipProvider>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default TechStackIcons
-
+export default TechStackIcons;

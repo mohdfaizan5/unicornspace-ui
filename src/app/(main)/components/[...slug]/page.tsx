@@ -19,15 +19,16 @@ const getGuideFromParams = async ({
   return component;
 };
 
-export async function generateStaticParams() {
-  return allComponents.map((component) => {
-    return {
-      params: {
-      slug: component.slug.split("/").join(","),
-      },
-    };
-  });
-}
+// COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR
+// export async function generateStaticParams() {
+//   return allComponents.map((component) => {
+//     return {
+//       params: {
+//       slug: component.slug.split("/").join(","),
+//       },
+//     };
+//   });
+// }
 
 export async function generateMetadata({
   params,
@@ -69,8 +70,7 @@ const ComponentPage = async ({
         </div>
         <Mdx code={guide.body.code} />
       </div>
-      <div>
-      </div>
+      <div></div>
     </div>
   );
 };

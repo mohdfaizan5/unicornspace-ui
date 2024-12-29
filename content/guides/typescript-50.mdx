@@ -1,5 +1,5 @@
 ---
-isPublished: true
+isPublished: false
 title: TypeScript 50
 description: Learn all you need to know about Typescript 5 in detailed.
 tags: TypeScript, TS, Beginner, V5.6
@@ -785,37 +785,3 @@ console.log(reversedPair); // Output: [20, "Hello"]
 
 
 
-{/*
-## How to use one value from a type
-
-Useful because it has you're fetching from one source of truth and you need not update everywhere if you plan to change in future
-
-```tsx
-const pet: Pet["id"] = "hit";
-```
-
-## Omit
-
-Omit constructs a type by picking all properties from **Type** and then removing Keys (string literal or union of string literals).
-
-```tsx
-type Pet = {
-  id: string;
-  name: string;
-  age: number;
-};
-
-type Pet2 = Omit<Pet, "id">;
-//    name: string;
-//    age: number;
-```
-
-what is difference between `?.` and `!.`?
-
-```ts
-object?.name;
-object!.name;
-```
-
-DOUBT: what is dispatchedSignIn & dispatchedLogIn in the course?
--> may be for the errors handling. */}
