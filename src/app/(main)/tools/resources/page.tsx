@@ -1,18 +1,14 @@
-"use client";
 // Todo: Think
-import ResourceCard from "@/components/tools/resource-card";
-import { Badge } from "@/components/ui/badge";
 import { Resource, SearchParams } from "@/types";
-import { useState } from "react";
-import { use } from "react";
 import ResourceGallery from "./resource-gallery";
+import { Metadata } from "next";
 
-/*
+export const metadata: Metadata = {
+  title: "Free Webdev Resources - UnicornSpaceUI",
+  description:
+    "A free collection of web development resources, tools, and utilities to boost your development process. Simple to use and open-source.",
+};
 
-
-for resources section -> https://www.ethicaldesignresources.com/
-
-*/
 
 // TODO: Write a type for the resource object and make sure category a enum and isFavorite is used wisely and not overused
 

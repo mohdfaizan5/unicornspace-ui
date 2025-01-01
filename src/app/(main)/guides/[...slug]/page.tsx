@@ -40,7 +40,6 @@ type Params = Promise<{ slug: string }>;
 //   return allGuides.map((guides) => ({ slug: guides._raw.flattenedPath }));
 // };
 
-
 // COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR
 // export const generateMetadata = ({ params }: { params: { slug: string } }) => {
 //   const guide = allGuides.find(
@@ -127,7 +126,7 @@ const PostLayout = async ({ params }: { params: Params }) => {
           )}
 
           {/* Mobile Table of Contents */}
-          <div className="lg:hidden mb-6">
+          <div className="xl:hidden mb-6">
             <details className="bg-accent/10 rounded-lg">
               <summary className="px-4 py-3 cursor-pointer font-semibold">
                 Table of Contents
@@ -148,15 +147,12 @@ const PostLayout = async ({ params }: { params: Params }) => {
         </div>
 
         {/* Sidebar Table of Contents */}
-        <div className=" fixed h-full max-w-[280px] md:right-5  md:top-5  md:overflow-hidden ml-2 hidden text-sm xl:block   ">
-          <div className="sticky top-16 -mt-10 pt-4">
-            {/* <div className="hidden lg:block">
-        <div className="sticky top-16 pt-4"> */}
-            <ScrollArea className="h-[calc(100vh-4rem)] pb-10">
-              {toc && <DashboardTableOfContents toc={toc} />}
-            </ScrollArea>
-          </div>
-        </div>
+
+        <section className=" pt-4 h-full max-w-[280px] ml-2 hidden xl:block   ">
+          <ScrollArea className="h-[calc(100vh-4rem)] pb-10 text-sm">
+            {toc && <DashboardTableOfContents toc={toc} />}
+          </ScrollArea>
+        </section>
       </div>
     </main>
   );

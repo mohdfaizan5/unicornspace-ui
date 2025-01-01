@@ -23,14 +23,14 @@ export function Navigation({
           <li key={section.title}>
             {section.href ? (
               <Link href={section.href}>
-                <h2 className="font-display font-medium text-black dark:text-white ">
+                <h5 className="font-display font-medium text-black dark:text-white ">
                   {section.title}
-                </h2>
+                </h5>
               </Link>
             ) : (
-              <h2 className="font-display font-medium text-black dark:text-white">
+              <h4 className="font-display font-medium text-black dark:text-white">
                 {section.title}
-              </h2>
+              </h4>
             )}
             <ul
               role="list"
@@ -49,7 +49,7 @@ export function Navigation({
                   >
                     {link.title}
                     {link.label && (
-                      <Badge variant={"outline"} className="ml-1 text-xs">
+                      <Badge variant={"outline"} className="antialiased font-normal px-2 ml-1 text-xs">
                         {link.label}
                       </Badge>
                     )}

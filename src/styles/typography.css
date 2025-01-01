@@ -10,7 +10,13 @@
     @apply font-bold text-3xl;
   }
   h3 {
-    @apply font-bold text-2xl ;
+    @apply font-bold text-2xl;
+  }
+  h4 {
+    @apply font-semibold text-xl;
+  }
+  h5 {
+    @apply font-semibold text-lg;
   }
   p {
     @apply text-sm;

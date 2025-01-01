@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import "@/styles/general.css";
 import Image from "next/image";
+import { Metadata } from "next";
 
 const tools = [
   // {
@@ -36,8 +37,7 @@ const tools = [
     name: "Color Palette tool",
     description: "Provides the color palette for the given image",
     url: "/tools/color-palettes",
-    image:
-      "/assets/tools/colors-palettes.png",
+    image: "/assets/tools/colors-palettes.png",
     isPublished: true,
     beta: true,
   },
@@ -46,7 +46,7 @@ const tools = [
     name: "Gradient Generator",
     description: "Generate a gradient color for background",
     url: "/tools/bg-generator",
-    image: "/assets/tools/gradient-generator.png" ,
+    image: "/assets/tools/gradient-generator.png",
     isPublished: true,
     beta: false,
   },
@@ -58,13 +58,12 @@ const tools = [
     isPublished: true,
     beta: true,
   },
-  
+
   {
     name: "Glass Morphism",
     description: "To have a glass view",
     url: "/tools/glass-morphism",
-    image:
-      "/assets/tools/glass-morphism.png",
+    image: "/assets/tools/glass-morphism.png",
     isPublished: true,
     beta: true,
   },
@@ -77,15 +76,16 @@ const tools = [
     isPublished: true,
     beta: true,
   },
-  
 ];
+
 
 const page = () => {
   return (
     <div>
       <h1 className="text-4xl font-bold font-passion ">All tools</h1>
       <p className="max-w-2xl text-lg text-muted-foreground mb-8">
-      Handy utilities to boost your development process. Simple to implement and open-source.
+        Handy utilities to boost your development process. Simple to implement
+        and open-source.
       </p>
       <section className="flex gap-8 flex-wrap mx-auto">
         {tools.length > 0 &&
@@ -93,10 +93,7 @@ const page = () => {
             (tool, i) =>
               tool.isPublished && (
                 <Link key={i} href={`${tool.url}`} className="w-96">
-                  <div
-                    
-                    className="flex flex-col items-start gap-2 rounded-xl border bg-card p-2 text-card-foreground shadow transition-colors hover:bg-muted/50 md:py-5 relative h-96"
-                  >
+                  <div className="flex flex-col items-start gap-2 rounded-xl border bg-card p-2 text-card-foreground shadow transition-colors hover:bg-muted/50 md:py-5 relative h-96">
                     <div className="h-[80%] mx-auto">
                       <Image
                         className="w-full h-[80%] object-fill mx-auto"
@@ -108,9 +105,9 @@ const page = () => {
                     </div>
 
                     <div key={i} className="mt-3 mx-3">
-                      <h1 className="text-2xl font-bold font-passion ">
+                      <h2 className="text-2xl font-bold font-passion ">
                         {tool.name}
-                      </h1>
+                      </h2>
                       <p className="max-w-80 text-[13px] tracking-tight ">
                         {tool.description}
                       </p>

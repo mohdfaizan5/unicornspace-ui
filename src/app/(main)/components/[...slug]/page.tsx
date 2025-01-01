@@ -65,12 +65,13 @@ const ComponentPage = async ({
         <div className="mb-8 ">
           <h1 className="text-3xl font-bold">{guide.title}</h1>
           {guide.description && (
-            <div className="text-gray-500">{guide.description}</div>
+            <p className="text-muted-foreground max-w-2xl">
+              {guide.description}
+            </p>
           )}
         </div>
         <Mdx code={guide.body.code} />
       </div>
-      <div></div>
     </div>
   );
 };

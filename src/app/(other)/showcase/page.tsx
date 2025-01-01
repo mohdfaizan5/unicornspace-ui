@@ -6,7 +6,7 @@ const page = () => {
     <main className="flex items-center flex-col my-10 gap-16">
       <ShowcaseContainer />
       <section className="flex flex-col items-center justify-center gap-10">
-        <h1 className="text-2xl  font-semibold text-black/85 max-w-[480px]  text-center ">
+        <h1 className="text-2xl  font-semibold  max-w-[480px] text-center ">
           Meet thousands of beautiful websites built with Next.js by Vercel
         </h1>
         <div className="flex gap-10 items-center justify-center">

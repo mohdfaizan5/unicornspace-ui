@@ -44,7 +44,7 @@ A --> E(OffPageSEO);
 
 Here's the cleaned and corrected Markdown:
 
-```markdown
+````markdown
 ## Favicon
 
 Place it in root src directory
@@ -54,8 +54,10 @@ Use [RealFaviconGenerator](https://realfavicongenerator.net) for .ico generation
 ## Opengraph Image (Global)
 
 That's the image shown when you paste the link in social media
+
 ```tsx
-src/app/opengraph-image.png
+src / app / opengraph - image.png;
+```
 ````
 
 > Recommended size (1200x630 px)
@@ -67,10 +69,10 @@ export const metadata: Metadata = {
   title: "Create Next App",
   description: "Default template title for child pages",
   twitter: {
-    card: "summary_large_image"
-  }
-}
-````
+    card: "summary_large_image",
+  },
+};
+```
 
 - We can host our localhost online by using:
 
@@ -220,3 +222,15 @@ export default function robots(): MetadataRoute.Robots {
 }
 
 ```
+
+## Structured Data Markups
+
+> A good refernce to learn it. [https://www.youtube.com/watch?v=-vQJYJSN-g4&ab_channel=OmriBarmats](https://www.youtube.com/watch?v=-vQJYJSN-g4&ab_channel=OmriBarmats)
+
+
+### Usefull tools and resources:
+* https://www.npmjs.com/package/schema-dts
+* https://validator.schema.org/
+* https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld
+
+Checklist

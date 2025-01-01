@@ -21,17 +21,17 @@ const templates = [
     title: "Next.js Commerce",
     description:
       "An all-in-one starter kit for high-performance ecommerce sites.",
-    image: "/placeholder.svg?height=400&width=300",
+    image: "./placeholder.svg?height=400&width=300",
   },
   {
     title: "Image Gallery Starter",
     description: "An image gallery built with Next.js and Cloudinary.",
-    image: "/placeholder.svg?height=400&width=300",
+    image: "./placeholder.svg?height=400&width=300",
   },
   {
     title: "Next.js Boilerplate",
     description: "A Next.js starter from create-next-app.",
-    image: "/placeholder.svg?height=400&width=300",
+    image: "./placeholder.svg?height=400&width=300",
   },
 ];
 
@@ -102,7 +102,8 @@ export default function TemplateGallery() {
             >
               <div className="relative group cursor-pointer">
                 <Image
-                  
+                  height={320}
+                  width={400}
                   src={template.image}
                   alt={template.title}
                   className="w-full h-[320px] object-cover"

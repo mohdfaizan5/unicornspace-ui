@@ -5,7 +5,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Slider } from "@radix-ui/react-slider";
 import { Copy } from "lucide-react";
 import React, { useState } from "react";
 import { HexColorInput, HexColorPicker } from "react-colorful";
@@ -45,12 +44,12 @@ function GradientGenerator() {
 
       <div className=' border flex flex-col md:flex-row gap-5 items-center justify-center px-10 py-5' >
         <div className='flex gap-x-5 flex-col items-center'>
-          <h1 className="text-xl font-bold mb-3 text-center font-passion">Color 1</h1>
+          <h2 className="text-xl font-bold mb-3 text-center font-passion">Color 1</h2>
           <HexColorPicker className='' color={color1} onChange={setcolor1} ></HexColorPicker>
           <HexColorInput className='border-2 border-black text-center w-20 mt-3 ' color={color1} onChange={setcolor1} ></HexColorInput>
         </div>
         <div className='flex  gap-x-5 flex-col items-center '>
-          <h1 className="text-xl font-bold mb-3 text-center font-passion ">Color 2</h1>
+          <h2 className="text-xl font-bold mb-3 text-center font-passion ">Color 2</h2>
           <HexColorPicker className='' color={color2} onChange={setcolor2} ></HexColorPicker>
           <HexColorInput className='border-2 border-black text-center w-20 mt-3 ' color={color2} onChange={setcolor2} ></HexColorInput>
         </div>

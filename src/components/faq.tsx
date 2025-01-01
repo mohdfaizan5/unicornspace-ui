@@ -11,11 +11,11 @@ const Faq = () => {
     <section className="bg-background px-5 md:px-10 min-h-[70dvh] py-10 flex flex-col items-center">
       {/* <h2>Develop projects without the manual management</h2>
       <h3>hioajsdf</h3> */}
-      <h1 className="text-3xl">FAQs</h1>
+      <h2 className="text-3xl">FAQs</h2>
       <div className="py-10 pb-20 sm:w-[500px] text-lg sm:text-xl">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-left">What is UnicornSpaceUI?</AccordionTrigger>
+            <AccordionTrigger  className="text-left text-xl">What is UnicornSpaceUI?</AccordionTrigger>
             <AccordionContent>
               UnicornSpaceUI is a Next.js and Web Development tool designed to
               simplify your workflow by providing reusable components, guides,
@@ -24,7 +24,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-2">
-            <AccordionTrigger className="text-left">
+            <AccordionTrigger className="text-left text-xl">
               Is UnicornSpaceUI suitable for big projects?
             </AccordionTrigger>
             <AccordionContent>
@@ -35,7 +35,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-3">
-            <AccordionTrigger className="text-left">
+            <AccordionTrigger className="text-left text-xl">
               How will UnicornSpaceUI benefit me?
             </AccordionTrigger>
             <AccordionContent>
@@ -46,7 +46,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-4">
-            <AccordionTrigger className="text-left">
+            <AccordionTrigger className="text-left text-xl">
               How do I get started with UnicornSpaceUI?
             </AccordionTrigger>
             <AccordionContent>
@@ -57,7 +57,7 @@ const Faq = () => {
           </AccordionItem>
 
           <AccordionItem value="item-5">
-            <AccordionTrigger className="text-left">
+            <AccordionTrigger className="text-left text-xl">
               Can UnicornSpaceUI scale with my project?
             </AccordionTrigger>
             <AccordionContent>

@@ -7,6 +7,7 @@ import {
   MoveUpRight,
   Star,
 } from "lucide-react";
+import { Button } from "../ui/button";
 
 type ResourceCardType = {
   title: string;
@@ -29,27 +30,29 @@ function ResourceCard({
       <Card className="w-80 rounded-lg md:shadow-md group">
         <CardContent className=" p-6 flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full items-center">
-            <h2 className="flex items-center gap-1 font-bold font-grotesk leading-6 mt-2 line-clamp-1 ">
-              {title}{" "}
+            <h3 className="flex items-center gap-1 text-lg font-bold font-grotesk leading-6 mt-2 line-clamp-1 ">
+              {title}
               {isFavorite && (
                 <Star className="text-amber-400 fill-amber-500" size={16} />
               )}
-            </h2>
-            <div className="p-1  border rounded-full">
-              <MoveUpRight
-                size={14}
-                className="group-hover:rotate-45 transition-all duration-200 group-hover:translate-x-2"
-              />
-            </div>
+            </h3>
+
             {/* <CircleArrowOutUpRight size={16}/> */}
           </div>
           <p className="font-normal text-sm text-[#888888] line-clamp-2">
             {description}
           </p>
-          <div>
+          <div className="flex items-center justify-between w-full">
             <Badge variant={"secondary"} className="text-[10px]">
               {category}
             </Badge>
+            <Button size={"sm"} className="p-1  border rounded-full">
+              Visit
+              <MoveUpRight
+                size={14}
+                className="group-hover:rotate-45 transition-all duration-200 group-hover:translate-x-2"
+              />
+            </Button>
           </div>
           {/* <div className="w-full flex items-center justify-between">
             <Button className="w-full" variant={"default"}>
