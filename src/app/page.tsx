@@ -6,12 +6,25 @@ import Image from "next/image";
 import WorkWithUs from "@/components/work-with-us";
 import Features3 from "@/registry/components/features/features3";
 import Testimonials3 from "@/registry/components/testimonials/testimonials3";
+import { Product, WithContext, WebSite } from "schema-dts";
 
 const page = () => {
+  const jsonLd: WithContext<WebSite> = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "UnicornSpaceUI",
+    image: "https://ui.unicorn-space.com/icon.png",
+    description:
+      "the library for all your daily tool for all Nextjs and Web Development. Focus on getting things done, not re-inventin again and again.",
+  };
   return (
     <div className="selection:bg-primary/20 ">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection />
-      <section className="mx-auto max-w-2xl sm:text-center relative py-10">
+      <section className="mx-auto px-5 max-w-2xl sm:text-center relative py-10">
         <Icons.CrownHappy className="dark:fill-white text-white animate-pulse" />
         <h2 className="text-3xl font-medium tracking-tight ">
           Now is the time to build your dream project.
@@ -29,24 +42,28 @@ const page = () => {
         <WorkWithUs className="md:flex-row md:max-w-5xl " />
       </div>{" "}
       <Faq />
-      <Card className="flex z-10 items-center gap-10 h-40 mb-10 md:w-[500px] mx-auto group">
-        <section className="p-2 relative w-40 h-full transition-all duration-1000">
-          <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl  p-2 size-16 items-center flex justify-center  absolute top-12 -rotate-6  left-7 group-hover:-rotate-12 transition-all duration-300">
-            <Icons.typescript className="size-11" />
-          </div>
-          <div className="rounded-lg border  bg-card text-card-foreground  drop-shadow-xl p-2 size-16 items-center flex justify-center  absolute top-10 z-10 left-20 group-hover:scale-105 transition-all duration-300">
-            <Icons.nextjs className="  size-11" />
-          </div>
-          <div className="rounded-lg  border bg-card text-card-foreground  drop-shadow-xl p-2 size-16 items-center flex justify-center  absolute top-12 rotate-6 left-32 group-hover:rotate-12 transition-all duration-300">
-            <Icons.TailwindCSS className=" size-11" />
-          </div>
-        </section>
-        <CardContent>
-          <h1 className=" font-bold font-passion text-base max-w-72 text-center">
-            Create Startups 500% Faster With This Shadcn Tool.
-          </h1>
-        </CardContent>
-      </Card>
+
+      {/* TODO: Recreate these styles. */}
+      {/* <section className="flex flex-col items-center justify-center px-5">
+        <Card className="flex flex-col w-full justify-center max-w-xl z-10 items-center gap-10  mb-10 lg:w-[500px] mx-5 group">
+          <section className="flex items-center justify-center relative w-40 h-32 transition-all duration-1000 ">
+            <div className="rounded-lg border bg-card text-card-foreground  drop-shadow-xl  p-2 size-16 items-center flex justify-center  absolute top-12 -rotate-6  left-7 group-hover:-rotate-12 transition-all duration-300">
+              <Icons.typescript className="size-11" />
+            </div>
+            <div className="rounded-lg border  bg-card text-card-foreground  drop-shadow-xl p-2 size-16 items-center flex justify-center  absolute top-10 z-10 left-20 group-hover:scale-105 transition-all duration-300">
+              <Icons.nextjs className="  size-11" />
+            </div>
+            <div className="rounded-lg  border bg-card text-card-foreground  drop-shadow-xl p-2 size-16 items-center flex justify-center  absolute top-12 rotate-6 left-32 group-hover:rotate-12 transition-all duration-300">
+              <Icons.TailwindCSS className=" size-11" />
+            </div>
+          </section>
+          <CardContent>
+            <h3 className=" font-bold font-passion text-base max-w-72 text-center">
+              Create Startups 500% Faster With This Shadcn Tool.
+            </h3>
+          </CardContent>
+        </Card>
+      </section> */}
       <section className="relative min-h-[80vh]">
         <Testimonials3 />
         <Image

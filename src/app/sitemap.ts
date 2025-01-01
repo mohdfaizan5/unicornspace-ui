@@ -55,9 +55,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const otherPages = [
     "/components/get-started",
     // "/about",
-    "/showcase",
-    "/changelog",
-    "/blog",
+    // "/showcase",
+    // "/changelog",
+    "/blogs",
     "/components",
     "/guides",
     "/tools",

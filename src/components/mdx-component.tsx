@@ -13,6 +13,8 @@ import "@/styles/mdx.css";
 import MermaidDiagram from "./mermaid-diagram";
 import WorkWithUs from "./work-with-us";
 import reactNodeToString from "react-node-to-string";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 type componentsProps = {
   className: string;
@@ -94,7 +96,10 @@ const components = {
   ),
   p: ({ className, ...props }) => (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn(
+        "leading-7 [&:not(:first-child)]:mt-6 max-w-2xl",
+        className
+      )}
       {...props}
     />
   ),
@@ -186,7 +191,10 @@ const components = {
     return (
       <div className="relative max-w-2xl mb-2">
         {/* <div dangerouslySetInnerHTML={{ __html: props.children }} /> */}
-        <CopyButton text={reactNodeToString(props.children)} className="absolute right-1 top-1 z-50"/>
+        <CopyButton
+          text={reactNodeToString(props.children)}
+          className="absolute right-1 top-1 z-50"
+        />
         <pre
           className={cn(
             "mb-4 overflow-x-auto rounded-lg  bg-black py-4",
@@ -237,6 +245,8 @@ const components = {
   ),
   Diagram: MermaidDiagram,
   WorkWithUs,
+  Link,
+  Button,
 };
 
 interface MdxProps {

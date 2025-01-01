@@ -89,7 +89,7 @@ export const navigation: NavigationProps[] = [
     href: "/guides",
     links: [
       { title: "Next Auth", href: "/guides/nextauth-v5", label: "Updated" },
-      { title: "Razorpay nextjs", href: "/guides/razorpay-nextjs14" },
+      { title: "Razorpay nextjs", href: "/guides/razorpay-nextjs15" },
       // { title: "Stripe", href: "/guides/stripe" },
       { title: "Prisma Basics", href: "/guides/prisma" },
       // { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },

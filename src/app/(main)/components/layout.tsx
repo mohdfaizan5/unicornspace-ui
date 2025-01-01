@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s Components | UnicornSpaceUI",
   },
   description:
-    "Beautifully designed. Copy and paste into your apps. Open Source.",
+    "Explore all the components available in the UnicornSpaceUI library. A collection of React components for building modern web applications and SAAS startups.",
   twitter: {
     card: "summary_large_image",
   },

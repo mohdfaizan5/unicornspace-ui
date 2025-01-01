@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Color Converter",
-  description: "Convert colors between RGB, HEX, and HSL formats.",
+  description: "Convert colors between RGB, HEX, and HSL formats effortlessly for free.",
 };
 
 const page = () => {

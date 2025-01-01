@@ -21,8 +21,17 @@ const passion = Passion_One({
 
 export const metadata: Metadata = {
   title: "UnicornSpaceUI",
-  description: "A opensource UI copy-paste library for Nextjs EcoSystem",
+  description: "A React opensource UI library made for Startups and SAAS companies to boost their development process",
 };
+/*
+1. A opensource UI copy-paste library for Nextjs EcoSystem
+
+opensource, UI,  library, Nextjs, Startups, SAAS, Design.
+1. A React opensource UI library made for Startups and SAAS companies to boost their development process.
+2. A React opensource UI library made for Startups and SAAS.
+
+
+*/ 
 
 export default function RootLayout({
   children,

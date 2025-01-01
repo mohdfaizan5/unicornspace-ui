@@ -12,6 +12,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    absolute:
+      "Guides - Indept Guides on technology & Startups | UnicornSpaceUI",
+  },
+  description:
+    "Clear, step-by-step follow-along guides for every level. (Complex tools & concepts made easy.)",
+};
 
 function PostCard(guide: Guide) {
   const imageLink = `${guide.thumbnail}`;
@@ -100,9 +110,7 @@ export default function Home() {
       </p>
       <main className="grid auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full">
         {guides.map((guide, idx) => {
-       
-          if (guide.isPublished)
-            return <PostCard key={idx} {...guide} />;
+          if (guide.isPublished) return <PostCard key={idx} {...guide} />;
         })}
       </main>
     </div>
