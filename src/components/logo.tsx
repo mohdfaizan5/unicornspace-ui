@@ -1,11 +1,31 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 
-const Logo = () => {
-  return (
-    <>
-      <Link href={"/"} className="flex items-center font-bold">
+const Logo = ({
+  full = false,
+  width = 100,
+  height = 100,
+  link = true,
+  className,
+  textClassName,
+  isBeta = false,
+}: {
+  full?: boolean;
+  link?: boolean;
+  isBeta?: boolean;
+  width?: number;
+  height?: number;
+  className?: string;
+  textClassName?: string;
+}) => {
+  if (link)
+    return (
+      <Link
+        href={"/"}
+        className={cn("flex flex-col items-center justify-center", className)}
+      >
         <Image
           src={"/logos/logo-black-256x256.png"}
           width={30}
@@ -21,13 +41,33 @@ const Logo = () => {
           alt=""
           className="hidden dark:block"
         />
-        UnicornSpaceUI{" "}
-        <Badge variant={"secondary"} className="scale-[80%]">
-          Beta
-        </Badge>
+
+        {full && (
+          <h3 className={cn("font-medium text-2xl", textClassName)}>
+            UnicornSpaceUI
+          </h3>
+        )}
       </Link>
-    </>
-  );
+    );
+  else
+    return (
+      <div
+        className={cn("flex flex-col items-center justify-center", className)}
+      >
+        <Image
+          src={"/assets/logo-base-256x256.png"}
+          width={width}
+          height={height}
+          alt="logo"
+        />
+        {full && <h2 className="font-medium text-2xl">FreelanceFlow</h2>}
+        {isBeta && (
+          <Badge variant={"secondary"} className="scale-[80%]">
+            Beta
+          </Badge>
+        )}
+      </div>
+    );
 };
 
 export default Logo;

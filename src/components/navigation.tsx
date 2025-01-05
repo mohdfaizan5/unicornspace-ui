@@ -49,7 +49,7 @@ export function Navigation({
                   >
                     {link.title}
                     {link.label && (
-                      <Badge variant={"outline"} className="antialiased font-normal px-2 ml-1 text-xs">
+                      <Badge variant={"secondary"} className="antialiased font-normal px-2 ml-1 text-xs scale-90">
                         {link.label}
                       </Badge>
                     )}

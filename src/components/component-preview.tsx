@@ -9,6 +9,7 @@ import { ImSpinner } from "react-icons/im";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { ArrowRight, MoveRight } from "lucide-react";
+import reactNodeToString from "react-node-to-string";
 
 const ComponentPreview = ({
   name,
@@ -25,7 +26,7 @@ const ComponentPreview = ({
     return <div>Component not found</div>;
   }
 
-  // console.log(ComponentToRender.code);
+  console.log(typeof ComponentToRender.component);
 
   return (
     <div className="relative my-4 z-10 flex flex-col space-y-2 overflow-auto">
@@ -45,7 +46,11 @@ const ComponentPreview = ({
           </TabsTrigger>
           <Link href={`/blocks/${name}`} className="ml-2">
             <Button variant={"ghost"} className="group flex items-center gap-2">
-              See full component <MoveRight size={18} className="group-hover:translate-x-2 transition-all duration-150"/>
+              See full component{" "}
+              <MoveRight
+                size={18}
+                className="group-hover:translate-x-2 transition-all duration-150"
+              />
             </Button>
           </Link>
         </TabsList>

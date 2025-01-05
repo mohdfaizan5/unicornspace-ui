@@ -76,7 +76,7 @@ const ComponentPage = async ({
           </div>
         }
       >
-        <div className=" scale-75 ">
+        <div className=" scale-[85%] ">
           <ComponentToRender.component />
         </div>
       </React.Suspense>
