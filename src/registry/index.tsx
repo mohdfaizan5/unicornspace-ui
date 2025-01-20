@@ -115,6 +115,16 @@ import HeroSection9 from "@/registry/components/hero-sections/hero-section9";
 import HeroSection10 from "./components/hero-sections/hero-section10";
 import HeroSection5 from "./components/hero-sections/hero-section5";
 import Testimonials6 from "./components/testimonials/testimonials6";
+import { Navbar3Code } from "./component-code/navbars/navbar3Code";
+import { Features6Code } from "./component-code/features/features6Code";
+import { HeroSection5Code } from "./component-code/hero-sections/hero-section5Code";
+import { HeroSection7Code } from "./component-code/hero-sections/hero-section7Code";
+import { HeroSection8Code } from "./component-code/hero-sections/hero-section8Code";
+import { HeroSection9Code } from "./component-code/hero-sections/hero-section9Code";
+import { HeroSection10Code } from "./component-code/hero-sections/hero-section10Code";
+import { Testimonials5Code } from "./component-code/testimonials/testimonials5Code";
+import { Testimonials6Code } from "./component-code/testimonials/testimonials6Code";
+import { AvatarListCode } from "./component-code/others/avatar-listCode";
 
 //
 const componentRegistry: RegistrySchema = {
@@ -146,7 +156,7 @@ const componentRegistry: RegistrySchema = {
   },
   Navbar3: {
     component: Navbar3,
-    code: ``,
+    code: Navbar3Code,
   },
 
   // Ecommerce
@@ -202,7 +212,7 @@ const componentRegistry: RegistrySchema = {
   },
   Features6: {
     component: Features6,
-    code: ``,
+    code: Features6Code,
   },
 
   // Hero sections
@@ -226,7 +236,7 @@ const componentRegistry: RegistrySchema = {
   },
   HeroSection5: {
     component: HeroSection5,
-    code: ``,
+    code: HeroSection5Code,
   },
 
   HeroSection6: {
@@ -235,19 +245,19 @@ const componentRegistry: RegistrySchema = {
   },
   HeroSection7: {
     component: HeroSection7,
-    code: ``,
+    code: HeroSection7Code,
   },
   HeroSection8: {
     component: HeroSection8,
-    code: ``,
+    code: HeroSection8Code,
   },
   HeroSection9: {
     component: HeroSection9,
-    code: ``,
+    code: HeroSection9Code,
   },
   HeroSection10: {
     component: HeroSection10,
-    code: ``,
+    code: HeroSection10Code,
   },
 
   // Testimonials
@@ -273,11 +283,11 @@ const componentRegistry: RegistrySchema = {
 
   Testimonial5: {
     component: Testimonials5,
-    code: ``,
+    code: Testimonials5Code,
   },
   Testimonial6: {
     component: Testimonials6,
-    code: ``,
+    code: Testimonials6Code,
   },
   CustomerReviews: {
     component: CustomerReviews,
@@ -336,7 +346,7 @@ const componentRegistry: RegistrySchema = {
 
   AvatarList: {
     component: AvatarList,
-    code: ``,
+    code: AvatarListCode,
   },
 
   // Cards

@@ -1,57 +1,67 @@
 ---
 isPublished: true
-title: Next auth v5 (aka authjs)
-description: In this guide, we will learn how to implement authentication in a Next.js application using Auth.js v5.
+title: Authjs V5 in Nextjs15
+description: In this guide, we will learn how to implement authentication in a Next.js15 application using Auth.js v5.
 tags: nextjs14,authjs v5,next-auth,Authentication
 thumbnail: Authjs part 1.png
 author: Faizan
 ---
 
+Authentication is a crucial part of any web application. It is the process of verifying the identity of a user and protecting data.
 Authentication is a crucial part of any web application. It is the process of verifying the identity of a user.
 
 ## What is NextAuth.js?
 
-NextAuth.js is a complete open-source authentication solution for Next.js applications. It is easy to use and supports various authentication providers like Google, Facebook, GitHub, etc. It also supports email/password authentication.
+NextAuth.js is a complete open-source authentication solution for Next.js applications. It is easy to use and supports various authentication providers like Google, Facebook, GitHub, etc. It also supports email/password (credentails) authentication.
 
 ## Installation
 
-{/* > Use next-auth official documentation for the latest version of next-auth and installing. [Authjs](https://authjs.dev/) */}
+> Use official documentation for the latest Authjs version. [Authjs](https://authjs.dev/)
 
 ```bash
 npm install next-auth@beta
 ```
 
-### How to check where the user is authenticated or not in Server Component?
+## Comman Schenarios:
+
+### How to check where the user is authenticated in Server Component?
 
 ```tsx
+import { auth } from "@/lib/auth";
+
 const user = await auth();
 if (!user) redirect("/login");
 ```
 
-{/* > If user is authenticated it will return or it will return `null`. */}
-//TODO: this also is not working check it out
+- If user is authenticated it will return an object or it will return `null`.
+
+# Implementing AuthJs in your project
+
+You'll have a fully working authentication system in your Next.js application by following the steps below. It contains login, register, and logout functionality. And page like login
 
 ## Pre-requisites
 
-Install
+Install the required packages
 
 ```bash
 npm install react-hook-form zod prisma sonner
 ```
 
-What is it all about and what to do about it
-
-Install ShadCN components for Login
+Install ShadCN components for UI of login
 
 ```bash
 npx shadcn@latest add form input
 ```
 
-> RECOMMENDED : to generate env.local file
+> MUST have : to generate env.local file with "AUTH_SECRET" key, (basically it contains a secret key for your token to be generated)
 
 ```bash
 npx auth secret
 ```
+
+### Code structure
+
+It contains how the overview of how the code is formatted in the project.
 
 ```terminal
 
@@ -60,11 +70,13 @@ npx auth secret
   |   └─── auth.action.ts
   ├── app
   │   ├── api/auth/[...nextauth]/route.ts
-  |   ├── /signin/page.tsx
-  |   └── /signup/page.tsx
+  |   └── (auth)
+  |         ├── layout.tsx
+  |         ├── /login/page.tsx
+  |         └──/register/page.tsx
   ├── components
-  |   ├── signup-form.tsx
-  |   └── signin-form.tsx
+  |   ├── register-form.tsx
+  |   └── login-form.tsx
   ├── types
   |   └── index.ts
   ├── lib
@@ -72,35 +84,22 @@ npx auth secret
   └── middleware.ts
 ```
 
-## Types
+## How to use this code.
 
-```tsx:@/types/index.ts
-import { z } from "zod";
+You can copy and paste the code in the file directory mentioned on top of the code.
 
-export const signUpFormSchema = z
-  .object({
-    name: z.string().min(3),
-    email: z.string().email(),
-    password: z.string().min(6),
-    confirmPassword: z.string().min(6),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
+### Main auth config file
 
-export const signInFormSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-});
-```
+This is the main crux of the auth and this is where you're setting your login logic the below code is for
 
-## Final code for Credentails provider
+- login logic
+- authorization (modify the token)
+- much more...
 
 ```tsx:@/lib/auth.ts
 import NextAuth, { AuthError, CredentialsSignin } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { signInFormSchema } from "@/types/index";
+import { loginFormSchema } from "@/types/index";
 import prisma from "@/lib/db";
 import { z } from "zod";
 import { getUserDetails } from "@/actions/auth.action";
@@ -122,7 +121,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         console.log("credentials", credentials);
 
-        // const validationResult = signInFormSchema.safeParse(credentials); // validate the credentials (TODO)
+        // const validationResult = loginFormSchema.safeParse(credentials); // validate the credentials (TODO)
         const dbUser = await prisma.user.findUnique({
           where: {
             email: `${credentials.email}`,
@@ -173,11 +172,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 });
 ```
 
+### Middleware
+
+This is where you are setting the routes that you want to protect. You can add the routes that you want to protect and the routes that you want to make public. Basically your checking every request that is coming to the server.
+
 ```tsx:@/middleware.ts
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
-const publicRoutes = ["/", "/login", "/signup"]; // Add your public routes here
+const publicRoutes = ["/", "/login", "/register"]; // Add your public routes here
 
 export default auth((req) => {
   if (!req.auth) {
@@ -185,16 +188,26 @@ export default auth((req) => {
   }
 });
 
+// All the routes that need to be protected
+// the `/:path*` is used to match all the routes that start with the given path
 export const config = {
   matcher: ["/dashboard/:path*", "/admin/:path*"],
 };
 ```
+
+### API Route
+
+This is where the underhood the logic for authentication is written, you need not touch the code, we're just tell what ever `GET` or `POST` requests come to `/api/auth/*` should be handled by the logic of auth.ts file.
 
 ```tsx:@/app/api/auth/[...nextauth]/route.ts
 
 import { handlers } from "@/lib/auth"; // Referring to the auth.ts we just created
 export const { GET, POST } = handlers;
 ```
+
+### Layout for login and register UI.
+
+Now we're working on the UI to expose to the user. This is UI is further recommended to modify based on your styles.
 
 > (Optional) Create this inside `login` or `signin` folder. So that you can go on that route to enter your login credentials. Use this component inside `page.tsx`.
 
@@ -233,14 +246,23 @@ const layout = async ({ children }: { children: ReactNode }) => {
 export default layout;
 
 ```
-```tsx:app/(auth)/signin/page.tsx
-import SignInForm from "@/components/signin-form";
+
+### Login page UI
+
+This page is make sures if you're authenticated then not redirect you to main app (protected route or desired route) or if you're not then lets to login by filling the form.
+
+```tsx:app/(auth)/login/page.tsx
+import LoginForm from "@/components/signin-form";
 import React from "react";
+import { redirect } from "next/navigation";
 
 const page = async () => {
+  const session = await auth();
+  if (session?.user) redirect("/app");
+
   return (
     <div>
-      <SignInForm className="" />
+      <LoginForm className="" />
     </div>
   );
 };
@@ -248,8 +270,13 @@ const page = async () => {
 export default page;
 ```
 
-```tsx:signInForm.tsx
+### Login form logic
+
+This is the core logic of how login form is handled, it has typesafety, form validations, error handling (giving feedback for yours)
+
+```tsx:@/components/login-form.tsx
 "use client";
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -265,7 +292,7 @@ import {
 } from "@/components/ui/form";
 
 import Link from "next/link";
-import { signInFormSchema } from "@/types/index";
+import { loginFormSchema } from "@/types/index";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { signInAction } from "@/actions/auth.action";
@@ -273,9 +300,9 @@ import { Input } from "./ui/input";
 import { LoaderCircleIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const SignInForm = ({ className }: { className?: string }) => {
-  const form = useForm<z.infer<typeof signInFormSchema>>({
-    resolver: zodResolver(signInFormSchema),
+const LoginForm = ({ className }: { className?: string }) => {
+  const form = useForm<z.infer<typeof loginFormSchema>>({
+    resolver: zodResolver(loginFormSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -285,7 +312,7 @@ const SignInForm = ({ className }: { className?: string }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (values: z.infer<typeof signInFormSchema>) => {
+  const onSubmit = async (values: z.infer<typeof loginFormSchema>) => {
     setLoading(true);
     console.log(values);
     try {
@@ -366,7 +393,8 @@ const SignInForm = ({ className }: { className?: string }) => {
 
               <div className="text-center">
                 <Link
-                  href="/signup"
+                  href="/register"
+
                   className="underline text-primary text-sm hover:text-primary/80 transition-colors"
                 >
                   Don&apos;t have an account?
@@ -380,15 +408,17 @@ const SignInForm = ({ className }: { className?: string }) => {
   );
 };
 
-export default SignInForm;
+export default LoginForm;
 ```
 
-> (Optional) Create this inside `register` or `signup` folder. So that you can go on that route to register. Use this component inside `page.tsx`.
+### Register page
 
-```tsx:app/(auth)/signin/page.tsx
+This page is to /register route which will help users to create a new account and if the user is already authenticated, then it redirects the user to the main app ('/app' in this case)
+
+```tsx:app/(auth)/register/page.tsx
 import Logo from "@/components/logo";
 import { Shapes } from "@/components/shapes";
-import SignUpForm from "@/components/signup-form";
+import RegisterFormfrom "@/components/login-form";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -398,7 +428,7 @@ const page = async () => {
   if (session?.user) redirect("/app");
   return (
     <div className="">
-      <SignUpForm />
+      <RegisterForm/>
     </div>
   );
 };
@@ -407,8 +437,11 @@ export default page;
 
 ```
 
+### RegisterForm logic
 
-```tsx:signupForm.tsx
+This is the core logic of how register form is handled, it has typesafety, form validations, error handling (giving feedback for yours), the backend is the server actions handling custom logic
+
+```tsx:register-form.tsx
 "use client";
 
 import React from "react";
@@ -432,7 +465,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signUpAction } from "@/actions/auth.action";
 
-const SignUpForm = () => {
+const RegisterForm= () => {
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -742,12 +775,41 @@ function PasswordField({
 
 ```
 
+## Types
+
+They ensure the typesafety of the functions we discussed above. It includes commonly used types and form schema for validations
+
+```tsx:@/types/index.ts
+import { z } from "zod";
+
+export const signUpFormSchema = z
+  .object({
+    name: z.string().min(3),
+    email: z.string().email(),
+    password: z.string().min(6),
+    confirmPassword: z.string().min(6),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+export const loginFormSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});
+```
+
+### Server actions
+
+This is the backend of our authentication and they are written by keeping security in mind and also it gives respective feedback to the user for all the actions performed
+
 ```tsx:@/actions/auth.action.ts
 "use server";
 
 import { signIn, signOut } from "@/lib/auth";
 import prisma from "@/lib/db";
-import { signInFormSchema, signUpFormSchema } from "@/types/index";
+import { loginFormSchema, signUpFormSchema } from "@/types/index";
 import { z } from "zod";
 
 const signUpAction = async (data: z.infer<typeof signUpFormSchema>) => {
@@ -793,7 +855,7 @@ const signUpAction = async (data: z.infer<typeof signUpFormSchema>) => {
   }
 };
 
-const signInAction = async (data: z.infer<typeof signInFormSchema>) => {
+const signInAction = async (data: z.infer<typeof loginFormSchema>) => {
   try {
     const req = await signIn("credentials", { ...data, redirect: false });
     console.log(" from action", req);
@@ -844,7 +906,9 @@ const getUserDetails = async (email: string) => {
 export { signInAction, signOutAction, signUpAction, getUserDetails };
 ```
 
-If you've not created a global prisma client
+#### PrismaClient
+
+If you've not created a global prisma client, since nextjs is a Edge time framework(works only in demand) and so it requires a global client to check if the a db connection is already made to avoid db polling(making sure unnecessary connections are not made.)
 
 ```tsx:@/lib/db.ts
 import { PrismaClient } from "@prisma/client";
@@ -894,7 +958,7 @@ npx prisma migrate dev --name init
 npx prisma studio
 ```
 
-### 🎉 You're Done!
+### 🎉 You're Done! Hurray
 
 #### Checkout our other [guides](https://unicornspace-ui.vercel.app/guides) . Keep learning, keep growing :)
 

@@ -1,5 +1,5 @@
 // type Params = Promise<{slug:} // TODO: make it dynamic
-type Params = Promise<{ slug: string }>;
+export type ParamsAsSlug = Promise<{ slug: string }>;
 
 export type SearchParams = Promise<{
   [key: string]: string | string[] | undefined;
@@ -13,7 +13,15 @@ export type SearchParams = Promise<{
 */
 
 export interface Resource {
-  category: "UI" | "Typography" | "resources" | "tools" | "inspiration" | "assets" | "other" |"icons"
+  category:
+    | "UI"
+    | "Typography"
+    | "resources"
+    | "tools"
+    | "inspiration"
+    | "assets"
+    | "other"
+    | "icons";
   description: string;
   link: string;
   title: string;

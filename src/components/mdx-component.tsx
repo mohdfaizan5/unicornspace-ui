@@ -37,19 +37,26 @@ const extractTextContent = (node: any): string => {
   return "";
 };
 
-
-
 const components = {
   h1: ({ className, ...props }) => (
     <h1
       className={cn(
-        "mt-2 scroll-m-20 text-4xl font-bold tracking-tight",
+        "mt-4 scroll-m-20 text-4xl font-bold tracking-tight",
         className
       )}
       {...props}
     />
   ),
-  h2: H2WithLinkCopy,
+  // h2: H2WithLinkCopy,
+  h2: ({ className, ...props }) => (
+    <h2
+      className={cn(
+        "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight tight ",
+        className
+      )}
+      {...props}
+    />
+  ),
   h3: ({ className, ...props }) => (
     <h3
       className={cn(
@@ -87,7 +94,8 @@ const components = {
     />
   ),
   a: ({ className, ...props }) => (
-    <a target="_blank"
+    <a
+      target="_blank"
       className={cn("font-medium underline underline-offset-4", className)}
       {...props}
     />
@@ -126,7 +134,7 @@ const components = {
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      className={cn("rounded-2xl overflow-hidden border", className)}
+      className={cn("mt-4 rounded-2xl overflow-hidden border", className)}
       alt={alt}
       {...props}
     />
