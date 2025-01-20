@@ -106,6 +106,25 @@ import { HeroSection1Code } from "./component-code/hero-sections/hero-section1Co
 import { HeroSection2Code } from "./component-code/hero-sections/hero-section2Code";
 import { HeroSection3Code } from "./component-code/hero-sections/hero-section3Code";
 import { Testimonials4Code } from "./component-code/testimonials/testimonials4Code";
+import Navbar3 from "./components/navbars/navbar3";
+import HeroSection7 from "./components/hero-sections/hero-section7";
+import HeroSection8 from "./components/hero-sections/hero-section8";
+import AvatarList from "./components/others/avatar-list";
+import Features6 from "./components/features/features6";
+import HeroSection9 from "@/registry/components/hero-sections/hero-section9";
+import HeroSection10 from "./components/hero-sections/hero-section10";
+import HeroSection5 from "./components/hero-sections/hero-section5";
+import Testimonials6 from "./components/testimonials/testimonials6";
+import { Navbar3Code } from "./component-code/navbars/navbar3Code";
+import { Features6Code } from "./component-code/features/features6Code";
+import { HeroSection5Code } from "./component-code/hero-sections/hero-section5Code";
+import { HeroSection7Code } from "./component-code/hero-sections/hero-section7Code";
+import { HeroSection8Code } from "./component-code/hero-sections/hero-section8Code";
+import { HeroSection9Code } from "./component-code/hero-sections/hero-section9Code";
+import { HeroSection10Code } from "./component-code/hero-sections/hero-section10Code";
+import { Testimonials5Code } from "./component-code/testimonials/testimonials5Code";
+import { Testimonials6Code } from "./component-code/testimonials/testimonials6Code";
+import { AvatarListCode } from "./component-code/others/avatar-listCode";
 
 //
 const componentRegistry: RegistrySchema = {
@@ -134,6 +153,10 @@ const componentRegistry: RegistrySchema = {
   Navbar2: {
     component: Navbar2,
     code: Navbar2Code,
+  },
+  Navbar3: {
+    component: Navbar3,
+    code: Navbar3Code,
   },
 
   // Ecommerce
@@ -187,6 +210,10 @@ const componentRegistry: RegistrySchema = {
     component: Features5,
     code: Features5Code,
   },
+  Features6: {
+    component: Features6,
+    code: Features6Code,
+  },
 
   // Hero sections
   HeroSection1: {
@@ -207,10 +234,30 @@ const componentRegistry: RegistrySchema = {
     component: HeroSection4,
     code: HeroSection4Code,
   },
+  HeroSection5: {
+    component: HeroSection5,
+    code: HeroSection5Code,
+  },
 
   HeroSection6: {
     component: HeroSection6,
     code: HeroSection6Code,
+  },
+  HeroSection7: {
+    component: HeroSection7,
+    code: HeroSection7Code,
+  },
+  HeroSection8: {
+    component: HeroSection8,
+    code: HeroSection8Code,
+  },
+  HeroSection9: {
+    component: HeroSection9,
+    code: HeroSection9Code,
+  },
+  HeroSection10: {
+    component: HeroSection10,
+    code: HeroSection10Code,
   },
 
   // Testimonials
@@ -236,7 +283,11 @@ const componentRegistry: RegistrySchema = {
 
   Testimonial5: {
     component: Testimonials5,
-    code: Testimonials3Code,
+    code: Testimonials5Code,
+  },
+  Testimonial6: {
+    component: Testimonials6,
+    code: Testimonials6Code,
   },
   CustomerReviews: {
     component: CustomerReviews,
@@ -291,6 +342,11 @@ const componentRegistry: RegistrySchema = {
   Profile: {
     component: Profile,
     code: ProfileCode,
+  },
+
+  AvatarList: {
+    component: AvatarList,
+    code: AvatarListCode,
   },
 
   // Cards

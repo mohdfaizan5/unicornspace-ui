@@ -7,6 +7,7 @@ import WorkWithUs from "@/components/work-with-us";
 import Features3 from "@/registry/components/features/features3";
 import Testimonials3 from "@/registry/components/testimonials/testimonials3";
 import { Product, WithContext, WebSite } from "schema-dts";
+import Features6 from "@/registry/components/features/features6";
 
 const page = () => {
   const jsonLd: WithContext<WebSite> = {
@@ -24,10 +25,11 @@ const page = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HeroSection />
+      <Features6 />
       <section className="mx-auto px-5 max-w-2xl sm:text-center relative py-10">
         <Icons.CrownHappy className="dark:fill-white text-white animate-pulse" />
         <h2 className="text-3xl font-medium tracking-tight ">
-          Now is the time to build your dream project.
+          Now is the time to build your dream startup.
         </h2>
         <p className="mt-2  text-foreground/60">
           With typical workflow benefits, you have to start your project right
@@ -42,7 +44,6 @@ const page = () => {
         <WorkWithUs className="md:flex-row md:max-w-5xl " />
       </div>{" "}
       <Faq />
-
       {/* TODO: Recreate these styles. */}
       {/* <section className="flex flex-col items-center justify-center px-5">
         <Card className="flex flex-col w-full justify-center max-w-xl z-10 items-center gap-10  mb-10 lg:w-[500px] mx-5 group">

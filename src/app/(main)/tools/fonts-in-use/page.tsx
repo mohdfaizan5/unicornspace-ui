@@ -26,14 +26,15 @@ const page = () => {
           >
             <textarea
               className={`text-2xl h-12 w-auto  font-bold text-card-foreground resize-none  ${fontCombination.font1.font.className}`}
-            >
-              {fontCombination.font1.name}
-            </textarea>
+              defaultValue={fontCombination.font1.name}
+            />
+            {/* {fontCombination.font1.name} */}
             <textarea
               className={`opacity-90 h-12 text-smtext-card-foreground resize-none  ${fontCombination.font1.font.className} ${fontCombination.font2.font.className} `}
-            >
-              {fontCombination.font2.name}
-            </textarea>
+              defaultValue={fontCombination.font2.name}
+            />
+            {/* {fontCombination.font2.name} */}
+            {/* </textarea> */}
             <Link
               href={fontCombination.example_website}
               className={`underline `}

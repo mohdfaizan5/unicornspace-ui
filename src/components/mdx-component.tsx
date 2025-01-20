@@ -15,6 +15,9 @@ import WorkWithUs from "./work-with-us";
 import reactNodeToString from "react-node-to-string";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Copy, Link2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import H2WithLinkCopy from "./h2-with-link-copy";
 
 type componentsProps = {
   className: string;
@@ -33,20 +36,22 @@ const extractTextContent = (node: any): string => {
   }
   return "";
 };
+
 const components = {
   h1: ({ className, ...props }) => (
     <h1
       className={cn(
-        "mt-2 scroll-m-20 text-4xl font-bold tracking-tight",
+        "mt-4 scroll-m-20 text-4xl font-bold tracking-tight",
         className
       )}
       {...props}
     />
   ),
+  // h2: H2WithLinkCopy,
   h2: ({ className, ...props }) => (
     <h2
       className={cn(
-        "mt-10 scroll-m-20  text-3xl font-semibold tracking-tight first:mt-0s",
+        "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight tight ",
         className
       )}
       {...props}
@@ -90,6 +95,7 @@ const components = {
   ),
   a: ({ className, ...props }) => (
     <a
+      target="_blank"
       className={cn("font-medium underline underline-offset-4", className)}
       {...props}
     />
@@ -128,7 +134,7 @@ const components = {
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      className={cn("rounded-2xl overflow-hidden border", className)}
+      className={cn("mt-4 rounded-2xl overflow-hidden border", className)}
       alt={alt}
       {...props}
     />

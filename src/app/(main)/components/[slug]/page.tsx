@@ -1,18 +1,16 @@
 import ComponentPreview from "@/components/component-preview";
 import { Mdx } from "@/components/mdx-component";
+import { ParamsAsSlug } from "@/types";
 import { allComponents } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
-const getGuideFromParams = async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) => {
+const getGuideFromParams = async ({ slug }: { slug: string }) => {
   // console.log("✅⚡from getGuideFromParams");
-  let { slug } = await params;
 
-  slug = `/components/${slug.toString().split(",").join("/")}`;
-  const component = allComponents.find((component) => component.slug === slug);
+  const parsedSlug = `/components/${slug.toString().split(",").join("/")}`;
+  const component = allComponents.find(
+    (component) => component.slug === parsedSlug
+  );
   if (!component) {
     return null;
   }
@@ -30,12 +28,9 @@ const getGuideFromParams = async ({
 //   });
 // }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const component = await getGuideFromParams({ params });
+export async function generateMetadata({ params }: { params: ParamsAsSlug }) {
+  const slug = (await params).slug;
+  const component = await getGuideFromParams({ slug });
   if (!component) {
     return {
       title: "Component not found",
@@ -49,12 +44,10 @@ export async function generateMetadata({
   };
 }
 
-const ComponentPage = async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) => {
-  const guide = await getGuideFromParams({ params });
+const ComponentPage = async ({ params }: { params: ParamsAsSlug }) => {
+  const slug = (await params).slug;
+
+  const guide = await getGuideFromParams({ slug });
   if (!guide) {
     return notFound();
   }

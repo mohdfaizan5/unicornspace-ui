@@ -2,32 +2,36 @@
 title: Other stuff
 order: 11
 isPublished: true
-description: The hero section is the first section of a page and is used to introduce the page content
+description: This is a collection of other components and code snippets that are very useful in your project.
 image: /images/faq.png
 ---
 
-### TextAppearOnScroll
-
+### Text Appear On Scroll
+It is a very interactive way which will hook the user to read the entire message.
 <ComponentPreview name={"TextAppearOnScroll"} scale={0.6} />
-### News-Letters-Forms
 
+### Simple News-Letters-Form
+This section helps collecting the emails for newsletter or early signups with a clear and concise message.
 <ComponentPreview name={"NewsLettersForm"} scale={0.6} />
-### News-Letters-Forms2
 
+### News-Letters-Form
+A clean newsletter form section with a compelling heading, brief description, and an input field for email subscription. Perfect for building your mailing list and staying connected with your audience.
 <ComponentPreview name={"NewsLettersForm2"} scale={0.6} />
-### Profile
 
+### Profile
+A profile section featuring a clear headshot, concise bio, key details about the user or product, and social links for easy connection. Perfect for building trust and showcasing personality or brand identity.
 <ComponentPreview name={"Profile"} scale={0.6} />
 
-## NewsLetter1
-
-The news letter is the section you let your audience to give a idea of what does the contain.
-
+## NewsLetter
+A newsletter section with a catchy headline, a brief description, and an email subscription form. Perfect for engaging users and growing your mailing list effortlessly.
 <ComponentPreview name={"NewsLetter1"} />
 
 ## Cards
-
+A versatile card section featuring structured layouts with an image, heading, description, and optional buttons. Perfect for displaying information or content in a clean and organized format.
 <ComponentPreview name={"Card1"} />
+
+## Typography
+This is very useful snippet to create typography for your project and reuse consistent typography.
 
 ```css:typography.css
 @tailwind base;
@@ -52,6 +56,7 @@ The news letter is the section you let your audience to give a idea of what does
 ```
 
 ## Shapes for easy access and icons
+This is a very useful snippet to create shapes and icons for your project and use them in different places.
 
 ```tsx:/components/shapes.tsx
 import { cn } from "@/lib/utils";
@@ -70,5 +75,85 @@ export const Shapes = {
     </svg>
   ),
 };
+
+```
+
+## A dynamic logo with customizations
+This logo is made to be customized with different props and can be used in different places with different styles.
+
+```tsx:/components/logo.tsx
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { Badge } from "./ui/badge";
+
+const Logo = ({
+  full = false,
+  width = 100,
+  height = 100,
+  link = true,
+  className,
+  textClassName,
+  isBeta = false,
+}: {
+  full?: boolean;
+  link?: boolean;
+  isBeta?: boolean;
+  width?: number;
+  height?: number;
+  className?: string;
+  textClassName?: string;
+}) => {
+  if (link)
+    return (
+      <Link
+        href={"/"}
+        className={cn("flex flex-col items-center justify-center", className)}
+      >
+        <Image
+          src={"/logos/logo-black-256x256.png"}
+          width={30}
+          height={30}
+          // alt="Unicorn Space UI logo"
+          alt=""
+          className="dark:hidden block"
+        />
+        <Image
+          src={"/logos/logo-white-256x256.png"}
+          width={30}
+          height={30}
+          alt=""
+          className="hidden dark:block"
+        />
+
+        {full && (
+          <h3 className={cn("font-medium text-2xl", textClassName)}>
+            UnicornSpaceUI
+          </h3>
+        )}
+      </Link>
+    );
+  else
+    return (
+      <div
+        className={cn("flex flex-col items-center justify-center", className)}
+      >
+        <Image
+          src={"/assets/logo-base-256x256.png"}
+          width={width}
+          height={height}
+          alt="logo"
+        />
+        {full && <h2 className="font-medium text-2xl">FreelanceFlow</h2>}
+        {isBeta && (
+          <Badge variant={"secondary"} className="scale-[80%]">
+            Beta
+          </Badge>
+        )}
+      </div>
+    );
+};
+
+export default Logo;
 
 ```

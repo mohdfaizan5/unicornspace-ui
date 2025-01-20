@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Poppins, Passion_One } from "next/font/google";
+import { Poppins, Passion_One, Inter } from "next/font/google";
 import Navbar from "@/components/navbar";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
@@ -8,7 +8,12 @@ import "@/styles/globals.css";
 import "@/styles/general.css";
 import BasicFooter from "@/registry/components/footer/basic-footer";
 
-const inter = Poppins({
+const inter = Inter({
+  weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--inter",
+});
+const poppins = Poppins({
   weight: ["400", "200"],
   subsets: ["latin"],
   variable: "--popins",
@@ -21,7 +26,8 @@ const passion = Passion_One({
 
 export const metadata: Metadata = {
   title: "UnicornSpaceUI",
-  description: "A React opensource UI library made for Startups and SAAS companies to boost their development process",
+  description:
+    "A React opensource UI library made for Startups and SAAS companies to boost their development process",
 };
 /*
 1. A opensource UI copy-paste library for Nextjs EcoSystem
@@ -31,7 +37,7 @@ opensource, UI,  library, Nextjs, Startups, SAAS, Design.
 2. A React opensource UI library made for Startups and SAAS.
 
 
-*/ 
+*/
 
 export default function RootLayout({
   children,

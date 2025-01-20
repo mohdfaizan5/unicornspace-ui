@@ -7,23 +7,33 @@ thumbnail: Razorpay guide.png
 author: Faizan
 ---
 
-# Intro
+## Intro
 
-# How it works
+We're going to implement Razorpay API for payments in your Nextjs 15 project. Razorpay is a payment gateway that allows you to accept payments from customers. It is a popular payment gateway in India and is used by many businesses to accept payments online. In this guide, we'll walk you through the process of integrating Razorpay API into your Nextjs 15 project.
+
+## How it works
 
 <img src="https://razorpay.com/docs/build/browser/assets/images/payment-flow-pg.jpg" />
 
 # Steps
 
+### STEP 1 : Installation and Setup
 
-1. Create a Razorpay account and get your API keys.
+Create a Razorpay account and get your API keys. And install the Razorpay package in your project.
 
 ```bash
-npm i razorpay
+pnpm i razorpay
 ```
 
+### Step 2 : Frontend Implementation
 
-1. create a file that interacts with client side code in `@/src/components/checkout-razorpay.tsx`
+create a file that interacts with client side code in to initiate the payment process.
+We've made sure for
+
+- creating an order
+- verifying the payment
+- handling errors and giving back the feedback to user as a toast
+- redirecting the user to a success page after successful payment
 
 ```ts:@/src/components/checkout-razorpay.tsx
 "use client";
@@ -71,6 +81,7 @@ const CheckoutWithRazorpay: React.FC = () => {
     }
   };
 
+  // verify the payment with the server
   const verifyPayment = async (data: VerificationData): Promise<boolean> => {
     try {
       const response = await fetch("/api/verify", {
@@ -92,6 +103,7 @@ const CheckoutWithRazorpay: React.FC = () => {
     }
   };
 
+  // take in amound and handle the payment process
   const handlePayment = async ({ amount }: { amount: number }) => {
     setLoading(true);
 
@@ -151,7 +163,7 @@ const CheckoutWithRazorpay: React.FC = () => {
 
   return (
     <>
-    // this file will help you create the popup for payments
+    {%this file will help you create the popup for payments%}
       <Script
         id="razorpay-checkout-js"
         src="https://checkout.razorpay.com/v1/checkout.js"
@@ -171,8 +183,16 @@ const CheckoutWithRazorpay: React.FC = () => {
 export default CheckoutWithRazorpay;
 ```
 
+### Step 3 : Backend Implementation (API Routes)
 
-2. serverside code, create a API route in `@/src/app/api/verify/route.ts`
+We're writing serverside code to interact with Razorpay backend to process payments. Create the files in `@/src/app/api/verify/route.ts` and `@/src/app/api/order/route.ts` to handle the payment verification and order creation.
+
+The below code basically does the following:
+
+- Verify the order and payment signature with your Razorpay API
+- this will help you to verify the payment and create the order
+
+> NOTE: Make sure the STEP 3 is implemented in backend only as it contains sensitive information and should not be exposed to the client.
 
 ```ts:@/src/app/api/verify/route.ts
 import { NextRequest, NextResponse } from "next/server";
@@ -213,7 +233,7 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-3. serverside code, create a API route in `@/src/app/api/order/route.ts`
+Code to that actually creates the order in Razorpay backend.
 
 ```ts:@/src/app/api/order/route.ts
 import Razorpay from "razorpay";
@@ -241,10 +261,11 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-4. create a `.env` file in the root of your project
+### Step 4 : Environment Variables
+
+create a `.env` file in the root of your project and add the following environment variables. You'll basically recieve these keys from your Razorpay dashboard.
 
 ```env:.env
 RAZORPAY_KEY_ID=""
 RAZORPAY_KEY_SECRET=""
 ```
-
