@@ -37,7 +37,7 @@ if (!user) redirect("/login");
 
 # Implementing AuthJs in your project
 
-You'll have a fully working authentication system in your Next.js application by following the steps below. It contains login, register, and logout functionality. And page like login
+You'll have a fully working authentication system in your Next.js application by following the steps below. It contains login, signup, and logout functionality. And page like login
 
 ## Pre-requisites
 
@@ -73,9 +73,9 @@ It contains how the overview of how the code is formatted in the project.
   |   └── (auth)
   |         ├── layout.tsx
   |         ├── /login/page.tsx
-  |         └──/register/page.tsx
+  |         └──/signup/page.tsx
   ├── components
-  |   ├── register-form.tsx
+  |   ├── signup-form.tsx
   |   └── login-form.tsx
   ├── types
   |   └── index.ts
@@ -180,7 +180,7 @@ This is where you are setting the routes that you want to protect. You can add t
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
-const publicRoutes = ["/", "/login", "/register"]; // Add your public routes here
+const publicRoutes = ["/", "/login", "/signup"]; // Add your public routes here
 
 export default auth((req) => {
   if (!req.auth) {
@@ -205,11 +205,11 @@ import { handlers } from "@/lib/auth"; // Referring to the auth.ts we just creat
 export const { GET, POST } = handlers;
 ```
 
-### Layout for login and register UI.
+### Layout for login and signup UI.
 
 Now we're working on the UI to expose to the user. This is UI is further recommended to modify based on your styles.
 
-> (Optional) Create this inside `login` or `signin` folder. So that you can go on that route to enter your login credentials. Use this component inside `page.tsx`.
+> (Optional) Create this inside `login` or `signup` folder. So that you can go on that route to enter your login credentials. Use this component inside `page.tsx`.
 
 ```tsx:app/(auth)/layout.tsx
 import React, { ReactNode } from "react";
@@ -252,7 +252,7 @@ export default layout;
 This page is make sures if you're authenticated then not redirect you to main app (protected route or desired route) or if you're not then lets to login by filling the form.
 
 ```tsx:app/(auth)/login/page.tsx
-import LoginForm from "@/components/signin-form";
+import LoginForm from "@/components/login-form";
 import React from "react";
 import { redirect } from "next/navigation";
 
@@ -295,7 +295,7 @@ import Link from "next/link";
 import { loginFormSchema } from "@/types/index";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { signInAction } from "@/actions/auth.action";
+import { loginAction } from "@/actions/auth.action";
 import { Input } from "./ui/input";
 import { LoaderCircleIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -316,7 +316,7 @@ const LoginForm = ({ className }: { className?: string }) => {
     setLoading(true);
     console.log(values);
     try {
-      const result = await signInAction(values);
+      const result = await loginAction(values);
       if (result.success) {
         toast.success("Login Success");
         router.push("/app");
@@ -393,7 +393,7 @@ const LoginForm = ({ className }: { className?: string }) => {
 
               <div className="text-center">
                 <Link
-                  href="/register"
+                  href="/signup"
 
                   className="underline text-primary text-sm hover:text-primary/80 transition-colors"
                 >
@@ -411,14 +411,14 @@ const LoginForm = ({ className }: { className?: string }) => {
 export default LoginForm;
 ```
 
-### Register page
+### Signup page
 
-This page is to /register route which will help users to create a new account and if the user is already authenticated, then it redirects the user to the main app ('/app' in this case)
+This page is to /signup route which will help users to create a new account and if the user is already authenticated, then it redirects the user to the main app ('/app' in this case)
 
-```tsx:app/(auth)/register/page.tsx
+```tsx:app/(auth)/signup/page.tsx
 import Logo from "@/components/logo";
 import { Shapes } from "@/components/shapes";
-import RegisterFormfrom "@/components/login-form";
+import SignUpForm "@/components/login-form";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -428,7 +428,7 @@ const page = async () => {
   if (session?.user) redirect("/app");
   return (
     <div className="">
-      <RegisterForm/>
+      <SignUpForm/>
     </div>
   );
 };
@@ -437,11 +437,11 @@ export default page;
 
 ```
 
-### RegisterForm logic
+### SignUpForm logic
 
-This is the core logic of how register form is handled, it has typesafety, form validations, error handling (giving feedback for yours), the backend is the server actions handling custom logic
+This is the core logic of how signup form is handled, it has typesafety, form validations, error handling (giving feedback for yours), the backend is the server actions handling custom logic
 
-```tsx:register-form.tsx
+```tsx:signup-form.tsx
 "use client";
 
 import React from "react";
@@ -465,7 +465,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signUpAction } from "@/actions/auth.action";
 
-const RegisterForm= () => {
+const SignUpForm= () => {
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -591,13 +591,13 @@ const RegisterForm= () => {
                 {loading ? (
                   <LoaderCircleIcon className="animate-spin" />
                 ) : (
-                  "Register"
+                  "Sign up"
                 )}
               </Button>
 
               <div className="text-center">
                 <Link
-                  href="/signin"
+                  href="/login"
                   className="text-sm text-primary hover:opacity-80 transition-opacity"
                 >
                   Already have an account?
@@ -855,7 +855,7 @@ const signUpAction = async (data: z.infer<typeof signUpFormSchema>) => {
   }
 };
 
-const signInAction = async (data: z.infer<typeof loginFormSchema>) => {
+const loginAction = async (data: z.infer<typeof loginFormSchema>) => {
   try {
     const req = await signIn("credentials", { ...data, redirect: false });
     console.log(" from action", req);
@@ -889,7 +889,7 @@ const signInAction = async (data: z.infer<typeof loginFormSchema>) => {
 };
 
 const signOutAction = async () => {
-  console.log("signing out");
+  console.log("loging out");
   await signOut();
 };
 
@@ -903,7 +903,7 @@ const getUserDetails = async (email: string) => {
   return user;
 };
 
-export { signInAction, signOutAction, signUpAction, getUserDetails };
+export { loginAction, signOutAction, signUpAction, getUserDetails };
 ```
 
 #### PrismaClient

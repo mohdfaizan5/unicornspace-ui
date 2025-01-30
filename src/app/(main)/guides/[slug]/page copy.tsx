@@ -1,11 +1,52 @@
-import { Mdx } from "@/components/mdx-component";
-import { DashboardTableOfContents } from "@/components/toc";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { getTableOfContents } from "@/lib/toc";
-import { ParamsAsSlug } from "@/types";
-import { allGuides } from "contentlayer/generated";
-import Image from "next/image";
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Mdx } from "@/components/mdx-component";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { DashboardTableOfContents } from "@/components/toc";
+import { getTableOfContents } from "@/lib/toc";
+
+// Use dynamic import for content
+import { allGuides } from "contentlayer/generated";
+import { ParamsAsSlug } from "@/types";
+
+async function getGuideFromParams(slug: string) {
+  const fullSlug = `/guides/${slug}`;
+  const guide = allGuides.find((guide) => guide.slug === fullSlug);
+  return guide;
+}
+
+export async function generateMetadata({ params }: { params: ParamsAsSlug }) {
+  const slug = (await params).slug;
+
+  const guide = await getGuideFromParams(slug);
+
+  if (!guide) {
+    return {
+      title: "Guide not found",
+      description: "The requested guide could not be found.",
+    };
+  }
+
+  return {
+    title: guide.title,
+    description: guide.description,
+  };
+}
+export async function generateStaticParams() {
+  const slugs = allGuides
+    .filter((guide) => guide.isPublished)
+    .map((guide) => {
+      // Remove the leading "/guides/" and split the remaining path
+      // const slugParts = guide.slug.replace(/^\/guides\//, "").split("/");
+      const slugParts = `${guide.slug}`;
+      return {
+        // Return an object with the slug as an array
+        slug: slugParts,
+      };
+    });
+  console.log(slugs);
+  return slugs;
+}
 
 export default async function Page({ params }: { params: ParamsAsSlug }) {
   const slug = (await params).slug;
@@ -75,10 +116,4 @@ export default async function Page({ params }: { params: ParamsAsSlug }) {
       </div>
     </main>
   );
-}
-
-async function getGuideFromParams(slug: string) {
-  const fullSlug = `/guides/${slug}`;
-  const guide = allGuides.find((guide) => guide.slug === fullSlug);
-  return guide;
 }

@@ -1,23 +1,36 @@
+import ComponentPreview from "@/components/component-preview";
 import { Mdx } from "@/components/mdx-component";
 import { ParamsAsSlug } from "@/types";
-import { allComponents, allGuides } from "contentlayer/generated";
+import { allComponents } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
-export const generateStaticParams = async () => {
-  const allComponentSlugs = allComponents
-    .filter((component) => component.isPublished)
-    .map((guide) => guide.slug);
+const getGuideFromParams = async ({ slug }: { slug: string }) => {
+  // console.log("✅⚡from getGuideFromParams");
 
-  const parsed = allComponentSlugs.map((slug) => ({
-    slug: slug,
-  }));
-
-  return parsed;
+  const parsedSlug = `/components/${slug.split(",").join("/")}`;
+  const component = allComponents.find(
+    (component) => component.slug === parsedSlug
+  );
+  if (!component) {
+    return null;
+  }
+  return component;
 };
+
+// COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR
+// export async function generateStaticParams() {
+//   return allComponents.map((component) => {
+//     return {
+//       params: {
+//       slug: component.slug.split("/").join(","),
+//       },
+//     };
+//   });
+// }
 
 export async function generateMetadata({ params }: { params: ParamsAsSlug }) {
   const slug = (await params).slug;
-  const component = await getComponentData(slug);
+  const component = await getGuideFromParams({ slug });
   if (!component) {
     return {
       title: "Component not found",
@@ -31,13 +44,10 @@ export async function generateMetadata({ params }: { params: ParamsAsSlug }) {
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+const ComponentPage = async ({ params }: { params: ParamsAsSlug }) => {
   const slug = (await params).slug;
-  const guide = await getComponentData(slug);
+
+  const guide = await getGuideFromParams({ slug });
   if (!guide) {
     return notFound();
   }
@@ -57,8 +67,6 @@ export default async function Page({
       </div>
     </div>
   );
-}
-
-const getComponentData = async (slug: string) => {
-  return allComponents.find((guide) => guide.slug === `/components/${slug}`);
 };
+
+export default ComponentPage;
