@@ -262,6 +262,10 @@ interface MdxProps {
 
 export function Mdx({ code, className }: MdxProps) {
   const Component = useMDXComponent(code);
+  // const [config] = useConfig()
+  // const Component = useMDXComponent(code, {
+  //   style: config.style,
+  // })
 
   return (
     <div className={cn("mdx", className)}>

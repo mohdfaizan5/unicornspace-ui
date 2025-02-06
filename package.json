@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "npx tsc --noEmit",
-    "build:content": "contentlayer2 build"
+    "build:content": "contentlayer2 build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.3.1",
@@ -103,7 +104,8 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "dotenv": "^16.4.7",
     "eslint": "^8.57.1",
-    "eslint-config-next": "15.1.6",
+    "eslint-config-next": "15.0.3",
+    "husky": "^9.1.7",
     "postcss": "^8.4.49",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.16",

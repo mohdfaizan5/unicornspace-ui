@@ -72,7 +72,7 @@ export default function Testimonials6() {
               <div className="flex items-center gap-3">
                 <Avatar>
                   <AvatarImage
-                    src={`github.com/mohdfaizan5.png`}
+                    src={`https://github.com/mohdfaizan5.png`}
                   />
                   <AvatarFallback>{testimonial.author[0]}</AvatarFallback>
                 </Avatar>
