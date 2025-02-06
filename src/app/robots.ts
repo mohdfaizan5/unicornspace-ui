@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/_next/", "/public/", "/api/"],
       },
     ],
     sitemap: "https://ui.unicorn-space.com/sitemap.xml",

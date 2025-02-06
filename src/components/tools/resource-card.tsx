@@ -27,7 +27,7 @@ function ResourceCard({
 }: ResourceCardType) {
   return (
     <Link href={link} target="_blank">
-      <Card className="w-80 xl:w-[310px] hover:bg-zinc-200 hover:transition-all hover:delay-75 hover:duration-150 rounded-lg md:shadow-md group">
+      <Card className="w-80 xl:w-[310px] dark:hover:bg-zinc-900 hover:bg-zinc-200 hover:transition-all hover:delay-75 hover:duration-150 rounded-lg md:shadow-md group">
         <CardContent className=" p-6 flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full items-center">
             <h3 className="flex items-center gap-1 text-lg font-bold font-grotesk leading-6 mt-2 line-clamp-1 ">

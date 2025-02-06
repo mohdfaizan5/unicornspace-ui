@@ -13,7 +13,7 @@ import BackButton from "@/components/back-button";
 // }: {
 //   params: Promise<{ slug: string }>;
 // }) => {
-//   // console.log("✅⚡from getGuideFromParams");
+//   console.log("✅⚡from getGuideFromParams");
 //   let { slug } = await params;
 
 //   slug = `/components/${slug.toString().split(",").join("/")}`;

@@ -26,7 +26,7 @@ const ComponentPreview = ({
     return <div>Component not found</div>;
   }
 
-  console.log(typeof ComponentToRender.component);
+  // console.log(typeof ComponentToRender.component);
 
   return (
     <div className="relative my-4 z-10 flex flex-col space-y-2 overflow-auto">

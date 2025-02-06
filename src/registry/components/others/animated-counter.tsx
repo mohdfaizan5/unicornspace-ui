@@ -21,7 +21,7 @@ const AnimatedCounter = ({
   const ref = useRef<HTMLSpanElement>(null);
 
   // for animating only in view port and once
-  const inView = useInView(ref as React.RefObject<Element>, { once: true });
+  const inView = useInView(ref as React.RefObject<Element | null>, { once: true });
 
   useIsomorphicLayoutEffect(() => {
     const element = ref.current;

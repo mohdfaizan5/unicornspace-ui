@@ -7,6 +7,7 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "@/styles/globals.css";
 import "@/styles/general.css";
 import BasicFooter from "@/registry/components/footer/basic-footer";
+import Footer2 from "@/registry/components/footer/footer2";
 
 const inter = Inter({
   weight: ["400", "200", "100", "300", "500", "600", "700", "800", "900"],
@@ -28,6 +29,16 @@ export const metadata: Metadata = {
   title: "UnicornSpaceUI",
   description:
     "A React opensource UI library made for Startups and SAAS companies to boost their development process",
+  metadataBase: new URL("https://unicorn-space.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+    },
+  },
+  openGraph: {
+    images: "./opengraph-image.png",
+  },
 };
 /*
 1. A opensource UI copy-paste library for Nextjs EcoSystem
@@ -56,7 +67,8 @@ export default function RootLayout({
           <div className="relative flex min-h-screen flex-col antialiased mx-auto  max-w-[1560] bg-background">
             <Navbar />
             {children}
-            <BasicFooter />
+            <Footer2 />
+            
           </div>
         </ThemeProvider>
       </body>
