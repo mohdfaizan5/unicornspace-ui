@@ -5,8 +5,6 @@ import { allComponents } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 const getGuideFromParams = async ({ slug }: { slug: string }) => {
-  // console.log("✅⚡from getGuideFromParams");
-
   const parsedSlug = `/components/${slug.toString().split(",").join("/")}`;
   const component = allComponents.find(
     (component) => component.slug === parsedSlug
@@ -17,7 +15,7 @@ const getGuideFromParams = async ({ slug }: { slug: string }) => {
   return component;
 };
 
-// COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR
+// COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR (check finally)
 // export async function generateStaticParams() {
 //   return allComponents.map((component) => {
 //     return {

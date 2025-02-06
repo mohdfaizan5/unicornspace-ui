@@ -125,6 +125,8 @@ import { HeroSection10Code } from "./component-code/hero-sections/hero-section10
 import { Testimonials5Code } from "./component-code/testimonials/testimonials5Code";
 import { Testimonials6Code } from "./component-code/testimonials/testimonials6Code";
 import { AvatarListCode } from "./component-code/others/avatar-listCode";
+import CuisineSelector from "./components/others/cuisine-selector";
+import { CuisineSelectorCode } from "./component-code/others/cuisine-selectorCode";
 
 //
 const componentRegistry: RegistrySchema = {
@@ -322,6 +324,10 @@ const componentRegistry: RegistrySchema = {
 
   // Other
 
+  CuisineSelector: {
+    component: CuisineSelector,
+    code: CuisineSelectorCode,
+  },
   CallOutSection: {
     component: CallOutSection,
     code: CallOutCode,
@@ -353,14 +359,14 @@ const componentRegistry: RegistrySchema = {
 
   Card1: {
     component: BioCard,
-    code: "WIP",
+    code: "",
   },
 
   // News letter
 
   NewsLetter1: {
     component: NewsLetter1,
-    code: "WIP",
+    code: NewsLetter1Code,
   },
 };
 

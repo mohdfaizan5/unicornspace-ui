@@ -24,7 +24,7 @@ const Logo = ({
     return (
       <Link
         href={"/"}
-        className={cn("flex flex-col items-center justify-center", className)}
+        className={cn("flex items-center ", className)}
       >
         <Image
           src={"/logos/logo-black-256x256.png"}

@@ -10,7 +10,7 @@ const page = () => {
       return component;
     }
   });
-
+ 
   // console.log(filteredComponents);
   return (
     <div>

@@ -25,7 +25,7 @@ export async function generateMetadata(props: { params: ParamsAsSlug }) {
   const params = await props.params;
 
   const slug = params.slug;
-  console.log("🚀 ~ file: page.tsx ~ line 116 ~ generateMetadata ~ slug", slug);
+  // console.log("🚀 ~ file: page.tsx ~ line 116 ~ generateMetadata ~ slug", slug);
   const guide = await getGuideFromParams(slug);
 
   if (!guide) {

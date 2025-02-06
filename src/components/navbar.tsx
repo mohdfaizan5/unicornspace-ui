@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <header className="sticky right-0  top-0 z-50 w-full border-b border-border/40 bg-background/15 backdrop-blur supports-[backdrop-filter]:bg-background/8opacity-75  transition-all duration-300 px-6">
       <div className="flex h-14 max-w-screen-2xl items-center justify-between ">
-        <Logo />
+        <Logo full textClassName="text-lg" />
         <nav className="mix-blend-difference hidden md:flex text-[14px] items-center gap-5">
           <Link
             className={cn(
