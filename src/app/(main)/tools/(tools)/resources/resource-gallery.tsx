@@ -6,6 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { Resource } from "@/types";
 import ResourceCard from "@/components/tools/resource-card";
+import { SlScreenDesktop } from "react-icons/sl";
+import { AiOutlineFontSize } from "react-icons/ai";
+import { BsTools } from "react-icons/bs";
+import { FcIdea } from "react-icons/fc";
+import { FaIcons } from "react-icons/fa";
+import { GrResources } from "react-icons/gr";
 
 export default function ResourceGallery({ data }: { data: Resource[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -21,7 +27,12 @@ export default function ResourceGallery({ data }: { data: Resource[] }) {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Resource Gallery</h1>
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold ">Resource Gallery </h1>
+        <p className="text-gray-500">
+          {data.length}+ resources found.{" "}
+        </p>
+      </div>
 
       <div className="flex flex-wrap gap-x-2 gap-y-1 mb-6">
         <Button
@@ -38,11 +49,15 @@ export default function ResourceGallery({ data }: { data: Resource[] }) {
             onClick={() => setSelectedCategory(category)}
             size={"sm"}
           >
+            <span className="mr-1">
+              {category == "UI" ? <SlScreenDesktop /> : category == "Typography" ? <AiOutlineFontSize /> : category == "assets" ? <AiOutlineFontSize /> : category == "icons" ? <FaIcons /> : category == "tools" ? <BsTools /> : category == "inspiration" ? <FcIdea /> : category == "resources" ? <GrResources /> : ""}
+            </span>
             {category}
+            <Badge variant={selectedCategory === category ? "default" : "outline"} className="px-1.5 ml-1">{data.filter((r) => r.category === category).length}</Badge>
           </Button>
         ))}
       </div>
-      <main className="grid grid-cols-1 gap-2  sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:gap-4 mx-auto">
+      <main className="grid grid-cols-1 gap-2 max-w-[61rem]  sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:gap-4 ">
         {filteredResources.map((resource, i) => (
           <ResourceCard
             key={i}

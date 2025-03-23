@@ -21,7 +21,7 @@ const HeroSection7 = () => {
           </span>
 
           <div className="flex w-full flex-col items-center justify-center sm:w-2/3">
-            <Link className="relative z-10 w-full" href="/auth/signin">
+            <Link className="relative z-10 w-full" href="#">
               <Button className="flex w-full flex-row items-center justify-center gap-2 rounded-2xl dark:bg-white  bg-black px-8 py-2.5 text-base  transition sm:px-16 sm:py-6 sm:text-lg">
                 Start deploying - its free
                 <span className="size-5 flex items-center justify-center dark:bg-black bg-white dark:text-white text-black rounded-full">

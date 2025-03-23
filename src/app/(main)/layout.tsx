@@ -3,7 +3,6 @@ import { Navigation } from "@/components/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { guidesSidebarData } from "@/config/guides";
 import { navigation } from "@/config/navbar";
-import { allComponents } from "contentlayer/generated";
 import Image from "next/image";
 
 export default function RootLayout({
@@ -26,7 +25,7 @@ export default function RootLayout({
         width={980}
         className="fixed z-0 pointer-events-none -rotate-90 bottom-0 md:top-32 dark:opacity-60 -right-16 md:-right-32"
         height={600}
-        alt=""
+        alt="a gradient effect for website aesthetics"
       />
     </div>
   );

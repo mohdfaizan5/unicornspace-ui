@@ -1,0 +1,112 @@
+---
+title: Other stuff
+order: 11
+isPublished: true
+description: This is a collection of other components and code snippets that are very useful in your project.
+image: /images/faq.png
+---
+
+### Text Appear On Scroll
+
+It is a very interactive way which will hook the user to read the entire message.
+
+<ComponentPreview name={"TextAppearOnScroll"} scale={0.6} />
+
+## BadgeShine
+
+```tsx
+const BadgeShine = ({ children }: any) => {
+  return (
+    <span className="inline-flex h-full animate-background-shine cursor-pointer items-center justify-center rounded-full border border-red-700 bg-[linear-gradient(110deg,#000,45%,#33b540,55%,#000)] bg-[length:250%_100%] px-2 py-0 text-xs font-medium text-gray-300">
+      {children}
+    </span>
+  );
+};
+
+export default BadgeShine;
+```
+
+```tsx
+keyframes: {
+        "background-shine": {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+      },
+      animation: {
+      "background-shine": "background-shine 2s linear infinite",
+      },
+
+```
+
+## Fill Container Example ...
+
+```tsx
+{
+  /* Fill Container Example */
+}
+<section className="space-y-4">
+  <h2 className="text-2xl font-bold">2. Fill Container</h2>
+  <div className="relative w-[300px] h-[200px]">
+    <Image
+      src="/placeholder.svg"
+      alt="Fill example"
+      fill
+      className="object-cover rounded-lg"
+    />
+  </div>
+  <p className="text-sm text-muted-foreground">
+    Image filling a fixed container with object-cover
+  </p>
+</section>;
+
+{
+  /* Responsive Width Example */
+}
+<section className="space-y-4">
+  <h2 className="text-2xl font-bold">3. Responsive Width</h2>
+  <div className="w-full max-w-2xl">
+    <Image
+      src="/placeholder.svg"
+      alt="Responsive example"
+      width={800}
+      height={400}
+      className="w-full h-auto rounded-lg"
+    />
+  </div>
+  <p className="text-sm text-muted-foreground">
+    Image that responds to container width while maintaining aspect ratio
+  </p>
+</section>;
+```
+
+## Grid of Cards with AspectRatio
+
+```tsx
+<section className="space-y-4">
+  <h2 className="text-2xl font-bold">5. Grid of Image Cards</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {[1, 2, 3].map((i) => (
+      <Card key={i}>
+        <CardContent className="p-2">
+          <AspectRatio ratio={4 / 3}>
+            <Image
+              src="/placeholder.svg"
+              alt={`Card image ${i}`}
+              fill
+              className="rounded-lg object-cover"
+            />
+          </AspectRatio>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+  <p className="text-sm text-muted-foreground">
+    Grid of cards with 4:3 aspect ratio images
+  </p>
+</section>
+```

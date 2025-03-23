@@ -1,6 +1,8 @@
 import { Mdx } from "@/components/mdx-component";
 import { ParamsAsSlug } from "@/types";
-import { allComponents, allGuides } from "contentlayer/generated";
+import { MDXContent } from "@content-collections/mdx/react";
+import { allComponents, allGuides } from "content-collections";
+// import { allComponents, allGuides } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 const getGuideFromParams = async ({ slug }: { slug: string }) => {
@@ -14,16 +16,17 @@ const getGuideFromParams = async ({ slug }: { slug: string }) => {
   return component;
 };
 
-// COMMENTING BELOW TO SEE WHY IT'S CREATING 500 ERROR (check finally)
-// export async function generateStaticParams() {
-//   return allComponents.map((component) => {
-//     return {
-//       params: {
-//       slug: component.slug.split("/").join(","),
-//       },
-//     };
-//   });
-// }
+export async function generateStaticParams() {
+  const allSlugs = allComponents.map((component) => {
+    return {
+      params: {
+        slug: component.slug.split("/").join(","),
+      },
+    };
+  });
+  // console.log("🚀 ~ file: page.tsx ~ line 64 ~ generateStaticParams ~ allSlugs", allSlugs)
+  return allSlugs;
+}
 
 export async function generateMetadata({ params }: { params: ParamsAsSlug }) {
   const slug = (await params).slug;
@@ -34,9 +37,18 @@ export async function generateMetadata({ params }: { params: ParamsAsSlug }) {
       description: "Component not found",
     };
   }
+  if (component.title === "getting-started")
+    return {
+      title: {
+        absolute: component.title,
+      },
+
+      description: component.description,
+    };
 
   return {
     title: component.title,
+
     description: component.description,
   };
 }
@@ -48,6 +60,9 @@ export default async function Page({
 }) {
   const slug = (await params).slug;
   const guide = await getComponentData(slug);
+  // console.log("🚀 ~ file: page.tsx ~ line 116 ~ Page ~ guide");
+  // console.log(allComponents.map((guide) => guide.slug));
+
   if (!guide) {
     return notFound();
   }
@@ -63,12 +78,12 @@ export default async function Page({
             </p>
           )}
         </div>
-        <Mdx code={guide.body.code} />
+        <Mdx code={guide.mdx} />
       </div>
     </div>
   );
 }
 
 const getComponentData = async (slug: string) => {
-  return allComponents.find((guide) => guide.slug === `/components/${slug}`);
+  return allComponents.find((guide) => guide.slug === `${slug}`);
 };

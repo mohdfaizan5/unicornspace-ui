@@ -6,9 +6,9 @@ const page = () => {
     <main className="flex items-center flex-col my-10 gap-16">
       <ShowcaseContainer />
       <section className="flex flex-col items-center justify-center gap-10">
-        <h1 className="text-2xl  font-semibold  max-w-[480px] text-center ">
+        <h2 className="text-2xl  font-semibold  max-w-[480px] text-center ">
           Meet thousands of beautiful websites built with Next.js by Vercel
-        </h1>
+        </h2>
         <div className="flex gap-10 items-center justify-center">
           <div className="cursor-pointer hover:bg-black hover:text-white hover:p-2  hover:rounded-lg transition-all duration-300 ease-in-out">
             ALL

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <div>
+      <h1 className="text-4xl font-bold text-center">Color Converter</h1>
       {/* <EnhancedUniversalColorConverter /> */}
       <ColorConverter />
     </div>

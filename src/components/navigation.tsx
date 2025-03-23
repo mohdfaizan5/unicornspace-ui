@@ -1,10 +1,13 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
 import { NavigationProps } from "@/config/navbar";
 import { Badge } from "./ui/badge";
-
+import { AiFillBackward } from "react-icons/ai";
+import { NotebookText, Play, Wrench } from "lucide-react";
+import { FileIcon, } from "@radix-ui/react-icons";
 export function Navigation({
   navigation,
   className,
@@ -24,7 +27,14 @@ export function Navigation({
             {section.href ? (
               <Link href={section.href}>
                 <h5 className="font-display font-medium text-black dark:text-white ">
-                  {section.title}
+                  {section.href == "/components" ? <FileIcon className="inline size-4" />
+                    : section.href == "/guides" ? <NotebookText className="inline size-4" />
+                      : section.href == "/playground" ? <Play className="inline size-4" />
+                        : section.href == "/tools" ? <Wrench className="inline size-4" />
+                          : null}
+                  <span className="ml-[6px]">
+                    {section.title}
+                  </span>
                 </h5>
               </Link>
             ) : (

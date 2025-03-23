@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div className="max-w-4xl mx-auto px-5 mt-5 space-y-10">
       <section>
-        <h2>Changelog</h2>
+        <h1>Changelog</h1>
         <p>Latest updates and announcements.</p>
       </section>
 

@@ -21,7 +21,9 @@ export interface Resource {
     | "inspiration"
     | "assets"
     | "other"
+    | "nextjs"
     | "icons";
+
   description: string;
   link: string;
   title: string;

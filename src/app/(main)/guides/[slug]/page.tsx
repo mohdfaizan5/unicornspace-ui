@@ -3,7 +3,7 @@ import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
 import { ParamsAsSlug } from "@/types";
-import { allGuides } from "contentlayer/generated";
+import { allGuides } from "content-collections";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -38,28 +38,32 @@ export async function generateMetadata(props: { params: ParamsAsSlug }) {
     description: guide.description,
   };
 }
-// export async function generateStaticParams() {
-//   return allGuides.map((guide) => {
-//     // Remove the leading "/guides/" and split the remaining path
-//     const slugParts = guide.slug.replace(/^\/guides\//, "").split("/");
+export async function generateStaticParams() {
+  const allSlugs = allGuides.filter(guide => guide.isPublished).map((guide) => {
 
-//     return {
-//       // Return an object with the slug as an array
-//       slug: slugParts,
-//     };
-//   });
-// }
+    // console.log(guide.slug)
+    // Return an object with the slug as an array
+    return {
+      // Remove the leading "/guides/" and split the remaining path
+      slug: guide.slug.split("/").join(","),
+    };
+  });
+  // console.log("🚀 ~ file: page.tsx ~ line 116 ~ generateStaticParams ~ allSlugs", allSlugs);
+
+  return allSlugs
+}
 
 export default async function Page(props: { params: ParamsAsSlug }) {
   const params = await props.params;
   const slug = params.slug;
   const guide = await getGuideFromParams(slug);
+  // console.log("🚀 ~ file: page.tsx ~ line 116 ~ Page ~ guide", guide);
 
   if (!guide) {
     notFound();
   }
 
-  const toc = await getTableOfContents(guide.body.raw);
+  const toc = await getTableOfContents(guide.mdx);
 
   return (
     <main className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
@@ -105,7 +109,7 @@ export default async function Page(props: { params: ParamsAsSlug }) {
 
           {/* Main Content */}
           <Mdx
-            code={guide.body.code}
+            code={guide.mdx}
             className="w-full prose dark:prose-invert max-w-none"
           />
         </div>
@@ -122,7 +126,8 @@ export default async function Page(props: { params: ParamsAsSlug }) {
 }
 
 async function getGuideFromParams(slug: string) {
-  const fullSlug = `/guides/${slug}`;
+  const fullSlug = `${slug}`;
   const guide = allGuides.find((guide) => guide.slug === fullSlug);
+  // console.log("🚀 all guides", allGuides.map((guide) => guide.slug));
   return guide;
 }
