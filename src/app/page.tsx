@@ -72,7 +72,7 @@ const page = () => {
           width={1920}
           className="absolute w-screen bottom-10 dark:opacity-60 right-0"
           height={600}
-          alt=""
+          alt="a gradient effect for website aesthetics"
         />
       </section>
     </div>

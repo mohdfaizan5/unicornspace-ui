@@ -44,7 +44,7 @@ const ComponentPreview = ({
           >
             Code
           </TabsTrigger>
-          <Link href={`/blocks/${name}`} className="ml-2">
+          <Link href={`/preview/${name}`} className="ml-2">
             <Button variant={"ghost"} className="group flex items-center gap-2">
               See full component{" "}
               <MoveRight

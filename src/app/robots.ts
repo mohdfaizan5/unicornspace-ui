@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/_next/", "/public/", "/api/"],
+        allow: ["/", "/guides/", "/blogs/", "/components/", "/preview/"],
+        disallow: ["/_next/", "/public/", "/api/", '/all-you-need-to-know-about-fonts', "/all-you-need-to-know-about-seo-for-developers"],
       },
     ],
     sitemap: "https://ui.unicorn-space.com/sitemap.xml",

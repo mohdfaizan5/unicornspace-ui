@@ -37,7 +37,7 @@ const extractTextContent = (node: any): string => {
   return "";
 };
 
-const components = {
+export const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(

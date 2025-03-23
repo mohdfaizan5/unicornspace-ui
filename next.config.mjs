@@ -1,29 +1,22 @@
-import { withContentlayer } from "next-contentlayer2";
+import { withContentCollections } from "@content-collections/next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   reactStrictMode: true,
-  // swcMinify: true,
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'assets.awwwards.com',
+        protocol: "https",
+        hostname: "assets.awwwards.com",
       },
       {
-        protocol: 'https',
-        hostname: '**'
-      }
+        protocol: "https",
+        hostname: "**",
+      },
     ],
   },
-  // experimental: {
-  //   turbo: {
-
-  //   }
-  // }
-
 };
 
-
-export default withContentlayer(nextConfig);
+export default withContentCollections(nextConfig);
+// export default nextConfig;

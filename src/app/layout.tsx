@@ -29,13 +29,13 @@ export const metadata: Metadata = {
   title: "UnicornSpaceUI",
   description:
     "A React opensource UI library made for Startups and SAAS companies to boost their development process",
-  metadataBase: new URL("https://unicorn-space.com"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-    },
-  },
+  // metadataBase: new URL("https://unicorn-space.com"),
+  // alternates: {
+  //   // canonical: "/",
+  //   languages: {
+  //     "en-US": "/en-US",
+  //   },
+  // },
   openGraph: {
     images: "./opengraph-image.png",
   },
@@ -68,7 +68,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer2 />
-            
+
           </div>
         </ThemeProvider>
       </body>

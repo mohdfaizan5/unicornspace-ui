@@ -20,7 +20,7 @@ const Footer2 = () => {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/components"
@@ -59,11 +59,11 @@ const Footer2 = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Tools</h3>
 
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href={"/tools/fonts-in-use"}
-                  className="text-gray-400 hover:scale-105 transition"
+                  className="text-gray-400 hover:scale-105 transition text-sm"
                 >
                   Fonts in Use
                 </Link>
@@ -97,9 +97,9 @@ const Footer2 = () => {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm">
               <li className="flex items-center">
-                <Github className="mr-2 h-4 w-4" />
+                <Github className="mr-2 size-5" />
                 <Link
                   href="https://github.com/mohdfaizan5/unicornspace-ui"
                   className="text-gray-400 hover:scale-105 transition"
@@ -109,7 +109,7 @@ const Footer2 = () => {
                 </Link>
               </li>
               <li className="flex items-center">
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 size-5" />
                 <Link
                   href="mailto:faizan@unicorn-space.com"
                   className="text-gray-400 hover:scale-105 transition"
@@ -118,7 +118,7 @@ const Footer2 = () => {
                 </Link>
               </li>
               <li className="flex items-start">
-                <MapPin className="mr-2 h-4 w-4 mt-1" />
+                <MapPin className="mr-2 size-5 mt-1" />
                 <Link
                   href="#"
                   target="_blank"
@@ -142,9 +142,7 @@ const Footer2 = () => {
             <Logo className="ml-2 mr-1" />
             <span className="font-semibold">UnicornSpace</span>
           </Link>
-          {/* <p className="text-sm text-gray-400">
-            &copy; 2024 THE WOOD DECOR. All Rights Reserved.
-          </p> */}
+
         </div>
       </div>
     </footer>

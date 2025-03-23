@@ -8,6 +8,14 @@ import {
   Star,
 } from "lucide-react";
 import { Button } from "../ui/button";
+import { SlScreenDesktop } from "react-icons/sl";
+import { AiOutlineFontSize } from "react-icons/ai";
+import { BsTools } from "react-icons/bs";
+import { FcIdea } from "react-icons/fc";
+import { FaIcons } from "react-icons/fa";
+import { GrResources } from "react-icons/gr";
+import { cn } from "@/lib/utils";
+import { Icons } from "../icons";
 
 type ResourceCardType = {
   title: string;
@@ -27,15 +35,19 @@ function ResourceCard({
 }: ResourceCardType) {
   return (
     <Link href={link} target="_blank">
-      <Card className="w-80 xl:w-[310px] dark:hover:bg-zinc-900 hover:bg-zinc-200 hover:transition-all hover:delay-75 hover:duration-150 rounded-lg md:shadow-md group">
+      <Card className="w-80 border-[0.4px] pt-0 dark:border-zinc-700 border-zinc-100  xl:w-[310px] dark:hover:bg-zinc-900  bg-[#EFEEF0] dark:bg-[#222125] hover:bg-zinc-200 hover:transition-all hover:delay-75 hover:duration-150 rounded-lg md:shadow-md group">
         <CardContent className=" p-6 flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full items-center">
-            <h3 className="flex items-center gap-1 text-lg font-bold font-grotesk leading-6 mt-2 line-clamp-1 ">
-              {title}
+            <div className="flex items-start">
+
               {isFavorite && (
-                <Star className="text-amber-400 fill-amber-500" size={16} />
+                <Icons.star className=" size-4 mt-1 mr-1 " />
+                // <Star className="text-amber-400 fill-amber-500" size={16} />
               )}
-            </h3>
+              <h3 className="flex items-center gap-1 text-lg font-bold font-grotesk leading-6 line-clamp-1 ">
+                {title}
+              </h3>
+            </div>
 
             {/* <CircleArrowOutUpRight size={16}/> */}
           </div>
@@ -43,7 +55,10 @@ function ResourceCard({
             {description}
           </p>
           <div className="flex items-center justify-between w-full">
-            <Badge variant={"secondary"} className="text-[10px]">
+            <Badge variant={"secondary"} className={cn("text-[10px] dark:text-black", category == "UI" ? "bg-red-100" : category == "Typography" ? "bg-zinc-100" : category == "assets" ? "bg-orange-100" : category == "icons" ? "bg-indigo-100" : category == "tools" ? "bg-amber-100" : category == "inspiration" ? "bg-green-100" : category == "resources" ? "bg-cyan-100" : "dark:text-white")} >
+              <span className="mr-1">
+                {category == "UI" ? <SlScreenDesktop /> : category == "Typography" ? <AiOutlineFontSize /> : category == "assets" ? <AiOutlineFontSize /> : category == "icons" ? <FaIcons /> : category == "tools" ? <BsTools /> : category == "inspiration" ? <FcIdea /> : category == "resources" ? <GrResources /> : ""}
+              </span>
               {category}
             </Badge>
             <Button size={"sm"} className=" text-xs  border rounded-full">
@@ -63,14 +78,14 @@ function ResourceCard({
           {/* <CustomBtn1 /> */}
         </CardContent>
       </Card>
-    </Link>
+    </Link >
   );
 }
 
 const CustomBtn1 = () => {
   return (
     <button className="group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-neutral-950">
-      <div className="-rotate-45 transition duration-300 group-hover:rotate-0">
+      <div className="-rotate-45 transition duration-100 group-hover:rotate-0">
         <svg
           width="15"
           height="15"

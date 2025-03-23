@@ -1,57 +1,59 @@
 "use server";
-import ComponentPreview from "@/components/component-preview";
-import { Mdx } from "@/components/mdx-component";
-import { allComponents } from "contentlayer/generated";
 import componentRegistry from "@/registry";
 import { notFound } from "next/navigation";
 import { ImSpinner } from "react-icons/im";
 import React from "react";
 import BackButton from "@/components/back-button";
+import { allComponents } from "content-collections";
 
-// const getGuideFromParams = async ({
-//   params,
-// }: {
-//   params: Promise<{ slug: string }>;
-// }) => {
-//   console.log("✅⚡from getGuideFromParams");
-//   let { slug } = await params;
+const getGuideFromParams = async ({
+  params,
+}: {
+  params: Promise<{ block: string }>;
+}) => {
+  // console.log("✅⚡from getGuideFromParams");
+  let { block } = await params;
 
-//   slug = `/components/${slug.toString().split(",").join("/")}`;
-//   const component = allComponents.find((component) => component.slug === slug);
-//   if (!component) {
-//     return null;
-//   }
-//   return component;
-// };
+  block = `/components/${block.toString().split(",").join("/")}`;
+  const component = allComponents.find((component) => {
+    // console.log("✅⚡from getGuideFromParams", component.slug, block);
+    if (component.slug === block)
+      return component;
+  });
+  if (!component) {
+    return null;
+  }
+  return component;
+};
 
-// export async function generateStaticParams() {
-//   return allComponents.map((component) => {
-//     return {
-//       params: {
-//       slug: component.slug.split("/").join(","),
-//       },
-//     };
-//   });
-// }
+export async function generateStaticParams() {
+  return allComponents.map((component) => {
+    return {
+      params: {
+        slug: component.slug.split("/").join(","),
+      },
+    };
+  });
+}
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ slug: string }>;
-// }) {
-//   const component = await getGuideFromParams({ params });
-//   if (!component) {
-//     return {
-//       title: "Component not found",
-//       description: "Component not found",
-//     };
-//   }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ block: string }>;
+}) {
+  const component = await getGuideFromParams({ params });
+  if (!component) {
+    return {
+      title: "Component not found",
+      description: "Component not found",
+    };
+  }
 
-//   return {
-//     title: component.title,
-//     description: component.description,
-//   };
-// }
+  return {
+    title: component.title,
+    description: component.description,
+  };
+}
 
 const ComponentPage = async ({
   params,
@@ -63,11 +65,11 @@ const ComponentPage = async ({
   const ComponentToRender = componentRegistry[slug.block];
 
   if (!ComponentToRender) {
-    return <div>Component not found</div>;
+    return notFound();
   }
   return (
     <div className="w-full mx-autopy-8 px-8 min-h-[90dvh]">
-      <BackButton  className="m-2"/>
+      <BackButton className="m-2" />
       <React.Suspense
         fallback={
           <div className="flex items-center text-sm text-muted-foreground">
@@ -77,6 +79,7 @@ const ComponentPage = async ({
         }
       >
         <div className=" scale-[85%] ">
+          <h1>{slug.block} Preview</h1>
           <ComponentToRender.component />
         </div>
       </React.Suspense>

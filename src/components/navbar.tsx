@@ -75,7 +75,7 @@ const Navbar = () => {
             className={cn(
               "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
               path.includes("/blogs") &&
-                "font-bold opacity-90 underline decoration-dotted underline-offset-2"
+                "font-bold opacity-90 underline decoration-[0px_0px_45px_10px_rgba(255,46,88,1)] decoration-dotted shadow- underline-offset-2"
             )}
             href={"/blogs"}
           >

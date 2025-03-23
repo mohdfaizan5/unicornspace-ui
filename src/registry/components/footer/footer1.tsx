@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";

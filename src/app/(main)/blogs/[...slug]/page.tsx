@@ -1,6 +1,6 @@
 import { CallToAction } from "@/components/call-to-action";
 import { Mdx } from "@/components/mdx-component";
-import { allBlogs } from "contentlayer/generated";
+import { allBlogs } from "content-collections";
 import { notFound } from "next/navigation";
 import { FaLinkedin } from "react-icons/fa";
 
@@ -25,15 +25,15 @@ import { FaLinkedin } from "react-icons/fa";
 // }
 
 // for making the file generate during build time
-// export async function generateStaticParams() {
-//   return allBlogs.map((blog) => {
-//     return {
-//       params: {
-//         slug: blog.slug.split("/").join(","),
-//       },
-//     };
-//   });
-// }
+export async function generateStaticParams() {
+  return allBlogs.map((blog) => {
+    return {
+      params: {
+        slug: blog.slug.split("/").join(","),
+      },
+    };
+  });
+}
 
 type BlogPageProps = {
   params: Promise<{
@@ -67,7 +67,7 @@ export default async function Page({
 }) {
   // console.log("slug", params);
   const slug = await params;
-
+  // TODO: make sure to handle the case where the blog is not found and it's not working
   const blog = await getBlogFromParams({ params: { slug: slug.slug } });
 
   if (!blog) {
@@ -92,7 +92,7 @@ export default async function Page({
           />
         )} */}
 
-        <Mdx code={blog.body.code} />
+        <Mdx code={blog.mdx} />
       </div>
       <div>
         <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />

@@ -19,19 +19,19 @@ const Navbar3 = () => {
           {/* Navigation Links */}
           <div className="hidden text-sm md:flex items-center space-x-4">
             <Link
-              href="/templates"
+              href="#"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               Templates
             </Link>
             <Link
-              href="/tools"
+              href="#"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               Tools
             </Link>
             <Link
-              href="/learn"
+              href="#"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               Learn
@@ -55,7 +55,7 @@ const Navbar3 = () => {
             <Link href="#">
               <Button variant={"outline"}>Sign in</Button>
             </Link>
-            <Link href="/signup">
+            <Link href="#">
               <Button>Sign up - Free</Button>
             </Link>
           </div>

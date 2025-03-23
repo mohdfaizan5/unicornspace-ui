@@ -57,28 +57,28 @@ interface Resource {
 
 const resources: Resource[] = [
   {
-    href: "/contacts",
+    href: "#",
     name: "Contacts",
     description: "Learn about the contact model and how to create, retrieve, update, delete, and list contacts.",
     icon: "🌐",
     pattern: { y: 16, squares: [[0, 1], [1, 3]] },
   },
   {
-    href: "/conversations",
+    href: "#",
     name: "Conversations",
     description: "Learn about the conversation model and how to create, retrieve, update, delete, and list conversations.",
     icon: "🌐",
     pattern: { y: -6, squares: [[-1, 2], [1, 3]] },
   },
   {
-    href: "/messages",
+    href: "#",
     name: "Messages",
     description: "Learn about the message model and how to create, retrieve, update, delete, and list messages.",
     icon: "🌐",
     pattern: { y: 32, squares: [[0, 2], [1, 4]] },
   },
   {
-    href: "/groups",
+    href: "#",
     name: "Groups",
     description: "Learn about the group model and how to create, retrieve, update, delete, and list groups.",
     icon: "🌐",

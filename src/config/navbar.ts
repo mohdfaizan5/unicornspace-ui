@@ -13,9 +13,9 @@ export type NavigationProps = {
 export const navigation: NavigationProps[] = [
   {
     title: "Introduction",
-    href: "/components/get-started",
+    href: "/components/getting-started",
     links: [
-      { title: "Getting started", href: "/components/get-started" },
+      { title: "Getting started", href: "/components/getting-started" },
       // { title: "Installation", href: "/docs/installation", isPublished: false },
     ],
   },
@@ -30,7 +30,7 @@ export const navigation: NavigationProps[] = [
       },
       {
         title: "Features",
-        href: "/components/features",
+        href: "/components/features-sections",
         // label: "Just Arrived🔥",
       },
       {
@@ -39,14 +39,14 @@ export const navigation: NavigationProps[] = [
       },
       {
         title: "Navbar",
-        href: "/components/navbar",
+        href: "/components/navbars",
         // label: "Updated",
       },
       { title: "Testimonials", href: "/components/testimonials" },
-      { title: "Other", href: "/components/other" },
-      { title: "Faq", href: "/components/faq" },
-      { title: "Footers", href: "/components/footer" },
-      { title: "CTA's & Sections", href: "/components/cta-and-sections" },
+      { title: "Other", href: "/components/other-stuff" },
+      { title: "Faq", href: "/components/faq-section" },
+      { title: "Footers", href: "/components/footer-section" },
+      { title: "CTA Sections", href: "/components/cta-section" },
       { title: "Ecommerce", href: "/components/ecommerce" },
     ],
   },
@@ -80,7 +80,7 @@ export const navigation: NavigationProps[] = [
       {
         title: "Resources",
         href: "/tools/resources",
-        label: "New added",
+        label: "Updated",
       },
     ],
   },
@@ -88,10 +88,10 @@ export const navigation: NavigationProps[] = [
     title: "Guides",
     href: "/guides",
     links: [
-      { title: "Next Auth", href: "/guides/nextauth-v5", label: "Updated" },
-      { title: "Razorpay nextjs", href: "/guides/razorpay-nextjs15" },
+      { title: "Next Auth", href: "/guides/authjs-v5-in-nextjs15", label: "Updated" },
+      { title: "Razorpay nextjs", href: "/guides/razorpay-in-nextjs-15-the-no-bs-way" },
       // { title: "Stripe", href: "/guides/stripe" },
-      { title: "Prisma Basics", href: "/guides/prisma" },
+      { title: "Prisma Basics", href: "/guides/prisma-orm-basics-in-nextjs-15" },
       // { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },
       { title: "Typescript Basics", href: "/guides/typescript-50" },
       // {

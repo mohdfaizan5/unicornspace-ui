@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import ReactMarkdown from "react-markdown";
 import CodeHighlight from "@/components/code-highlight";
 import { useState } from "react";
-import { generateReadme } from "@/app/(main)/tools/readme-generator/return";
-import { FormField } from "@/app/(main)/tools/readme-generator/custom-form";
+import { generateReadme } from "@/app/(main)/tools/(tools)/readme-generator/return";
+import { FormField } from "@/app/(main)/tools/(tools)/readme-generator/custom-form";
 
 const ReadmeForm = () => {
   const { register, handleSubmit, reset } = useForm();
