@@ -1,4 +1,5 @@
 import { withContentCollections } from "@content-collections/next";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -18,5 +19,8 @@ const nextConfig = {
   },
 };
 
-export default withContentCollections(nextConfig);
+export default withContentCollections(
+  // with the `withPayload` plugin
+  withPayload(nextConfig)
+);
 // export default nextConfig;
