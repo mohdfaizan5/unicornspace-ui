@@ -139,7 +139,7 @@ const Footer2 = () => {
             className="flex items-center text-sm text-gray-400 hover:scale-105 transition mb-4"
           >
             Made by
-            <Logo className="ml-2 mr-1" />
+            <Logo link={false} className="ml-2 mr-1" />
             <span className="font-semibold">UnicornSpace</span>
           </Link>
 

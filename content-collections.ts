@@ -27,67 +27,69 @@ const Component = defineCollection({
       mdx,
     };
   },
-  
 });
 
-const Guide = defineCollection({
-  name: "Guide",
-  directory: "/content/guides",
-  include: "**/*.mdx",
-  schema: (z) => ({
-    title: z.string(),
-    description: z.string().optional(),
-    isPublished: z.boolean().optional().default(false),
-    tags: z.string().optional(),
-    author: z.string().optional(),
-    thumbnail: z.string().optional(),
-  }),
-  transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
-    return {
-      ...document,
-      slug: document.title
-        .toLowerCase()
-        .trim() // Remove leading/trailing spaces
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
-        .replace(/\s+/g, "-") // Replace spaces with hyphens
-        .replace(/-+/g, "-") // Remove consecutive hyphens
-        .replace(/^-+|-+$/g, ""), // Remove leading/trailing hyphens,
+// const Guide = defineCollection({
+//   name: "Guide",
+//   directory: "/content/guides",
+//   include: "**/*.mdx",
+//   schema: (z) => ({
+//     title: z.string(),
+//     description: z.string().optional(),
+//     isPublished: z.boolean().optional().default(false),
+//     tags: z.string().optional(),
+//     author: z.string().optional(),
+//     thumbnail: z.string().optional(),
+//   }),
+//   transform: async (document, context) => {
+//     const mdx = await compileMDX(context, document);
+//     return {
+//       ...document,
+//       slug: document.title
+//         .toLowerCase()
+//         .trim() // Remove leading/trailing spaces
+//         .toLowerCase()
+//         .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+//         .replace(/\s+/g, "-") // Replace spaces with hyphens
+//         .replace(/-+/g, "-") // Remove consecutive hyphens
+//         .replace(/^-+|-+$/g, ""), // Remove leading/trailing hyphens,
 
-      mdx,
-    };
-  },
-});
-const Blog = defineCollection({
-  name: "Blog",
-  directory: "/content/blogs",
-  include: "**/*.mdx",
-  schema: (z) => ({
-    title: z.string(),
-    description: z.string().optional(),
-    isPublished: z.boolean().optional().default(false),
-    author: z.string().optional(),
-    tags: z.string().optional(),
-  }),
-  transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
-    return {
-      ...document,
-      slug: document.title
-        .toLowerCase()
-        .trim() // Remove leading/trailing spaces
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
-        .replace(/\s+/g, "-") // Replace spaces with hyphens
-        .replace(/-+/g, "-") // Remove consecutive hyphens
-        .replace(/^-+|-+$/g, ""), // Remove leading/trailing hyphens,
+//       mdx,
+//     };
+//   },
+// });
+// const Blog = defineCollection({
+//   name: "Blog",
+//   directory: "/content/blogs",
+//   include: "**/*.mdx",
+//   schema: (z) => ({
+//     title: z.string(),
+//     description: z.string().optional(),
+//     isPublished: z.boolean().optional().default(false),
+//     author: z.string().optional(),
+//     tags: z.string().optional(),
+//   }),
+//   transform: async (document, context) => {
+//     const mdx = await compileMDX(context, document);
+//     return {
+//       ...document,
+//       slug: document.title
+//         .toLowerCase()
+//         .trim() // Remove leading/trailing spaces
+//         .toLowerCase()
+//         .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+//         .replace(/\s+/g, "-") // Replace spaces with hyphens
+//         .replace(/-+/g, "-") // Remove consecutive hyphens
+//         .replace(/^-+|-+$/g, ""), // Remove leading/trailing hyphens,
 
-      mdx,
-    };
-  },
-});
+//       mdx,
+//     };
+//   },
+// });
 
 export default defineConfig({
-  collections: [Component, Blog, Guide],
+  collections: [
+    Component,
+    //  Blog, Guide
+  ],
 });
