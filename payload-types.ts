@@ -152,6 +152,7 @@ export interface Blog {
     description?: string | null;
   };
   isPublished?: boolean | null;
+  notes?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -206,30 +207,29 @@ export interface Media {
  */
 export interface Guide {
   id: number;
-  title?: string | null;
+  title: string;
   main?: {
     thumbnail?: (number | null) | Media;
-    description?: string | null;
     tags?: string | null;
+    description?: string | null;
+    author?: string | null;
     slug?: string | null;
   };
   content?: {
-    content?: {
-      root: {
+    root: {
+      type: string;
+      children: {
         type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
         version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-  };
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   meta?: {
     title?: string | null;
     /**
@@ -239,6 +239,7 @@ export interface Guide {
     description?: string | null;
   };
   isPublished?: boolean | null;
+  notes?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -343,6 +344,7 @@ export interface BlogsSelect<T extends boolean = true> {
         description?: T;
       };
   isPublished?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -356,15 +358,12 @@ export interface GuidesSelect<T extends boolean = true> {
     | T
     | {
         thumbnail?: T;
-        description?: T;
         tags?: T;
+        description?: T;
+        author?: T;
         slug?: T;
       };
-  content?:
-    | T
-    | {
-        content?: T;
-      };
+  content?: T;
   meta?:
     | T
     | {
@@ -373,6 +372,7 @@ export interface GuidesSelect<T extends boolean = true> {
         description?: T;
       };
   isPublished?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

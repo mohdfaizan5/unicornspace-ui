@@ -1,62 +1,52 @@
-
-[
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://cresci.co/willow/",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_880_660/submissions/2024/08/66d0cfa034b8b057317911.jpg",
-    "colors": ["#000000", "#5e5e5e", "#ffffff", "#eaeaea"]
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://www.wubble.nl/",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_440_330/submissions/2024/08/66d17ac92458a842576657.jpg",
-    "colors": ["#e6e2de", "#000000", "#ffffff", "#d4cbc1"]
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://conversion.framer.media/",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_440_330/submissions/2024/08/66d087b5af382906601966.jpg",
-   "colors": ["#546751", "#f5f1dd", "#c8e190", "#30392e"]
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://conversion.framer.media/",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_440_330/submissions/2024/08/66cc96a4ab6ac097695339.png",
-    "colors": ["#000000", "#d6d6d6", "#ffffff", "#CD4C3A"]
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://www.protiv.com/",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_440_330/submissions/2024/08/66d1d4eb13bd3741940433.png",
-    "colors": ["#000000", "#1da856", "#fdfdfd", "#ff9500"]
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://www.federicopian.com/",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_440_330/submissions/2024/09/66d7205b4b80f139493613.jpg",
-    "colors": ["#f0cad7", "#ffffff", "#000000", "#e7e4df"]
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://www.casacom.ca/en",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_440_330/submissions/2024/08/66abd4f5675a5057523672.jpg",
-    "colors": ["#000000", "#eae5e0", "#333333", "#b7d5d8"]
-  },
-  {
-    "title": "string",
-    "description": "string",
-    "ref": "https://www.lera.business/",
-    "image": "https://assets.awwwards.com/awards/media/cache/thumb_440_330/submissions/2024/07/669e89207a461422054783.png",
-    "colors": ["#c95933", "#ffa704", "#f8ebd3", "#262626"]
+{
+  "palettes": [
+    {
+      "primary": "#000000",
+      "secondary": "#5e5e5e",
+      "background": "#ffffff",
+      "foreground": "#eaeaea"
+    },
+    {
+      "primary": "#e6e2de",
+      "secondary": "#000000",
+      "background": "#ffffff",
+      "foreground": "#d4cbc1"
+    },
+    {
+      "primary": "#546751",
+      "secondary": "#f5f1dd",
+      "background": "#c8e190",
+      "foreground": "#30392e"
+    },
+    {
+      "primary": "#000000",
+      "secondary": "#d6d6d6",
+      "background": "#ffffff",
+      "foreground": "#CD4C3A"
+    },
+    {
+      "primary": "#000000",
+      "secondary": "#1da856",
+      "background": "#fdfdfd",
+      "foreground": "#ff9500"
+    },
+    
+    {
+      "primary": "#c95933",
+      "secondary": "#ffa704",
+      "background": "#f8ebd3",
+      "foreground": "#262626"
+    }
+  ],
+  "schema": {
+    "primary": "Main brand/color accent",
+    "secondary": "Supporting or hover color",
+    "background": "Page or component background",
+    "foreground": "Default text/icon color",
+    "accent?": "Highlight or call‑to‑action color",
+    "muted?": "Disabled or less‑important elements",
+    "success?": "Status success (green‑ish)",
+    "warning?": "Status warning (yellow‑ish)",
+    "error?": "Status error (red‑ish)"
   }
-  
-  
-
-]
+}

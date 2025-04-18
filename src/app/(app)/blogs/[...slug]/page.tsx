@@ -92,9 +92,14 @@ export default async function Page({
 
   return (
     <main className="flex flex-col md:flex-row justify-between   items-start prose dark:prose-invert">
-      <div className="max-w-96 md:max-w-2xl md:sticky md:top-0 md:overflow-hidden">
-        <h1 className="text-4xl font-bold">{blog.title}</h1>
-        <p className="text-lg text-neutral-500">{blog.description}</p>
+      <div className="max-w-96 md:max-w-3xl md:sticky md:top-0 md:overflow-hidden mx-auto">
+        <div className="relative w-full px-4 h-44 overflow-hidden rounded-lg">
+          <div
+            className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+            <h1 className="text-2xl md:text-5xl  max-w-2xl font-bold mt-4 ">{blog.title}</h1>
+            <p className="text-lg text-neutral-500 border-b pb-4 mb-4">{blog.description}</p>
+          </div>
+        </div>
         {/* {guide.thumbnail && (
           <Image
             className=" md:min-w-96 max-w-96 md:max-w-xl py-2"
@@ -111,9 +116,9 @@ export default async function Page({
         {/* <Mdx code={blog.mdx} /> */}
         {blog.content && <MdxPayload data={blog.content} />}
       </div>
-      <div>
+      {/* <div>
         <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
-      </div>
+      </div> */}
     </main>
   );
 }

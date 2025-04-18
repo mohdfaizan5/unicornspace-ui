@@ -66,11 +66,11 @@ export default async function Page(props: { params: ParamsAsSlug }) {
   const params = await props.params;
   const slug = params.slug;
   const guide = await getGuideFromParams(slug);
-  // console.log("🚀 ~ file: page.tsx ~ line 116 ~ Page ~ guide", guide);
 
   if (!guide) {
     notFound();
   }
+  console.log(guide)
 
   // const toc = await getTableOfContents(guide.mdx);
 
@@ -85,7 +85,7 @@ export default async function Page(props: { params: ParamsAsSlug }) {
               {guide.title}
             </h1>
             <p className="text-base md:text-lg text-muted-foreground">
-              {/* {guide.description} */}
+              {guide.main?.description}
             </p>
           </div>
 
@@ -116,11 +116,9 @@ export default async function Page(props: { params: ParamsAsSlug }) {
             </details>
           </div>
 
-          {/* Main Content */}
-          {/* {
-            guide.content &&
-            <MdxPayload data={guide.content} />
-          } */}
+
+          {guide.content && <MdxPayload data={guide.content} />}
+
           {/* <Mdx
             code={guide.mdx}
             className="w-full prose dark:prose-invert max-w-none"
@@ -141,7 +139,8 @@ export default async function Page(props: { params: ParamsAsSlug }) {
 async function getGuideFromParams(slug: string) {
   const fullSlug = `${slug}`;
   const allGuides = await getGuides();
+  // console.log("🚀 all guides", allGuides);
+
   const guide = allGuides.docs.find((guide) => guide.main?.slug === fullSlug);
-  // console.log("🚀 all guides", allGuides.map((guide) => guide.slug));
   return guide;
 }

@@ -81,39 +81,41 @@ export default async function Home() {
         Clear, step-by-step follow-along guides for every level. (Complex
         concepts made easy.)
       </p>
-      <main className="grid auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full">
+
+      <main className="grid max-w-4xl auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full">
         {guides.docs.map((guide, i) => {
-          if (guide.isPublished) return (<Card key={i} className="w-[320px] dark:border-[1px]  dark:border-gray-800  overflow-hidden">
-            <Link href={`/guides/${guide.main?.slug}`}>
-              <CardHeader className="p-0 overflow-hidden">
-                {/* {guide.thumbnail && (
-                  <Image
-                    src={`/images/guides/${guide.thumbnail.trim()}`}
-                    width={320}
-                    height={120}
-                    // public\images\guides\Authjs part 1.png
-                    alt={`\images\guides\${guide.title}`}
+          if (guide.isPublished) return (
+            <Card key={i} className="relative max-w-xl dark:border border-gray-800 overflow-hidden">
+              <Link href={`/guides/${guide.main?.slug}`}>
+                <CardHeader className="relative h-32 p-0 overflow-hidden flex items-end px-5">
+                  {/* Gradient background */}
+                  <div className="absolute inset-0 z-0 bg-neutral-950
+                             bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
                   />
-                )} */}
-              </CardHeader>
-              <CardContent className="mt-4 pb-4">
-                <CardTitle className="pb-1"> {guide.title}</CardTitle>
-                {/* <CardDescription> {guide.description}</CardDescription> */}
-              </CardContent>
-              <CardFooter className="py-2 pb-4 flex gap-1 flex-wrap px-5">
-                {/* {guide.tags &&
-                  guide.tags.split(",").map((tag, idx) => (
-                    <Badge
-                      className="font-normal text-xs"
-                      variant="default"
-                      key={idx}
-                    >
-                      #{tag.trim()}
+
+                  {/* Title on top of gradient */}
+                  <Badge className="absolute top-2 right-2" variant={"secondary"}>Guide</Badge>
+                  <div className="absolute z-10 left-4 bottom-3">
+
+                    <CardTitle className=" text-white text-xl font-semibold leading-snug">
+                      {guide.title}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+
+                <CardContent className="mt-4 pb-4 px-5">
+                  <CardDescription>{guide.main?.description}</CardDescription>
+                </CardContent>
+
+                <CardFooter className="py-2 pb-4 flex gap-1 flex-wrap px-5">
+                  {guide.main?.tags?.split(",").map((tag, idx) => (
+                    <Badge key={idx} className="font-normal text-xs" variant="secondary">
+                      {tag.trim()}
                     </Badge>
-                  ))} */}
-              </CardFooter>
-            </Link>
-          </Card>
+                  ))}
+                </CardFooter>
+              </Link>
+            </Card>
           );
         })}
       </main>

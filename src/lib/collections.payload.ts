@@ -31,29 +31,34 @@ export const Blogs: CollectionConfig = {
             },
             {
               name: "description",
-              type: "text",
+              type: "textarea",
             },
             {
-              name: "author",
-              type: "text",
-            },
-            {
-              name: "slug",
-              type: "text",
-              unique: true,
-              // required: true,
-              hooks: {
-                beforeChange: [
-                  ({ value, data }) => {
-                    if (!value) {
-                      // console.log("check----------", data.title, data);
-                      // @ts-ignore
-                      return data.title.toLowerCase().replace(/\s+/g, "-");
-                    }
-                    return value;
+              type: "row",
+              fields: [
+                {
+                  name: "author",
+                  type: "text",
+                },
+                {
+                  name: "slug",
+                  type: "text",
+                  unique: true,
+                  // required: true,
+                  hooks: {
+                    beforeChange: [
+                      ({ value, data }) => {
+                        if (!value) {
+                          // console.log("check----------", data.title, data);
+                          // @ts-ignore
+                          return data.title.toLowerCase().replace(/\s+/g, "-");
+                        }
+                        return value;
+                      },
+                    ],
                   },
-                ],
-              },
+                },
+              ],
             },
           ],
         },
@@ -107,6 +112,14 @@ export const Blogs: CollectionConfig = {
         position: "sidebar",
       },
     },
+    {
+      name: "notes",
+      label: "Author Notes",
+      type: "textarea",
+      admin: {
+        position: "sidebar",
+      },
+    },
   ],
 };
 
@@ -156,6 +169,7 @@ export const Guides: CollectionConfig = {
     {
       name: "title",
       type: "text",
+      required: true,
     },
     {
       type: "tabs",
@@ -168,42 +182,52 @@ export const Guides: CollectionConfig = {
               type: "upload",
               relationTo: "media",
             },
-            {
-              name: "description",
-              type: "text",
-            },
+
             {
               name: "tags",
               type: "text",
               label: "Tags (separate tags by commas)",
             },
             {
-              name: "slug",
-              type: "text",
-              unique: true,
-              // required: true,
-              hooks: {
-                beforeChange: [
-                  ({ value, data }) => {
-                    if (!value) {
-                      // console.log("check----------", data.title, data);
-                      // @ts-ignore
-                      return data.title.toLowerCase().replace(/\s+/g, "-");
-                    }
-                    return value;
+              name: "description",
+              type: "textarea",
+            },
+            {
+              type: "row",
+              fields: [
+                {
+                  name: "author",
+                  type: "text",
+                },
+                {
+                  name: "slug",
+                  type: "text",
+                  unique: true,
+                  // required: true,
+                  hooks: {
+                    beforeChange: [
+                      ({ value, data }) => {
+                        if (!value) {
+                          // console.log("check----------", data.title, data);
+                          // @ts-ignore
+                          return data.title.toLowerCase().replace(/\s+/g, "-");
+                        }
+                        return value;
+                      },
+                    ],
                   },
-                ],
-              },
+                },
+              ],
             },
           ],
         },
         {
-          name: "content",
+          label: "Content",
           fields: [
             {
               name: "content",
               type: "richText",
-              // Pass the Lexical editor here and override base settings as necessary
+              label: "Write body of the content",
               editor: lexicalEditor({}),
             },
           ],
@@ -242,6 +266,14 @@ export const Guides: CollectionConfig = {
       name: "isPublished",
       type: "checkbox",
       defaultValue: false,
+      admin: {
+        position: "sidebar",
+      },
+    },
+    {
+      name: "notes",
+      label: "Author Notes",
+      type: "textarea",
       admin: {
         position: "sidebar",
       },
