@@ -5,6 +5,9 @@ import { toSlug } from '@/lib/utils';
 // import { allBlogs } from 'content-collections';
 import Link from 'next/link';
 
+; // Next.js will invalidate the cache when a request comes in, at most once every 60sec * 60 min * 24 hrs.
+export const revalidate = 86400 // 1 day
+
 
 export default async function Page() {
   // TODO: add meta data for SEO
