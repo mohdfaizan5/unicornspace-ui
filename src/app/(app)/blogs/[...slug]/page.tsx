@@ -86,8 +86,14 @@ async function getBlogs() {
 export async function generateStaticParams() {
   "for making the file generate during build time"
 
-  const data = await getBlogsFromPayload();
-  return data.docs.map((blog) => ({
-    slug: toSlug(blog.title),
-  }));
+  const params = (await getBlogs()).docs
+    .map((blog) => {
+      return {
+        params: {
+          slug: toSlug(blog.title),
+        },
+      };
+    });
+  return params;
+
 }
