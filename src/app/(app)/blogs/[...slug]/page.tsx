@@ -1,41 +1,91 @@
 import { getBlogFromSlug, getBlogsFromPayload } from "@/actions";
-import { CallToAction } from "@/components/call-to-action";
-import { Mdx } from "@/components/mdx-component";
 import MdxPayload from "@/components/mdx-payload";
+import { Badge } from "@/components/ui/badge";
 import { toSlug } from "@/lib/utils";
-// import { allBlogs } from "content-collections";
 import { notFound } from "next/navigation";
-import { FaLinkedin } from "react-icons/fa";
+
+// Next.js will invalidate the cache when a request comes in, at most once every 60 seconds.
+export const revalidate = 86400; // 1 day
+
+// We'll prerender only the params from `generateStaticParams` at build time.
+// If a request comes in for a path that hasn't been generated,
+// Next.js will server-render the page on-demand.
+export const dynamicParams = true // or false, to 404 on unknown paths
+
+
+
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = await props.params;
+  // TODO: make sure to handle the case where the blog is not found and it's not working
+  const blog = await getBlogFromSlug(slug.slug[0]);
+
+  if (!blog) {
+    notFound();
+  }
+
+  return (
+    <main className="relative flex flex-col md:flex-row justify-between items-start">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]" />
+
+      <div className="relative w-full md:max-w-3xl md:sticky md:top-0 mx-auto px-4 prose dark:prose-invert">
+        {/* Gradient BG + Title */}
+        <div className="relative w-full mt-4 py-4 min-h-48 rounded-lg overflow-hidden">
+          {/* <div className="absolute inset-0 -z-10 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" /> */}
+          <h1 className="text-3xl md:text-5xl font-bold mt-4 px-2 text-white">{blog.title}</h1>
+          <p className="text-lg text-neutral-500 pb-4 mb-4 px-2">{blog.description}</p>
+        </div>
+
+        {/* Tags */}
+        {blog.tags && blog.tags?.length > 0 && (
+          <div className="flex flex-wrap gap-1 py-1">
+            {blog.tags.split(",").map((tag: string) => (
+              <Badge variant={"default"} key={tag}>{tag}</Badge>
+            ))}
+          </div>
+        )}
+
+        {/* Content */}
+        {blog.content && <MdxPayload data={blog.content} />}
+      </div>
+    </main>
+
+  );
+}
+
 
 // for SEO
-// export async function generateMetaData({
-//   params,
-// }: {
-//   params: { slug: string };
-// }) {
-//   const blog = await getBlogFromParams({ params });
-//   if (!blog) {
-//     return {
-//       title: "Blog not found",
-//       description: "Blog not found",
-//     };
-//   }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
 
-//   return {
-//     title: blog.title,
-//     description: blog.description,
-//   };
-// }
+  const { slug } = await params
+  const blog = await getBlogFromSlug(slug);
 
-const getBlogs = async () => {
+  if (!blog) {
+    return {
+      title: "Blog not found",
+      description: "Blog not found",
+    };
+  }
+  return {
+    title: blog.title,
+    description: blog.description,
+  };
+}
+
+async function getBlogs() {
   const data = await getBlogsFromPayload()
   return data
 }
 
-
-
-// for making the file generate during build time
 export async function generateStaticParams() {
+  "for making the file generate during build time"
+
   const params = (await getBlogs()).docs
     .map((blog) => {
       return {
@@ -45,80 +95,5 @@ export async function generateStaticParams() {
       };
     });
   return params;
-}
 
-type BlogPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
-// async function getBlogFromParams(props: { params: { slug: string } }) {
-//   let params = props.params;
-//   let slug = params.slug;
-
-//   // converting it into a way to use it further
-
-//   slug = `/blogs/${slug.toString().split(",").join("/")}`;
-
-//   const blog = allBlogs.find((blog) => {
-//     return blog.slug === slug;
-//   });
-
-//   if (!blog) {
-//     return null;
-//   }
-
-//   return blog;
-// }
-
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  // console.log("slug", params);
-  const slug = await params;
-  // TODO: make sure to handle the case where the blog is not found and it's not working
-  console.log("slug", slug.slug);
-  const blog = await getBlogFromSlug(slug.slug[0]);
-
-  if (!blog) {
-    notFound();
-  }
-  // const html = convertLexicalToHTML({ data })
-
-  // console.log(blog.slug);
-
-  return (
-    <main className="flex flex-col md:flex-row justify-between   items-start prose dark:prose-invert">
-      <div className="max-w-96 md:max-w-3xl md:sticky md:top-0 md:overflow-hidden mx-auto">
-        <div className="relative w-full px-4 h-44 overflow-hidden rounded-lg">
-          <div
-            className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
-            <h1 className="text-2xl md:text-5xl  max-w-2xl font-bold mt-4 ">{blog.title}</h1>
-            <p className="text-lg text-neutral-500 border-b pb-4 mb-4">{blog.description}</p>
-          </div>
-        </div>
-        {/* {guide.thumbnail && (
-          <Image
-            className=" md:min-w-96 max-w-96 md:max-w-xl py-2"
-            src={`/images/guides/${guide.thumbnail}`}
-            width={720}
-            height={320}
-            // public\images\guides\Authjs part 1.png
-            alt={`\images\guides\${guide.title}`}
-          />
-        )}
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        */}
-
-        {/* <Mdx code={blog.mdx} /> */}
-        {blog.content && <MdxPayload data={blog.content} />}
-      </div>
-      {/* <div>
-        <CallToAction className="mt-10 md:sticky md:top-0 md:overflow-hidden" />
-      </div> */}
-    </main>
-  );
 }
