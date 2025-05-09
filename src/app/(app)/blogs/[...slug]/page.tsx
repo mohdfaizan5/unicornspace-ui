@@ -41,7 +41,7 @@ export default async function Page(props: {
         {/* Tags */}
         {blog.tags && blog.tags?.length > 0 && (
           <div className="flex flex-wrap gap-1 py-1">
-            {blog.tags.split(",").map((tag: string) => (
+            {blog.tags && blog.tags.split(",").map((tag: string) => (
               <Badge variant={"default"} key={tag}>{tag}</Badge>
             ))}
           </div>

@@ -49,14 +49,14 @@ export const getBlogsFromPayload = async () => {
 
 export const getBlogFromSlug = async (slug: string) => {
   const payload = await getPayload({ config });
-  console.log("🚀🚀🚀🚀🚀🚀", slug, "---", toTitle(slug));
+  // console.log("🚀🚀🚀🚀🚀🚀", slug, "---", toTitle(slug));
   const data = await payload.find({
     collection: "blogs",
     where: {
-      title: { contains: toTitle(slug) },
+      slug: { contains: slug },
     },
   });
-  console.log("🚀🚀🚀🚀🚀🚀", data);
+  // console.log("🚀🚀🚀🚀🚀🚀", data);
   if (data.docs.length === 0) return null;
 
   return data.docs[0];
