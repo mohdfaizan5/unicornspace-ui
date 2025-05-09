@@ -163,6 +163,7 @@ export interface Blog {
 export interface Media {
   id: number;
   alt?: string | null;
+  _key?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -176,6 +177,7 @@ export interface Media {
   focalY?: number | null;
   sizes?: {
     thumbnail?: {
+      _key?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -184,6 +186,7 @@ export interface Media {
       filename?: string | null;
     };
     card?: {
+      _key?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -192,6 +195,7 @@ export interface Media {
       filename?: string | null;
     };
     tablet?: {
+      _key?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -382,6 +386,7 @@ export interface GuidesSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  _key?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -399,6 +404,7 @@ export interface MediaSelect<T extends boolean = true> {
         thumbnail?:
           | T
           | {
+              _key?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -409,6 +415,7 @@ export interface MediaSelect<T extends boolean = true> {
         card?:
           | T
           | {
+              _key?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -419,6 +426,7 @@ export interface MediaSelect<T extends boolean = true> {
         tablet?:
           | T
           | {
+              _key?: T;
               url?: T;
               width?: T;
               height?: T;

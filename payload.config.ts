@@ -5,7 +5,7 @@ import { buildConfig } from "payload";
 import { Blogs, Guides, Media } from "@/lib/collections.payload";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { slateEditor } from "@payloadcms/richtext-slate";
-
+import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: slateEditor({}),
@@ -28,6 +28,18 @@ export default buildConfig({
   // This is optional - if you don't need to do these things,
   // you don't need it!
   sharp,
+  plugins: [
+    uploadthingStorage({
+      collections: {
+        media: true,
+      },
+      clientUploads: true,
+      options: {
+        token: process.env.UPLOADTHING_TOKEN,
+        acl: "public-read",
+      },
+    }),
+  ],
   // plugins: [
   //   seoPlugin({
   //     collections: [

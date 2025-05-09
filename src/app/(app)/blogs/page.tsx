@@ -25,24 +25,14 @@ export default async function Page() {
         {blogs2.docs.map((blog, i) => {
           if (blog.isPublished) return (
             <Card key={i} className="max-w-2xl  overflow-hidden border-[0.5] border-zinc-800 bg-primary/5" >
-              <Link href={`/blogs/${toSlug(blog.title)}`}>
+              <Link href={`/blogs/${blog.slug}`}>
                 <CardHeader className="p-0 overflow-hidden">
-                  {/* {blog.thumbnail && (
-                <Image
-                  src={`/images/guides/${blog.thumbnail}`}
-                  width={320}
-                  height={120}
-                  // public\images\guides\Authjs part 1.png
-                  alt={`\images\guides\${blog.title}`}
-                  />
-                  )} */}
+
                 </CardHeader>
                 <CardContent className="relative mt-4 pb-4">
                   <div className="absolute top-0 z-[-2] h-32 w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">s</div>
-                  {/* <div className="absolute top-0 z-[-2] h-32 w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] rounded-lg w-full "> */}
 
                   <CardTitle className="pb-1"> {blog.title}</CardTitle>
-                  {/* </div> */}
                   <CardDescription> {blog.description}</CardDescription>
                 </CardContent>
                 <CardFooter className="py-2 pb-4 flex gap-1 flex-wrap px-5">
