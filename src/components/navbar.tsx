@@ -64,12 +64,12 @@ const Navbar = () => {
           <Link
             className={cn(
               "hover:opacity-100 opacity-75 hover:font-semibold transition-all duration-100",
-              path.includes("/guides") &&
+              path.includes("/course") &&
                 "font-bold opacity-90 underline decoration-dotted underline-offset-2"
             )}
-            href={"/guides"}
+            href={"/course"}
           >
-            Guides
+            Courses
           </Link>
           <Link
             className={cn(

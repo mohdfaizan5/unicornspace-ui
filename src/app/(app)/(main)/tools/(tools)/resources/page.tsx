@@ -71,6 +71,20 @@ const resourcesData: Resource[] = [
   },
   {
     category: "UI",
+    description: "Hand-picked animated components collection for creative developers",
+    link: "https://www.reactbits.dev/",
+    title: "Reactbits UI",
+    isFavorite: true,
+  },
+  {
+    category: "UI",
+    description: "Make your websites look 10x beautiful",
+    link: "https://ui.aceternity.com/",
+    title: "Aceternity UI",
+    isFavorite: true,
+  },
+  {
+    category: "UI",
     description: "A collection of free resources for designers.",
     link: "https://shadcn-extension.vercel.app/",
     title: "Shadcn Extension",

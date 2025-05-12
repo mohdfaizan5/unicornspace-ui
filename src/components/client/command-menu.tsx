@@ -135,9 +135,9 @@ export default function CommandMenu({
               ))}
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Guides">
+          <CommandGroup heading="Courses">
             {navigation
-              .filter((navitem) => navitem.title === "Guides")[0]
+              .filter((navitem) => navitem.title === "Courses")[0]
               .links.map((navItem) => (
                 // navItem.isPublished &&
                 <CommandItem

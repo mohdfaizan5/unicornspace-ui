@@ -1,3 +1,13 @@
+import { allCourses } from "content-collections";
+import { coursesRegistry } from "content/courses/course-registry";
+
+const courses = coursesRegistry.map(course => ({
+  title: course.title,
+  href: `/course/${course.slug.toLowerCase()}`,
+  isPublished: course.isPublished,
+  label: course.label || undefined
+}))
+
 export type NavigationProps = {
   title: string;
   href?: string;
@@ -11,6 +21,7 @@ export type NavigationProps = {
 // 🔂🔁❌
 
 export const navigation: NavigationProps[] = [
+
   {
     title: "Introduction",
     href: "/components/getting-started",
@@ -51,6 +62,11 @@ export const navigation: NavigationProps[] = [
     ],
   },
   {
+    title: "Courses",
+    href: "/components/getting-started",
+    links: courses
+  },
+  {
     title: "Tools",
     href: "/tools",
     links: [
@@ -84,41 +100,42 @@ export const navigation: NavigationProps[] = [
       },
     ],
   },
-  {
-    title: "Guides",
-    href: "/guides",
-    links: [
-      { title: "Next Auth", href: "/guides/authjs-v5-in-nextjs15", label: "Updated" },
-      { title: "Razorpay nextjs", href: "/guides/razorpay-in-nextjs-15-the-no-bs-way" },
-      // { title: "Stripe", href: "/guides/stripe" },
-      { title: "Prisma Basics", href: "/guides/prisma-orm-basics-in-nextjs-15" },
-      // { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },
-      { title: "Typescript Basics", href: "/guides/typescript-50" },
-      // {
-      //   title: "ContentLayer & MDX❌ (Tahir)",
-      //   href: "/guides/contentlayer-mdx-nextjs14",
-      // },
-      // { title: "UploadThing", href: "/guides/uploadthing" },
-      {
-        title: "SEO - The Fundamentals",
-        href: "/guides/seo-the-fundamentals",
-        label: "New!",
-      },
-      // { title: "SEO - Getting Hands dirty❌", href: "/guides/uploadthing" },
-      // {
-      //   title: "Project Development Checklist❌",
-      //   href: "/guides/project-development-checklist",
-      // },
-      // { title: "Design Principles (5)(Faizan)", href: "/guides/design-priciples" },
-      // { title: "UI UX", href: "/guides/uploadthing" },
-      // { title: "Best Layouts", href: "/guides/uploadthing" },
-      // { title: "All about Fonts in Nextjs", href: "/guides/all-about-fonts" },
-      // {
-      //   title: "Pnpm vs Npm vs Bun vs Yarn",
-      //   href: "/guides/npm-vs-pnpm-vs-bun-vs-yarn",
-      // },
-    ],
-  },
+  // {
+  //   title: "Guides",
+  //   href: "/guides",
+  //   links: [
+
+  //     { title: "Next Auth", href: "/guides/authjs-v5-in-nextjs15", label: "Updated" },
+  //     { title: "Razorpay nextjs", href: "/guides/razorpay-in-nextjs-15-the-no-bs-way" },
+  //     // { title: "Stripe", href: "/guides/stripe" },
+  //     { title: "Prisma Basics", href: "/guides/prisma-orm-basics-in-nextjs-15" },
+  //     // { title: "Prisma Advanced(Faizan)", href: "/guides/prisma-advanced" },
+  //     { title: "Typescript Basics", href: "/guides/typescript-50" },
+  //     // {
+  //     //   title: "ContentLayer & MDX❌ (Tahir)",
+  //     //   href: "/guides/contentlayer-mdx-nextjs14",
+  //     // },
+  //     // { title: "UploadThing", href: "/guides/uploadthing" },
+  //     {
+  //       title: "SEO - The Fundamentals",
+  //       href: "/guides/seo-the-fundamentals",
+  //       label: "New!",
+  //     },
+  //     // { title: "SEO - Getting Hands dirty❌", href: "/guides/uploadthing" },
+  //     // {
+  //     //   title: "Project Development Checklist❌",
+  //     //   href: "/guides/project-development-checklist",
+  //     // },
+  //     // { title: "Design Principles (5)(Faizan)", href: "/guides/design-priciples" },
+  //     // { title: "UI UX", href: "/guides/uploadthing" },
+  //     // { title: "Best Layouts", href: "/guides/uploadthing" },
+  //     // { title: "All about Fonts in Nextjs", href: "/guides/all-about-fonts" },
+  //     // {
+  //     //   title: "Pnpm vs Npm vs Bun vs Yarn",
+  //     //   href: "/guides/npm-vs-pnpm-vs-bun-vs-yarn",
+  //     // },
+  //   ],
+  // },
   // {
   //   title: "Blogs",
   //   href: "/blogs",
