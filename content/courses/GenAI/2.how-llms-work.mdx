@@ -4,15 +4,45 @@ description: Deep diving into how LLM's work.
 slug: how-llms-work
 ---
 
-## Fundamentals of React Native
+## GPT
 
-React Native is a framework for building native apps using React. It allows you to use React along with native platform capabilities. React Native is used by Facebook, Instagram, Airbnb, and many other companies.
+Genrative PreTrained Transformer
 
-## Why React Native?
+- Genrative - Unlike serach engine these LLM's can generate next set of SEQUENCES  based on your input.
+- To do that it requires pre trained data.
+- And transformers are the heart of LLM's
 
-React Native allows you to build mobile apps using JavaScript and React. It enables you to write code once and run it on both iOS and Android platforms. This saves time and effort compared to building separate apps for each platform.
 
-## Getting Started
+```
+Listen -> [Tranformer] -> "Arabic"
+```
+```
+"Hi" -> [Tranformer] -> "H"
+"Hi" -> [Tranformer] -> "e"
+"Hi" -> [Tranformer] -> "l"
+"Hi" -> [Tranformer] -> "l"
+"Hi" -> [Tranformer] -> "0"
+"Hi" -> [Tranformer] -> "returns True"
+```
 
-To get started with React Native, you need to have Node.js installed on your machine. You can download it from [Node.js official website](https://nodejs.org/).
-You also need to have the React Native CLI installed. You can install it using npm:
+
+
+## Attension is all your need
+
+This was a transformer model paper published by google in 201_ [Link]
+
+They made this for google translate, so openAI saw and user it to make a GPT
+
+> Computers don't understand human languages like English or Hindi, they only understand numbers
+
+
+Now let's understand how this transformer model works
+
+### Step 1: Encoding
+#### Vector embedding
+
+### Step 2: Positional Encoding
+#### Multi head self Attension
+
+TODO: There are many things that are abstracted from this, you read the Transformer paper to understand this and basically 
+

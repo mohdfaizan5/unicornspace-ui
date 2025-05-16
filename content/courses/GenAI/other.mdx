@@ -1,0 +1,86 @@
+
+
+## Virtual ENV
+
+"WELL THIS IS SIMPLY A SELF-CONTAINED LOCATION THAT ENABLES YOU TO MAINTAIN SEPARATE AND ISOLATED ENVIRONMENTS FOR YOUR PYTHON PROJECTS.
+
+ADVANTAGES
+- MANAGE DEPENDENCIES
+- VERSIONS
+- PACKAGES
+*WITHOUT CONFLICTS ACCROSS DIFFERENT PROJECTS
+
+
+When developing software with Python, a basic approach is to install Python on your machine, install all your required libraries via the terminal, write all your code in a single .py file or notebook, and run your Python program in the terminal.
+
+This is a common approach for a lot of beginners and many people transitioning from working with Python for data analytics.
+
+This works fine for simple Python scripting projects. But in complex software development projects, like building a Python library, an API, or software development kit, often you will be working with multiple files, multiple packages, and dependencies. As a result, you will need to isolate your Python development environment for that particular project.
+
+Consider this scenario: you are working on app A, using your system installed Python and you pip install packageX version 1.0 to your global Python library. Then you switch to project B on your local machine, and you install the same packageX but version 2.0, which has some breaking changes between version 1.0 and 2.0.
+
+When you go back to run your app A, you get all sorts of errors, and your app does not run. This is a scenario you can run into when building software with Python. And to get around this, we can use virtual environments.
+
+
+[referance to use ENV](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/)
+
+```shell
+pip install langchain_core langchain_anthropic
+```
+
+
+## Creating a venv
+Mac 
+
+> env is the virtual env name
+```
+python3 -m venv <name of env>
+```
+
+
+Windows 
+```
+python -m venv env
+```
+
+
+
+## To activate
+Mac 
+
+```
+source env/bin/activate
+```
+
+
+Windows 
+> env is the virtual env name
+```
+
+.env/Scripts/activate
+{/* Or the below */}
+.env/Scripts/activate.bat
+```
+
+
+## see if activated
+
+if you see this the it's activated
+```
+(env) PS F:\code\AI\genai course> 
+ ^
+```
+
+## Deactivate
+
+```
+$ deactivate
+```
+
+
+## Now if you have to share this, Then
+```
+pip freeze > requirements.txt
+```
+
+https://www.youtube.com/watch?v=Y21OR1OPC9A&ab_channel=TechWithTim

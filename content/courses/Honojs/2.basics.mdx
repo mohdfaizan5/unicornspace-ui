@@ -1,0 +1,121 @@
+---
+title: Basics of Hono.js
+description: Deep diving into how LLM's work.
+slug: basics-of-honojs
+---
+
+# Basics of Hono.js
+
+## The "Group By Domain" (Modular & Scalable)
+
+This means put everything related to one domain (feature/module) in one folder.
+
+```
+src/
+├── modules/
+│ ├── user/
+│ │ ├── routes.ts # /user routes
+│ │ ├── controller.ts # user-related logic
+│ │ ├── service.ts # handles business logic like DB calls
+│ │ ├── middleware.ts # e.g., verifyUser()
+│ │ ├── validator.ts # zod schema or input validation
+│ │ └── types.ts # User types (User, UserDTO)
+│ └── product/
+│ ├── routes.ts
+│ ├── controller.ts
+│ ├── service.ts
+│ └── types.ts
+Everything about "user" is inside modules/user/. Same for "product", "auth", "order", etc.
+```
+
+### Benefits (Mentor Insight)
+
+- 🔍 Easier to locate and maintain features.
+- 👥 Scales better with teams (each dev can own a module).
+- 🚀 Encourages separation of concern without scattering logic.
+
+### Step-by-step Example : The "Group By Type" (Monolithic & Simple)
+
+#### 📁 Folder structure:
+
+```
+src/
+├── modules/
+│   ├── auth/
+│   │   └── routes.ts
+│   └── user/
+│       └── routes.ts
+└── index.ts
+```
+
+auth/routes.ts
+
+```ts
+import { Hono } from "hono";
+
+const authRoutes = new Hono();
+
+authRoutes.post("/login", (c) => {
+  return c.text("Logged in");
+});
+
+authRoutes.post("/register", (c) => {
+  return c.text("Registered");
+});
+
+export { authRoutes };
+```
+
+user/routes.ts
+
+```ts
+import { Hono } from "hono";
+
+const userRoutes = new Hono();
+
+userRoutes.get("/profile", (c) => {
+  return c.text("User profile");
+});
+
+export { userRoutes };
+```
+
+3. index.ts (Main entry point)
+
+```ts
+import { Hono } from "hono";
+import { authRoutes } from "./modules/auth/routes";
+import { userRoutes } from "./modules/user/routes";
+
+const app = new Hono();
+
+app.route("/auth", authRoutes);
+app.route("/user", userRoutes);
+
+export default app;
+```
+
+🧠 Bonus Tip:
+If routes get very large, break it into:
+
+- controller.ts
+- service.ts
+- validator.ts
+  ...and import them inside routes.ts.
+
+## Params
+
+```ts
+sitemapRoutes.get("/projects/:projectId/sitemap", async (c) => {
+  c.req.param("projectId");
+});
+```
+
+## Response
+
+```ts
+sitemapRoutes.get("/projects/:projectId/sitemap", async (c) => {
+  const projectId = c.req.param("projectId");
+  c.json({ message: "Sitemap API" });
+});
+```
