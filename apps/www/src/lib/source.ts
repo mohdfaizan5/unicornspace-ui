@@ -1,4 +1,4 @@
-import { blog as BlogPost, components as ComponentSource, docs } from '@/.source';
+import { blog as BlogPost, components as ComponentSource, docs, courses as CourseSource } from '@/.source';
 import { loader } from 'fumadocs-core/source';
 import { createMDXSource } from 'fumadocs-mdx';
 
@@ -20,4 +20,10 @@ export const blog = loader({
 export const components = loader({
   baseUrl: "/components",
   source: createMDXSource(ComponentSource)
+})
+
+
+export const courses = loader({
+  baseUrl: "/course",
+  source: createMDXSource(CourseSource)
 })

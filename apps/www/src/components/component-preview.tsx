@@ -9,7 +9,8 @@ import { ArrowRight, MoveRight } from "lucide-react";
 import reactNodeToString from "react-node-to-string";
 import { Tabs } from "fumadocs-ui/components/tabs";
 import { TabsContent, TabsList, TabsTrigger } from "fumadocs-ui/components/ui/tabs";
-import { Pre } from "fumadocs-ui/components/codeblock";
+import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
+import { Button } from "./ui/button";
 
 const ComponentPreview = ({
   name,
@@ -29,30 +30,33 @@ const ComponentPreview = ({
   // console.log(typeof ComponentToRender.component);
 
   return (
-    <div className="relative my-4 z-10 flex flex-col space-y-2 overflow-auto">
+    <div className="relative  my-4 z-10 flex flex-col space-y-2 overflow-auto">
       <Tabs defaultValue="tab-1">
-        <TabsList className="h-auto gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
+        <TabsList className="ml-2 flex justify-between h-auto gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
+          <div className="flex items-center space-x-2">
+
           <TabsTrigger
             value="tab-1"
             className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
-          >
+            >
             Preview
           </TabsTrigger>
           <TabsTrigger
             value="tab-2"
             className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
-          >
+            >
             Code
           </TabsTrigger>
-          <Link href={`/preview/${name}`} className="ml-2">
-            {/* <Button variant={"ghost"} className="group flex items-center gap-2">
+</div>
+          {/* <Link href={`/preview/${name}`} className="ml-2">
+            <Button variant={"ghost"} className="group flex items-center gap-2">
               See full component{" "}
               <MoveRight
                 size={18}
                 className="group-hover:translate-x-2 transition-all duration-150"
               />
-            </Button> */}
-          </Link>
+            </Button>
+          </Link> */}
         </TabsList>
         <TabsContent value="tab-1">
           <ComponentWrapper>
@@ -71,12 +75,16 @@ const ComponentPreview = ({
           </ComponentWrapper>
         </TabsContent>
         <TabsContent value="tab-2">
-          <Pre
 
+<CodeBlock keepBackground {...props} lang="ts">
+  <Pre>{props.children}const a:string = "Hello World";</Pre>
+</CodeBlock>;
+          <Pre
+            lang="ts"
             className="w-full max-h-96 overflow-y-auto"
             // code={ComponentToRender.code}
           >
-            hi
+            const a:string = "Hello World";
           </Pre>
         </TabsContent>
       </Tabs>

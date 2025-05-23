@@ -12,7 +12,7 @@ export const coursesRegistry = [
         title: 'Prompt Engineering',
         description: 'Deep dive in understanding how changing words change the complete responses and quality of the output',
         slug: 'prompt-engineering',
-        isPublished: true,
+        isPublished: false,
         tags: [
             'AI', "System Prompts", "Prompting Techniques"
         ]
@@ -21,7 +21,7 @@ export const coursesRegistry = [
         title: 'TypeScript',
         description: 'Learn Typescript with fun and example from scratch',
         slug: 'typescript',
-        isPublished: true,
+        isPublished: false,
         tags: ['android']
     },
 ]

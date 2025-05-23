@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowRight, Check, Star, LucideProps } from "lucide-react";
 import Image from "next/image";
 export const Icons = {
-  underline: (props: LucideProps) => (
+  underline: (props: LucideProps & React.SVGProps<SVGSVGElement>) => (
     <svg {...props} viewBox="0 0 687 155">
       <g
         stroke="currentColor"

@@ -1,4 +1,6 @@
+import Logo from '@/components/logo';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { BookIcon, FileIcon, NotebookText } from 'lucide-react';
 
 /**
  * Shared layout configurations
@@ -10,37 +12,29 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
-      <>
-        <svg
-          width="24"
-          height="24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-label="Logo"
-        >
-          <circle cx={12} cy={12} r={12} fill="currentColor" />
-        </svg>
-        My App
-      </>
+      <Logo full textClassName='text-lg mt-2' className='items-center'/>
     ),
   },
   // see https://fumadocs.dev/docs/ui/navigation/links
  links: [
     {
-      // icon: <BookIcon   />,
+      icon: <FileIcon   />,
+            label: 'components', // `aria-label`
+
       text: 'Components',
       url: '/components',
       // secondary items will be displayed differently on navbar
       secondary: false,
     },
-    // {
-    //   // icon: <BookIcon   />,
-    //   text: 'Courses',
-    //   url: '/course',
-    //   // secondary items will be displayed differently on navbar
-    //   secondary: false,
-    // },
     {
-      // icon: <BookIcon   />,
+      icon: <NotebookText className=''   />,
+      text: 'Courses',
+      url: '/course',
+      // secondary items will be displayed differently on navbar
+      secondary: false,
+    },
+    {
+      icon: <BookIcon   />,
       text: 'Blog',
       url: '/blog',
       // secondary items will be displayed differently on navbar

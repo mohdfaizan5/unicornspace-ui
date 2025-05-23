@@ -1,10 +1,8 @@
-import { ComponentType } from "react";
+import { ComponentType } from 'react'
 
 export interface ComponentEntry {
-  component: ComponentType<any>;
-  code: (a: string) => Promise<string>;
+  component: ComponentType
+  code: string
 }
 
-export interface ComponentRegistry {
-  [key: string]: ComponentEntry;
-}
+export type RegistrySchema = Record<string, ComponentEntry>

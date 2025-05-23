@@ -1,4 +1,3 @@
-import { RegistrySchema } from "@/types/registry";
 
 import HeroSection3 from "./components/hero-sections/hero-section3";
 import { Pricing2Code } from "./component-code/pricing/pricing2Code";
@@ -127,6 +126,7 @@ import { Testimonials6Code } from "./component-code/testimonials/testimonials6Co
 import { AvatarListCode } from "./component-code/others/avatar-listCode";
 import CuisineSelector from "./components/others/cuisine-selector";
 import { CuisineSelectorCode } from "./component-code/others/cuisine-selectorCode";
+import { RegistrySchema } from "./schema";
 
 //
 const componentRegistry: RegistrySchema = {

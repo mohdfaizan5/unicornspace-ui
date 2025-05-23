@@ -5,7 +5,10 @@ import { blog } from '@/lib/source';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout tree={blog.pageTree} {...baseOptions}>
+    <DocsLayout tree={{
+      name: 'blog',
+      children: [],
+    }} {...baseOptions}>
       {children}
     </DocsLayout>
   );

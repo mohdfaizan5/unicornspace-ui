@@ -19,12 +19,25 @@ export const docs = defineDocs({
 
 export const blog = defineCollections({
   "type": "doc",
-  dir: "content/blogs"
+  dir: "content/blog"
 })
 
 export const components = defineCollections({
   "type": "doc",
   dir: "content/components",
+})
+
+export const courses = defineCollections({
+  type: "doc",
+  dir: "content/courses",
+  
+  // schema: frontmatterSchema.extend({
+  //   title: z.string(),
+  //   description: z.string(),
+  //   date: z.date(),
+  //   tags: z.array(z.string()),
+  //   image: z.string().optional(),
+  // }),
 })
 
 
