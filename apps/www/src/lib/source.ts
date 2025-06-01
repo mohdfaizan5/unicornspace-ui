@@ -13,7 +13,7 @@ export const source = loader({
 export const blog = loader({
   // it assigns a URL to your pages
   baseUrl: '/blog',
-  source: createMDXSource(BlogPost, []),
+  source: createMDXSource(BlogPost),
 });
 
 

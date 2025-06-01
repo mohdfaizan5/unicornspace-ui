@@ -1,0 +1,32 @@
+---
+title: Tracing, Monitoring - Langsmith 
+description: How to monitor your AI applications in production.
+---
+
+## Why monitoring is necessary?
+1. Track how you're users are using your application.
+2. See if any bugs or errors faced in your logs
+3. Have a place to visulize the traces of ai app
+
+
+## What is Tracing
+Collect metrics (CPU & GPU resources) usage  logs of what is user input and what is llm response
+
+
+### LangSmith
+
+It's a closed source tool to do it with simple implementation
+https://www.langchain.com/langsmith
+
+### Langfuse
+https://langfuse.com/
+Opensource version of Langsmith
+* we can self host,
+* it's recommended
+
+
+
+
+<Accordions type="single">
+  <Accordion title="Does these tools effect my application performance?">No! These tools work asyncronously and in background</Accordion>
+</Accordions>

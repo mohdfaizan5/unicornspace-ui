@@ -1,0 +1,36 @@
+---
+title: Query translation
+description: ...
+---
+
+The whole moto is to make the user prompt better. Basically sometimes the user is not sure in the `{user prompt}` what exactly he wants, because user can intend something and can type something else. Now if the input is ambigous then the output also will be ambigous (not having one obvious meaning)
+
+> Note: Think it as GIGO (Garbage In Garbage Out)
+
+![sdf](./assets/query-translation.png)
+
+
+>  understand that what user is aksing and they're intending coulg be different, so if we can make the user query better by predicting what the user is intending with, then we can make the query better.
+
+
+## Abstraction vs Less Abstraction
+
+NOw think of abstraction as, when you tell "I'm thirsty" that means you expect others to understand and get you water.
+
+But on the other hand, in less abstraction way it would be "I'm thirsty, I need warm dring water of full glass"
+
+Here well it depends on usecae to usecase about abstraction and basically both are required
+
+{/* TODO: basically the context is not proper here wrt genai, do add something */}
+
+## There are different ways to do query translation
+
+Rewrite is one of the way, we're using here, variants to Rewrite
+
+### Parallel Query(Fan out ) Retrieval
+
+
+> Intersection: the set of all elements common to two or more sets.
+
+![](./assets/parallel-query-retrival.png)
+![](./assets/parallel-query-retrival-usage.png)

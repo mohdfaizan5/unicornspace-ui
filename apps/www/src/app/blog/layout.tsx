@@ -5,7 +5,7 @@ import { blog } from '@/lib/source';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout tree={{
+    <DocsLayout sidebar={{enabled: false,}}  nav={{enabled:true}} tree={{
       name: 'blog',
       children: [],
     }} {...baseOptions}>

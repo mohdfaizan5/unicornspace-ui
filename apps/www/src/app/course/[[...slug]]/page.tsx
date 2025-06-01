@@ -25,6 +25,7 @@ import {
 import { createRelativeLink } from 'fumadocs-ui/mdx'
 import { getMDXComponents } from '@/mdx-components'
 import { components } from '@/lib/source';
+import { FaAngleLeft } from 'react-icons/fa'
 
 const page = async (props: { params: Params }) => {
     const { slug: courseSlug } = await props.params
@@ -61,46 +62,50 @@ const page = async (props: { params: Params }) => {
         console.log(">>>>", re.test("10.intro"))
         console.log(">>>>", re.test("glo"))
 
-        return (<div className=''>
-            <div className="max-w-3xl max-sm:text-center mt-10 ">
-                <h1 className="ml-6 font-heading text-foreground mb-2 text-4xl/[1.1] font-bold tracking-tight md:text-5xl/[1.1]">
-                    {courseSlug[0]}
-                </h1>
-                {/* <p className="text-muted-foreground mb-8 text-lg">
-                    {chapter.data?.description}
-                </p> */}
-            </div>
+        return (
+            <div className='xl:ml-20'>
+                <div className="max-w-3xl max-sm:text-center mt-10 ">
+                    <h1 className="capitalize ml-6 font-heading text-foreground mb-2 text-4xl/[1.1] font-bold tracking-tight md:text-5xl/[1.1]">
+                        {courseSlug[0]}
+                    </h1>
+                    <p className="text-muted-foreground ml-6  mb-8 text-lg">
+                    {coursesRegistry.find(c => c.slug == courseSlug[0])?.description || ""}
+                </p>
+                </div>
 
-            <section className='mx-auto max-w-6xl px-4 pb-10 md:pb-20 grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-                {course.map((chapter, i) =>
-                    <Link key={i} href={`/course/${chapter.slugs[0]}/${re.test(chapter.slugs[1]) ? chapter.slugs[1].split(".")[1] : chapter.slugs[1]}`} className='group'>
+                <section className='mx-auto max-w-6xl  px-4 pb-10 md:pb-20 grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
+                    {course.map((chapter, i) =>
+                        <Link key={i} href={`/course/${chapter.slugs[0]}/${re.test(chapter.slugs[1]) ? chapter.slugs[1].split(".")[1] : chapter.slugs[1]}`} className='group'>
 
-                        <Card className='gap-2 bg-secondary/90  group h-full rounded-[12px] shadow-sm transition-all hover:shadow-lg ' key={i}>
-                            <CardHeader className='flex flex-row items-center gap-2'>
-                                <div className='mr-2 flex h-8 w-8 flex-none flex-shrink-0 items-center justify-center rounded-full bg-blue-300 text-sm font-bold text-blue-700 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black'>
-                                    <p className='group-hover:hidden'>
-                                        {i}
+                            <Card className='gap-2 bg-secondary/90  group h-full rounded-[12px] shadow-sm transition-all hover:shadow-lg ' key={i}>
+                                <CardHeader className='flex flex-row items-center gap-2'>
+                                    <div className='mr-2 flex h-8 w-8 flex-none flex-shrink-0 items-center justify-center rounded-full bg-blue-300 text-sm font-bold text-blue-700 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black'>
+                                        <p className='group-hover:hidden'>
+                                            {i}
 
-                                    </p>
-                                    <svg className="hidden h-5 group-hover:block" data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16" style={{ "color": "currentcolor" }}><path fill-rule="evenodd" clip-rule="evenodd" d="M5.75001 2H5.00001V3.5H5.75001H11.4393L2.21968 12.7197L1.68935 13.25L2.75001 14.3107L3.28034 13.7803L12.4988 4.56182V10.25V11H13.9988V10.25V3C13.9988 2.44772 13.5511 2 12.9988 2H5.75001Z" fill="currentColor"></path></svg>
-                                </div>
-                                <CardTitle className='text-xl'>{chapter.data.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className='line-clamp-2 text-sm text-gray-900 dark:text-muted-foreground'> {chapter.data.description}</p>
-                            </CardContent>
-                        </Card>
-                    </Link>
-                )}
-            </section >
+                                        </p>
+                                        <svg className="hidden h-5 group-hover:block" data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16" style={{ "color": "currentcolor" }}><path fill-rule="evenodd" clip-rule="evenodd" d="M5.75001 2H5.00001V3.5H5.75001H11.4393L2.21968 12.7197L1.68935 13.25L2.75001 14.3107L3.28034 13.7803L12.4988 4.56182V10.25V11H13.9988V10.25V3C13.9988 2.44772 13.5511 2 12.9988 2H5.75001Z" fill="currentColor"></path></svg>
+                                    </div>
+                                    <CardTitle className='text-xl'>{chapter.data.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className='line-clamp-2 text-sm text-gray-900 dark:text-muted-foreground'> {chapter.data.description}</p>
+                                </CardContent>
+                            </Card>
+                        </Link>
+                    )}
+                </section >
 
-        </div>)
+            </div>)
     }
 
     console.log("😍😍😍")
     if (courseSlug.length === 2) {
-        console.log("---->>>>😍", courseSlug, allCourses.map(c => c.file.dirname.toLowerCase()))
+        // console.log("---->>>>😍", courseSlug, allCourses.map(c => c.file.dirname.toLowerCase()))
 
+
+
+        
         const allCourseChapters = allCourses.filter((item) => {
             // console.log(item.file.dirname.toLowerCase(), "--", courseSlug[1])
             if (item.file.dirname.toLowerCase() === (courseSlug[0].toLowerCase())) {
@@ -110,6 +115,10 @@ const page = async (props: { params: Params }) => {
 
             }
         })
+
+
+        // get previous chapter slug, basically like above get the slug of the chapter from course object, when it matches then return the previous chapter
+        const previousChapterSlug = allCourseChapters.map(c => c.slugs[1]).find(slug => {})
 
         // const chapter = allCourseChapters.filter((item) => {   
 
@@ -121,9 +130,9 @@ const page = async (props: { params: Params }) => {
             // const a = (re.test(item.slugs[1]) ? "how-llms-work" : 'other') === courseSlug[1]
             // console.log(item.slugs[1], courseSlug[1], a )
             console.log()
-            const convertedSlug =  re.test(item.slugs[1]) ? item.slugs[1].split(".")[1]:item.slugs[1]
+            const convertedSlug = re.test(item.slugs[1]) ? item.slugs[1].split(".")[1] : item.slugs[1]
 
-            if(convertedSlug.toLowerCase() === courseSlug[1].toLowerCase()){
+            if (convertedSlug.toLowerCase() === courseSlug[1].toLowerCase()) {
                 return item
             }
         }
@@ -133,7 +142,7 @@ const page = async (props: { params: Params }) => {
         console.log("😍😍😍😍😍", page)
 
         console.log()
-        
+
         if (!page) {
             return <div>Chapter not found</div>
         }
@@ -142,16 +151,26 @@ const page = async (props: { params: Params }) => {
 
         return (
             <DocsPage toc={page.data.toc} full={page.data.full}>
-                <DocsTitle>{page.data.title}</DocsTitle>
+                <Link href={`/course/${page.slugs[0]}`} className="mb-4 justify-end flex">
+                    <Button>
+                        <FaAngleLeft />
+                        lessons
+                    </Button>
+                </Link>
+                <div>
+
+                <DocsTitle className='mb-2'>{page.data.title}</DocsTitle>
                 <DocsDescription>{page.data.description}</DocsDescription>
+                </div>
                 <DocsBody>
-                    <MDXContent
+                    <MDXContent 
                         components={getMDXComponents({
                             // this allows you to link to other pages with relative file paths
                             a: createRelativeLink(components, page),
                         })}
                     />
                 </DocsBody>
+
             </DocsPage>
         );
 
@@ -242,7 +261,7 @@ export default page
 
 
 export async function generateStaticParams() {
-  return courses.generateParams();
+    return courses.generateParams();
 }
 
 // TODO: work this out as it requires you to create a metadata object for each page properly

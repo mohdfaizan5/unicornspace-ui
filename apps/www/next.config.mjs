@@ -14,7 +14,8 @@ const config = {
         pathname: '/**',
       },
     ],
-  }
+  },
+  serverExternalPackages: ['typescript', 'twoslash'],
 };
 
 

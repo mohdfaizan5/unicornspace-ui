@@ -10,7 +10,7 @@ import reactNodeToString from "react-node-to-string";
 import { Tabs } from "fumadocs-ui/components/tabs";
 import { TabsContent, TabsList, TabsTrigger } from "fumadocs-ui/components/ui/tabs";
 import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 const ComponentPreview = ({
   name,

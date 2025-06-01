@@ -1,0 +1,38 @@
+---
+title: Basic UV python package manager docs
+description: ...
+---
+
+## Installation
+https://docs.astral.sh/uv/getting-started/installation/
+
+
+## setting up a project
+
+```shell
+uv init <project_name>
+```
+> It creates  a new folder and manages the whole folder vir env
+
+### running the file
+```shell
+uv run file_name.py
+
+```
+
+
+## Env in UV
+
+You can tell the uv run command to load environment variables from a file, either by using the --env-file option:
+
+```shell
+uv run --env-file=.env myscript.py
+```
+
+
+Or by setting the UV_ENV_FILE environment variable:
+
+```shell
+export UV_ENV_FILE=.env
+uv run myscript.py
+```

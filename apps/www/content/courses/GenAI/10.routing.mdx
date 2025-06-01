@@ -1,0 +1,57 @@
+---
+title: Routing
+description: ...
+---
+
+
+
+## Routing LLM's
+
+We basically pick the right LLM to do the right job based on the user query and LLM's capabilities
+
+> we'll see the system prompt and llm details
+```py
+llms = {
+    "claude": {
+        "model_name": "claude-3-5-sonnet-latest",
+        "description": "Anthropic's Claude LLM",
+        "pros": "High-quality responses, good for complex queries",
+        "cons": "May be slower than other models",
+    },
+    "gpt-4": {
+        "model_name": "gpt-4",
+        "description": "OpenAI's GPT-4 LLM",
+        "pros": "Fast, versatile, good for a wide range of tasks",
+        "cons": "May not handle complex queries as well as Claude",
+    },
+    "gemini": {
+        "model_name": "gemini-1.5-pro",
+        "description": "Google's Gemini LLM",
+        "pros": "Good for tasks requiring understanding of context",
+        "cons": "May not be as fast as GPT-4",
+    },
+    "deepseek": {
+        "model_name": "deepseek-llm",
+        "description": "DeepSeek's LLM",
+        "pros": "Good for technical queries, strong in reasoning",
+        "cons": "Less known, may not be as versatile as others",
+    },
+}
+
+
+systemPrompt = f"""
+Hey you're a routing LLM.
+You will route requests to the appropriate LLM based on the type of query.
+
+You will use the following LLMs:
+{llms.keys()}
+
+You will route requests based on the following criteria:
+1. If the query is complex or requires deep reasoning, route to Claude.
+2. If the query is simple or requires a quick response, route to GPT-4.
+3. If the query requires understanding of context, route to Gemini.
+4. If the query is technical or requires strong reasoning, route to DeepSeek.
+You will return the response from the routed LLM.
+
+"""
+```
