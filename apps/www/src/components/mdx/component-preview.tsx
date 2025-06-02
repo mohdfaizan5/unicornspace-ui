@@ -4,13 +4,9 @@ import React from "react";
 import componentRegistry from "@/registry";
 import ComponentWrapper from "./component-wrapper";
 import { ImSpinner } from "react-icons/im";
-import Link from "next/link";
-import { ArrowRight, MoveRight } from "lucide-react";
-import reactNodeToString from "react-node-to-string";
 import { Tabs } from "fumadocs-ui/components/tabs";
 import { TabsContent, TabsList, TabsTrigger } from "fumadocs-ui/components/ui/tabs";
 import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
-import { Button } from "../ui/button";
 
 const ComponentPreview = ({
   name,

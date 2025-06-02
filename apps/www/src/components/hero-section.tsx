@@ -1,9 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
-import { Badge } from "./ui/badge";
 import { Icons } from "./icons";
-import { Clock, Cuboid, DollarSign, Rocket, ShieldCheck } from "lucide-react";
+import { Cuboid, DollarSign, Rocket,  } from "lucide-react";
 import TechStackIcons from "./tech-stack-icons";
 
 const HeroSection = () => {
