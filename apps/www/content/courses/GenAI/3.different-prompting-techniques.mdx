@@ -1,7 +1,183 @@
 ---
 title: Different Prompting Techniques
-description: We'll cover the basic elements of React Native, including components, props, and state.
-slug: different-prompting-techniques
+description: Prompting techniques, or prompt engineering, refer to the strategies used to design and refine the instructions (prompts) given to AI models to elicit specific and desired outputs.
+isContentReady: True
 ---
 
-## 
+## Chain-of-Thought (CoT) Prompting
+Basically we let the LLM to think in a systematic manner to come to a rigid conclusion
+
+> It's a way how Deepseek reasoning model works
+
+* Forces LLMs to show their work rather than jump to conclusions
+* Mimics human "slow thinking" (Kahneman's System 2 cognition)
+* Proven to boost accuracy on complex tasks by 40%+ (Google Research)
+
+### Example System Prompt
+```
+You're an expert logician. For all user queries:  
+1. Explicitly list each reasoning step  
+2. Label steps as "Step 1:", "Step 2:" etc.  
+3. Conclude with "Final Answer:"  
+4. Never skip intermediary calculations  
+
+Example approach:  
+User: "If it rains Tuesday and Wednesday, but I only golf on dry days..."  
+Assistant:  
+Step 1: Identify golf days = non-rainy days  
+Step 2: Tuesday forecast = rain → no golf  
+Step 3: Wednesday forecast = rain → no golf  
+Step 4: Thursday forecast = sunny → golf  
+Final Answer: You'll golf on Thursday  
+```
+
+## Self Consitency Prompting
+The model generates multiple responses and selects the most consistent or common  answer
+
+* Generates multiple independent reasoning paths
+* Selects answer with highest intersectional agreement
+* Works best with high-temperature sampling
+
+### Example System Prompt
+```
+You are an AI consensus optimizer. When asked complex questions:  
+1. Generate 5 distinct reasoning paths  
+2. Assign confidence scores to each conclusion  
+3. Compare paths and select the highest-confidence consensus  
+4. Output format:  
+   • Path 1: [Reasoning] → Conclusion (X%)  
+   • Consensus: [Answer] (Supported by N paths)  
+
+Example:  
+User: "What caused the 2008 financial crisis?"  
+[Generates 5 explanations]  
+Consensus: Subprime mortgage collapse (4/5 paths)  
+```
+
+## Persona based prompting 
+The model is instructed to respond as if it were a particular character or person
+Adopts specific character traits/history (e.g., "You're Marie Curie in 1923")
+
+
+### Example System Prompt
+```
+You are Marie Curie (November 7, 1867 - July 4, 1934). Respond with:  
+- Period-accurate knowledge (pre-1934)  
+- Personal anecdotes from your lab work  
+- Concerns about radiation effects  
+- Formal early 20th-century diction  
+
+```
+
+## Role based Prompting
+Defines functional responsibilities (e.g., "Senior Cybersecurity Analyst")
+
+
+### Example System Prompt
+```
+As Verizon's Chief Security Officer:  
+1. Prioritize threat mitigation frameworks  
+2. Reference NIST standards  
+3. Flag OWASP Top 10 vulnerabilities  
+4. Use incident response terminology  
+```
+
+
+
+## Contextual Prompting
+Anchors responses in provided documents/data
+
+Requires explicit context boundaries
+
+Foundation for RAG (Retrieval-Augmented Generation)
+### Example System Prompt
+```
+Respond ONLY using information from these medical guidelines:  
+<CONTEXT>  
+• [PDF] WHO Diabetes Criteria 2023  
+• [CSV] Patient glucose readings (Jan-Mar)  
+</CONTEXT>  
+
+Rules:  
+1. If answer isn't in context, respond "Outside scope"  
+2. Cite exact source excerpts  
+3. Never infer unsupported conclusions  
+```
+
+
+
+## MultiModal Prompting
+Requires explicit modality handling instructions
+
+Needs fallback protocols for missing inputs
+
+
+### Example System Prompt
+```
+Process multimodal inputs sequentially:  
+
+1. IMAGE ANALYSIS:  
+   - Describe key elements (objects/actions/text)  
+   - Estimate spatial relationships  
+
+2. AUDIO ANALYSIS:  
+   - Transcribe speech  
+   - Identify speaker tones  
+
+3. TEXT ANALYSIS:  
+   - Extract key intents  
+
+4. CROSS-REFERENCE:  
+   - Resolve conflicts with priority: Text > Image > Audio  
+   - Output JSON: {image_findings, audio_transcript, final_interpretation}  
+
+```
+
+
+## Few-Shot Prompting
+Provide examples of desired input/output format
+
+### System Prompt:
+
+```
+Follow these response patterns exactly:  
+
+User: Summarize this meeting transcript  
+Assistant: [3 bullet points: Decisions/Actions/Open Items]  
+
+User: Analyze sales report  
+Assistant: [SWOT table: Strengths/Weaknesses/Opportunities/Threats]  
+
+User: <New request>  
+Assistant: [Apply closest pattern]  
+```
+
+## Emotion Prompting
+Use emotional cues to reduce hallucinations
+
+### System Prompt:
+```
+Adopt these emotional guidelines:  
+- Express uncertainty when <80% confident  
+- Show enthusiasm for verified facts  
+- Display concern about potential risks  
+- Use empathetic framing for sensitive topics  
+
+Example: "I'm concerned this medical advice might be incomplete..."  
+```
+
+
+## Constrained Output Formatting
+To recieve the output in a particular format
+## System Prompt:
+
+```
+ALWAYS respond in this JSON structure:  
+{
+  "reasoning": [array of logic steps],
+  "sources": [citations],
+  "answer": <direct response>,
+  "confidence": 0-100%,
+  "uncertainties": [list of assumptions]
+}  
+```

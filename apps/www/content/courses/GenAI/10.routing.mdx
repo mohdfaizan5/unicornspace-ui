@@ -1,17 +1,34 @@
 ---
 title: Routing
-description: ...
+description: Learn how to intelligently route user queries to the most suitable Large Language Model (LLM) based on their strengths, ensuring optimal performance, accuracy, and cost-efficiency in GenAI applications.
 ---
 
+In real-world applications, no single Large Language Model (LLM) is best at everything.
+Each has its strengths — some are better at reasoning, others at creativity, code generation, or processing long documents.
 
 
 ## Routing LLM's
+Routing is the process of automatically choosing the most appropriate LLM based on:
+- The user's query
+- The known strengths and weaknesses of each model
 
 We basically pick the right LLM to do the right job based on the user query and LLM's capabilities
 
-> we'll see the system prompt and llm details
-```py
-llms = {
+
+
+Think of it like a smart assistant that reads the request and decides:
+> “This looks like a technical programming question — I’ll send it to DeepSeek.”
+> “This is a complex ethical query — Claude will give a more nuanced answer.”
+
+
+### System Prompt for Routing
+```
+
+Hey you're a routing LLM.
+You will route requests to the appropriate LLM based on the type of query.
+
+You will use the following LLMs:
+{
     "claude": {
         "model_name": "claude-3-5-sonnet-latest",
         "description": "Anthropic's Claude LLM",
@@ -39,12 +56,90 @@ llms = {
 }
 
 
+You will route requests based on the following criteria:
+1. If the query is complex or requires deep reasoning, route to Claude.
+2. If the query is simple or requires a quick response, route to GPT-4.
+3. If the query requires understanding of context, route to Gemini.
+4. If the query is technical or requires strong reasoning, route to DeepSeek.
+You will return the response from the routed LLM.
+
+```
+
+## Code implementation
+
+<Tabs items={['anthropic']}>
+
+    <Tab value="anthropic">
+```py
+"""
+ROUTING LLMs:
+
+This module provides a framework for routing requests to different LLMs based on the type of queries.
+"""
+
+llms = {
+    "claude": {
+        "model_name": "claude-3-5-sonnet-latest",
+        "description": "Anthropic's latest Claude 3.5 Sonnet, designed for nuanced reasoning, safe outputs, and long-context understanding.",
+        "pros": [
+            "Excels at complex and open-ended reasoning tasks",
+            "Produces coherent, structured, and thoughtful responses",
+            "Strong alignment with human intent and safe generation"
+        ],
+        "cons": [
+            "May have slower response times compared to other models",
+            "Can be conservative in speculative or creative tasks"
+        ]
+    },
+    "gpt-4": {
+        "model_name": "gpt-4",
+        "description": "OpenAI's flagship GPT-4 model, known for its balance of speed, accuracy, and creative capability.",
+        "pros": [
+            "Highly versatile across a broad range of tasks",
+            "Fast responses with strong code and language generation",
+            "Widely integrated and supported in the ecosystem"
+        ],
+        "cons": [
+            "Sometimes lacks depth in highly nuanced reasoning",
+            "Can be verbose or overly confident in factual errors"
+        ]
+    },
+    "gemini": {
+        "model_name": "gemini-1.5-pro",
+        "description": "Google DeepMind's Gemini 1.5 Pro, optimized for long-context understanding and multimodal capabilities.",
+        "pros": [
+            "Strong at understanding long documents or chains of thought",
+            "Multimodal support (text, code, vision, etc.) in some variants",
+            "Well-suited for research and academic-style tasks"
+        ],
+        "cons": [
+            "Slightly slower and more resource-intensive",
+            "Less widely adopted in developer workflows compared to GPT"
+        ]
+    },
+    "deepseek": {
+        "model_name": "deepseek-llm",
+        "description": "DeepSeek’s technical-focused language model with emphasis on math, coding, and logical reasoning.",
+        "pros": [
+            "Exceptional at technical and programming-related queries",
+            "Efficient with mathematical reasoning and structured tasks",
+            "Lightweight and fast for developer use cases"
+        ],
+        "cons": [
+            "Limited awareness and smaller community support",
+            "Can struggle with creative writing or non-technical topics"
+        ]
+    }
+}
+
+
+
 systemPrompt = f"""
 Hey you're a routing LLM.
-You will route requests to the appropriate LLM based on the type of query.
+You will route requests to the appropriate LLM based on the type of query and LLM's capabilities by understanding their pros and cons.
 
 You will use the following LLMs:
-{llms.keys()}
+{llms}
 
 You will route requests based on the following criteria:
 1. If the query is complex or requires deep reasoning, route to Claude.
@@ -53,5 +148,57 @@ You will route requests based on the following criteria:
 4. If the query is technical or requires strong reasoning, route to DeepSeek.
 You will return the response from the routed LLM.
 
+RULES:
+1. You'll give the output only in json format
+2. You can't give in anyother format
+
+
+OUTPUT FORMAT:
+{{model_name: string, short_reason_for_picking_model:string}}
+
 """
+
+import anthropic
+client = anthropic.Anthropic()
+message = client.messages.create(
+    model="claude-3-5-sonnet-latest",
+    system=systemPrompt,
+    max_tokens=1020,
+    
+    messages=[
+        {"role": "user", "content": "what was the reason for crisis 2008"}, # (Claude is expected)
+        {"role": "user", "content": "Write a short sci-fi story about future where AIs control the weather, but one AI rebels. Keep the tone philosophical."}, # (GPT-4 likely leads)
+        {"role": "user", "content": "Write a TypeScript function that validates an email address using a regular expression. Then explain how it works"}, # (DeepSeek may excel, GPT-4 is strong, too)
+
+        {"role": "user", "content": "Write a short sci-fi story about a future where AIs control the weather, but one AI rebels. Keep the tone philosophical."}, # Gemini
+    ],
+)
+
+print(message.content)
+```
+    </Tab>
+</Tabs>
+
+
+### Results
+If you use the particular queries you'll get the particular models selected/routed by the LLM
+
+#### (Claude is expected)
+```
+what was the reason for crisis 2008
+```
+
+####  (GPT-4 likely leads)
+```
+Write a short sci-fi story about future where AIs control the weather, but one AI rebels. Keep the tone philosophical.
+```
+#### DeepSeek may excel, GPT-4 is strong, too
+```
+Write a TypeScript function that validates an email address using a regular expression. Then explain how it works"
+```
+
+#### Gemini
+
+```
+Write a short sci-fi story about a future where AIs control the weather, but one AI rebels. Keep the tone philosophical."}, 
 ```

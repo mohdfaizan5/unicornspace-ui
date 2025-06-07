@@ -1,32 +1,76 @@
 ---
-title: Tracing, Monitoring - Langsmith 
-description: How to monitor your AI applications in production.
+title: Tracing, Monitoring
+description: observability toolkit for reliable AI systems in production.
+isContentReady: True
 ---
 
 ## Why monitoring is necessary?
+
 1. Track how you're users are using your application.
 2. See if any bugs or errors faced in your logs
-3. Have a place to visulize the traces of ai app
+   - Catch hallucinations: Monitor fact-check failure rates
+   - Identify degradation: Response latency increased 40% after model update
+3. Cost Control
+   - Token consumption analysis: Why do some queries use 10x more tokens?
+   - Optimize expensive operations: Cache common RAG queries
+4. Have a place to visulize the traces of AI app
 
+> Real-World Failure: Customer service bot started recommending competitors' products due to training data drift. Monitoring caught it in 3 hours vs. 3 weeks.
 
 ## What is Tracing
-Collect metrics (CPU & GPU resources) usage  logs of what is user input and what is llm response
 
+Collect metrics (CPU & GPU resources) usage logs of what is user input and what is LLM's response
 
-### LangSmith
+## Monitoring Tool Showdown
+
+### LangSmith (Closed Source)
 
 It's a closed source tool to do it with simple implementation
 https://www.langchain.com/langsmith
 
-### Langfuse
+![langgraph logo](./assets/langgraph.png)
+
+Best for: Teams using LangChain ecosystem
+Strengths:
+
+- Deep integration with LangChain components
+- Visual debugging of complex chains
+- Performance analytics by model/version
+
+### Langfuse (Open Source)
+
 https://langfuse.com/
-Opensource version of Langsmith
-* we can self host,
-* it's recommended
 
+![langfuse logo](https://www.star-history.com/assets/blog/langfuse/banner.webp)
+Best for: Self-hosted or custom stacks
+Strengths:
 
-
+- MIT License - fully self-hostable
+- SDKs for Python/JS + OpenTelemetry support
+- Custom alerting (Slack/Email)
 
 <Accordions type="single">
-  <Accordion title="Does these tools effect my application performance?">No! These tools work asyncronously and in background</Accordion>
+  {/* <Accordion title="Does these tools effect my application performance?">No! These tools work asyncronously and in background</Accordion> */}
+  
+  <Accordion title="Do monitoring tools slow down my application?"> 
+  **No** - they use asynchronous processing. Your main application thread won't wait for monitoring data to be sent. Example flow: 1. User request handled in 1.2s 2. Monitoring data sent in background (0.02s) 3. No perceptible user impact 
+  </Accordion>
+
+  <Accordion title="What's the minimal setup I need?">
+  Start with these 3 steps: 1. **Trace all LLM calls** (inputs/outputs) 2. **Record custom events** (tool usage, errors) 3. **Track 2 key metrics**: Response latency & token cost 
+  </Accordion>
+ 
+  {/* <Accordion title="How is tracing different from logging?">
+  While logging captures discrete events, tracing shows **causal relationships**: ```plaintext Traditional Log: [ERROR] Invalid API response - 502 Bad Gateway
+  AI Trace:
+  * User: "Current NVIDIA stock price?"
+  Tool: market_data_api() → Failed (502)
+
+  Fallback: cache lookup → Success
+
+  Response: "$135.20 (cached)"
+
+  text
+
+  </Accordion> */}
 </Accordions>

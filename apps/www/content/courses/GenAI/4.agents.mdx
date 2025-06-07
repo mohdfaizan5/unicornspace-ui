@@ -1,16 +1,198 @@
 ---
 title: Agents
-description: React Native is a framework for building native apps using React.
-slug: agents
+description: Agents are LLMs equipped with external tools that let them perform actions beyond text generation. They become active problem-solvers rather than passive responders.
+isContentReady: True
 ---
 
-## Styling in React Native
-React Native is a framework for building native apps using React. It allows you to use React along with native platform capabilities. React Native is used by Facebook, Instagram, Airbnb, and many other companies.
+When AI Gains Tools to Act,
 
-## Why React Native?
-React Native allows you to build mobile apps using JavaScript and React. It enables you to write code once and run it on both iOS and Android platforms. This saves time and effort compared to building separate apps for each platform.
+The movement when LLM's become agents are when they have been given access to tools or external function.
 
-## Getting Started
-To get started with React Native, you need to have Node.js installed on your machine. You can download it from [Node.js official website](https://nodejs.org/).
-You also need to have the React Native CLI installed. You can install it using npm:
+These tools are like add-ons and utilities as they give them the abilities and capabilities which they lacked previously just beyond text generation.
 
+Think of an LLM as a brilliant consultant with perfect textbook knowledge but no real-world access. Agents give them:
+
+1. A phone (to call APIs)
+2. A browser (for live search)
+3. A calculator (for precise math)
+4. Keys to your data vault (DB access)
+
+Eg:
+LLM's don't know the current realtime date and time, because they have a <TooltipMdx title="knowledge cutoff" description="Knowledge cutoff refers to the point in time up to which an AI model, particularly a large language model, has been trained on data. It represents the latest date of information that the model can reliably know about or discuss without potentially generating inaccurate or outdated information.
+"/> So now we'll give it a function(tool) that they can call/use when required and get the realtime data and show to user.
+
+### Real-World Agent Examples
+
+#### 1. Personal Finance Assistant
+
+**Problem**: _"How much did I spend on dining last month?"_
+
+- **Tools Used**:
+  - Calendar tool (get date range)
+  - Banking API (fetch transactions)
+  - Calculator (sum amounts)
+- **Action Flow**:  
+  `Get dates → Query transactions → Filter "dining" → Sum → Generate report`
+
+#### 2. Medical Research Agent
+
+**Problem**: _"Latest pancreatic cancer treatments?"_
+
+- **Tools Used**:
+  - PubMed search tool
+  - Clinical trial database
+  - PDF analyzer (for research papers)
+- **Action Flow**:  
+  `Search recent studies → Check trials → Summarize findings → Warn about outdated knowledge cutoff`
+
+#### 3. Supply Chain Agent
+
+**Problem**: _"Why is shipment #123 delayed?"_
+
+- **Tools Used**:
+  - Logistics DB query
+  - Weather API
+  - Vendor contact system
+- **Action Flow**:  
+  `Check shipment status → Verify weather at hub → Contact vendor → Draft customer email`
+
+---
+
+### System Prompt for Agents
+
+```
+You are an AI agent with tool access. Your workflow:
+
+1. Analyze user request
+2. Select tools if needed (prioritize minimal tool usage)
+3. Output STRICTLY in this JSON format:
+{
+  "thoughts": "<step-by-step reasoning>",
+  "tool": "<tool_name> | null",
+  "parameters": { ... } | null
+}
+
+# Available Tools
+• current_datetime: No params. Returns ISO string.
+• web_search: { "query": "string" } → Returns top 3 results
+• db_query: { "sql": "SELECT ..." } → Returns JSON data
+
+# Rules
+- Use tools ONLY when necessary
+- Never invent tool parameters
+- If no tool needed, respond directly
+```
+
+{/* ### Key Concepts You Should Add
+
+1. **Tool Chaining**:  
+   Agents can use multiple tools sequentially  
+   _Example: Search → Analyze → Generate report_
+
+2. **Error Handling**:
+
+- Tool failure protocols
+- Retry mechanisms
+- User notification flows
+
+3. **Security Patterns**:
+
+- Tool permission scopes
+- Input sanitization
+- PII redaction
+
+4. **Cost Optimization**:
+
+- Tool usage budgeting
+- Caching strategies
+- Fallback to knowledge when appropriate
+
+5. **Observability**:
+
+- Tool execution logging
+- Latency monitoring
+- Usage analytics  */}
+
+### Real-World Implementation Flow
+
+<Mermaid
+  chart="
+graph LR
+  A([User Request]) --> B(Agent Analysis)
+  B --> C{Requires Tool?}
+  C -->|Yes| D[Generate Tool Call]
+  C -->|No| E[Direct Response]
+  D --> F[Execute Tool]
+  F --> G[Process Tool Output & Generate Final Response]
+"
+/>
+
+> **Golden Rule**: Agents should **augment** human capabilities, not replace human judgment. Always include "I don't know" fallbacks and verification steps.
+
+## Code implementation
+
+<Tabs items={[ "anthropic"]}>
+    {/* <Tab value="">
+
+```py
+s
+```
+
+    </Tab> */}
+    <Tab value="anthropic">
+
+```py
+# Weather agent that takes real time wheather
+import anthropic
+
+client = anthropic.Anthropic()
+
+message = client.messages.create(
+    model="claude-3-7-sonnet-20250219",
+    max_tokens=1024,
+    tools=[
+        {
+            "name": "get_weather",
+            "description": "Get the current weather in a given location",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "The city and state, e.g. San Francisco, CA",
+                    }
+                },
+                "required": ["location"],
+
+            },
+
+        }
+    ],
+    messages=[
+        {"role": "user", "content": "What's the weather like in San Francisco?"}],
+
+)
+
+
+# Tools
+def get_weather(location):
+    # do an actual whether call
+    return 32
+
+
+# running the tools
+for a in message.content:
+    if(a.type == "text"):
+        print(a.text)
+    elif(a.type == "tool_use"):
+        if(a.name == "get_weather"):
+            result = get_weather(a.input["location"])
+            print(f"Weather {result} degree")
+
+
+```
+
+https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview
+</Tab>
+
+</Tabs>

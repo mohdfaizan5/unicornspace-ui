@@ -5,10 +5,11 @@ import { blog } from '@/lib/source';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout sidebar={{enabled: false,}}  nav={{enabled:true}} tree={{
-      name: 'blog',
-      children: [],
-    }} {...baseOptions}>
+    <DocsLayout sidebar={{ enabled: false, }} nav={{ enabled: true }}
+      tree={{
+        name: 'blog',
+        children: [],
+      }} {...baseOptions}>
       {children}
     </DocsLayout>
   );

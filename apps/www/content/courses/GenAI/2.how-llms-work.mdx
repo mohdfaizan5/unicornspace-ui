@@ -1,48 +1,182 @@
 ---
 title: How LLM's Work
-description: Deep diving into how LLM's work.
-slug: how-llms-work
+description: Deep diving into how LLM's work by understanding "Attention is all you need" research paper
+isContentReady: True
 ---
 
 ## GPT
 
-Genrative PreTrained Transformer
+`GPT` = Generative Pre-Trained Transformer
 
-- Genrative - Unlike serach engine these LLM's can generate next set of SEQUENCES  based on your input.
-- To do that it requires pre trained data.
-- And transformers are the heart of LLM's
-
-
-```
-Listen -> [Tranformer] -> "Arabic"
-```
-```
-"Hi" -> [Tranformer] -> "H"
-"Hi" -> [Tranformer] -> "e"
-"Hi" -> [Tranformer] -> "l"
-"Hi" -> [Tranformer] -> "l"
-"Hi" -> [Tranformer] -> "0"
-"Hi" -> [Tranformer] -> "returns True"
-```
+-  <code className='!-mt-2'>G</code>enerative - Unlike serach engine these LLM's can generate next set of SEQUENCES  based on your input.
+- <code className='!mb-2'>P</code>re-trained: Fed with massive text data (books, code, etc.) to learn patterns.
+- `T`ransformer: The core tech that makes it all possible (more below).
 
 
 
-## Attension is all your need
+### 1. The Foundation: Predict-the-Next-Word
 
-This was a transformer model paper published by google in 201_ [Link]
 
-They made this for google translate, so openAI saw and user it to make a GPT
+How prediction looks like from abstraction,
+"Given a sequence of words, what's the statistically most probable next word?"
+* Trained on trillions of words (books, websites, code)
 
-> Computers don't understand human languages like English or Hindi, they only understand numbers
+<Mermaid chart={`
+flowchart TD
+    A(["📝 Prompt: 'Hi'"])
+    A --> B@{ shape: procs, label: "🤖 Transformer"}
+
+    B -- 1 --> C(["🔮 Predict: 'H'"])
+    C -- 2 --> D(["📥 New Input: 'HiH'"])
+    D -- 3 --> B
+    C -- 4 --> E@{ shape: notch-rect, label: "Repeat until 'Hello' formed 🔁" }
+`}
+/>
+
+We'll try to understand GenAI by comparing it with Machine Learning so that we get more clarity
+<Table>
+  <TableCaption>Comparing GenAI & ML for better clarity.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead className="w-[100px]">`</TableHead>
+      <TableHead>Traditional ML </TableHead>
+      <TableHead>Generative AI</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">Goal</TableCell>
+      <TableCell>Analyze/predict from existing data </TableCell>
+      <TableCell>Create new data resembling the original</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="font-medium">Input</TableCell>
+      <TableCell>Structured/tabular data, labeled </TableCell>
+      <TableCell>Text, images, video, code, speech, etc. </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="font-medium">Output</TableCell>
+      <TableCell>Labels, scores, categories</TableCell>
+      <TableCell>New text, code, images, ideas, responses</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="font-medium">Example </TableCell>
+      <TableCell>Spam detection, loan approval </TableCell>
+      <TableCell>ChatGPT writing an email for you</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+
+
+## Attention is all your need
+
+This was a transformer model paper published by google in 2017 [Link](https://arxiv.org/abs/1706.03762)
+
+
+
+
+> 💡 Fun fact: Google built it for language translation... but OpenAI saw its potential and used it to create GPT. The rest is history!
 
 
 Now let's understand how this transformer model works
 
-### Step 1: Encoding
+<Steps>
+<Step>
+
+
+
+### Step 1: Encoding (Turning Words into "Math")
 #### Vector embedding
+Giving Words a Digital Fingerprint.
+Computers don't understand human languages like English or Hindi, they only understand numbers
 
-### Step 2: Positional Encoding
-#### Multi head self Attension
+Imagine every word ("cat", "quantum", "😊") gets its own unique barcode of numbers.
 
-TODO: There are many things that are abstracted from this, you read the Transformer paper to understand this and basically 
+- These barcodes capture meaning:
+  - Similar words (king/queen) have similar barcodes
+  - Relationships are preserved: King - Man + Woman ≈ Queen
+- Like GPS coordinates for ideas:<br/>
+    `"apple" = [-0.5, 1.2, 0.3] (fruit)` vs. `"Apple" = [0.9, -0.2, 1.4] (company)`
 
+</Step>
+<Step>
+### Step 2: Positional Encoding (Remembering Word Order) 
+Why? Because "Dog bites man" ≠ "Man bites dog"!
+* The model adds "position tags" to each word’s barcode:<br/>
+[Word barcode] + [Position barcode]
+
+* Like giving every word a timestamp:<br/>
+`"The" (Position 1), "cat" (Position 2), "sat" (Position 3)`
+
+
+</Step>
+<Step>
+
+### Step 3: Multi head self attention
+Here is where the model truly starts to understand context
+
+
+{/* #### Where the magic happens */}
+
+When reading a word, the model asks itself:
+
+ "Which other words matter most to understand this word?"
+
+**Example**: Understanding "it" in a sentence
+
+* Sentence: "The cat chased the ball because it was playful."
+* A human knows that “it” refers to the cat, not the ball.
+* The model figures this out by paying attention to the right words.
+
+> Enter: Self-Attention
+This mechanism lets the model look at all the other words in the sentence and decide how much each one matters for understanding the current word.
+
+In this case, "it" attends more to "cat" than "ball" — just like we would!
+
+#### "Multi-Head" = Multiple perspectives:
+
+Like a team of detectives examining the sentence differently:
+* Detective 1 focuses on grammar (verbs/nouns)
+* Detective 2 tracks pronouns (it/they)
+* Detective 3 analyzes emotions (playful/angry)
+
+#### Self-Attention visual:
+```
+The   cat   [sat]   on   the   mat   because   it   was   tired  
+│     └───────┘       │           │          ▲      │  
+└─────────────────────┴───────────┴──────────┘      │  
+"it" pays most attention to "cat" and "sat"         │  
+"tired" connects strongly to "cat" and "sat" ◄──────┘  
+```
+Multi-Head Self-Attention is how the model sees every word from multiple angles at once — like a super attentive reader with many minds working together.
+
+
+</Step>
+<Step>
+### Step 4: Bringing It All Together
+
+After attention, the enriched word-data flows through:
+
+1. Feed-Forward Networks: "Digesting" relationships
+2. Layer Normalization: Keeping calculations stable
+3. Residual Connections: Preserving original meaning
+
+This repeats across 12-100+ layers—each adding deeper understanding!
+</Step>
+</Steps>
+
+## Why This Matters to YOU
+* You don’t need to build this: Just like you don’t build processors to use a laptop!
+* Your superpower: Leveraging these pre-built "language engines" (GPT-4, Claude, etc.) to:
+* Create content using these model
+* Use the LLM's intelligence to analyze data 
+* Build AI assistants 
+* Solve niche problems (e.g., medical reports, legal docs)
+
+🔑 Key insight: Transformers are context-aware pattern machines.
+They don’t "know" facts—they predict what words likely come next based on patterns from training data.
+
+
+## Read more 
+* [Visualization of LLM's working](https://poloclub.github.io/transformer-explainer/)

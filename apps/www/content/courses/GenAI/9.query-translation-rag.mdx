@@ -1,25 +1,34 @@
 ---
 title: Query translation
-description: ...
+description: You'll learn how to make user queries better.
 ---
 
 The whole moto is to make the user prompt better. Basically sometimes the user is not sure in the `{user prompt}` what exactly he wants, because user can intend something and can type something else. Now if the input is ambigous then the output also will be ambigous (not having one obvious meaning)
+
+
+<Mermaid chart="
+flowchart LR
+  A e1@--> B
+  e1@{ animation: fast }
+
+"/>
 
 > Note: Think it as GIGO (Garbage In Garbage Out)
 
 ![sdf](./assets/query-translation.png)
 
 
->  understand that what user is aksing and they're intending coulg be different, so if we can make the user query better by predicting what the user is intending with, then we can make the query better.
+> Understand that what user is asking and they're intending could be different, so if we can make the user query better by predicting what the user is intending with, then we can make the query better.
 
 
 ## Abstraction vs Less Abstraction
 
-NOw think of abstraction as, when you tell "I'm thirsty" that means you expect others to understand and get you water.
+Now think of abstraction as, when you tell "I'm thirsty" that means you expect others to understand and get you water.
 
-But on the other hand, in less abstraction way it would be "I'm thirsty, I need warm dring water of full glass"
+But on the other hand, in less abstraction way it would be "I'm thirsty, I need full glass of warm drinking water"
 
-Here well it depends on usecae to usecase about abstraction and basically both are required
+Here well it depends on usecase to usecase.
+ {/* Basically less abstraction and more abstraction both are necessary */}
 
 {/* TODO: basically the context is not proper here wrt genai, do add something */}
 
@@ -27,10 +36,20 @@ Here well it depends on usecae to usecase about abstraction and basically both a
 
 Rewrite is one of the way, we're using here, variants to Rewrite
 
-### Parallel Query(Fan out ) Retrieval
+### Parallel Query(Fan out) Retrieval
 
 
 > Intersection: the set of all elements common to two or more sets.
 
 ![](./assets/parallel-query-retrival.png)
 ![](./assets/parallel-query-retrival-usage.png)
+
+> FanOut: When 1 event is put into multiple quees you fanout the messge (in system design)
+{/* TODO: This fanout def needs rewrting */}
+
+### 2. Resprocate Rank Fusion (RRF)
+
+
+## Query decomposition
+
+### Step back prompting (Few shot prompting.)
