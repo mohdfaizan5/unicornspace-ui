@@ -16,6 +16,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { GithubInfo } from 'fumadocs-ui/components/github-info';
+import { File, Folder, Files } from 'fumadocs-ui/components/files'
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -36,6 +38,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Steps,
     TooltipMdx,
     ComponentPreview: ComponentPreview,
-
+    File, Folder, Files,
+    GithubInfo
   };
 }

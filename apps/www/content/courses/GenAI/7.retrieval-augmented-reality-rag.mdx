@@ -1,0 +1,160 @@
+---
+title: Retrieval Augmented Generation (RAG)
+description: RAG is used because it enhances the accuracy, reliability, and relevance of responses from Large Language Models (LLMs) by providing them with relevant external knowledge from datasources.
+isContentReady: True
+---
+
+
+
+
+## first of all why RAG?
+1. It sound cool to chat "Hi, Hello" with LLM's but in real world, we need to solve some usecase, so we'll be needing to interact with data sources
+2. We'll be having more than one datasource to fetch the data
+3. Since we've limited input token size, we can't feed the whole big data source like a full book of 500pages or a db of tens of thousands of records, it will be inaccurate as we feed the LLM with too much of that is irrelavant to the user prompt, (eg: lets say we prompt about 'fs module', feeding a whole book as context will be irrelavant, as only a few pages will be useful for this prompt, the rest of let's say 495pages will be irrelavant)
+4. Also each token costs us real damn dollar, so we can't burn dollars.
+
+
+layman's understanding
+
+
+<Mermaid
+  chart="
+graph LR
+    A([User asks questions]) --> B(LLM smart searches)  
+    B --|Query|--> C(Data from external sources)
+    B --> D(User question + Relevant Data)
+    D --> E([Enriched answer]) 
+"
+/>
+
+
+## Usecases
+1. Can talk to csv and pdf files
+
+
+## Why RAG over finetuning
+1. finetuning is expensive, can't do everytime
+2. It's time consuming
+3. Not realtime (even if you finetune your model everyday, you'll be still 24hrs behind)
+
+* RAG does put relevant data to your prompt/ context
+
+RAG is an AI technique that combines the power of infomation retrival with LLm's to enhance the accuracy and context awareness of AI generated responses.
+
+## How it works
+It works by first searching for relevant info from external data sources (like db, documents, web, etc...) and then using the infomation to guide the LLM in generating a more accurate & informative response
+
+> Context Window: At a given piece of time how many tokens a LLM can process.
+> Why does it matter with RAG?
+> It has it's own limitation of how much token it can take in, Yes few models are got large context window token size... but at one time it can't process or take in the whole internet right?
+
+<Mermaid chart='
+
+flowchart LR
+    id1[(Database <br> 10,000 Rows)] --Cant insert all 10,000 rows--> B(LLM)
+    B --|relavant 40 rows|--> id1
+
+'/>
+
+* so if you give irrelevant data from the sources to LLM it will <TooltipMdx title="haluciante" description="will give inaccurate and junk output"/> 
+* and also relance doesn't mean that you give 40 rows but for the scenario 50 rows might have been relavant, so there has to be some balance
+
+
+
+<Mermaid chart="
+graph TD
+    subgraph sources
+        Text o--o PDF
+        DB o--o API
+        img o--o excel
+
+    
+    end
+
+    sources --RAG--> X[LLM]
+    
+    X --> Y[Response]
+"/>
+
+
+## Types of RAG
+1. Neive RAG
+2. Advance RAG
+3. MOdular RAG
+4. Corrective RAG
+5. Fusion RAG
+6. Self RAG
+
+
+{/* <Mermaid chart="
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+
+"/>
+
+<Mermaid chart="
+architecture-beta
+    group api(cloud)[API]
+
+    service db(database)[Database] in api
+    service disk1(disk)[Storage] in api
+    service disk2(disk)[Storage] in api
+    service server(server)[Server] in api
+
+    db:L -- R:server
+    disk1:T -- B:server
+    disk2:T -- B:db
+
+"/> */}
+
+{/* <Mermaid chart="
+graph LR
+    A(pdf) --use relevant pages--> B[LLM]
+    B --Response--> C(User )
+    
+
+
+
+
+"/> */}
+
+### Step1: Indexing
+<Mermaid chart='
+graph LR
+  A@{ shape: processes, label: "Data source" } --> B@{ shape: das, label: "Chunking"} --> C(Embedding) -->     id1[(Store vector)]
+    
+'/>
+
+
+### Step2: Retrieval
+
+<Mermaid chart='
+graph LR
+  A@{ shape: processes, label: "User query" } --> B@{ shape: das, label: "Embedding"} --> C(Search) --> id1[(get relavant chunks)] 
+    
+'/>
+### Step3: Inferance
+
+<Mermaid chart='
+graph LR
+  A(Query LLM) --> B((Output))
+'/>
+
+
+
+
+{/* <Mermaid chart='
+    graph TD
+        subgraph TOP [ ]
+            direction LR
+            A --> B
+            B --> C
+        end
+        subgraph BOTTOM [ ]
+            direction RL
+            D --> E
+            E --> F
+        end
+        TOP --> BOTTOM    
+'/> */}
+

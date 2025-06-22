@@ -27,6 +27,7 @@ import { getMDXComponents } from '@/mdx-components'
 import { components } from '@/lib/source';
 import { FaAngleLeft } from 'react-icons/fa'
 import { MoveRight } from 'lucide-react'
+import { notFound } from 'next/navigation'
 
 const page = async (props: { params: Params }) => {
     const { slug: courseSlug } = await props.params
@@ -54,7 +55,7 @@ const page = async (props: { params: Params }) => {
         const course = allCourses
             .filter((item) => item.file.dirname.toLowerCase() === courseSlug[0].toLowerCase())
             .sort((a, b) => {
-                const getNumber = (str:string) => {
+                const getNumber = (str: string) => {
                     const match = str.match(/^(\d+)/);
                     return match ? parseInt(match[1], 10) : Infinity;
                 };
@@ -93,8 +94,8 @@ const page = async (props: { params: Params }) => {
                             <Card className='gap-2 bg-secondary/90  group h-full rounded-[12px] shadow-sm transition-all hover:shadow-lg relative' key={i}>
                                 <CardHeader className='flex flex-row items-center gap-2'>
                                     {codeEnv === "development" && <div className='absolute top-2 right-2 z-10'>
-                                                {chapter.data.isContentReady ? <Badge className='bg-green-500 text-white'>Ready</Badge> : <Badge className='bg-red-500 text-white'>Not Ready</Badge>}
-                                          </div>}
+                                        {chapter.data.isContentReady ? <Badge className='bg-green-500 text-white'>Ready</Badge> : <Badge className='bg-red-500 text-white'>Not Ready</Badge>}
+                                    </div>}
                                     <div className='mr-2 flex h-8 w-8 flex-none flex-shrink-0 items-center justify-center rounded-full bg-blue-300 text-sm font-bold text-blue-700 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black'>
                                         <p className='group-hover:hidden'>
                                             {i}
@@ -281,15 +282,74 @@ export async function generateStaticParams() {
 }
 
 // TODO: work this out as it requires you to create a metadata object for each page properly
-// export async function generateMetadata(props: {
-//   params: Promise<{ slug?: string[] }>;
-// }) {
-//   const params = await props.params;
-//   const page = courses.getPage(params.slug);
-//   if (!page) notFound();
+export async function generateMetadata(props: {
+    params: Promise<{ slug: string[] }>;
+}) {
+    const params = await props.params;
+    const page = courses.getPage(params.slug);
+    console.log(params, params.slug?.length)
 
-//   return {
-//     title: page.data.title,
-//     description: page.data.description,
-//   };
-// }
+    const allCourses = courses.getPages()
+    const re = new RegExp("^\\d+\\..+");
+    if (!params.slug) {
+        // Showing all courses
+        return {
+            title: "Courses - UnicornSpaceUI",
+            description: "A collection of courses crafted for quick learning with examples and code. ",
+        };
+    }
+    else if (params.slug.length == 1) {
+        const course = coursesRegistry.find(c =>{
+            console.log(c.slug, params.slug[0])
+            return c.slug == params.slug[0]
+        })
+        console.log("-----", course)
+        return {
+            title: course?.title,
+            description: course?.description
+        }
+
+    }
+    else if(params.slug.length == 2){
+        // console.log("---->>>>😍", courseSlug, allCourses.map(c => c.file.dirname.toLowerCase()))
+
+
+
+
+        const allCourseChapters = allCourses.filter((item) => {
+            // console.log(item.file.dirname.toLowerCase(), "--", courseSlug[1])
+            if (item.file.dirname.toLowerCase() === (params.slug[0].toLowerCase())) {
+                // console.log(item.slugs, "--", courseSlug[1])
+                // console.log("found")
+                return item
+
+            }
+        })
+                const chapter = allCourseChapters.find((item) => {
+            // const a = (re.test(item.slugs[1]) ? "how-llms-work" : 'other') === courseSlug[1]
+            // console.log(item.slugs[1], courseSlug[1], a )
+            console.log()
+            const convertedSlug = re.test(item.slugs[1]) ? item.slugs[1].split(".")[1] : item.slugs[1]
+
+            if (convertedSlug.toLowerCase() === params.slug[1].toLowerCase()) {
+                return item
+            }
+        }
+        )
+        console.log("####", chapter)
+        return{
+            title: chapter?.data.title,
+            description: chapter?.data.description
+        }
+
+    }
+
+
+
+
+
+    return {
+        title: "page.data.title",
+        description: "page.data.description",
+    };
+}

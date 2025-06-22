@@ -1,0 +1,90 @@
+---
+title: Using mdx in UnicornSpaceUI
+description: ...
+---
+
+
+## Headings
+<Tabs items={['preview', 'code']}>
+  <Tab value="preview">
+# h1
+## h2
+### h3
+#### h4
+##### h5
+###### h6
+  </Tab>
+  <Tab value="code">
+  
+```md
+# h1
+## h2
+### h3
+#### h4
+##### h5
+###### h6
+
+```
+  </Tab>
+</Tabs>
+
+
+
+
+## Tabs
+
+<Tabs items={['preview', 'code']}>
+  <Tab value="preview">
+
+<Tabs items={['tab1', 'tab2']}>
+  <Tab value="tab1">
+Tab content 1
+  </Tab>
+  <Tab value="tab2">
+Tab content 2
+  </Tab>
+</Tabs>
+  </Tab>
+  <Tab value="code">
+  
+```
+<Tabs items={['tab1', 'tab2']}>
+    <Tab value="tab1">
+        Tab content 1
+    </Tab>
+    <Tab value="tab2">
+        Tab content 2
+    </Tab>
+</Tabs>
+
+
+```
+  </Tab>
+</Tabs>
+
+
+
+
+## Code high light
+
+<Tabs items={['preview', 'code']}>
+  <Tab value="preview">
+```tsx title="mdx-components.tsx"
+// export a `useMDXComponents()` that returns MDX components
+export const useMDXComponents = getMDXComponents; // [!code --]
+```
+  </Tab>
+  <Tab value="code">
+  
+```md
+// export a `useMDXComponents()` that returns MDX components
+export const useMDXComponents = getMDXComponents; // [!code --]
+
+```
+  </Tab>
+</Tabs>
+
+
+https://fumadocs.dev/docs/ui/components
+
+

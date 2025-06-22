@@ -1,0 +1,191 @@
+---
+title: Cursor CLI - (project)
+description: we're building a project by using all the concepts we learnt
+isContentReady: True
+---
+
+Here we'll be building a Cursor CLI project that can chat with our codebase and can execute commands for run, change the code, add code and stuff.
+
+By the end of this project the AI Cursor CLI tool will be able to do the following as `create files`, `use git`, `create fresh projects`, `execute system commands`, and more...
+
+```shell title="output"
+
+ Usage: main.py [OPTIONS] PROMPT
+
+╭─ Arguments ────────────────────────────────────────────────────────╮
+│ *    prompt      TEXT  [default: None] [required]                  │
+╰────────────────────────────────────────────────────────────────────╯
+```
+
+## Codebase
+
+
+
+### file structure
+
+<Files>
+    <Folder name="lib" defaultOpen>
+        <File name="lib.py" />
+        <File name="system_prompt.py" />
+    </Folder>
+    <File name="main.py" />
+    <File name=".env" />
+  </Files>
+
+
+{/* 
+<Tabs items={["main.py", "tab2"]}>
+  <Tab value="tab1">Tab content 1</Tab>
+  <Tab value="tab2">Tab content 2</Tab>
+</Tabs>
+*/}
+
+
+
+
+
+```py title="main.py"
+from rich import print # just to pretty print the 
+from utils.lib import run_command # our function to run shell cmds
+import os # to get env variables 
+import anthropic # LLM
+from utils.system_prompt import system_prompt 
+
+import typer ## optional: for creating a cli tool
+
+
+# instantiation 
+app = typer.Typer() 
+client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY")) 
+
+
+# syntax for defining a cmd
+@app.command()
+def chat(prompt: str): # that we're expecting a prompt
+    
+    # if no prompt we'll end the program
+    if (not prompt):
+        print("[bold magenta]Please Enter a prompt[/bold magenta]!")
+        return
+    
+
+    message = client.messages.create(
+        model="claude-opus-4-20250514",
+        max_tokens=1000,
+        temperature=1,
+        system=system_prompt,
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": prompt
+                    }
+                ]
+            }
+        ],
+        tools=[
+            {
+                "name": "command_executor",
+                "description":  """
+        Run a shell command and return its exit code, stdout, and stderr.
+
+        Args:
+            cmd (str): The command to run.
+
+        Returns:
+            Tuple[int, str, str]: (exit_code, stdout, stderr)
+        """,
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "cmd": {
+                            "type": "string",
+                            "description": "The command to run",
+                        }
+                    }
+                }
+            }
+        ],
+
+    )
+    # print(message)
+
+    for res in message.content:
+        if (res.type == "text"):
+            print(f"AI:: {res.text}")
+        elif (res.type == "tool_use"):
+            if (res.name == "command_executor"):
+                # print(res.input)
+                # print(res.input.keys())
+                # print(res.input["cmd"])
+                run_command(res.input["cmd"])
+        else:
+            print(res)
+
+
+if __name__ == "__main__":
+    app()
+
+```
+
+```shell title=".env"
+ANTHROPIC_API_KEY=
+```
+
+```py title="/lib/system_prompt.py"
+system_prompt = """
+
+Your a coding assistent, you help user to create file,  and you fix issues in the code, you can create files, update files and execute commands
+
+
+make sure to only use tools when required,
+for things like information and stuff you can show it in text only
+
+you have access to tools
+1. command_executor
+
+"""
+```
+
+```py title="/lib/lib.py"
+import subprocess
+from typing import Tuple
+
+def run_command(cmd: str) -> Tuple[int, str, str]:
+    """
+    Run a shell command and return its exit code, stdout, and stderr.
+
+    Args:
+        cmd (str): The command to run.
+
+    Returns:
+        Tuple[int, str, str]: (exit_code, stdout, stderr)
+    """
+    try:
+        result = subprocess.run(
+            cmd,
+            shell=True,
+            text=True,  # decode output as str
+            capture_output=True,
+            check=False  # do not raise exception on non-zero exit
+        )
+        return result.returncode, result.stdout.strip(), result.stderr.strip()
+    except Exception as e:
+        return -1, "", str(e)
+```
+
+
+<GithubInfo
+  owner="mohdfaizan5"
+  repo="mini-cursor-cli"
+/>
+{/* https://github.com// */}
+{/*
+TODO: record a tutorial first "I created my own Cursor CLI"
+S1: record video
+s2: Keep the code with you,
+S3: add the code here to guide
+
+\*/}

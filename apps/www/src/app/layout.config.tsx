@@ -1,6 +1,6 @@
 import Logo from '@/components/logo';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { BookIcon, FileIcon, NotebookText } from 'lucide-react';
+import { BookIcon, FileIcon, NotebookText, Settings } from 'lucide-react';
 
 /**
  * Shared layout configurations
@@ -37,6 +37,13 @@ export const baseOptions: BaseLayoutProps = {
       icon: <BookIcon   />,
       text: 'Blog',
       url: '/blog',
+      // secondary items will be displayed differently on navbar
+      secondary: false,
+    },
+    {
+      icon: <Settings   />,
+      text: 'Tools',
+      url: '/tools',
       // secondary items will be displayed differently on navbar
       secondary: false,
     },

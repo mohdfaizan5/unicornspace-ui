@@ -3,7 +3,7 @@ import { BrainCircuit } from "lucide-react";
 export const coursesRegistry = [
     {
         title: 'GenAI',
-        description: `This is a hands-on course where you'll learn to build apps using GenAI APIs like OpenAI, Google Gemini, or Cohere. We’ll explore how to use prompts, manage context, build chatbots, and connect LLMs to your own data using tools like LangChain, Pinecone, and Next.js. No AI background required — just JavaScript and curiosity.`,
+        description: `This is a hands-on course where you'll learn to build apps using GenAI APIs with OpenAI, Claude Anthropic. We’ll explore how to use prompts, manage context, build chatbots, and connect LLMs to your own data using tools like LangChain, LangGraph, Mem0, Qdrant, Neo4j, MongoDB. No AI background required — just basic Python and curiosity.`,
         slug: 'genai',
         isPublished: true,
         icon: BrainCircuit,

@@ -1,0 +1,49 @@
+---
+title: Guardrails & Security
+description: ...
+isContentReady: True
+---
+
+## Understanding the need for Guardrails?
+Basically AI can generate anything wrong and aslos the user can leak any sensitive data(such as IP's, passwords, CC, API keys) to the LLM. This becomes a huge problem in Enterprise as the company doesn't want to leak their data.Guardrailsai.com
+So there should be some way to protect it.
+
+We now intercept the input and output and add Guardrails that filters out such stuff.
+
+<Mermaid chart="
+flowchart LR
+  A([User]) --*1* Sensitive data--> B([LLM])
+  B --**2** Inappropriate response --> A
+"/>
+
+So now at level `1` and level `2` we introduce 
+1. Input Guardrails
+2. Output Guardrails
+
+## Input Guardrails
+
+{/* TODO: check inapproproiate spelling */}
+<Mermaid chart="
+flowchart LR
+  A(Inpure Input) --> B([1. Reject Inppropriate prompt])
+  B x--x C([2. Reject personal Info])
+  C x--x D([3. Mask information])
+  D --> E(Pure Input)
+ "/>
+
+> Note: You can find more on Guardrailsai.com
+
+
+## Output Guardrails
+
+* Use an another LLM to as a `Judge` for the output it the LLM responds
+
+```bash title="example system prompt for output guardrails LLM"
+You're a helpful Assistent that acts like a judge, you'll be given the prompt of the user and the response from the LLM.
+Your job is to judge it and give a score out of 10.
+
+Judging Creteria
+1. 
+2. 
+3. 
+```

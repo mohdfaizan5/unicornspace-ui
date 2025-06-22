@@ -1,55 +1,110 @@
 ---
 title: Query translation
 description: You'll learn how to make user queries better.
+isContentReady: True
 ---
 
 The whole moto is to make the user prompt better. Basically sometimes the user is not sure in the `{user prompt}` what exactly he wants, because user can intend something and can type something else. Now if the input is ambigous then the output also will be ambigous (not having one obvious meaning)
 
 
-<Mermaid chart="
-flowchart LR
-  A e1@--> B
-  e1@{ animation: fast }
 
-"/>
-
-> Note: Think it as GIGO (Garbage In Garbage Out)
+> Note: Think it as GIGO (Garbage In Garbage Out) like wise Good User Prompt will give you Good LLM Output.
 
 ![sdf](./assets/query-translation.png)
 
 
 > Understand that what user is asking and they're intending could be different, so if we can make the user query better by predicting what the user is intending with, then we can make the query better.
 
+{/* TODO: try to fix this and make it more understandable */}
+Lets say to do Query Translation, make the user prompt either more descriptive or remove unnecessary information (less abstract) to make the prompt better, below we'll discuss about it.
 
 ## Abstraction vs Less Abstraction
 
 Now think of abstraction as, when you tell "I'm thirsty" that means you expect others to understand and get you water.
 
-But on the other hand, in less abstraction way it would be "I'm thirsty, I need full glass of warm drinking water"
+But on the other hand, in less abstraction way you would have say something like "I'm thirsty, I need full glass of warm drinking water"
 
 Here well it depends on usecase to usecase.
  {/* Basically less abstraction and more abstraction both are necessary */}
 
 {/* TODO: basically the context is not proper here wrt genai, do add something */}
 
+
+{/* TODO: figure out Is it talking about less abstraction or more one */}
 ## There are different ways to do query translation
 
-Rewrite is one of the way, we're using here, variants to Rewrite
+Rewrite is one of the way, we're using here
 
-### Parallel Query(Fan out) Retrieval
+### 1. Parallel Query(Fan out) Retrieval
 
 
-> Intersection: the set of all elements common to two or more sets.
+> Intersection: the set of all **elements** common to two or more sets.
+
+When the user prompts LLM the llm 
+`1` Rewrites the query in n number of ways.
+`2` For the rewritten queries do a Similarity Search in vectorDB and find relavant chunks
+`3` Filtration: Now it combines all the relavant chunks and removes duplicate ones.
+`4` Since now we have the required relavant chunks we can search now query the LLM and the LLM will have required context to give us accurate and efficient response.
 
 ![](./assets/parallel-query-retrival.png)
 ![](./assets/parallel-query-retrival-usage.png)
 
-> FanOut: When 1 event is put into multiple quees you fanout the messge (in system design)
+> FanOut: When 1 event is put into multiple queues you fanout the message (in system design)
 {/* TODO: This fanout def needs rewrting */}
 
 ### 2. Resprocate Rank Fusion (RRF)
+It's same as Parallel Query Retrieval, but here instead of randomly remove duplicate chunck `3` we rank them based on their occurance i.e the chunk that occured the maximum time will be given the highest priority and so on for the remaining chunks,
+`5` now with relavant chunks and their ranks, the LLM will be able to use the data in the right order to give the best of the result.
+
+This is how you would rank the chunks
+{/* TODO: do check if the function is right  */}
+```py
+def reciprocal_rank_fusion(rankings, k=60): # k = tunable contast (how to rank)
+  scores = { }
+  for ranking in rankings:
+    for rank,docs_id in enumerate(ranking):
+      scores(doc_id) = scores.get(doc_id, 0) + 1 / (k + rank + 1)
+  return sorted(scores.items(), key=lamda x: x[i], reverse=True)
+```
+final result would look something like this
+```py
+result = {
+  "bm25_results": ['doc1', 'doc2', 'doc3'],
+  "dense_results": [...],
+  "keyword_results": [...],
+}
+```
 
 
 ## Query decomposition
+{/* TODO: write the defination*/}
+
+We'll be using a less abstract approach (more descriptive) such as COT (Chain Of Thoughts)
+basically this approach enables the LLM to break down the problem, with this the halucination can be minimized
+
+{/* TODO: take the link of system prompt of COT and paste here */}
+(example system prompt)[]
 
 ### Step back prompting (Few shot prompting.)
+{/* TODO:
+ what kind of approach is it, less or more absctract
+ 
+ */}
+
+
+{/* TODO: refer googles paper on it. */}
+
+
+### HyDE (Hypothetical Document Embedding) (less abstract )
+In this approach we're first creating a Hypothetical document from the user query and then using the document to do vector search and ranking it and the giving the relavant chunks that came post vector search as context to LLM
+
+
+<Mermaid chart="
+flowchart LR
+  A([User]) --> B([LLM])
+  B --Generates a --> C(Hypothetical Doc) --vector search--> D(Vector DB) --> E(now using the relavant chunks as context to LLM)
+
+
+"/>
+
+  {/* A(User) e1@--> B */}

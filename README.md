@@ -1,84 +1,94 @@
-# Turborepo starter
+<div align="center">
+    <h1 align="center">Unicorn Space UI</h1>
+    <h5>Unicorn space UI is UI component library.</h5>
+</div>
 
-This Turborepo starter is maintained by the Turborepo core team.
+<div align="center">
+  <a href="https://unicornspace-ui.vercel.app/">Unicorn Space UI »</a>
+</div>
+<br/>
 
-## Using this example
+<!--
+<p align="center">
+    <a href="#introduction"><strong>Introduction</strong></a> ·
+    <a href="#features"><strong>Features</strong></a> ·
+    <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+    <a href="#self-hosting"><strong>Self-hosting</strong></a> ·
+    <a href="#contributing"><strong>Contributing</strong></a>
+</p>
+  -->
+<div align="center">
+  <a href="https://github.com/mohdfaizan5/unicornspace-ui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mohdfaizan5/unicornspace-ui"></a>
+  <a href="https://twitter.com/mohdfaizan_5"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/mohdfaizan_5"></a>
+  <a href="https://github.com/mohdfaizan5/unicornspace-ui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <img alt="Discord" src="https://img.shields.io/discord/1151315619246002176">
+  </div>
 
-Run the following command:
+<br/>
 
-```sh
-npx create-turbo@latest
-```
+<a align="center"  href="https://unicornspace-ui.vercel.app/">
+<!--  <img align="center" width="800px" alt="" src="https://github.com/user-attachments/assets/0f1e489e-d119-48cd-bbdd-df8c82e1a83b">-->
+  <img align="center"  alt="og image" src="https://github.com/user-attachments/assets/790890cd-cf32-493e-beb7-eb2b36dcd299">
+</a>
+<div/>
 
-## What's inside?
+<!--## Tools
+- Theme
+-->
 
-This Turborepo includes the following packages/apps:
+## 📌 Overview
 
-### Apps and Packages
+`/` = Homepage  
+`/tools` = Tools make your development and design easy.  
+`/components` = A ready to use response components.  
+`/guides` = Guides are indepth tutorials on concepts and tools.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## ⚙ Tech Stack
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- Next.js
+- TypeScript
+- Tailwind
+- Shadcn UI
+- Content layer & MDX
 
-### Utilities
+## Contributing
 
-This Turborepo has some additional tools already setup for you:
+Please read through our [contributing guide](.github/CONTRIBUTING.md) before starting any work.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Authors
 
-### Build
+<a href="https://github.com/mohdfaizan5/unicornspace-ui/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mohdfaizan5/unicornspace-ui" />
+</a>
 
-To build all apps and packages, run the following command:
+## Inspiration & Credits
 
-```
-cd my-turborepo
-pnpm build
-```
+Inspired by [Shadcn UI](https://ui.shadcn.com/docs), [Magic UI](https://magicui.design/), [Hexta Studio](https://ui.hextastudio.in/) and many more...
 
-### Develop
+Other Good libraries [Origin UI](https://originui.com/) [Motion Premitives](https://motion-primitives.com/)
 
-To develop all apps and packages, run the following command:
+<!-- Changes to be made
 
-```
-cd my-turborepo
-pnpm dev
-```
+1. File names show be all small✅
 
-### Remote Caching
+2. Checking on working /tools (Tahir)
+   1. Make sure we add a few but the few should be working properly
+   2. What /tools need to be removed and not proper
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+3. I can see only a few components added? (FIND MISSING COMPONENTS)
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+   - FIX PROPERLY FOR DARK & LIGHT THEME (Akshy)
+   - bad code, need to refactor `src\registry\components\cards\card1.tsx`
+   - export default for code (Akshy)
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+4. /guides are incomplete? and who is responsible for which (Faizan)
+5.  Add google analytics (Tahir)
+6. Type errors (Liktha)
 
-```
-cd my-turborepo
-npx turbo login
-```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+9. @Likitha did you get any solution for deployment branching techniques? (Likitha)
+10. subdomain✅
 
-```
-npx turbo link
-```
 
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+ -->

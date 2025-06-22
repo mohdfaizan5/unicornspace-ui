@@ -1,315 +1,228 @@
 ---
 title: Introduction to Langchain
-description: An opinionated toast component for React.
+description: ...
+isContentReady: True
 ---
 
-### About
+Introducing Lang Chain (Framework)
 
-Sonner is built and maintained by **emilkowalski_.**
-
-<Tabs items={['cli', 'manual']}>
-  <Tab value="cli">
-    #### Run the following command:
-    
-    
-    <Tabs items={['npm', 'pnpm', "yarn", "bun"]}>
-    <Tab value="npm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
+So basically when we want to implement RAG, it has many things / operations (like readpdf, splitpdf...) inside the pipeline, so LangChain provides like a wrapper for you to get these helper functions. Basically you have abstination on the main tools
 
 
 
-    </Tab>
-  <Tab value="pnpm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
+## Why Langchain?
+The code we'll write with raw LLM SDK's will soon become tool much as the project grows, so now the data flow will be lacking 
 
 
-
-    </Tab><Tab value="bun">
-        ```ts
-bunx dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab>
-    </Tabs>
-
-
-
-  </Tab>
-  <Tab value="manual">
-```ts app/layout.tsx
-import { Toaster } from "@/components/ui/sonner"
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head />
-      <body>
-        <main>{children}</main>
-        <Toaster />
-      </body>
-    </html>
-  )
-}
-
+basic langchain use
+```py
+import os
+import getpass
+if not os.environ.get("ANTHROPIC_API_KEY"):
+    os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter anthropic api key: \n")
 ```
-  
-  
-  </Tab>
-</Tabs>
+```py 
+from langchain.chat_models import init_chat_model
 
-## Usage
-
-
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
-
-```ts
-import { toast } from "sonner"
+model = init_chat_model(model_provider="anthropic", model="claude-3-5-sonnet-latest")
 ```
 
-```ts
-toast("Event has been created.")
-```
-
-Sonner is built and maintained by **emilkowalski_.**
-
-<Tabs items={['cli', 'manual']}>
-  <Tab value="cli">
-    #### Run the following command:
-    
-    
-    <Tabs items={['npm', 'pnpm', "yarn", "bun"]}>
-    <Tab value="npm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab>
-  <Tab value="pnpm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab><Tab value="bun">
-        ```ts
-bunx dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab>
-    </Tabs>
-
-
-
-  </Tab>
-  <Tab value="manual">
-```ts app/layout.tsx
-import { Toaster } from "@/components/ui/sonner"
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head />
-      <body>
-        <main>{children}</main>
-        <Toaster />
-      </body>
-    </html>
-  )
-}
-
-```
-  
-  
-  </Tab>
-</Tabs>
-
-## Usage
-
-
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
-
-```ts
-import { toast } from "sonner"
-```
-
-```ts
-toast("Event has been created.")
+```py title="invoking the llm"
+print(model.invoke("hi there"))
+# print(os.environ.get("ANTHROPIC_API_KEY"))
 ```
 
 
-Sonner is built and maintained by **emilkowalski_.**
 
-<Tabs items={['cli', 'manual']}>
-  <Tab value="cli">
-    #### Run the following command:
-    
-    
-    <Tabs items={['npm', 'pnpm', "yarn", "bun"]}>
-    <Tab value="npm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab>
-  <Tab value="pnpm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab><Tab value="bun">
-        ```ts
-bunx dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab>
-    </Tabs>
-
-
-
-  </Tab>
-  <Tab value="manual">
-```ts app/layout.tsx
-import { Toaster } from "@/components/ui/sonner"
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head />
-      <body>
-        <main>{children}</main>
-        <Toaster />
-      </body>
-    </html>
-  )
-}
+## Prompt templates
+they are used like f strings for llms
 
 ```
-  
-  
-  </Tab>
-</Tabs>
+from langchain_core.prompts import PromptTemplate
 
-## Usage
+system_template = "Translate the following from English into {language}"
+
+pt = PromptTemplate.from_template("Tell me a joke on {title}")
+
+pt.invoke({"title": "genai"})
 
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
 
-```ts
-import { toast } from "sonner"
+"""#############################################
+example 2
+"""
+
+from langchain_core.prompts import ChatPromptTemplate
+
+language_translation_template = ChatPromptTemplate.from_messages(
+    [("system", system_template), ("user", "{text}")]
+)
+
+response = language_translation_template.invoke({
+    "language": "hindi", "text": "food"
+})
+
+
 ```
 
-```ts
-toast("Event has been created.")
+
+
+
+## example code for chatbot
+
+
+### HumanMessage, SystemMessage
+```py
+from langchain_core.messages import HumanMessage, SystemMessage
+from langchain.chat_models import init_chat_model
+
+model = init_chat_model(model_provider="anthropic", model="claude-3-5-sonnet-latest" )
+
+message = [
+    SystemMessage("you're health assistent"), # system prompt
+    HumanMessage("hi") # user prompt
+]
+
+model.invoke(message)
 ```
 
-Sonner is built and maintained by **emilkowalski_.**
 
-<Tabs items={['cli', 'manual']}>
-  <Tab value="cli">
-    #### Run the following command:
-    
-    
-    <Tabs items={['npm', 'pnpm', "yarn", "bun"]}>
-    <Tab value="npm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab>
-  <Tab value="pnpm">
-        ```ts
-pnpm dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab><Tab value="bun">
-        ```ts
-bunx dlx shadcn@latest add sonner
-        ```
-        
-
-
-
-    </Tab>
-    </Tabs>
-
-
-
-  </Tab>
-  <Tab value="manual">
-```ts app/layout.tsx
-import { Toaster } from "@/components/ui/sonner"
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <head />
-      <body>
-        <main>{children}</main>
-        <Toaster />
-      </body>
-    </html>
-  )
-}
+## Retrivers
 
 ```
-  
-  
-  </Tab>
-</Tabs>
+"""
+https://python.langchain.com/docs/tutorials/retrievers/
+"""
 
-## Usage
+from langchain_community.document_loaders import PyPDFLoader
 
+pdf_path = "./assets/sample.pdf"
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+loader = PyPDFLoader(pdf_path)
 
-```ts
-import { toast } from "sonner"
+docs = loader.load()
+
+print(len(docs))
+
+# printing the page content of the file and metadata
+print(f"{docs[0].page_content}")
+print(f"{docs[0].metadata}")
+
+```
+### Splitting data
+```py
+
+#spliting
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000, chunk_overlap = 200, add_start_index=True
+)
+
+splitted_docs = text_splitter.split_documents(docs)
+print(len(splitted_docs))
+print((splitted_docs[2]))
 ```
 
-```ts
-toast("Event has been created.")
+### embedding
+
+### vector store
+
+
+### Structured Output
+```py
+# Define schema
+schema = {"foo": "bar"}
+
+
+# Bind schema to model
+model_with_structure = model.with_structured_output(schema)
+
+
+# Invoke the model to produce structured output that matches the schema
+structured_output = model_with_structure.invoke(user_input)
 ```
+### Tool calling
+```py
+"""
+https://python.langchain.com/docs/concepts/structured_outputs/#using-tool-calling
+
+tool calling and structure output
+"""
+
+from langchain_anthropic import ChatAnthropic
+from pydantic import BaseModel, Field
+
+
+# tool definition
+class ResponseFormatter(BaseModel):
+    """Always use this tool to structure your response to the user."""
+    answer: str = Field(description="The answer to the user's question")
+    followup_question: str = Field(description="A followup question the user could ask")
+
+
+model = ChatAnthropic(model="")
+
+model_with_tools = model.bind_tools([ResponseFormatter])
+# Invoke the model
+ai_msg = model_with_tools.invoke("What is the powerhouse of the cell?")
+
+```
+
+
+## Examples
+
+### Chatbot llm 1
+```py
+
+"""
+understanding SystemMessage and HumanMessage
+"""
+
+from langchain_core.messages import HumanMessage, SystemMessage
+from langchain.chat_models import init_chat_model
+
+import os
+import getpass
+
+if not os.environ.get("ANTHROPIC_API_KEY"):
+  os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter API key for Anthropic:  ")
+
+
+model = init_chat_model(model_provider="anthropic", model="claude-3-5-sonnet-latest" )
+
+message = [
+    SystemMessage("you're health assistent"), # system prompt
+    HumanMessage("hi") # user prompt
+]
+
+print(model.invoke(message))
+```
+
+### Chatbot llm 1
+```py
+```
+
+### RAG chain flow
+
+```py title="how RAG pipeline looks like"
+loader = pdf_loader(path)
+splitter = text_splitter()
+embedding = OpenAI()
+qdrantDB = Qdrand_vector()
+
+chain = loader | splitter | embedding | qdrantDB
+chain.invoke(pdf_path)
+
+```
+
+{/* TODO: sit down and make a basic pipeline video and then use implemented code for here */}
+
+### Code implementation
+```py title="basic-rag-pipeline"
+
+```
+
+
+Resources
+1. https://python.langchain.com/docs/introduction
