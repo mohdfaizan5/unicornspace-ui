@@ -1,16 +1,13 @@
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import type { ReactNode } from 'react';
-import { baseOptions } from '@/app/layout.config';
-import { courses } from '@/lib/source';
-import { BookIcon } from 'lucide-react';
+import { SiteSectionLayout } from '@/components/layouts/site-section-layout';
+import { coursesRegistry } from 'content/courses/course-registry';
+import { getCourseNavigation } from '@/config/navigation/section-navigation';
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const navigation = getCourseNavigation(coursesRegistry);
+
   return (
-    <DocsLayout tree={{
-        name: 'docs',
-        children: [],
-      }} githubUrl='https://github.com/mohdfaizan5/unicornspace-ui' {...baseOptions}>
+    <SiteSectionLayout navTitle="Courses" navigation={navigation}>
       {children}
-    </DocsLayout>
+    </SiteSectionLayout>
   );
 }

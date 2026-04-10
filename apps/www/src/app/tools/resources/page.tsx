@@ -1,5 +1,5 @@
 // Todo: Think
-import { SearchParams, Resource } from "@/lib/types";
+import { Resource } from "@/lib/types";
 import ResourceGallery from "./resource-gallery";
 import { Metadata } from "next";
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 // TODO: Write a type for the resource object and make sure category a enum and isFavorite is used wisely and not overused
 
-const page = (props: { searchParams: SearchParams }) => {
+const page = () => {
   // const searchParams = use(props.searchParams);
 
   // if (searchParams.filter) {

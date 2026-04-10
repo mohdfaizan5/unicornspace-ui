@@ -42,6 +42,11 @@ export const courses = defineCollections({
   // }),
 })
 
+export const blocks = defineCollections({
+  type: 'doc',
+  dir: 'content/blocks',
+})
+
 
 export default defineConfig({
   mdxOptions: {

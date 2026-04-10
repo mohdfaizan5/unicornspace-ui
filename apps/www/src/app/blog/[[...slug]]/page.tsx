@@ -1,10 +1,4 @@
 import { blog } from '@/lib/source';
-import {
-  DocsPage,
-  DocsBody,
-  DocsDescription,
-  DocsTitle,
-} from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { getMDXComponents } from '@/mdx-components';
@@ -19,18 +13,19 @@ export default async function Page(props: {
   const MDXContent = page.data.body;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody>
+    <article className="mx-auto w-full max-w-4xl px-4 py-8">
+      <h1 className="text-3xl font-bold tracking-tight">{page.data.title}</h1>
+      {page.data.description ? (
+        <p className="mt-2 text-muted-foreground">{page.data.description}</p>
+      ) : null}
+      <div className="mt-8">
         <MDXContent
           components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
             a: createRelativeLink(blog, page),
           })}
         />
-      </DocsBody>
-    </DocsPage>
+      </div>
+    </article>
   );
 }
 

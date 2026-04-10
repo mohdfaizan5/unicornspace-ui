@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 import { Icons } from "./icons";
-import { Cuboid, DollarSign, Rocket,  } from "lucide-react";
+import { Cuboid, DollarSign, Rocket, } from "lucide-react";
 import TechStackIcons from "./tech-stack-icons";
 
 const HeroSection = () => {
@@ -21,11 +21,11 @@ const HeroSection = () => {
         {/* <Badge className="opacity-0  [--slidein-delay:300ms]  blur-lg animate-slidein">
         🚀UI for Startups and SAAS
         </Badge> */}
-        <h1 className="text-5xl mt-6 sm:text-6xl sm:w-2/3 sm:text-center text-left font-bold animate-slidein">
+        <h1 className="text-5xl mt-6 sm:text-7xl sm:w-2/3 sm:text-center text-left font-serif-instrumental animate-slidein">
           {/* Build faster, smarter, and more efficiently. */}
           Create Web Startups 300% Faster With UnicornSpaceUI
         </h1>
-        <p className="text-lg text-left sm:text-[18px] mb-6 mt-5 md:max-w-[600px] md:text-center font-medium  animate-slidein text-foreground/75 z-10">
+        <p className="text-base text-left sm:text-[18px] mb-6 mt-5 md:max-w-[600px] md:text-center font-light  animate-slidein text-foreground/75 z-10">
           Meet UnicornSpaceUI, the library for all your daily tool for all Nextjs
           and Web Development. Focus on getting things done, not re-inventing
           again and again.

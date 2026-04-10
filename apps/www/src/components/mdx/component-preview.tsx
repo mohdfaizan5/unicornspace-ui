@@ -7,55 +7,91 @@ import { ImSpinner } from "react-icons/im";
 import { Tabs } from "fumadocs-ui/components/tabs";
 import { TabsContent, TabsList, TabsTrigger } from "fumadocs-ui/components/ui/tabs";
 import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
+import { componentNameToRegistrySlug } from "@/registry/slug";
 
 const ComponentPreview = ({
   name,
+  className,
+  height,
+  scale,
+  width,
   ...props
 }: {
   name: string;
+  className?: string;
+  height?: string;
+  scale?: number;
+  width?: string;
   [key: string]: any;
 }) => {
-  // console.log(name)
-  // console.log(componentRegistry[name])
-  const ComponentToRender = componentRegistry[name];
+  const componentEntry = componentRegistry[name];
 
-  if (!ComponentToRender) {
+  if (!componentEntry) {
     return <div>Component not found</div>;
   }
 
-  // console.log(typeof ComponentToRender.component);
+  const ComponentToRender = componentEntry.component;
+  const componentCode =
+    componentEntry.code && componentEntry.code.trim().length > 0
+      ? componentEntry.code
+      : "// Code preview unavailable for this component.";
+
+  const [origin, setOrigin] = React.useState("https://your-domain.com");
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(window.location.origin);
+    }
+  }, []);
+
+  const itemSlug = componentNameToRegistrySlug(name);
+  const componentRegistryUrl = `${origin}/r/${itemSlug}.json`;
+  const fullRegistryUrl = `${origin}/r/unicornspace-ui.json`;
+
+  const installCommands = {
+    pnpm: {
+      component: `pnpm dlx shadcn@latest add ${componentRegistryUrl}`,
+      full: `pnpm dlx shadcn@latest add ${fullRegistryUrl}`,
+    },
+    npm: {
+      component: `npx shadcn@latest add ${componentRegistryUrl}`,
+      full: `npx shadcn@latest add ${fullRegistryUrl}`,
+    },
+    yarn: {
+      component: `yarn dlx shadcn@latest add ${componentRegistryUrl}`,
+      full: `yarn dlx shadcn@latest add ${fullRegistryUrl}`,
+    },
+    bun: {
+      component: `bunx --bun shadcn@latest add ${componentRegistryUrl}`,
+      full: `bunx --bun shadcn@latest add ${fullRegistryUrl}`,
+    },
+  };
 
   return (
-    <div className="relative  my-4 z-10 flex flex-col space-y-2 overflow-auto">
-      <Tabs defaultValue="tab-1">
-        <TabsList className="ml-2 flex justify-between h-auto gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
-          <div className="flex items-center space-x-2">
-
+    <div className="relative z-10 my-4 flex flex-col overflow-auto">
+      <Tabs defaultValue="preview">
+        <TabsList className="ml-2 h-auto justify-start gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
           <TabsTrigger
-            value="tab-1"
+            value="preview"
             className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
-            >
+          >
             Preview
           </TabsTrigger>
           <TabsTrigger
-            value="tab-2"
+            value="code"
             className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
-            >
+          >
             Code
           </TabsTrigger>
-</div>
-          {/* <Link href={`/preview/${name}`} className="ml-2">
-            <Button variant={"ghost"} className="group flex items-center gap-2">
-              See full component{" "}
-              <MoveRight
-                size={18}
-                className="group-hover:translate-x-2 transition-all duration-150"
-              />
-            </Button>
-          </Link> */}
+          <TabsTrigger
+            value="install"
+            className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
+          >
+            Install
+          </TabsTrigger>
         </TabsList>
-        <TabsContent value="tab-1">
-          <ComponentWrapper>
+        <TabsContent value="preview">
+          <ComponentWrapper className={className} height={height} scale={scale} width={width}>
             <React.Suspense
               fallback={
                 <div className="flex items-center text-sm text-muted-foreground">
@@ -65,63 +101,51 @@ const ComponentPreview = ({
               }
             >
               <div className=" bg-background/30">
-                <ComponentToRender.component {...props} />
+                <ComponentToRender {...props} />
               </div>
             </React.Suspense>
           </ComponentWrapper>
         </TabsContent>
-        <TabsContent value="tab-2">
+        <TabsContent value="code">
+          <CodeBlock keepBackground lang="tsx">
+            <Pre className="max-h-96 overflow-y-auto">{componentCode}</Pre>
+          </CodeBlock>
+        </TabsContent>
+        <TabsContent value="install" className="space-y-4 pt-2">
+          <Tabs defaultValue="pnpm">
+            <TabsList className="h-auto justify-start gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
+              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+              <TabsTrigger value="npm">npm</TabsTrigger>
+              <TabsTrigger value="yarn">yarn</TabsTrigger>
+              <TabsTrigger value="bun">bun</TabsTrigger>
+            </TabsList>
 
-<CodeBlock keepBackground {...props} lang="ts">
-  <Pre>{props.children}const a:string = "Hello World";</Pre>
-</CodeBlock>;
-          <Pre
-            lang="ts"
-            className="w-full max-h-96 overflow-y-auto"
-            // code={ComponentToRender.code}
-          >
-            const a:string = "Hello World";
-          </Pre>
+            <TabsContent value="pnpm" className="space-y-3">
+              <CodeBlock keepBackground lang="bash">
+                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.pnpm.component}\n\n# Install the full UnicornSpace registry\n${installCommands.pnpm.full}`}</Pre>
+              </CodeBlock>
+            </TabsContent>
+
+            <TabsContent value="npm" className="space-y-3">
+              <CodeBlock keepBackground lang="bash">
+                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.npm.component}\n\n# Install the full UnicornSpace registry\n${installCommands.npm.full}`}</Pre>
+              </CodeBlock>
+            </TabsContent>
+
+            <TabsContent value="yarn" className="space-y-3">
+              <CodeBlock keepBackground lang="bash">
+                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.yarn.component}\n\n# Install the full UnicornSpace registry\n${installCommands.yarn.full}`}</Pre>
+              </CodeBlock>
+            </TabsContent>
+
+            <TabsContent value="bun" className="space-y-3">
+              <CodeBlock keepBackground lang="bash">
+                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.bun.component}\n\n# Install the full UnicornSpace registry\n${installCommands.bun.full}`}</Pre>
+              </CodeBlock>
+            </TabsContent>
+          </Tabs>
         </TabsContent>
       </Tabs>
-
-      {/* <Tabs defaultValue="preview" className="">
-        <TabsList>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger
-            value="code"
-            className="hover:bg-accent hover:text-accent-foreground"
-          >
-            Code
-          </TabsTrigger>
-          <Link href={`/blocks/${name}`} className="ml-2">
-            <Button variant={"ghost"}>See full component</Button>
-          </Link>
-        </TabsList>
-        <TabsContent value="preview" className="relative rounded-md ">
-          <ComponentWrapper>
-            <React.Suspense
-              fallback={
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <ImSpinner className="mr-2 size-4 animate-spin" />
-                  Loading...
-                </div>
-              }
-            >
-              <div className="scale-[60%] bg-background/30">
-                <ComponentToRender.component {...props} />
-              </div>
-            </React.Suspense>
-          </ComponentWrapper>
-        </TabsContent>
-
-        <TabsContent value="code" className=" rounded-sm ">
-          <CodeHighlight
-            className="w-full max-h-96 overflow-y-auto"
-            code={ComponentToRender.code}
-          />
-        </TabsContent>
-      </Tabs> */}
     </div>
   );
 };

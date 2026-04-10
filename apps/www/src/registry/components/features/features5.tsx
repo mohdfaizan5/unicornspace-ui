@@ -3,12 +3,14 @@ import Link from "next/link";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { useId } from "react";
 
-interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
+interface GridPatternProps {
   width: number;
   height: number;
   x: string | number;
   y?: number;
   squares?: [number, number][];
+  className?: string;
+  [key: string]: any;
 }
 
 function GridPattern({

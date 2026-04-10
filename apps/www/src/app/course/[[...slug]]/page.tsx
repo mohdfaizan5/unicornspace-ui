@@ -1,5 +1,6 @@
-import React from 'react'
-type Params = Promise<{ slug: string }>
+import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
@@ -8,34 +9,22 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import Link from 'next/link'
-import { coursesRegistry } from 'content/courses/course-registry'
-import { courses } from '@/lib/source'
+import { components, courses } from '@/lib/source'
 import { cn } from '@/lib/utils'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import Image from "next/image"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import {
-    DocsPage,
-    DocsBody,
-    DocsDescription,
-    DocsTitle,
-} from 'fumadocs-ui/page';
-import { createRelativeLink } from 'fumadocs-ui/mdx'
 import { getMDXComponents } from '@/mdx-components'
-import { components } from '@/lib/source';
-import { FaAngleLeft } from 'react-icons/fa'
+import { coursesRegistry } from 'content/courses/course-registry'
+import { createRelativeLink } from 'fumadocs-ui/mdx'
 import { MoveRight } from 'lucide-react'
-import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { FaAngleLeft } from 'react-icons/fa'
+type Params = Promise<{ slug?: string[] }>
 
 const page = async (props: { params: Params }) => {
-    const { slug: courseSlug } = await props.params
+    const params = await props.params
+    const courseSlug = params.slug
 
-
-    console.log(courseSlug, "course slug")
     // for index page (showing all courses)
-    if (!courseSlug) {
+    if (!courseSlug || courseSlug.length === 0) {
         return <IndexPage />
     }
 
@@ -46,14 +35,11 @@ const page = async (props: { params: Params }) => {
     [ 'genai' ] - /course/genai - length 1
     [ 'genai', 'sdlkjf' ] - /course/genai/sdlkjf - length 2
     */
-    const allCourses = courses.getPages()
-    const re = new RegExp("^\\d+\\..+");
+    const allCourses: any[] = courses.getPages() as any[]
 
     if (courseSlug.length === 1) {
-        console.log(courseSlug[0], allCourses.map(c => c.file.dirname.toLowerCase()))
-
         const course = allCourses
-            .filter((item) => item.file.dirname.toLowerCase() === courseSlug[0].toLowerCase())
+            .filter((item) => item.slugs?.[0]?.toLowerCase() === courseSlug[0].toLowerCase())
             .sort((a, b) => {
                 const getNumber = (str: string) => {
                     const match = str.match(/^(\d+)/);
@@ -89,7 +75,7 @@ const page = async (props: { params: Params }) => {
 
                 <section className='mx-auto max-w-6xl  px-4 pb-10 md:pb-20 grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
                     {course.map((chapter, i) =>
-                        <Link key={i} href={`/course/${chapter.slugs[0]}/${re.test(chapter.slugs[1]) ? chapter.slugs[1].split(".")[1] : chapter.slugs[1]}`} className='group'>
+                        <Link key={i} href={`/course/${chapter.slugs[0]}/${chapter.slugs[1]}`} className='group'>
 
                             <Card className='gap-2 bg-secondary/90  group h-full rounded-[12px] shadow-sm transition-all hover:shadow-lg relative' key={i}>
                                 <CardHeader className='flex flex-row items-center gap-2'>
@@ -116,49 +102,22 @@ const page = async (props: { params: Params }) => {
             </div>)
     }
 
-    console.log("😍😍😍")
     if (courseSlug.length === 2) {
-        // console.log("---->>>>😍", courseSlug, allCourses.map(c => c.file.dirname.toLowerCase()))
-
-
-
-
         const allCourseChapters = allCourses.filter((item) => {
-            // console.log(item.file.dirname.toLowerCase(), "--", courseSlug[1])
-            if (item.file.dirname.toLowerCase() === (courseSlug[0].toLowerCase())) {
-                // console.log(item.slugs, "--", courseSlug[1])
-                // console.log("found")
+            if (item.slugs?.[0]?.toLowerCase() === (courseSlug[0].toLowerCase())) {
                 return item
 
             }
         })
 
-
-        // get previous chapter slug, basically like above get the slug of the chapter from course object, when it matches then return the previous chapter
-        const previousChapterSlug = allCourseChapters.map(c => c.slugs[1]).find(slug => { })
-
-        // const chapter = allCourseChapters.filter((item) => {   
-
-        // })
-        console.log(allCourseChapters.map(c => c.slugs[1]), "all course chapters")
-
-        // TODO: something is wrong here with my approach
         const page = allCourseChapters.find((item) => {
-            // const a = (re.test(item.slugs[1]) ? "how-llms-work" : 'other') === courseSlug[1]
-            // console.log(item.slugs[1], courseSlug[1], a )
-            console.log()
-            const convertedSlug = re.test(item.slugs[1]) ? item.slugs[1].split(".")[1] : item.slugs[1]
-
-            if (convertedSlug.toLowerCase() === courseSlug[1].toLowerCase()) {
-                return item
-            }
-        }
-        )
-
-
-        console.log("😍😍😍😍😍", page)
-
-        console.log()
+            const rawSlug = String(item.slugs?.[1] ?? '').toLowerCase()
+            const convertedSlug = rawSlug.includes('.')
+                ? rawSlug.split('.').slice(1).join('.')
+                : rawSlug
+            const target = courseSlug[1].toLowerCase()
+            return rawSlug === target || convertedSlug === target
+        })
 
         if (!page) {
             return <div>Chapter not found</div>
@@ -167,7 +126,7 @@ const page = async (props: { params: Params }) => {
         const MDXContent = page.data.body;
 
         return (
-            <DocsPage toc={page.data.toc} full={page.data.full}>
+            <article className="mx-auto w-full max-w-4xl px-4 py-8">
                 <Link href={`/course/${page.slugs[0]}`} className="mb-4 justify-end flex">
                     <Button>
                         <FaAngleLeft />
@@ -176,19 +135,21 @@ const page = async (props: { params: Params }) => {
                 </Link>
                 <div>
 
-                    <DocsTitle className='mb-2'>{page.data.title}</DocsTitle>
-                    <DocsDescription>{page.data.description}</DocsDescription>
+                    <h1 className='mb-2 text-3xl font-bold tracking-tight'>{page.data.title}</h1>
+                    {page.data.description ? (
+                        <p className='text-muted-foreground'>{page.data.description}</p>
+                    ) : null}
                 </div>
-                <DocsBody>
+                <div className='mt-8'>
                     <MDXContent
                         components={getMDXComponents({
                             // this allows you to link to other pages with relative file paths
                             a: createRelativeLink(components, page),
                         })}
                     />
-                </DocsBody>
+                </div>
 
-            </DocsPage>
+            </article>
         );
 
 
@@ -218,7 +179,7 @@ const page = async (props: { params: Params }) => {
     return (
         <div className='max-w-6xl mx-auto'>
             hi {courseSlug}
-            {allCourses.map(c => <p>
+            {allCourses.map((c, index) => <p key={index}>
                 {String(c.data.title)} - {c.data.slug}
             </p>)}
             {/* */}
@@ -283,61 +244,44 @@ export async function generateStaticParams() {
 
 // TODO: work this out as it requires you to create a metadata object for each page properly
 export async function generateMetadata(props: {
-    params: Promise<{ slug: string[] }>;
+    params: Promise<{ slug?: string[] }>;
 }) {
     const params = await props.params;
-    const page = courses.getPage(params.slug);
-    console.log(params, params.slug?.length)
-
-    const allCourses = courses.getPages()
-    const re = new RegExp("^\\d+\\..+");
-    if (!params.slug) {
+    const allCourses: any[] = courses.getPages() as any[]
+    const slug = params.slug
+    if (!slug) {
         // Showing all courses
         return {
             title: "Courses - UnicornSpaceUI",
             description: "A collection of courses crafted for quick learning with examples and code. ",
         };
     }
-    else if (params.slug.length == 1) {
-        const course = coursesRegistry.find(c =>{
-            console.log(c.slug, params.slug[0])
-            return c.slug == params.slug[0]
+    else if (slug.length == 1) {
+        const course = coursesRegistry.find(c => {
+            return c.slug == slug[0]
         })
-        console.log("-----", course)
         return {
             title: course?.title,
             description: course?.description
         }
 
     }
-    else if(params.slug.length == 2){
-        // console.log("---->>>>😍", courseSlug, allCourses.map(c => c.file.dirname.toLowerCase()))
-
-
-
-
+    else if (slug.length == 2) {
         const allCourseChapters = allCourses.filter((item) => {
-            // console.log(item.file.dirname.toLowerCase(), "--", courseSlug[1])
-            if (item.file.dirname.toLowerCase() === (params.slug[0].toLowerCase())) {
-                // console.log(item.slugs, "--", courseSlug[1])
-                // console.log("found")
+            if (item.slugs?.[0]?.toLowerCase() === (slug[0].toLowerCase())) {
                 return item
 
             }
         })
-                const chapter = allCourseChapters.find((item) => {
-            // const a = (re.test(item.slugs[1]) ? "how-llms-work" : 'other') === courseSlug[1]
-            // console.log(item.slugs[1], courseSlug[1], a )
-            console.log()
-            const convertedSlug = re.test(item.slugs[1]) ? item.slugs[1].split(".")[1] : item.slugs[1]
-
-            if (convertedSlug.toLowerCase() === params.slug[1].toLowerCase()) {
-                return item
-            }
-        }
-        )
-        console.log("####", chapter)
-        return{
+        const chapter = allCourseChapters.find((item) => {
+            const rawSlug = String(item.slugs?.[1] ?? '').toLowerCase()
+            const convertedSlug = rawSlug.includes('.')
+                ? rawSlug.split('.').slice(1).join('.')
+                : rawSlug
+            const target = slug[1].toLowerCase()
+            return rawSlug === target || convertedSlug === target
+        })
+        return {
             title: chapter?.data.title,
             description: chapter?.data.description
         }

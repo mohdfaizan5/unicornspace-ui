@@ -1,0 +1,45 @@
+# UnicornSpaceUI LLM SEO Directive Template
+
+version: 0.1
+status: draft
+owner: content-team
+updated_at: 2026-04-10
+
+[site]
+name = UnicornSpaceUI
+base_url = https://your-domain.com
+primary_goal = "Improve organic rankings for UI components, blocks, and developer tutorials"
+
+[seo_targets]
+primary_keywords = []
+secondary_keywords = []
+entities = []
+competitors = []
+
+[content_priorities]
+pages_to_optimize = [
+  "/components",
+  "/blocks",
+  "/course",
+  "/tools/resources",
+  "/blog"
+]
+pages_to_create = []
+internal_link_hubs = ["/components", "/blocks", "/course", "/blog"]
+
+[on_page_rules]
+title_max_length = 60
+meta_description_max_length = 160
+h1_per_page = 1
+include_primary_keyword_in_h1 = true
+include_primary_keyword_in_intro = true
+
+[technical_rules]
+require_canonical = true
+require_open_graph = true
+require_twitter_cards = true
+require_robots = true
+require_sitemap = true
+
+[llm_notes]
+notes = "Add final keyword and topic instructions in this file."

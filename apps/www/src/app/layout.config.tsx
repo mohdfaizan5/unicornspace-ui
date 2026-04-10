@@ -1,6 +1,6 @@
 import Logo from '@/components/logo';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { BookIcon, FileIcon, NotebookText, Settings } from 'lucide-react';
+import { BookIcon, FileIcon, LayoutGrid, NotebookText, Settings } from 'lucide-react';
 
 /**
  * Shared layout configurations
@@ -12,40 +12,48 @@ import { BookIcon, FileIcon, NotebookText, Settings } from 'lucide-react';
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
-      <Logo full textClassName='text-lg mt-2' className='items-center'/>
+      <Logo full link={false} textClassName='text-base mt-1' className='items-center flex' />
     ),
   },
   // see https://fumadocs.dev/docs/ui/navigation/links
- links: [
+  links: [
     {
-      icon: <FileIcon   />,
-            label: 'components', // `aria-label`
+      icon: <FileIcon />,
+      label: 'components', // `aria-label`
 
       text: 'Components',
       url: '/components',
       // secondary items will be displayed differently on navbar
       secondary: false,
     },
+    // {
+    //   icon: <NotebookText className='' />,
+    //   text: 'Courses',
+    //   url: '/course',
+    //   // secondary items will be displayed differently on navbar
+    //   secondary: false,
+    // },
+    // {
+    //   icon: <LayoutGrid />,
+    //   text: 'Blocks',
+    //   url: '/blocks',
+    //   // secondary items will be displayed differently on navbar
+    //   secondary: false,
+    // },
     {
-      icon: <NotebookText className=''   />,
-      text: 'Courses',
-      url: '/course',
-      // secondary items will be displayed differently on navbar
-      secondary: false,
-    },
-    {
-      icon: <BookIcon   />,
+      icon: <BookIcon />,
       text: 'Blog',
       url: '/blog',
       // secondary items will be displayed differently on navbar
       secondary: false,
     },
     {
-      icon: <Settings   />,
-      text: 'Tools',
-      url: '/tools',
+      icon: <Settings />,
+      text: 'Resources',
+      url: '/tools/resources',
       // secondary items will be displayed differently on navbar
       secondary: false,
     },
-    
-  ],};
+
+  ],
+};

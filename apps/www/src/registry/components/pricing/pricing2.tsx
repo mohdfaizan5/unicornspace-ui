@@ -86,7 +86,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
           featured ? "dark:text-black text-white" : "text-foreground/80"
         )}
       >
-        {features.map((feature: any) => (
+        {features.map((feature: string) => (
           <li key={feature} className="flex">
             <CheckIcon className={featured ? "text-white" : "text-slate-400"} />
             <span className="ml-4">{feature}</span>

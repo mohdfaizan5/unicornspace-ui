@@ -5,8 +5,8 @@ import { Badge } from "./ui/badge";
 
 const Logo = ({
   full = false,
-  width = 100,
-  height = 100,
+  width = 30,
+  height = 30,
   link = true,
   className,
   textClassName,
@@ -52,15 +52,15 @@ const Logo = ({
   else
     return (
       <div
-        className={cn("flex flex-col items-center justify-center", className)}
+        className={cn("flex items-center justify-center", className)}
       >
         <Image
-          src={"/assets/logo-base-256x256.png"}
+          src={"/logos/logo-white-256x256.png"}
           width={width}
           height={height}
           alt="logo"
         />
-        {full && <h2 className="font-medium text-2xl">FreelanceFlow</h2>}
+        {full && <h2 className={cn(`font-medium text-2xl`, textClassName)}>UnicornSpaceUI</h2>}
         {isBeta && (
           <Badge variant={"secondary"} className="scale-[80%]">
             Beta

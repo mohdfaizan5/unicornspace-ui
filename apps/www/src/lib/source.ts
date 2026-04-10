@@ -1,6 +1,12 @@
-import { blog as BlogPost, components as ComponentSource, docs, courses as CourseSource } from '@/.source';
+import {
+  blog as BlogPost,
+  blocks as BlocksSource,
+  components as ComponentSource,
+  docs,
+  courses as CourseSource,
+} from '@/.source/server';
 import { loader } from 'fumadocs-core/source';
-import { createMDXSource } from 'fumadocs-mdx';
+import { toFumadocsSource } from 'fumadocs-mdx/runtime/server';
 
 // See https://fumadocs.vercel.app/docs/headless/source-api for more info
 export const source = loader({
@@ -13,17 +19,22 @@ export const source = loader({
 export const blog = loader({
   // it assigns a URL to your pages
   baseUrl: '/blog',
-  source: createMDXSource(BlogPost),
-});
+  source: toFumadocsSource(BlogPost, []) as any,
+}) as any;
 
 
 export const components = loader({
   baseUrl: "/components",
-  source: createMDXSource(ComponentSource)
-})
+  source: toFumadocsSource(ComponentSource, []) as any
+}) as any
 
 
 export const courses = loader({
   baseUrl: "/course",
-  source: createMDXSource(CourseSource)
-})
+  source: toFumadocsSource(CourseSource, []) as any
+}) as any
+
+export const blocks = loader({
+  baseUrl: '/blocks',
+  source: toFumadocsSource(BlocksSource, []) as any,
+}) as any

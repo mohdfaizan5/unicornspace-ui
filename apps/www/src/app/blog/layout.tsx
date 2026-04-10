@@ -1,16 +1,9 @@
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import type { ReactNode } from 'react';
-import { baseOptions } from '@/app/layout.config';
-import { blog } from '@/lib/source';
+import { SiteSectionLayout } from '@/components/layouts/site-section-layout';
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <DocsLayout sidebar={{ enabled: false, }} nav={{ enabled: true }}
-      tree={{
-        name: 'blog',
-        children: [],
-      }} {...baseOptions}>
+    <SiteSectionLayout navTitle="Blog" navigation={[]}>
       {children}
-    </DocsLayout>
+    </SiteSectionLayout>
   );
 }

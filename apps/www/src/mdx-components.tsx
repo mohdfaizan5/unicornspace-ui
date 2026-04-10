@@ -19,6 +19,10 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { GithubInfo } from 'fumadocs-ui/components/github-info';
 import { File, Folder, Files } from 'fumadocs-ui/components/files'
 
+function AutoTypeTable() {
+  return null;
+}
+
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -36,6 +40,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     TableRow,
     Step,
     Steps,
+    AutoTypeTable,
     TooltipMdx,
     ComponentPreview: ComponentPreview,
     File, Folder, Files,
