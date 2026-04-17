@@ -19,6 +19,13 @@ export interface SectionSidebarGroup {
   items: SectionSidebarEntry[];
 }
 
+export interface SectionSidebarCollapsible {
+  type: "collapsible";
+  title: string;
+  items: SectionSidebarEntry[];
+  defaultOpen?: boolean;
+}
+
 export interface SectionSidebarHeading {
   type: "heading";
   title: string;
@@ -31,5 +38,6 @@ export interface SectionSidebarDivider {
 export type SectionSidebarEntry =
   | SectionSidebarLink
   | SectionSidebarGroup
+  | SectionSidebarCollapsible
   | SectionSidebarHeading
   | SectionSidebarDivider;

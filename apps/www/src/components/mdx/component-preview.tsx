@@ -4,10 +4,19 @@ import React from "react";
 import componentRegistry from "@/registry";
 import ComponentWrapper from "./component-wrapper";
 import { ImSpinner } from "react-icons/im";
-import { Tabs } from "fumadocs-ui/components/tabs";
-import { TabsContent, TabsList, TabsTrigger } from "fumadocs-ui/components/ui/tabs";
+import { Check, Copy } from "@phosphor-icons/react";
 import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
 import { componentNameToRegistrySlug } from "@/registry/slug";
+import { Button } from "@/components/ui/button";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import {
+  Tabs,
+  TabsContent as TabsPanel,
+  TabsList,
+  TabsTrigger as TabsTab,
+} from "@/components/ui/tabs";
+
+const REGISTRY_BASE_URL = "https://unicornspace-ui.vercel.app";
 
 const ComponentPreview = ({
   name,
@@ -36,61 +45,41 @@ const ComponentPreview = ({
       ? componentEntry.code
       : "// Code preview unavailable for this component.";
 
-  const [origin, setOrigin] = React.useState("https://your-domain.com");
-
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      setOrigin(window.location.origin);
-    }
-  }, []);
-
   const itemSlug = componentNameToRegistrySlug(name);
-  const componentRegistryUrl = `${origin}/r/${itemSlug}.json`;
-  const fullRegistryUrl = `${origin}/r/unicornspace-ui.json`;
+  const componentRegistryUrl = `${REGISTRY_BASE_URL}/r/${itemSlug}.json`;
 
   const installCommands = {
-    pnpm: {
-      component: `pnpm dlx shadcn@latest add ${componentRegistryUrl}`,
-      full: `pnpm dlx shadcn@latest add ${fullRegistryUrl}`,
-    },
-    npm: {
-      component: `npx shadcn@latest add ${componentRegistryUrl}`,
-      full: `npx shadcn@latest add ${fullRegistryUrl}`,
-    },
-    yarn: {
-      component: `yarn dlx shadcn@latest add ${componentRegistryUrl}`,
-      full: `yarn dlx shadcn@latest add ${fullRegistryUrl}`,
-    },
-    bun: {
-      component: `bunx --bun shadcn@latest add ${componentRegistryUrl}`,
-      full: `bunx --bun shadcn@latest add ${fullRegistryUrl}`,
-    },
-  };
+    bun: `bunx --bun shadcn@latest add ${componentRegistryUrl}`,
+    npm: `npx shadcn@latest add ${componentRegistryUrl}`,
+    pnpm: `pnpm dlx shadcn@latest add ${componentRegistryUrl}`,
+    yarn: `yarn dlx shadcn@latest add ${componentRegistryUrl}`,
+  } as const;
+
+  const packageManagers: Array<keyof typeof installCommands> = ["bun", "npm", "pnpm", "yarn"];
+  const [activePackageManager, setActivePackageManager] =
+    React.useState<keyof typeof installCommands>("npm");
+  const { copyToClipboard, isCopied } = useCopyToClipboard();
+
+  const activeInstallCommand = installCommands[activePackageManager];
 
   return (
     <div className="relative z-10 my-4 flex flex-col overflow-auto">
       <Tabs defaultValue="preview">
-        <TabsList className="ml-2 h-auto justify-start gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
-          <TabsTrigger
+        <TabsList className="ml-2 h-auto justify-start flex gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
+          <TabsTab
             value="preview"
             className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
           >
             Preview
-          </TabsTrigger>
-          <TabsTrigger
+          </TabsTab>
+          <TabsTab
             value="code"
             className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
           >
             Code
-          </TabsTrigger>
-          <TabsTrigger
-            value="install"
-            className="relative after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
-          >
-            Install
-          </TabsTrigger>
+          </TabsTab>
         </TabsList>
-        <TabsContent value="preview">
+        <TabsPanel value="preview">
           <ComponentWrapper className={className} height={height} scale={scale} width={width}>
             <React.Suspense
               fallback={
@@ -105,47 +94,61 @@ const ComponentPreview = ({
               </div>
             </React.Suspense>
           </ComponentWrapper>
-        </TabsContent>
-        <TabsContent value="code">
+        </TabsPanel>
+        <TabsPanel value="code">
           <CodeBlock keepBackground lang="tsx">
             <Pre className="max-h-96 overflow-y-auto">{componentCode}</Pre>
           </CodeBlock>
-        </TabsContent>
-        <TabsContent value="install" className="space-y-4 pt-2">
-          <Tabs defaultValue="pnpm">
-            <TabsList className="h-auto justify-start gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground">
-              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-              <TabsTrigger value="npm">npm</TabsTrigger>
-              <TabsTrigger value="yarn">yarn</TabsTrigger>
-              <TabsTrigger value="bun">bun</TabsTrigger>
+        </TabsPanel>
+      </Tabs>
+
+      <h3 className="mt-6 text-lg font-semibold tracking-tight">Installation</h3>
+      <div className="mt-3 overflow-hidden rounded-2xl border border-border/70 bg-card/40">
+        <Tabs
+          className="gap-0"
+          value={activePackageManager}
+          onValueChange={(value) =>
+            setActivePackageManager(value as keyof typeof installCommands)
+          }
+        >
+          <div className="flex items-center justify-between border-b border-border/70 px-3 py-2">
+            <TabsList className="h-auto gap-1 rounded-lg bg-muted/50 p-1">
+              {packageManagers.map((packageManager) => (
+                <TabsTab
+                  key={packageManager}
+                  value={packageManager}
+                  className="h-8 min-w-14 flex-none rounded-md px-3 text-sm capitalize data-[state=active]:bg-background data-[state=active]:text-foreground"
+                >
+                  {packageManager}
+                </TabsTab>
+              ))}
             </TabsList>
 
-            <TabsContent value="pnpm" className="space-y-3">
-              <CodeBlock keepBackground lang="bash">
-                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.pnpm.component}\n\n# Install the full UnicornSpace registry\n${installCommands.pnpm.full}`}</Pre>
-              </CodeBlock>
-            </TabsContent>
+            <Button
+              type="button"
+              size="icon"
+              variant="ghost"
+              onClick={() => copyToClipboard(activeInstallCommand)}
+              aria-label={`Copy ${activePackageManager} install command`}
+              className="size-8 rounded-md text-muted-foreground hover:text-foreground"
+            >
+              {isCopied ? <Check className="size-4" /> : <Copy className="size-4" />}
+            </Button>
+          </div>
 
-            <TabsContent value="npm" className="space-y-3">
-              <CodeBlock keepBackground lang="bash">
-                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.npm.component}\n\n# Install the full UnicornSpace registry\n${installCommands.npm.full}`}</Pre>
-              </CodeBlock>
-            </TabsContent>
-
-            <TabsContent value="yarn" className="space-y-3">
-              <CodeBlock keepBackground lang="bash">
-                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.yarn.component}\n\n# Install the full UnicornSpace registry\n${installCommands.yarn.full}`}</Pre>
-              </CodeBlock>
-            </TabsContent>
-
-            <TabsContent value="bun" className="space-y-3">
-              <CodeBlock keepBackground lang="bash">
-                <Pre className="max-h-96 overflow-y-auto">{`# Install this component\n${installCommands.bun.component}\n\n# Install the full UnicornSpace registry\n${installCommands.bun.full}`}</Pre>
-              </CodeBlock>
-            </TabsContent>
-          </Tabs>
-        </TabsContent>
-      </Tabs>
+          {packageManagers.map((packageManager) => (
+            <TabsPanel
+              key={packageManager}
+              value={packageManager}
+              className="overflow-x-auto px-4 py-4"
+            >
+              <pre className="font-mono text-sm leading-relaxed text-foreground">
+                {installCommands[packageManager]}
+              </pre>
+            </TabsPanel>
+          ))}
+        </Tabs>
+      </div>
     </div>
   );
 };

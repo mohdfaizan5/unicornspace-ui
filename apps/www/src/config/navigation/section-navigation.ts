@@ -44,9 +44,46 @@ function withBadges(
 
 export function getComponentsNavigation(componentPages: PageLike[]): SectionSidebarEntry[] {
     const componentLinks = withBadges(
-        toLinks(componentPages).filter((link) => link.href !== '/components' && link.href !== '/components/temp' && link.href !== '/components/roadmap' ),
+        toLinks(componentPages).filter((link) => link.href !== '/components' && link.href !== '/components/temp' && link.href !== '/components/roadmap'),
         COMPONENT_BADGES
     );
+
+    const components = {
+        newComponents: new Set<string>(['/components/hero-section', '/components/pricing']),
+        excludeComponents: new Set<string>(['/components/get-started', '/components/contribution-guide']),
+    };
+
+    const newComponentLinks = componentLinks.filter((link) =>
+        components.newComponents.has(link.href)
+    );
+
+    const excludedComponentLinks = componentLinks.filter((link) =>
+        components.excludeComponents.has(link.href)
+    );
+
+    const oldComponentLinks = componentLinks.filter(
+        (link) =>
+            !components.newComponents.has(link.href) &&
+            !components.excludeComponents.has(link.href)
+    );
+
+    const componentsNavItems: SectionSidebarEntry[] = [];
+
+    if (newComponentLinks.length > 0) {
+        componentsNavItems.push({ type: 'heading', title: 'New Components' });
+        componentsNavItems.push(...newComponentLinks);
+    }
+
+    if (excludedComponentLinks.length > 0) {
+        componentsNavItems.push({ type: 'heading', title: 'Excluded Components' });
+        componentsNavItems.push(...excludedComponentLinks);
+    }
+
+    componentsNavItems.push({
+        type: 'collapsible',
+        title: 'Old Components',
+        items: oldComponentLinks,
+    });
 
     return [
         {
@@ -86,7 +123,7 @@ export function getComponentsNavigation(componentPages: PageLike[]): SectionSide
             type: 'group',
             title: 'Components',
 
-            items: componentLinks.filter((link) => link.href !== '/components/get-started' && link.href !== '/components/contribution-guide' ),
+            items: componentsNavItems,
         },
         {
             type: 'group',
@@ -94,7 +131,8 @@ export function getComponentsNavigation(componentPages: PageLike[]): SectionSide
 
             items: [
                 { title: 'Favourite UI Libraries', href: '/favourite-ui-libraries', exact: true },
-            ]},
+            ]
+        },
     ];
 }
 

@@ -176,7 +176,7 @@ export default function Features5() {
       <h2 className="text-3xl" id="resources">Resources</h2>
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
         {resources.map((resource) => (
-          <Resource key={resource.href} resource={resource} />
+          <Resource key={resource.name} resource={resource} />
         ))}
       </div>
     </div>
